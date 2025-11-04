@@ -1,0 +1,1045 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dream Agent — Symbols In Motion</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root { --glass: rgba(255,255,255,0.06); }
+    body {
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial;
+      color: white;
+      background:
+          radial-gradient(1200px 600px at 20% 0%, rgba(255,255,255,0.05), transparent),
+         linear-gradient(180deg, rgba(20, 56, 100, 0.85), rgba(28, 63, 112, 0.75)),
+         url('./img/even_larger_about_background.png') center/cover no-repeat;
+    }
+    /* PLAYFAIR LOGO */
+    h1, h2, h3, h4, #title, .about-link, .overlay-text, .mobile_about_header, .mobile_about_collections_header, .hero_phrase, .footer_slogan, #cta {
+      font-family: 'Playfair Display', serif;
+    }
+    /* .serif{ font-family:"Playfair Display", Georgia, serif; } */
+    .panel{ background: rgba(255,255,255,.05); backdrop-filter: blur(6px); box-shadow: inset 0 1px 0 0 var(--glass); }
+
+    @keyframes auraPulse {
+      0%, 100% { box-shadow: 0 0 0 0 var(--aura, transparent); }
+      50%      { box-shadow: 0 0 14px 3px var(--aura, transparent); }
+    }
+
+    /* --- Marketplace buttons with glow and tooltip --- */
+    .market-btn {
+      position: relative;
+      display: inline-grid;
+      place-items: center;
+      border-radius: 9999px;
+      transition: transform .25s ease, box-shadow .25s ease, filter .25s ease;
+      animation: none; /* disable old pulse */
+      isolation: isolate; /* keep glow behind */
+    }
+
+    /* GLOW AURA LAYER (behind the icon) */
+    .market-btn::before {
+      content: "";
+      position: absolute;
+      inset: -6px; /* aura spread */
+      border-radius: inherit;
+      background: radial-gradient(60% 60% at 50% 50%,
+                  rgba(255,255,255,.35),
+                  rgba(0,87,184,.18) 55%,
+                  rgba(255,255,255,0) 100%);
+      filter: blur(10px);
+      opacity: 0; /* hidden until hover */
+      transition: opacity .25s ease, transform .25s ease;
+      z-index: 0;
+    }
+
+    /* TOOLTIP LAYER (existing behavior) */
+    .market-btn::after {
+      content: attr(data-label);
+      position: absolute;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      white-space: nowrap;
+      bottom: -2.2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0);
+      background: rgba(0,0,0,0.4);
+      padding: 2px 8px;
+      border-radius: 6px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease, color 0.3s ease;
+      z-index: 2;
+    }
+
+    /* IMAGE INSIDE BUTTON */
+    .market-btn img {
+      position: relative;
+      z-index: 1;
+      width: 36px;
+      height: 36px;
+      border-radius: 9999px;
+      box-shadow: 0 0 0 1px rgba(255,255,255,.18);
+      transition: transform .25s ease, filter .25s ease, box-shadow .25s ease;
+    }
+
+    /* HOVER STATE — Glow + Lift + Tooltip */
+    .market-btn:hover::before {
+      opacity: .6;
+      transform: scale(1.08);
+    }
+
+    .market-btn:hover img {
+      transform: translateY(-1px) scale(1.05);
+      filter: drop-shadow(0 0 12px rgba(255,255,255,.55));
+      box-shadow:
+        0 0 0 1px rgba(255,255,255,.25),
+        0 6px 18px rgba(0,0,0,.28);
+    }
+
+    /* Tooltip visible on hover */
+    .market-btn:hover::after {
+      opacity: 1;
+      color: rgba(255,255,255,0.85);
+    }
+
+    
+    #sidebarList {
+      scroll-behavior: smooth;
+    }
+
+    /* Match scrollbar color to row ring */
+    #sidebarList::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    #sidebarList::-webkit-scrollbar-thumb {
+      background-color: rgba(255,255,255,0.4);  /* same as ring-white/40 */
+      border-radius: 8px;
+      border: 1px solid rgba(255,255,255,0.25); /* faint edge definition */
+    }
+
+    #sidebarList:hover::-webkit-scrollbar-thumb {
+      background-color: rgba(255,255,255,0.5);  /* slightly brighter on hover */
+    }
+
+    #sidebarList::-webkit-scrollbar-track {
+      background-color: transparent;            /* remove gray background */
+    }
+
+    /* Other Collections */
+    /* hide scrollbar but keep scrollability */
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+    /* --- Footer icon glow (Dream Agent) --- */
+    .footer-icons .icon-wrap {
+    position: relative;
+    display: inline-grid;
+    place-items: center;
+    border-radius: 9999px;
+    isolation: isolate;               /* keep glow behind the icon */
+    }
+
+    .footer-icons .icon-wrap::after {
+    content: "";
+    position: absolute;
+    inset: -6px;                      /* size of aura spread */
+    border-radius: inherit;
+    /* white core with a whisper of Dream Agent blue */
+    background: radial-gradient(60% 60% at 50% 50%,
+                rgba(255,255,255,.35),
+                rgba(0,87,184,.18) 55%,
+                rgba(255,255,255,0) 100%);
+    filter: blur(10px);
+    opacity: .40;                     /* idle aura */
+    transition: opacity .25s ease, transform .25s ease, filter .25s ease;
+    z-index: 0;                       /* behind the icon */
+    }
+
+    .footer-icons img.footer-icon {
+      position: relative;
+      z-index: 1;
+      width: 34px;
+      height: 34px;
+      border-radius: 9999px;
+      box-shadow: 0 0 0 1px rgba(255,255,255,.18);
+      transition: transform .2s ease, box-shadow .25s ease, filter .25s ease;
+      object-fit: cover;
+    }
+
+     /* Icon itself: crisp with a faint ring */
+    .footer-icons img.footer-icon {
+    position: relative;
+    z-index: 1;
+    width: 34px; height: 34px;        /* your sizes; keep round */
+    border-radius: 9999px;
+    box-shadow:
+        0 0 0 1px rgba(255,255,255,.18); /* hairline ring */
+    transition: transform .2s ease, box-shadow .25s ease, filter .25s ease;
+    }
+
+    /* Hover / focus: lift + stronger glow */
+    .footer-icons .icon-wrap:hover::after,
+    .footer-icons .icon-wrap:focus-within::after {
+    opacity: .6;
+    transform: scale(1.06);
+    }
+
+    .footer-icons .icon-wrap:hover img.footer-icon,
+    .footer-icons .icon-wrap:focus-within img.footer-icon {
+    transform: translateY(-1px) scale(1.04);
+    filter: drop-shadow(0 0 12px rgba(255,255,255,.55));
+    box-shadow:
+        0 0 0 1px rgba(255,255,255,.26),
+        0 6px 18px rgba(0,0,0,.28);
+    }
+
+
+
+    /* VERY SOFT LINEAR FLOW AURA DIVIDER */
+    /* @keyframes auraLineFlow {
+      0%   { opacity: 0.35; transform: translateX(-7%); }
+      100% { opacity: 0.35; transform: translateX(7%); }
+    }
+
+    .animate-auraLineFlow {
+      animation: auraLineFlow 20s linear infinite;
+      background-size: 200% 200%;
+      filter: drop-shadow(0 0 2px rgba(255,255,255,0.15));
+      will-change: transform;
+    } */
+
+  </style>
+
+  <!-- put this in <head> after Tailwind -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+</head>
+
+<!-- The ACTUAL PAGE -->
+
+
+<!-- BREADCRUMB -->
+<body class="min-h-screen">
+  <header class="max-w-6xl mx-auto px-4 pt-6">
+     <nav class="text-white/70 text-sm mb-4 flex items-center justify-between">
+        <!-- Back to Collections -->
+        <a id="backLink" href="../index.html#mobile_about"
+            class="flex items-center text-white/70 hover:text-white transition">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+            </svg>
+            Back to All Collections
+        </a>
+
+        <!-- Next Collection -->
+        <!-- <a id="nextLink" href="../collectons/signals.html"
+            class="flex items-center text-white/70 hover:text-white transition">
+            Next Collection
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+        </a> -->
+    </nav>
+  </header>
+
+  <!-- COLLECTION HEADER -->
+   <div class="max-w-6xl mx-auto px-4 sticky top-0 z-50 lg:static lg:top-auto lg:z-auto">
+     <div class="panel rounded-2xl p-4 sm:p-6 flex items-start gap-4 ">
+      <img src="./img/new_collections/Symbols in Motion.png" alt="collections" class="h-16 w-16 sm:h-20 sm:w-20 lg:h-16 lg:w-16 rounded-full ring-1 ring-white/20">
+      <div class="flex flex-col gap-0">
+          <h1 class="serif text-xl sm:text-2xl font-semibold leading-tight">Symbols In Motion</h1>
+          <div class="flex flex-col lg:flex-row lg:items-center lg:gap-0">
+          <p class="text-white/80 text-sm mt-1 lg:mt-0">Recurring signs in perpetual drift</p>
+          <p class="text-white/80 text-sm lg:ml-4">
+          <span class="opacity-90">4 Works</span> • <span class="opacity-90">2017–2025</span>
+        </p>
+      </div>
+        <!-- <p class="text-white/85 text-sm mt-3 max-w-3xl">A cabinet of moving emblems—objects that migrate between memory and myth, pausing just long enough to be seen.</p> -->
+      </div>
+    </div>
+   </div>
+
+  <!-- Main Grid -->
+  <main class="max-w-6xl mx-auto px-4 pb-20 pt-8 grid grid-cols-1 lg:grid-cols-12 gap-8">
+    <!-- Artwork column -->
+    <section class="lg:col-span-7">
+      <article class="panel rounded-2xl px-4 sm:px-6 pt-2 sm:pt-4 pb-8 -mt-2">
+        <!-- Artwork title -->
+        <h2 id="artTitle" class="serif text-lg sm:text-lg md:text-xl mb-3"></h2>
+
+
+        <!-- Image viewer -->
+        <figure class="relative overflow-hidden rounded-2xl bg-black/30  
+               h-[300px] sm:h-[300px] lg:h-[400px] 
+               flex items-center justify-center">
+          <img id="artImg" 
+              src="" 
+              alt="" 
+              class="max-h-full max-w-full object-contain transition-transform duration-500 ease-out">
+          
+          <!-- arrows -->
+          <button id="prevBtn" aria-label="Previous" 
+            class="absolute top-1/2 -translate-y-1/2 left-2 sm:left-3 
+                  w-10 h-10 flex items-center justify-center 
+                  rounded-full bg-black/40 hover:bg-black/55 
+                  ring-1 ring-white/30 transition text-lg">
+            ‹
+          </button>
+
+          <button id="nextBtn" aria-label="Next" 
+            class="absolute top-1/2 -translate-y-1/2 right-2 sm:right-3 
+                  w-10 h-10 flex items-center justify-center 
+                  rounded-full bg-black/40 hover:bg-black/55 
+                  ring-1 ring-white/30 transition text-lg">
+            ›
+          </button>
+        </figure>
+
+
+        <!-- Meta -->
+        <div id="artMeta" class="mt-4 flex flex-wrap items-center gap-2 text-white/85 text-sm">
+          <span>2024</span><span>•</span><span>Digital-Oil-style</span><span>•</span><span>Surreal</span>
+        </div>
+
+        <!-- Description -->
+        <p id="artDesc" class="mt-4 text-[15px] leading-7 text-white/90">
+          This surreal composition by Dream Agent presents an oven labeled Prosperity as an altar of permanence…
+        </p>
+
+     <!-- CTA buttons -->
+      <div class="mt-10 flex items-center gap-3 flex-wrap">
+        <!-- View Full Size (no glow, same border as unlockable) -->
+        <a
+          class="inline-flex items-center justify-center rounded-full px-5 py-3 text-sm font-semibold text-white
+                bg-white/10 border border-white/20 ring-0 shadow-none transition-colors
+                hover:bg-white/15 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#133B70]
+                active:translate-y-[1px] cursor-default md:cursor-pointer">
+                View Full Size
+        </a>
+
+
+        <!-- Marketplace icons inline with the button (no glow) -->
+        <div class="flex items-center gap-2 flex-nowrap">
+          
+          <!-- <p class="text-white/80 text-[12px]">View on:</p> -->
+          <!-- XRP Café -->
+            <a id="xrpBtn" target="_blank" href="https://xrp.cafe/collection/dreamagent7" data-label="XRP Café"
+              class="market-btn inline-flex items-center justify-center w-10 h-10 rounded-full
+              border border-white/20 ring-0 shadow-none
+              hover:border-white/30 transition">
+              <img src="./img/round_logos/xrpcafe_circle.png" alt="xrpcafe"
+              class="w-9 h-9 rounded-full object-cover">
+            </a>
+            <!-- <p class="text-white/80 text-[9px]">XRP Cafe</p> -->
+
+
+          <!-- OpenSea -->
+          <a id="osBtn" href="#" data-label="OpenSea"
+             class="market-btn inline-flex items-center justify-center w-10 h-10 rounded-full
+                    border border-white/20 ring-0 shadow-none
+                    hover:border-white/30 transition">
+                <img src="./img/round_logos/opensea_circle.png" alt="opensea"
+                class="w-9 h-9 rounded-full object-cover">
+          </a>
+           <!-- <p class="text-white/80 text-[9px]">OpenSea</p> -->
+
+          <!-- SuperRare -->
+          <a id="srBtn" href="#" data-label="SuperRare"
+            class="market-btn inline-flex items-center justify-center w-10 h-10 rounded-full
+                    border border-white/20 ring-0 shadow-none
+                    hover:border-white/30 transition">
+            <img src="./img/round_logos/superrare_circle.png" alt="superrare"
+                class="w-9 h-9 rounded-full object-cover">
+          </a>
+           <!-- <p class="text-white/80 text-[9px]">SuperRare</p> -->
+        </div>
+      </div>
+      </article>
+    </section>
+
+    <!-- Sidebar and Other collections -->
+    <aside class="lg:col-span-5">
+      <!-- Sticky panel -->
+      <div class="panel rounded-2xl p-4 sm:p-6 lg:sticky lg:top-8">
+        <h3 class="serif text-lg sm:text-xl mb-4">All works in this collection</h3>
+
+        <!-- Works list (scrolls vertically inside the panel) -->
+        <div id="sidebarList"
+            class="space-y-2 pl-2 pr-2 py-1 max-h-[28rem] overflow-y-auto
+                    scrollbar-thin scrollbar-thumb-white/40 scrollbar-track-transparent
+                    hover:scrollbar-thumb-white/50 rounded-xl">
+          <!-- JS builds this list -->
+        </div>
+
+        <!-- Animated glowing divider -->
+        <!-- <div class="relative my-4 h-px overflow-hidden rounded-full">
+          <div class="absolute inset-0 bg-gradient-to-r
+                from-white/10 via-white/40 to-white/10
+                opacity-50 animate-auraLineFlow"></div>
+        </div> -->
+
+
+        <!-- Other Collections: horizontal strip with thumbs + arrows -->
+        <div id="otherCollectionsStrip" class="mt-4 overflow-hidden">
+          <h3 class="serif text-base sm:text-lg mb-2">Other collections</h3>
+
+          <div class="relative">
+            <!-- gradient edges -->
+            <div class="pointer-events-none absolute inset-y-0 left-0 w-10 bg-gradient-to-r from-black/40 to-transparent z-10"></div>
+            <div class="pointer-events-none absolute inset-y-0 right-0 w-10 bg-gradient-to-l from-black/40 to-transparent z-10"></div>
+
+            <!-- arrows -->
+            <button id="ocPrev"
+                    aria-label="Scroll left"
+                    class="absolute left-1 top-1/2 -translate-y-1/2 z-20
+                          w-8 h-8 rounded-full bg-black/40 ring-1 ring-white/30
+                          hover:bg-black/55 transition flex items-center justify-center">
+              ‹
+            </button>
+            <button id="ocNext"
+                    aria-label="Scroll right"
+                    class="absolute right-1 top-1/2 -translate-y-1/2 z-20
+                          w-8 h-8 rounded-full bg-black/40 ring-1 ring-white/30
+                          hover:bg-black/55 transition flex items-center justify-center">
+              ›
+            </button>
+
+            <!-- one-line scroller -->
+            <div id="ocScroller"
+                class="flex items-center gap-2 sm:gap-3 overflow-x-auto whitespace-nowrap no-scrollbar
+                        snap-x snap-mandatory px-2 py-1">
+              <!-- JS injects cards -->
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </aside>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="mt-10 bg-white/5">
+    <div class="max-w-6xl mx-auto px-4 py-20 sm:pt-12 rounded-xl">
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-4 sm:gap-6">
+   
+            <div class="text-center sm:text-left">
+              <p class="text-white/80 text-sm font-bold footer_slogan">No face. No fame. Just the vision.</p>
+            </div>
+            <!-- logos moved next to the text and tightened gap -->
+            <div class="footer-icons flex items-center gap-3">
+            <span class="icon-wrap" data-pulse>
+            <img src="../img/logos/DreamAgent Logo 11.png" alt="Dream Agent" class="footer-icon">
+            </span>
+            <a target="_blank" href="https://x.com/dream_agent7" aria-label="Twitter" class="icon-wrap" data-pulse title="Twitter">
+              <img src="./img/round_logos/twitter_black_circle.png" alt="Twitter" class="footer-icon">
+            </a>
+            <a target="_blank" href="https://sora.chatgpt.com/profile/dreamagent7" aria-label="Sora" class="icon-wrap" data-pulse title="Sora">
+              <img src="./img/round_logos/Sora.png" alt="Sora" class="footer-icon">
+            </a>
+            <a target="_blank" href="https://www.instagram.com/dream.agent7/" aria-label="Instagram" class="icon-wrap" data-pulse title="Instagram">
+              <img src="./img/round_logos/instagram_red_circle.png" alt="Instagram" class="footer-icon">
+            </a>
+            <a target="_blank" href="https://bsky.app/profile/dreamagent7.bsky.social" aria-label="Bluesky" class="icon-wrap" data-pulse title="Bluesky">
+              <img src="./img/round_logos/bluesky_liteblue_circle.png" alt="Bluesky" class="footer-icon">
+            </a>
+            <a target="_blank" href="https://www.tiktok.com/@dream_agent7" aria-label="TikTok" class="icon-wrap" data-pulse title="TikTok">
+              <img src="./img/round_logos/tiktok_black_circle.png" alt="TikTok" class="footer-icon">
+            </a>
+         </div>
+       
+         
+         <!-- right group: copyright / attribution -->
+        <div class="flex flex-col items-center gap-2 text-xs text-white/30">
+          <p>© 2025 Dream Agent. All rights reserved.</p>
+          <!-- <p class="flex items-center gap-1">
+            <img src="../img/round_logos/Courdevelops.svg" alt="CourDevelops logo" class="w-6 h-6 opacity-30" width="16" height="16">
+            Powered by CourDevelops
+          </p> -->
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+  // ALL THE PICTURES & DATA
+  ////////////////////////////////////////////////////////////////////////////////////////////
+  ////////////////////////////////////////////////////////////////////////////////////////////
+  ////////////////////////////////////////////////////////////////////////////////////////////
+  ////////////////////////////////////////////////////////////////////////////////////////////
+  ////////////////////////////////////////////////////////////////////////////////////////////
+  const works = [
+    // TEMPLE OF OPENINGS
+    { title:"Temple of Openings", year:"2021", style:"Oil-style",
+      tags:["crowd","generations"],
+      img:"./pictures/Temple of Openings.png",
+      desc:[
+          "Two chessboards face the Pacific at sunset — one arranged for faith, the other for doubt. The white pieces align in formation before the ancient temple, where water pours from marble columns like divine cognition.",
+          "The black side stands fractured, its pawns hybridized — red, yellow, brown, white — hinting at civilization’s mixed motives. Above them rises **Strategy Wood**, a parody of “Hollywood,” where the myths of empire meet the algorithms of game theory.",
+          "This is a painting about 'beginnings' — the first move, the spiritual economy of intention, and the theater of all creation.",
+          "Every opening is both an offering and a deception."
+      ],
+      links:{ xrp:"https://xrp.cafe/collection/dreamagent7", os:"#", sr:"#"}
+    },
+    // THE TECH ERA
+    { title:"The Tech Era", year:"2025", style:"Oil-style",
+      tags:["employees","tooth"],
+      img:"./pictures/The Tech Era.png",
+      desc:[
+          "In 'The Tech Era,' Dream Agent conjures a surreal crossroads of technological elegance and ancient mystery. A cadre of faceless urbanites—Yuppies, Buppies, and Cypherpunks—glide through a snow-laced city on electric scooters, disconnected yet synchronized.", 
+          "They pass a glowing crystal ball ceremony, a hypnotic marble garage spewing water from the mountains, and a mystical Zoltar figure beside a woman carefully sewing a half-finished turban.",
+          "Above, a giant floating tooth—a relic or prophecy?—hovers between two epochs: analog ruin and digital rebirth. Symbols abound: the neon globe of globalism, the ever-watching mountain temple, and a store sign encoded in planetary language.",
+          "This is not just a painting—it’s a portal.", 
+      ],
+      links:{ xrp:"https://xrp.cafe/nft/00081388B57E780C6A5EF299540E01B0E8C6DB1B83CFC916EC7A48D005CBFA35", os:"#", sr:"#"}
+    },
+    // THE RUSHER THE INCREMENTER AND THE PROTESTER
+    { title:"The Rusher, The Incrementer and the Protester", year:"2025", style:"Oil-style",
+      tags:["bar","archetypes"],
+      img:"./pictures/the_rusher_the_incrementer_and_the_protester.png",
+      desc:[
+          "Three men sit at a dimly lit bar — a timeless tribunal of modern archetypes: The Rusher, clenched in frustration, his glass half-empty and fists tighter still; The Incrementer, precise and calculating, a monocled figure clad in pinstripes, sipping with a measured grace; and The Protester, puffed-cheeked and clad in a tracksuit, caught mid-reaction, somewhere between rebellion and retreat.",
+          "Each man drinks from a different vessel — a whiskey tumbler, a wine glass, and a crushed beer can — reflecting their strategy in the silent war of agency. Crushed sugar cubes and spent lighters scatter the bar, symbols of fuel and burnout.",
+          "This oil-style portrait isn’t just a study in temperament — it’s a tension-filled séance of capitalism, identity, and pacing in the digital age.",
+          "Which one are you?",
+      ],
+      links:{ xrp:"https://xrp.cafe/nft/00082710B57E780C6A5EF299540E01B0E8C6DB1B83CFC916F09A4DC505CBFA2A", os:"#", sr:"#"}
+    },
+    // PRINCE CARL LAYING 
+    { title:"Prince Carl laying in front of the Telly, denying himself to watch it", year:"2025", style:"Oil-style",
+      tags:["hotel","cane"],
+      img:"./pictures/Prince Carl laying in front of the TV, denying himself to watch it.png",
+      desc:[
+          "In a hotel room of neutral tones and soft lighting, a solitary figure in regal military dress — Prince Carl — lies across a bed, locked in contemplation before a blank television screen. His ornate baton rests beside him, unused. The TV, cold and dark, reflects nothing but the silence of his choice.",
+          "Before it, a curious console: a humanoid figure with a monitor for a head and a crystal ball in its hands. A green mountain labeled “Strategywood” rises like a false oracle, flanked by miniature flags — fragments of world powers reduced to decoration.", 
+          "Behind a slightly ajar door, a shower curtain bears a cryptic insignia: intelligence behind the veil.",
+          "The cursor on the screen invites, yet Prince Carl resists — denying himself the seduction of spectacle, prophecy, or command. This is the portrait of power in a moment of withdrawal.",
+          "Surveillance, strategy, and prophecy lie at arm's reach… but he waits.",
+          "What happens when a sovereign refuses the screen? A meditation on control, voyeurism, and the quiet rebellion of inaction.", 
+      ],
+      links:{ xrp:"https://xrp.cafe/nft/00081374B57E780C6A5EF299540E01B0E8C6DB1B83CFC916950309C105CBFA26", os:"#", sr:"#"}
+    },
+    // DREAM AGENT MAKING BIRDS
+    { title:"Dream Agent Making Birds", year:"2025", style:"Oil-style",
+      tags:["spy","birds"],
+      img:"./pictures/Dream Agent Making Birds.png",
+      desc:[
+         "'Dream Agent Making Birds' captures the faceless spy in a sacred moment of release. Standing before a red cage that holds a glowing machine, the spy extends his gloved hands—not to release a bird, but to reveal wings of light. Above, a chain of birds arcs through the morning sky, echoing the engraving 'Soli Deo Gloria' on the window sill. It is both prayer and ritual: an act of making, not owning—where flight itself becomes the art.",
+         "This piece bridges mystery and devotion, weaving together technology, faith, and surreal transformation. A meditation on creation, release, and the unseen hands that move history.",
+      ],
+      links:{ xrp:"https://xrp.cafe/collection/dreamagent7", os:"#", sr:"#"}
+    },
+  ];
+
+  // DATA: include cover thumbnails
+  const OTHER_COLLECTIONS = [
+    {
+      title: "Signals & Ascensions",
+      href: "./collections/signals.html",
+      img: "./img/collections/Signals and Ascensions.png",
+      count: 7,
+      years: "2019–2025"
+    },
+    {
+      title: "Industrial Myths",
+      href: "./collections/industrial.html",
+      img: "./img/collections/Industrial Myths.png",
+      count: 5,
+      years: "2018–2024"
+    },
+    {
+      title: "Digital Unconscious",
+      href: "./collections/digital.html",
+      img: "./img/collections/Digital Unconscious.png",
+      count: 6,
+      years: "2020–2025"
+    },
+    {
+      title: "Dominion Archive",
+      href: "./collections/dominion-archive.html",
+      img: "./img/collections/Dominion Archives.png",
+      count: 9,
+      years: "2017–2024"
+    }
+  ];
+
+  const currentCollectionName =
+    document.querySelector("h1.serif")?.textContent?.trim() || "";
+
+  (function renderOtherCollectionsStrip(){
+    const wrap  = document.getElementById("ocScroller");
+    const prev  = document.getElementById("ocPrev");
+    const next  = document.getElementById("ocNext");
+    if (!wrap || !prev || !next) return;
+
+    // Exclude current collection if present
+    const items = OTHER_COLLECTIONS.filter(c =>
+      c.title.toLowerCase() !== currentCollectionName.toLowerCase()
+    );
+
+    // Replace the wrap.innerHTML assignment with this normalize + map:
+    function normalizeHref(h) {
+      if (!h) return '#';
+      return h.replace('/collections/', '/collectons/').replace('./collections/', './collectons/').replace('../collections/', '../collectons/');
+    }
+
+    wrap.innerHTML = items.map(c => {
+      const href = normalizeHref(c.href || '#');
+      return `
+        <a href="${href}"
+          class="group inline-flex items-center gap-3 rounded-xl
+                  ring-1 ring-white/15 bg-white/5
+                  hover:bg-white/10 hover:ring-white/30 transition
+                  snap-start pr-3">
+          <span class="block h-14 w-24 sm:h-16 sm:w-28 overflow-hidden rounded-l-xl">
+            <img src="${c.img}" loading="lazy" alt="${c.title}" class="h-full w-full object-cover">
+          </span>
+          <span class="flex items-baseline gap-2 pr-1">
+            <span class="serif text-sm sm:text-base">${c.title}</span>
+            <span class="text-[11px] text-white/70">· ${c.count}</span>
+          </span>
+        </a>
+      `;
+    }).join("");
+
+    // Scroll helpers
+    const SCROLL_STEP = () => Math.max(200, Math.floor(wrap.clientWidth * 0.8));
+
+    function scrollByDir(dir) {
+      wrap.scrollBy({ left: dir * SCROLL_STEP(), behavior: 'smooth' });
+    }
+
+    // Arrow click
+    prev.addEventListener('click', () => scrollByDir(-1));
+    next.addEventListener('click', () => scrollByDir(1));
+
+    // Wheel to horizontal (desktop nicety)
+    wrap.addEventListener('wheel', (e) => {
+      if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
+        wrap.scrollLeft += e.deltaY * 0.9;
+        e.preventDefault();
+      }
+    }, { passive: false });
+
+    // Show/hide/disable arrows based on position
+    function updateArrows() {
+      const max = wrap.scrollWidth - wrap.clientWidth - 1;
+      const left = wrap.scrollLeft;
+
+      const atStart = left <= 0;
+      const atEnd   = left >= max;
+
+      prev.disabled = atStart;
+      next.disabled = atEnd;
+
+      prev.classList.toggle('opacity-40', atStart);
+      next.classList.toggle('opacity-40', atEnd);
+    }
+
+    wrap.addEventListener('scroll', updateArrows, { passive: true });
+    window.addEventListener('resize', updateArrows);
+
+    // Keyboard accessibility when focused
+    wrap.setAttribute('tabindex', '0');
+    wrap.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight') { scrollByDir(1); e.preventDefault(); }
+      if (e.key === 'ArrowLeft')  { scrollByDir(-1); e.preventDefault(); }
+    });
+
+    // Optional: soft reveal anim
+    if (window.gsap) {
+      gsap.from("#ocScroller a", { opacity: 0, y: 4, duration: 0.3, ease: "power2.out", stagger: 0.03 });
+    }
+
+    // Initial state
+    updateArrows();
+  })();
+
+
+
+
+  // ---- Elements ----
+  let current = 0, switching = false;
+  const artImg   = document.getElementById("artImg");
+  const artTitle = document.getElementById("artTitle");
+  const artMeta  = document.getElementById("artMeta");
+  const artDesc  = document.getElementById("artDesc");
+  const xrpBtn   = document.getElementById("xrpBtn");
+  const osBtn    = document.getElementById("osBtn");
+  const srBtn    = document.getElementById("srBtn");
+
+  function paragraphsHTML(desc) {
+  const arr = Array.isArray(desc) ? desc : [desc || ""];
+  const normalize = s => s.replace(/\s*—\s*/g,"—").replace(/\s{2,}/g," ").trim();
+  const body = arr.map(p => `<p class="mb-5">${normalize(p)}</p>`).join("");
+  const unlockable = `
+      <div class="flex items-center gap-3 bg-white/10 border border-white/20 rounded-xl p-3">
+        <svg xmlns="http://www.w3.org/2000/svg" 
+            viewBox="0 0 24 24" 
+            fill="currentColor" 
+            class="w-6 h-6 opacity-90 mt-0.5 flex-shrink-0">
+          <path d="M12 1.5a5.25 5.25 0 00-5.25 5.25v2.25H6a3 3 0 00-3 3v6.75A3.75 3.75 0 006.75 22.5h10.5A3.75 3.75 0 0021 18.75V12a3 3 0 00-3-3h-.75V6.75A5.25 5.25 0 0012 1.5zm-2.25 5.25A2.25 2.25 0 0112 4.5a2.25 2.25 0 012.25 2.25V9H9.75V6.75z"/>
+        </svg>
+        <p class="text-xs text-white/70">
+          Unlockable content: High-resolution master file + audio commentary.
+        </p>
+      </div>
+    `;
+  return body + unlockable;
+}
+
+
+  // Respect reduced motion
+  const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const animate = (el, from, to, dur = 0.5) => {
+    if (prefersReduced) { gsap.set(el, to); return; }
+    gsap.fromTo(el, from, { ...to, duration: dur, ease: "power2.out" });
+  };
+
+  // Preload helper
+  function preload(src) {
+    return new Promise((resolve, reject) => {
+      const i = new Image();
+      i.decoding = "async";
+      i.loading = "eager";
+      i.src = src;
+      i.onload = () => resolve(i);
+      i.onerror = reject;
+    });
+  }
+
+  // Render with crossfade/scale
+  async function renderWork(i){
+    if (switching) return;
+    switching = true;
+
+    // artTitle.textContent = w.title || "";
+    // // ensure it’s visible before the enter animation kicks in
+    // gsap.set(artTitle, { opacity: 1, y: 0 });   // <- add this line
+
+    const w = works[i];
+    // Disable nav while animating
+    document.getElementById("prevBtn").disabled = true;
+    document.getElementById("nextBtn").disabled = true;
+
+    // Fade out current image/content
+    animate(artImg, {opacity:1, scale:1}, {opacity:0, scale:0.98}, 0.18);
+    animate([artTitle, artMeta, artDesc], {opacity:1, y:0}, {opacity:0, y:6}, 0.18);
+
+    try {
+      const img = await preload(w.img);
+
+      // Swap content
+      // Swap content
+      artImg.src = img.src;
+      artTitle.textContent = w.title || "";
+      artMeta.innerHTML = `<span>${w.year||""}</span><span>•</span><span>${w.style||""}</span>`;
+      artDesc.innerHTML = paragraphsHTML(w.desc);
+      xrpBtn.href = w.links?.xrp || "#";
+      osBtn.href  = w.links?.os  || "#";
+      srBtn.href  = w.links?.sr  || "#";
+
+      // artImg.src = img.src;
+      // artTitle.textContent = w.title;
+      // artMeta.innerHTML = `<span>${w.year}</span><span>•</span><span>${w.style}</span>`;
+      // artDesc.textContent = w.desc;
+      // xrpBtn.href = w.links.xrp; osBtn.href = w.links.os; srBtn.href = w.links.sr;
+
+      // Animate in
+      animate(artImg, {opacity:0, scale:0.985}, {opacity:1, scale:1}, 0.4);
+      animate([artTitle, artMeta, artDesc], {opacity:0, y:6}, {opacity:1, y:0}, 0.35);
+    } catch (e) {
+      console.error("Image failed to load:", e);
+    } finally {
+      document.getElementById("prevBtn").disabled = false;
+      document.getElementById("nextBtn").disabled = false;
+      switching = false;
+    }
+
+    // Keep sidebar highlight in
+    syncActiveHighlight();
+
+    // Preload the next image opportunistically
+    const nextIndex = (i + 1) % works.length;
+    preload(works[nextIndex].img).catch(()=>{});
+
+    artDesc.innerHTML = paragraphsHTML(w.desc);
+  }
+
+  // Build sidebar (with lazy thumbs)
+// ===== helpers =====
+const sidebar = document.getElementById("sidebarList");   // desktop stacked list container
+const mobileStrip = document.getElementById("mobileStrip"); // optional: mobile horizontal strip
+
+//////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////
+//CHANGE HERE
+// Active highlight for just the thumbnail box
+// so basically you are setting them all to have a tailwind ring 
+// const THUMB_ACTIVE = ["ring-2","ring-blue-400","ring-offset-2","ring-offset-black/30"];
+// Full-row highlight ring (even border) + soft background
+const ROW_ACTIVE = [
+  "ring-1",            // stronger than base ring
+  "ring-white/60",     // clearer contrast
+  "ring-offset-1",
+  "ring-offset-transparent",
+  "bg-white/10"        // subtle lift
+];
+
+
+
+// const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+function highlightActive(workId) {
+  // remove highlight from all rows
+  const allRows = document.querySelectorAll('.work-link');
+  allRows.forEach(el => el.classList.remove(...ROW_ACTIVE));
+
+  // add highlight to active row(s)
+  const activeRows = document.querySelectorAll(`.work-link[data-work-id="${workId}"]`);
+  activeRows.forEach(el => {
+    el.classList.add(...ROW_ACTIVE);
+
+    // smooth pop-in on selection
+    if (!prefersReduced && window.gsap) {
+      gsap.killTweensOf(el);
+      gsap.fromTo(
+        el,
+        { scale: 0.985 },
+        { scale: 1, duration: 0.22, ease: "power2.out" }
+      );
+    }
+  });
+}
+
+// Keep active highlight in sync after render
+function syncActiveHighlight() {
+  const id = toId(works[current].title, current);
+  highlightActive(id);
+
+  // Only nudge the sidebar into view on desktop
+  const isDesktop = window.matchMedia('(min-width: 1024px)').matches;
+  if (isDesktop) {
+    const row = document.querySelector(`.work-link[data-work-id="${id}"]`);
+    row?.scrollIntoView({ block: 'nearest', inline: 'nearest', behavior: 'smooth' });
+  }
+}
+
+
+
+
+// Active highlight utility
+// const ACTIVE_CLASSES = ["ring-1","ring-blue-400","bg-white/10"];
+// function highlightActive(workId) {
+//   const all = document.querySelectorAll('.work-link[data-work-id]');
+//   all.forEach(el => el.classList.remove(...ACTIVE_CLASSES));
+//   const targets = document.querySelectorAll(`.work-link[data-work-id="${workId}"]`);
+//   targets.forEach(el => el.classList.add(...ACTIVE_CLASSES));
+// }
+//////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////
+
+// Normalize an id for data-work-id/href
+function toId(title, idx){
+  return (title || `work-${idx}`).toLowerCase()
+    .replace(/[^a-z0-9]+/g,'-')
+    .replace(/^-+|-+$/g,'') || `work-${idx}`;
+}
+
+// Centralized click → set current & render
+function onSelectWork(idx, scrollIntoView=false){
+  if (idx < 0 || idx >= works.length) return;
+  current = idx;
+  renderWork(current);
+  const id = toId(works[current].title, current);
+  highlightActive(id);
+  // keep URL hash in sync for deep links (optional)
+  try { history.replaceState(null, '', `#${id}`); } catch {}
+  if (scrollIntoView) {
+    const artCard = document.getElementById('artCard');
+    artCard?.scrollIntoView({ behavior:'smooth', block:'start' });
+  }
+}
+
+// ===== build: desktop sidebar (stacked cards) =====
+if (sidebar) {
+  sidebar.innerHTML = ""; // clear
+
+  works.forEach((w, i) => {
+    const id = toId(w.title, i);
+
+    // build "2025 • Digital-Oil-style" safely
+    const metaParts = [];
+    if (w.year) metaParts.push(String(w.year));
+    if (w.style) metaParts.push(w.style);
+    const meta = metaParts.join(" • ");
+
+    const a = document.createElement("a");
+    a.href = `#${id}`;
+    a.dataset.workId = id;
+
+    // gallery-style row
+  a.className =
+  "work-link relative flex items-center gap-4 py-3 px-3 rounded-xl cursor-pointer \
+   ring-1 ring-white/10 bg-white/5 hover:bg-white/10 hover:ring-white/20 \
+   transition-colors transition-shadow duration-200 will-change-transform";
+
+
+    a.innerHTML = `
+    <div class="thumb relative z-10 rounded-xl ring-1 ring-white/15 overflow-hidden flex-shrink-0">
+      <img src="${w.img}" loading="lazy"
+          class="h-16 w-16 object-cover"
+          alt="${w.title ? w.title.replace(/"/g,'&quot;') : 'Artwork'}">
+    </div>
+
+    <div class="min-w-0">
+      <div class="serif font-medium text-white truncate" title="${w.title || ''}">
+        ${w.title || 'Untitled'}
+      </div>
+
+      <div class="text-xs text-white/75 mt-1 flex items-center gap-2">
+        ${meta ? meta.split(" • ").map((s, idx) =>
+          idx === 0 ? `<span>${s}</span>` : `<span>•</span><span>${s}</span>`
+        ).join("") : ""}
+      </div>
+    </div>
+  `;
+
+
+    a.addEventListener("click", (e) => {
+      e.preventDefault();
+      onSelectWork(i, /*scrollIntoView*/ window.innerWidth < 1024);
+    });
+
+    sidebar.appendChild(a);
+  });
+}
+
+
+// ===== build: mobile strip (horizontal cards) — optional =====
+// Add <section id="mobileStrip" class="block lg:hidden mt-4"></section> in your HTML if you want this.
+if (mobileStrip) {
+  mobileStrip.innerHTML = ""; // clear
+  // header
+  const h = document.createElement('h3');
+  h.className = "serif text-base mb-2 px-1";
+  h.textContent = "All works in this collection";
+  mobileStrip.appendChild(h);
+
+  // wrapper with gradient edges
+  const wrapper = document.createElement('div');
+  wrapper.className = "relative";
+  wrapper.innerHTML = `
+    <div class="pointer-events-none absolute inset-y-0 left-0 w-6 bg-gradient-to-r from-[#0b5db3]/40 to-transparent rounded-l-xl"></div>
+    <div class="pointer-events-none absolute inset-y-0 right-0 w-6 bg-gradient-to-l from-[#0b5db3]/40 to-transparent rounded-r-xl"></div>
+  `;
+  const ul = document.createElement('ul');
+  ul.className = "flex gap-3 overflow-x-auto snap-x snap-mandatory px-1 pb-2 [-ms-overflow-style:none] [scrollbar-width:none]";
+  ul.style.webkitOverflowScrolling = "touch";
+  // hide scrollbar (webkit)
+  const style = document.createElement('style');
+  style.textContent = `ul::-webkit-scrollbar{display:none}`;
+  wrapper.appendChild(style);
+
+  works.forEach((w, i) => {
+    const id = toId(w.title, i);
+    const li = document.createElement('li');
+    li.className = "min-w-[220px] snap-start";
+    li.innerHTML = `
+      <a href="#${id}" data-work-id="${id}" class="work-link flex items-center gap-3 p-2 rounded-xl bg-white/5 hover:bg-white/10 transition ring-1 ring-white/10">
+        <img src="${w.img}" loading="lazy"
+             class="h-14 w-14 rounded-lg object-cover flex-shrink-0 ring-1 ring-white/20"
+             alt="${w.title ? w.title.replace(/"/g,'&quot;') : 'Artwork'}" />
+        <div class="min-w-0">
+          <p class="text-sm font-medium truncate" title="${w.title || ''}">${w.title || 'Untitled'}</p>
+          <p class="text-[11px] text-white/60">${w.year ?? ''} • ${w.style ?? ''}</p>
+          <div class="flex gap-3 mt-1 text-[11px] text-blue-300">
+            <span class="pointer-events-none">View</span><span>·</span>
+            <a href="${w.links?.collect || '#'}" class="hover:underline">Collect</a>
+          </div>
+        </div>
+      </a>
+    `;
+    // click wiring
+    li.querySelector('a')?.addEventListener('click', (e) => {
+      e.preventDefault();
+      onSelectWork(i, /*scrollIntoView*/ true);
+    });
+    ul.appendChild(li);
+  });
+
+  wrapper.appendChild(ul);
+  mobileStrip.appendChild(wrapper);
+}
+
+  // ===== initial highlight from hash (or current) =====
+  (function initSelectFromHash(){
+    let startIdx = typeof current === 'number' ? current : 0;
+    const hash = (location.hash || '').replace('#','').trim();
+    if (hash) {
+      const idx = works.findIndex((w, i) => toId(w.title, i) === hash);
+      if (idx >= 0) startIdx = idx;
+    }
+    onSelectWork(startIdx, false);
+  })();
+
+
+
+    // Nav buttons
+    document.getElementById("prevBtn").onclick = () => {
+      current = (current - 1 + works.length) % works.length;
+      renderWork(current);
+      syncActiveHighlight();
+    };
+    document.getElementById("nextBtn").onclick = () => {
+      current = (current + 1) % works.length;
+      renderWork(current);
+      syncActiveHighlight();
+    };
+
+
+    // First paint: let the image fade in on load
+    artImg.addEventListener("load", ()=>{
+        animate(artImg, {opacity:0, scale:0.985}, {opacity:1, scale:1}, 0.45);
+    }, { once:true });
+
+    renderWork(current);
+
+      
+    // Bulletproof header link animation
+    document.addEventListener('DOMContentLoaded', () => {
+      // 1) Grab elements (make sure your nav uses these exact IDs)
+      const back = document.getElementById('backLink');
+      const next = document.getElementById('nextLink');
+
+      // 2) If GSAP or elements aren't present, bail safely
+      if (!window.gsap || !back || !next) return;
+
+      // 3) Respect reduced motion locally (no external var needed)
+      const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      if (reduce) {
+        gsap.set([back, next], { opacity: 1, y: 0 });
+        return;
+      }
+
+      // 4) Animate (use .fromTo for reliability)
+      gsap.fromTo([back, next],
+        { opacity: 0, y: -6 },
+        { opacity: 1, y: 0, duration: 0.45, ease: 'power2.out', stagger: 0.06 }
+      );
+    });
+    </script>
+
+
+</body>
+</html>

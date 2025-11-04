@@ -1,0 +1,15 @@
+For the Cloudy Body
+<body class="bg-[url('./img/vers_one_shorter.png')] bg-cover bg-center h-screen w-full">
+
+<body class="bg-[#032D82] bg-cover bg-center h-screen w-full">
+
+
+Some Improvements: 9/30/2025
+
+Breadcrumbs: You already have “Collections › Symbols In Motion,” but adding subtle hover interaction (fade/underline) makes navigation feel alive.
+
+Mobile Scaling: Ensure the long text block collapses or uses a “Read More” toggle to avoid overwhelming small screens.
+
+Mood Accent: Try a subtle parallax background behind the main artwork image, so the painting feels like it’s floating in its own symbolic space.
+
+Collector Badges: Add small tags like “New,” “Rare,” “Featured” in the “All Works” sidebar to gamify browsing.

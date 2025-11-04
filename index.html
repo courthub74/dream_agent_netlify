@@ -1,0 +1,1191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dream Agent</title>
+  <!-- FAVICON -->
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <!-- <link rel="stylesheet" href="favicon.ico"> -->
+  <meta name="description" content="Dream Agent curates machine hallucinations—surreal, symbolic, anonymous. Enter the realm." />
+  <meta property="og:title" content="Dream Agent" />
+  <meta property="og:description" content="Surreal symbolism from machine dreams." />
+  <meta property="og:image" content="/img/og-cover.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- Perf: fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="preload" as="image" href="./img/hero_logo.png" />
+
+  <!-- Tailwind (CDN for dev; build for prod) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- GSAP -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
+  <style>
+    :root {
+      --ink-100: rgba(255,255,255,1);
+      --ink-90:  rgba(255,255,255,.9);
+      --ink-78:  rgba(255,255,255,.78);
+      --ink-70:  rgba(255,255,255,.70);
+      --ink-65:  rgba(255,255,255,.65);
+      --ink-55:  rgba(255,255,255,.55);
+      --ink-45:  rgba(255,255,255,.45);
+      --ink-30:  rgba(255,255,255,.30);
+      --card-gap: .75rem; /* desktop gap */
+      --content-max: 72rem; /* desktop container */
+      --content-pad: 1rem;
+      /* For the Arrows */
+      --cc-offset: -1.9rem;
+      --footer-height: 10rem; /* change to match your footer */
+      --header-height: 4rem;  /* change if you have a sticky header */
+    }
+
+    /* Slide In Menu */
+    /* Drawer open state is handled by toggling this class in JS */
+    .drawer-open #siteDrawer { transform: translateX(0); }
+    .drawer-open #drawerOverlay { opacity: 1; pointer-events: auto; }
+
+    /* Prevent background scroll while menu is open */
+    html.has-drawer { overflow: hidden; }
+
+
+      * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+    html, body { height: 100%; color: beige; scroll-behavior: smooth; }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background-image: linear-gradient(rgba(0, 86, 184, 0.375), rgba(0, 86, 184, 0.512)), url('./img/largest_about_background.png');
+      /* background-color: #0057B8; */
+      background-position: center; 
+      background-repeat: repeat; 
+      background-size: cover; 
+      background-attachment: scroll;
+    }
+
+    /* PLAYFAIR LOGO */
+    h1, h2, h3, h4, #title, .about-link, .overlay-text, .mobile_about_header, .mobile_about_collections_header, .hero_phrase, .footer_slogan, #cta {
+      font-family: 'Playfair Display', serif;
+    }
+
+    main { flex: 1 0 auto;  background:
+      linear-gradient(rgba(0, 87, 184, 0.5), rgba(0, 87, 184, 0.4)),
+      url('/img/background_imgs/even_larger_about_background.png') center/cover no-repeat;
+    }
+
+    /* HERO */
+    .mobile_hero { height: 100vh; background: center/cover no-repeat url('img/background_imgs/plain_background_bigger.png'); }
+    .mobile_hero_container { display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 6rem; height: 100%; }
+    .hero_phrase { font-size: 1.5rem; text-align: center; }
+    .about-link { background:#0057B8; color: white; padding: 10px 20px; border-radius: 6px; font-size: 1rem; text-decoration: none; transition: background-color .3s ease, transform .3s ease; }
+
+    /* ABOUT SECTION*/
+    section.mobile_about {
+      width: 100%;
+      color: white;
+      /* background:
+        linear-gradient(rgba(0, 87, 184, 0.5), rgba(0, 87, 184, 0.4)),
+        url('./img/largest_about_background.png') center/100% 100% no-repeat; */
+      min-height: 55vh;
+      padding-top: 1rem;
+    
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Desktop: slightly taller than mobile but still shorter than full viewport */
+    @media (min-width: 1024px) {
+      section.mobile_about {
+        min-height: 60vh;
+        padding-top: 1.5rem;
+        padding-bottom: 2rem;
+      }
+    }
+
+    /* Force override for any other desktop media rules that previously set 100vh */
+    @media (min-width: 1025px) {
+      section.mobile_about { min-height: 60vh !important; }
+    }
+
+    .mobile_about_container { max-width: var(--content-max); margin-inline: auto; padding-inline: var(--content-pad); }
+    .mobile_about_header { text-align: left; font-size: 1.5rem; font-weight: 700; padding-left: .25rem; margin-top: 1rem; }
+    .mobile_about_paragraph { line-height: 1.7; margin: 1rem 0 2rem; }
+
+    /* COLLECTIONS */
+    #collections { max-width: var(--content-max); margin-inline: auto; padding-inline: var(--content-pad); }
+    .collections-title { margin: .25rem 0 0.5rem; font-size: 1.3rem; }
+
+    /* Card base */
+    #collections a.group { position: relative; display: block; border-radius: 16px; overflow: hidden; background: rgba(255,255,255,.05); backdrop-filter: blur(4px); border: 1px solid rgba(255,255,255,.10); transition: transform .15s ease, box-shadow .2s ease; height: 360px; }
+    /* #collections a.group:hover { transform: translateY(-2px); } */
+    #collections a.group:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 12px rgba(255, 255, 255, 0.35), 
+                  0 0 22px rgba(255, 255, 255, 0.25);
+    }
+    #collections a.group img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+    #collections a.group .shade { position: absolute; inset: 0; background: rgba(0,0,0,.4); transition: background .2s ease; }
+    #collections a.group:hover .shade { background: rgba(0,0,0,.3); }
+    #collections a.group .copy { position: relative; z-index: 1; height: 100%; display: flex; flex-direction: column; justify-content: end; padding: 1.25rem; }
+
+    /* Text scale */
+    .collection-title { font-weight: 400; font-size: clamp(15px, 1vw, 18px); line-height: 1.25; color: rgba(255,255,255,.95); margin-bottom: .25rem; letter-spacing: .2px; }
+    .collection-description { font-family: 'Times New Roman', Times, serif; font-weight: 400; font-size: clamp(12px, .9vw, 14px); line-height: 1.35; color: var(--ink-78); margin-bottom: .4rem; }
+    .works-include { font-family: 'Times New Roman', Times, serif; font-size: clamp(11px, .8vw, 13px); font-weight: 500; text-transform: uppercase; letter-spacing: .5px; color: var(--ink-70); margin-bottom: .15rem; }
+    .flashing-title { font-family: 'Times New Roman', Times, serif; font-size: clamp(12px, 1vw, 15px); font-weight: 400; color: var(--ink-70); }
+
+    /* Hairline divider (fade on right only) */
+    #collections a.group .worklist { position: relative; margin-top: .35rem; padding-top: .45rem; }
+    #collections a.group .worklist::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(to right, rgba(255,255,255,.25) 0%, rgba(255,255,255,.25) 80%, rgba(255,255,255,0) 100% ); opacity: .6; pointer-events: none; }
+
+    /* Reveal cards */
+    .reveal-card { opacity: 0; transform: translateY(10px); transition: opacity .8s ease, transform .8s ease; will-change: transform, opacity; }
+    .reveal-card.visible { opacity: 1; transform: none; }
+    .reveal-left { transform: translateX(-28px) translateY(10px); }
+    .reveal-right { transform: translateX(28px) translateY(10px); }
+    @media (prefers-reduced-motion: reduce) { .reveal-card, .reveal-left, .reveal-right { transition: none; transform: none; opacity: 1; } }
+
+    /* Desktop carousel shell */
+    #collections .collections-carousel { position: relative; }
+    #collections .cc-viewport { position: relative; overflow: hidden; width: 100%; outline: none; }
+    /* #collections .cc-track { display: flex; flex-wrap: nowrap; gap: var(--card-gap); will-change: transform; } */
+    /* Mobile/default: stack naturally (no overflow) */
+    #collections > .cc-track {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--card-gap);
+    }
+
+    /* Desktop carousel only: when JS has wrapped things in .collections-carousel */
+    #collections .collections-carousel .cc-track {
+      display: flex;
+      flex-wrap: nowrap;
+      gap: var(--card-gap);
+      will-change: transform;
+    }
+
+    #collections .cc-controls {
+      position: absolute;
+      top: var(--cc-offset);   /* was -2.5rem */
+      right: 0;
+      transform: translateY(-100%);
+      display: flex;
+      gap: .75rem;
+      z-index: 10;
+      pointer-events: none;
+    }
+    /* #collections .cc-controls { position: absolute; top: -2.5rem; right: 0; transform: translateY(-100%); display: flex; gap: .75rem; z-index: 10; pointer-events: none; } */
+    #collections .cc-arrow { pointer-events: auto; width: 48px; height: 48px; border-radius: 999px; display: grid; place-items: center; cursor: pointer; background: rgba(255,255,255,.14); border: 1px solid rgba(255,255,255,.28); backdrop-filter: blur(8px); box-shadow: 0 10px 28px rgba(0,0,0,.28), inset 0 0 0 1px rgba(255,255,255,.08); transition: transform .15s ease, background-color .15s ease, box-shadow .2s ease, opacity .2s ease; opacity: .95; }
+    #collections .cc-arrow:hover { background: rgba(255,255,255,.20); transform: translateY(-1px); box-shadow: 0 14px 32px rgba(0,0,0,.32), inset 0 0 0 1px rgba(255,255,255,.12); }
+    #collections .cc-arrow:active { transform: translateY(0) scale(.98); }
+    #collections .cc-arrow:disabled { opacity: .38; cursor: default; }
+    #collections .cc-arrow svg { width: 22px; height: 22px; stroke: #EAF2FF; stroke-width: 2.25; fill: none; }
+
+    /* Dots */
+    #collections .cc-dots { display: flex; justify-content: center; align-items: center; gap: .9rem; margin-top: 1.25rem; min-height: 18px; user-select: none; }
+    #collections .cc-dot { position: relative; width: 12px; height: 12px; flex: 0 0 12px; border-radius: 999px; border: 2px solid var(--ink-45); background: transparent; opacity: .75; cursor: pointer; transition: opacity .15s linear, background-color .15s linear, border-color .15s linear; }
+    #collections .cc-dot:hover { opacity: .95; }
+    #collections .cc-dot.is-active { background: var(--ink-90); border-color: var(--ink-100); opacity: 1; }
+    #collections .cc-dot::after { content: ""; position: absolute; inset: -6px; border-radius: inherit; pointer-events: none; opacity: 0; transition: opacity .2s ease; box-shadow: 0 0 0 4px rgba(255,255,255,.12); }
+    #collections .cc-dot.is-active::after { opacity: 1; }
+
+    /* Footer */
+    footer { text-align: center; color: #EAEFF7; background: linear-gradient(to bottom, #114C92, #022A54); position: relative; margin-top: auto; border-radius: 5px; padding-block: 4rem; border-top: 1px solid rgba(255,255,255,0.2); }
+
+    /* Mobile tweaks */
+    @media (max-width: 480px) {
+      #collections a.group { height: clamp(220px, 42vh, 320px); }
+    }
+
+    /* Tablet landscape section height tweaks */
+    @media (min-width: 600px) and (max-width: 1023px) {
+      body { background-attachment: fixed; }
+      .mobile_hero { height: 140vh; }
+      .mobile_hero_container { margin-top: -60px; gap: 3rem; }
+      .collections-title { margin-top: -2rem; font-size: 1.2rem; }
+    }
+
+    /* Desktop layout */
+
+    /* Desktop: make sure the track is flex when the shell exists */
+    @media (min-width: 1024px) {
+      #collections .collections-carousel .cc-track {
+        display: flex !important;
+        flex-wrap: nowrap;
+        gap: var(--card-gap);
+      }
+    }
+
+    /* SMALLER DESKTOP */
+    @media (min-width: 1025px) and (max-width: 1280px) {
+      #collections .cc-track > a.group { flex: 0 0 calc((100% - (1 * var(--card-gap))) / 2); max-width: calc((100% - (1 * var(--card-gap))) / 2); }
+      /* Desktop: show full About paragraph, hide teaser */
+      .mobile_about_portion { display: none !important; }
+      .mobile_about_paragraph { display: block !important; }
+      section.mobile_about {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+      }
+      .mobile_about_container {
+        margin-top: 0rem;
+      }
+      footer {
+        padding-top: 1rem;
+      }
+    }
+
+    /* LARGER DESKTOP (Surface Laptop) */
+    @media (min-width: 1281px) and (max-width: 1600px) {
+      #collections .cc-track > a.group { flex: 0 0 calc((100% - (2 * var(--card-gap))) / 3); max-width: calc((100% - (2 * var(--card-gap))) / 3); }
+      /* Desktop: show full About paragraph, hide teaser */
+      .mobile_about_portion { display: none !important; }
+      .mobile_about_paragraph { display: block !important; }
+      section.mobile_about {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+      }
+      .mobile_about_container {
+        margin-top: 0rem;
+      }
+      footer {
+        padding-top: 1rem;
+      }
+    }
+
+    /* EVEN LARGER DESKTOP (IMac) */
+    @media (min-width: 1601px) {
+      #collections .cc-track > a.group { flex: 0 0 calc((100% - (3 * var(--card-gap))) / 4); max-width: calc((100% - (3 * var(--card-gap))) / 4); }
+      /* Desktop: show full About paragraph, hide teaser */
+      .mobile_about_portion { display: none !important; }
+      .mobile_about_paragraph { display: block !important; }
+      section.mobile_about {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+      }
+      .mobile_about_container {
+        margin-top: 4rem;
+      }
+      footer {
+        padding-top: 1rem;
+      }
+    }
+
+    /* Landscape phones & tablets: smaller/shorter collection cards */
+    @media (orientation: landscape) and (max-width: 1024px) {
+      :root {
+        --card-gap: .55rem;           /* tighten spacing a bit */
+      }
+
+      #collections a.group {
+        /* shorter cards; scales with viewport height but capped */
+        height: clamp(180px, 38vh, 260px);
+      }
+
+      /* slightly tighter padding + type so more fits on screen */
+      #collections a.group .copy { padding: 0.9rem; }
+      .collection-title        { font-size: clamp(14px, .95vw, 16px); }
+      .collection-description  { font-size: clamp(11px, .85vw, 13px); }
+      .works-include           { font-size: clamp(10px, .75vw, 12px); }
+      .flashing-title          { font-size: clamp(11px, .9vw, 13px); }
+    }
+
+    /* Ultra-short landscapes (e.g., 360–420px tall): make them even shorter */
+    @media (orientation: landscape) and (max-height: 420px) {
+      #collections a.group { height: clamp(160px, 34vh, 220px); }
+    }
+
+
+    /* generic fade-in used by hero and anywhere with .fade-in */
+    .fade-in { opacity: 0; transform: translateY(10px); transition: opacity .8s ease, transform .8s ease; }
+    .fade-in.visible { opacity: 1; transform: none; }
+
+    /* Glowing Enter the Realm Button */
+    .about-link {
+    position: relative;
+    isolation: isolate;                 /* keeps glow behind the button */
+    box-shadow: 0 2px 10px rgba(0,0,0,.18);
+  }
+  .about-link::after {
+    content: "";
+    position: absolute;
+    inset: -6px;                        /* glow spread */
+    border-radius: inherit;
+    background: radial-gradient(120% 120% at 50% 50%,
+                rgba(0, 87, 184, .55), rgba(0, 87, 184, 0) 60%);
+    /* background: #0057B8; */
+    filter: blur(14px);
+    opacity: 0;
+    transition: opacity .2s ease;
+    z-index: -1;                        /* glow behind */
+  }
+  .about-link:hover {
+    transform: translateY(-1px);
+    box-shadow:
+      0 10px 26px rgba(0,0,0,.28),
+      0 0 0 1px rgba(255,255,255,.20),
+      0 0 24px rgba(0,87,184,.75),
+      0 0 48px rgba(0,87,184,.45);
+  }
+  .about-link:hover::after { opacity: 1; }
+  .about-link:active { transform: translateY(0); }
+  .about-link:focus-visible { outline: 2px solid rgba(255,255,255,.65); outline-offset: 3px; }
+
+  /* Dots Opacity */
+  /* Carousel dots: 60% opacity + white glow */
+  :root {
+    --cc-dot-opacity: .6;
+    --cc-dot-glow: rgba(255,255,255,.55);
+    --cc-dot-glow-strong: rgba(255,255,255,.9);
+  }
+
+    #collections .cc-dot {
+      opacity: var(--cc-dot-opacity);
+      box-shadow: 0 0 8px var(--cc-dot-glow);
+      transition: opacity .15s linear,
+                  background-color .15s linear,
+                  border-color .15s linear,
+                  box-shadow .2s ease;   /* no transforms → no jiggle */
+    }
+
+    /* Hover: slightly brighter glow */
+    #collections .cc-dot:hover {
+      opacity: .9;
+      box-shadow: 0 0 10px var(--cc-dot-glow-strong),
+                  0 0 22px rgba(255,255,255,.35);
+    }
+
+    /* Active: solid white + stronger glow */
+    #collections .cc-dot.is-active {
+      background: var(--ink-100);
+      border-color: var(--ink-100);
+      opacity: 1;
+      box-shadow: 0 0 12px var(--cc-dot-glow-strong),
+                  0 0 28px rgba(255,255,255,.45);
+    }
+
+    /* Optional: soften the existing halo ring */
+    #collections .cc-dot::after {
+      box-shadow: 0 0 0 6px rgba(255,255,255,.12);
+    }
+
+
+    /* Pull collections section up ~50px & align width with About */
+    :root {
+      --collections-up-nudge: -50px;  /* adjust to taste */
+    }
+
+    #mobile_about #collections {
+      margin-top: var(--collections-up-nudge);
+      padding-inline: 0;              /* remove inner padding so widths match */
+      max-width: var(--content-max);  /* same container width */
+    }
+
+    /* Optional: soften the nudge on very small screens */
+    @media (max-width: 480px) {
+      #mobile_about #collections { margin-top: -32px; }
+    }
+
+    /* Lighter default opacity for carousel dots (additive) */
+    :root {
+      --cc-dot-opacity-base: .45;   /* was ~.6; lower = lighter */
+      --cc-dot-opacity-hover: .8;   /* keep hover readable */
+    }
+
+    #collections .cc-dots--glow .cc-dot {
+      opacity: var(--cc-dot-opacity-base);
+    }
+
+    #collections .cc-dots--glow .cc-dot:hover {
+      opacity: var(--cc-dot-opacity-hover);
+    }
+
+    /* Active state remains solid; no change needed */
+    #collections .cc-dots--glow .cc-dot {
+    box-shadow: 0 0 7px var(--cc-dot-glow);
+  }
+
+  /* Tight white glow on hover (smooth, minimal spill) */
+#collections a.group {
+  /* ensure smooth glow fade */
+  transition: transform .15s ease, box-shadow .25s ease;
+  position: relative; /* needed for the pseudo-element */
+  isolation: isolate; /* keep glow behind the content */
+}
+
+/* Inner-edge glow layer */
+#collections a.group::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  /* subtle inner glow + a hairline edge to sharpen */
+  box-shadow:
+    inset 0 0 18px rgba(255,255,255,.16),
+    0 0 0 1px rgba(255,255,255,.10);
+  transition: opacity .25s ease;
+  z-index: 0;
+}
+
+/* Hover state: lift + glow */
+#collections a.group:hover {
+  transform: translateY(-2px);
+  /* tiny outer halo, much tighter than before */
+  box-shadow:
+    0 0 6px rgba(255,255,255,.16),
+    0 4px 18px rgba(0,0,0,.28); /* keep depth */
+}
+
+#collections a.group:hover::before {
+  opacity: 1;
+}
+
+/* --- Footer icon glow (Dream Agent) --- */
+.footer-icons .icon-wrap {
+  position: relative;
+  display: inline-grid;
+  place-items: center;
+  border-radius: 9999px;
+  isolation: isolate;               /* keep glow behind the icon */
+}
+
+.footer-icons .icon-wrap::after {
+  content: "";
+  position: absolute;
+  inset: -6px;                      /* size of aura spread */
+  border-radius: inherit;
+  /* white core with a whisper of Dream Agent blue */
+  background: radial-gradient(60% 60% at 50% 50%,
+              rgba(255,255,255,.35),
+              rgba(0,87,184,.18) 55%,
+              rgba(255,255,255,0) 100%);
+  filter: blur(10px);
+  opacity: .40;                     /* idle aura */
+  transition: opacity .25s ease, transform .25s ease, filter .25s ease;
+  z-index: 0;                       /* behind the icon */
+}
+
+/* Soft pulse (dreamlike) */
+@keyframes daAuraPulse {
+  0%, 100% { opacity: .22; transform: scale(1);   filter: blur(10px); }
+  50%      { opacity: .38; transform: scale(1.05); filter: blur(12px); }
+}
+
+/* Respect user preference */
+@media (prefers-reduced-motion: no-preference) {
+  .footer-icons .icon-wrap[data-pulse]::after {
+    animation: daAuraPulse 4.5s ease-in-out infinite;
+  }
+}
+
+/* Icon itself: crisp with a faint ring */
+.footer-icons img.footer-icon {
+  position: relative;
+  z-index: 1;
+  width: 34px; height: 34px;        /* your sizes; keep round */
+  border-radius: 9999px;
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,.18); /* hairline ring */
+  transition: transform .2s ease, box-shadow .25s ease, filter .25s ease;
+}
+
+/* Hover / focus: lift + stronger glow */
+.footer-icons .icon-wrap:hover::after,
+.footer-icons .icon-wrap:focus-within::after {
+  opacity: .6;
+  transform: scale(1.06);
+}
+
+.footer-icons .icon-wrap:hover img.footer-icon,
+.footer-icons .icon-wrap:focus-within img.footer-icon {
+  transform: translateY(-1px) scale(1.04);
+  filter: drop-shadow(0 0 12px rgba(255,255,255,.55));
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,.26),
+    0 6px 18px rgba(0,0,0,.28);
+}
+
+
+
+    
+  </style>
+</head>
+<body>
+  <!-- SLIDE IN MENU -->
+  <!-- TOP BAR / HAMBURGER -->
+<button
+  id="menuBtn"
+  class="fixed top-4 right-4 z-[60] inline-flex items-center justify-center w-11 h-11 rounded-full bg-white/15 border border-white/25 backdrop-blur hover:bg-white/25 transition"
+  aria-label="Open menu"
+  aria-controls="siteDrawer"
+  aria-expanded="false">
+  <!-- Hamburger icon -->
+  <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true">
+    <path d="M3 6h18M3 12h18M3 18h18" stroke="#EAF2FF" stroke-width="2" stroke-linecap="round"/>
+  </svg>
+</button>
+
+<!-- OVERLAY -->
+<div id="drawerOverlay"
+     class="fixed inset-0 bg-black/50 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity z-[50]"></div>
+
+  <!-- SLIDE-IN DRAWER -->
+  <aside id="siteDrawer"
+        class="fixed top-0 right-0 h-full w-[78%] max-w-[320px] bg-gradient-to-b from-[#0C2C55] to-[#031B36] border-r border-white/15 shadow-2xl translate-x-full transition-transform z-[70] focus:outline-none"
+        tabindex="-1"
+        aria-hidden="true">
+    <div class="flex items-center justify-between px-4 py-4 border-b border-white/10">
+      <div class="flex items-center gap-3">
+        <img src="img/icons/artist/dream_agent_logo_blue.png" alt="dream_agent" class="w-9 h-9 rounded-full border border-white/10"/>
+        <span class="text-white/90 font-bold" style="font-family: 'Playfair Display', serif;">Dream Agent</span>
+      </div>
+      <button id="closeDrawer"
+              class="w-10 h-10 grid place-items-center rounded-full bg-white/10 border border-white/20 hover:bg-white/20 transition"
+              aria-label="Close menu">
+        <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M6 6l12 12M18 6L6 18" stroke="#EAF2FF" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+
+    <nav class="px-2 py-2">
+      <ul class="flex flex-col">
+      <!-- <li><a class="block px-3 py-3 rounded-lg text-white/90 hover:bg-white/10 hover:text-white transition" href="#mobile_hero">Home</a></li>
+      <li><a class="block px-3 py-3 rounded-lg text-white/90 hover:bg-white/10 hover:text-white transition" href="#mobile_about">About</a></li> -->
+      <li>
+  <a class="flex items-center gap-3 px-3 py-3 rounded-lg text-white/90 hover:bg-white/10 hover:text-white transition"
+     href="#mobile_hero">
+    <!-- Home icon (SVG) -->
+    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-white/80" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M3 12l9-9 9 9M4 10v10a1 1 0 001 1h4a1 1 0 001-1V14h4v6a1 1 0 001 1h4a1 1 0 001-1V10" />
+    </svg>
+    <span>Home</span>
+  </a>
+</li>
+
+<li>
+  <a class="flex items-center gap-3 px-3 py-3 rounded-lg text-white/90 hover:bg-white/10 hover:text-white transition"
+     href="#mobile_about">
+    <!-- About icon (SVG) -->
+    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-white/80" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12c0 4.97-4.03 9-9 9s-9-4.03-9-9 4.03-9 9-9 9 4.03 9 9z" />
+    </svg>
+    <span>About</span>
+  </a>
+</li>
+      <li>
+  <a class="flex items-center gap-3 px-3 py-3 rounded-lg text-white/90 hover:bg-white/10 hover:text-white transition"
+     href="https://xrpcafe.market/" target="_blank" rel="noopener">
+    <img src="img/icons/marketplaces/xrpcafe_circle.png" alt="XRP Cafe" class="w-6 h-6" />
+    <span>XRP Cafe</span>
+  </a>
+</li>
+
+<li>
+  <a class="flex items-center gap-3 px-3 py-3 rounded-lg text-white/90 hover:bg-white/10 hover:text-white transition"
+     href="https://opensea.io/" target="_blank" rel="noopener">
+    <img src="img/icons/marketplaces/opensea_circle.png" alt="OpenSea" class="w-6 h-6" />
+    <span>OpenSea</span>
+  </a>
+</li>
+
+<li>
+  <a class="flex items-center gap-3 px-3 py-3 rounded-lg text-white/90 hover:bg-white/10 hover:text-white transition"
+     href="https://superrare.com/" target="_blank" rel="noopener">
+    <img src="img/icons/marketplaces/superrare_circle.png" alt="Superrare" class="w-6 h-6" />
+    <span>Superrare</span>
+  </a>
+</li>
+
+    <style>
+      .playfair-nav {
+        font-family: 'Playfair Display', serif !important;
+      }
+    </style>
+      </ul>
+    </nav>
+
+    <div class="mt-auto px-4 py-4 border-t border-white/8">
+  <p class="flex items-center gap-2 text-sm text-white/70">
+    <img src="img/icons/developer/courdevelops.svg"
+         alt="CourDevelops logo"
+         class="w-6 h-6 opacity-40 rounded-md"
+         width="24" height="24">
+    <span>Powered by <a href="#" class="underline hover:text-white">CourDevelops</a></span>
+  </p>
+</div>
+  </aside>
+
+  <main>
+    <!-- HERO -->
+    <section id="mobile_hero" class="mobile_hero">
+      <div class="mobile_hero_container">
+        <img src="img/icons/artist/hero_logo.png" class="hero_logo" width="200" height="200" alt="Dream Agent logo" />
+        <p class="hero_phrase hero-animate fade-in serif">Machine dreams in Metaphor</p>
+        <a class="about-link hero-animate fade-in" id="cta" href="#mobile_about">Enter the Realm</a>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="mobile_about" class="mobile_about">
+      <div class="mobile_about_container py-8">
+        <h1 class="mobile_about_header">Who is Dream Agent?</h1>
+
+        <!-- short intro + read more -->
+        <p class="mobile_about_portion mt-2">Emerging from the shadows of the digital realm, Dream Agent exists not as a face, but as a surrealist force. A curator of machine hallucinations who... <button class="read_more"><b>Read More</b></button></p>
+
+        <p class="mobile_about_paragraph hidden">Emerging from the shadows of the digital realm, Dream Agent exists not as a face, but as a surrealist force. A curator of machine hallucinations who paints with prompts and sculpts meaning from code. Operating anonymously, they transform AI-generated art into deeply symbolic worlds. Each piece is less a picture and more a portal—one that invites viewers to question, decode, and reflect.</p>
+
+        <!-- Divider -->
+        <div id="mobile-about-divider" class="w-40 sm:w-56 h-[2px] bg-white/30 mx-auto my-6 sm:my-10 lg:my-12 rounded-full shadow-[0_0_8px_rgba(255,255,255,0.4)] opacity-0 scale-x-0 transition-transform duration-700 ease-out"></div>
+
+        <!-- COLLECTIONS -->
+        <section id="collections" class="mx-auto py-10 space-y-8">
+          <h2 class="collections-title font-semibold mb-2">Explore the Collections</h2>
+          <div class="cc-track">
+
+             <!-- SYMBOLS IN MOTION -->
+            <a href="collection_pages/symbols.html" class="group reveal-card reveal-left">
+              <img src="img/collection_covers/symbols_in_motion.png" alt="symbols_in_motion" width="1200" height="800" />
+              <div class="shade"></div>
+              <div class="copy">
+                <h3 class="text-lg sm:text-xl font-normal mb-1 collection-title">Symbols in Motion</h3>
+                <p class="text-sm sm:text-base collection-description">Recurring signs caught in perpetual drift.</p>
+                <ul class="worklist mt-2 space-y-1 text-sm text-neutral-300">
+                  <li class="font-semibold works-include">Works include:</li>
+                  <li id="symbol-title" class="flashing-title" aria-live="polite"></li>
+                </ul>
+              </div>
+            </a>
+
+            <!-- SIGNALS & ASCENSIONS -->
+            <a href="collection_pages/signals.html" class="group reveal-card reveal-left">
+              <img src="img/collection_covers/signals_and_ascensions.png" alt="signals_and_ascensions" width="1200" height="800" />
+              <div class="shade"></div>
+              <div class="copy">
+                <h3 class="text-lg sm:text-xl font-normal mb-1 collection-title">Signals &amp; Ascensions</h3>
+                <p class="text-sm sm:text-base collection-description">Messages in transit between epochs.</p>
+                <ul class="worklist mt-2 space-y-1 text-sm text-neutral-300">
+                  <li class="font-semibold works-include">Works include:</li>
+                  <li id="signal-title" class="flashing-title" aria-live="polite"></li>
+                </ul>
+              </div>
+            </a>
+
+            <!-- WAR & FEAST -->
+            <a href="collection_pages/war_feast.html" class="group reveal-card reveal-left">
+              <img src="img/collection_covers/war_and_feast.png" alt="war_and_feast" width="1200" height="800" />
+              <div class="shade"></div>
+              <div class="copy">
+                <h3 class="text-lg sm:text-xl font-normal mb-1 collection-title">War &amp; Feast</h3>
+                <p class="text-sm sm:text-base collection-description">Conflict, appetite, and ceremonial excess.</p>
+                <ul class="worklist mt-2 space-y-1 text-sm text-neutral-300">
+                  <li class="font-semibold works-include">Works include:</li>
+                  <li id="war-title" class="flashing-title" aria-live="polite"></li>
+                </ul>
+              </div>
+            </a>
+
+            <!-- INDUSTRIAL MYTHS -->
+            <a href="collection_pages/industrial.html" class="group reveal-card reveal-left">
+              <img src="img/collection_covers/industrial_myths.png" alt="industrial_myths" width="1200" height="800" />
+              <div class="shade"></div>
+              <div class="copy">
+                <h3 class="text-lg sm:text-xl font-normal mb-1 collection-title">Industrial Myths</h3>
+                <p class="text-sm sm:text-base collection-description">Machines, labor, and systems reimagined.</p>
+                <ul class="worklist mt-2 space-y-1 text-sm text-neutral-300">
+                  <li class="font-semibold works-include">Works include:</li>
+                  <li id="industrial-title" class="flashing-title" aria-live="polite"></li>
+                </ul>
+              </div>
+            </a>
+
+            <!-- THE DIGITAL UNCONSCIOUS -->
+            <a href="collection_pages/digital.html" class="group reveal-card reveal-left">
+              <img src="img/collection_covers/digital_unconscious.png" alt="the_digital_unconscious" width="1200" height="800" />
+              <div class="shade"></div>
+              <div class="copy">
+                <h3 class="text-lg sm:text-xl font-normal mb-1 collection-title">The Digital Unconscious</h3>
+                <p class="text-sm sm:text-base collection-description">Where AI dreams and data remembers.</p>
+                <ul class="worklist mt-2 space-y-1 text-sm text-neutral-300">
+                  <li class="font-semibold works-include">Works include:</li>
+                  <li id="digital-title" class="flashing-title" aria-live="polite"></li>
+                </ul>
+              </div>
+            </a>
+
+            <!-- THE DOMINION ARCHIVE -->
+            <a href="collection_pages/dominion.html" class="group reveal-card reveal-left">
+              <img src="img/collection_covers/dominion_archives.png" alt="the_dominion_archive" width="1200" height="800" />
+              <div class="shade"></div>
+              <div class="copy">
+                <h3 class="text-lg sm:text-xl font-normal mb-1 collection-title">The Dominion Archive</h3>
+                <p class="text-sm sm:text-base collection-description">Power recorded, repackaged, ritualized.</p>
+                <ul class="worklist mt-2 space-y-1 text-sm text-neutral-300">
+                  <li class="font-semibold works-include">Works include:</li>
+                  <li id="dominion-title" class="flashing-title" aria-live="polite"></li>
+                </ul>
+              </div>
+            </a>
+          </div>
+        </section>
+      </div>
+    </section>
+    <!-- FOOTER -->
+    <footer class="mt-10">
+     <div class="max-w-6xl mx-auto px-4 py-4 sm:pt-12 rounded-xl">
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-4 sm:gap-6">
+        <!-- <div class="flex flex-col sm:flex-row items-center gap-4 sm:gap-6"> -->
+          <div class="text-center sm:text-left">
+            <p class="text-white/80 text-sm font-bold footer_slogan">No face. No fame. Just the vision.</p>
+          </div>
+          <!-- logos moved next to the text and tightened gap -->
+          <div class="footer-icons flex items-center gap-3">
+          <span class="icon-wrap" data-pulse>
+            <img src="img/icons/artist/dream_agent_logo_blue.png" alt="dream_agent" class="footer-icon" width="44" height="44">
+          </span>
+            <a target="_blank" href="https://x.com/dream_agent7" aria-label="Twitter" class="icon-wrap" data-pulse title="Twitter">
+              <img src="img/icons/socials/twitter_black_circle.png" alt="twitter" class="footer-icon">
+            </a>
+            <a target="_blank" href="https://sora.chatgpt.com/profile/dreamagent7" aria-label="Sora" class="icon-wrap" data-pulse title="Sora">
+              <img src="img/icons/socials/sora.png" alt="Sora" class="footer-icon">
+            </a>
+            <a target="_blank" href="https://www.instagram.com/dream.agent7/" aria-label="Instagram" class="icon-wrap" data-pulse title="Instagram">
+              <img src="img/icons/socials/instagram_red_circle.png" alt="instagram" class="footer-icon">
+            </a>
+            <a target="_blank" href="https://bsky.app/profile/dreamagent7.bsky.social" aria-label="Bluesky" class="icon-wrap" data-pulse title="Bluesky">
+              <img src="img/icons/socials/bluesky_liteblue_circle.png" alt="bluesky" class="footer-icon">
+            </a>
+            <a target="_blank" href="https://www.tiktok.com/@dream_agent7" aria-label="TikTok" class="icon-wrap" data-pulse title="TikTok">
+              <img src="img/icons/socials/tiktok_black_circle.png" alt="tik_tok" class="footer-icon">
+            </a>
+        </div>
+        <!-- </div> -->
+       <!-- right group: copyright / attribution -->
+      <div class="flex flex-col items-center gap-2 text-xs text-white/30">
+        <p>© 2025 Dream Agent. All rights reserved.</p>
+        <!-- <p class="flex items-center gap-1">
+          <img src="./img/round_logos/Courdevelops.svg" alt="CourDevelops logo" class="w-8 h-8 opacity-30" width="16" height="16">
+          Powered by CourDevelops
+        </p> -->
+      </div>
+      </div>
+    </div>
+  </footer>
+  </main>
+
+  
+
+  <script>
+    // Fade-ins on hero
+    // gsap.to(".hero_phrase", { opacity: 1, y: 0, duration: 1, delay: 1.2 });
+    // gsap.to("#cta", { opacity: 1, y: 0, duration: 1, delay: 1.5 });
+
+    // CSS-driven fade-ins for hero + anything with .fade-in
+    const fadeIns = document.querySelectorAll('.fade-in');
+    const fadeInObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+
+        // stagger hero a touch, CTA a bit more
+        let delay = 0;
+        if (entry.target.classList.contains('hero_phrase')) delay = 700;   // ~0.7s
+        if (entry.target.id === 'cta') delay = 1500;                       // changed from 1000 -> 1500 (slower)
+        setTimeout(() => {
+          entry.target.classList.add('visible');
+        }, delay);
+
+        fadeInObserver.unobserve(entry.target);
+      });
+    }, { threshold: 0.1 });
+
+    fadeIns.forEach(el => fadeInObserver.observe(el));
+
+
+    // Parallax (optional)
+    document.addEventListener('scroll', () => {
+      document.querySelectorAll('.parallax').forEach(el => {
+        const offset = window.scrollY * 0.3;
+        el.style.transform = `translateY(${offset}px)`;
+      });
+    });
+
+    // Divider reveal
+    (function(){
+      const el = document.getElementById('mobile-about-divider');
+      if (!el) return;
+      const io = new IntersectionObserver(([entry]) => {
+        if (entry.isIntersecting) {
+          el.classList.remove('opacity-0', 'scale-x-0');
+          el.classList.add('opacity-100', 'scale-x-100', 'animate-pulse');
+          io.disconnect();
+        }
+      }, { threshold: .5 });
+      io.observe(el);
+    })();
+
+    // Read More / Less (progressive)
+    (function(){
+      const shortP = document.querySelector('.mobile_about_portion');
+      const fullP  = document.querySelector('.mobile_about_paragraph');
+      const btn    = shortP?.querySelector('button');
+      if (!shortP || !fullP || !btn) return;
+      btn.addEventListener('click', () => {
+        shortP.classList.add('hidden');
+        fullP.classList.remove('hidden');
+        if (!fullP.querySelector('button')) {
+          const lessBtn = document.createElement('button');
+          lessBtn.innerHTML = '<b>Read Less</b>';
+          lessBtn.addEventListener('click', () => {
+            fullP.classList.add('hidden');
+            shortP.classList.remove('hidden');
+          });
+          fullP.appendChild(lessBtn);
+        }
+      });
+    })();
+
+    // Reveal cards with GSAP (respects reduced motion)
+    (function(){
+      const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const cards = Array.from(document.querySelectorAll('#collections .reveal-card'));
+      if (!cards.length) return;
+      if (prefersReduced || typeof gsap === 'undefined') { cards.forEach(el => el.classList.add('visible')); return; }
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (!entry.isIntersecting) return;
+          const el = entry.target; io.unobserve(el);
+          const fromX = el.classList.contains('reveal-left') ? -28 : 28;
+          gsap.fromTo(el, { opacity: 0, x: fromX, y: 10 }, { opacity: 1, x: 0, y: 0, duration: .85, ease: 'power2.out' });
+        });
+      }, { threshold: .22 });
+      cards.forEach((el, i) => setTimeout(() => io.observe(el), i * 70));
+    })();
+
+    // Title rotators: start when visible, pause when hidden, honor reduced motion
+    function makeRotator(el, titles, intervalMs = 3000){
+      if (!el || !Array.isArray(titles) || !titles.length) return () => {};
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) { el.textContent = titles[0]; return () => {}; }
+      let i = 0, id = null;
+      const tick = () => { el.textContent = titles[i = (i + 1) % titles.length]; };
+      const start = () => { if (!id) id = setInterval(tick, intervalMs); };
+      const stop  = () => { if (id) clearInterval(id), id = null; };
+      const io = new IntersectionObserver(([entry]) => entry.isIntersecting ? start() : stop(), { threshold: .2 });
+      io.observe(el);
+      el.textContent = titles[0]; start();
+      return () => { stop(); io.disconnect(); };
+    }
+
+    // Initialize title rotators
+    document.addEventListener('DOMContentLoaded', () => {
+      makeRotator(document.getElementById('symbol-title'),    ["Temple of Openings","Sephardic Tango","Liquidity Spectators","The Rusher, The Incrementer and..", "Prince Carl laying in front of the TV...."], 3000);
+      makeRotator(document.getElementById('signal-title'),    ["Revolutionary Balloon","The Magic of ’86","Bitcoin 2017","Hip Hop 1978","The Biblicals"], 3000);
+      makeRotator(document.getElementById('war-title'),       ["Coeur of the Grapes","The Wine Wars","Some Things Were Meant to...", "The Asymmetrical Jayse"], 3000);
+      makeRotator(document.getElementById('industrial-title'),["The Cursor of Fate","The Future of Industry","The Fear Room"], 3000);
+      makeRotator(document.getElementById('digital-title'),   ["Internet of the Old World","The Rinse of Trust","Internet of the Middle World","Technology and Desire","Cursor of Fate","Internet of the New World","The Great Divide"], 3000);
+      makeRotator(document.getElementById('dominion-title'),  ["Bottling the Republic","Discovery of the Indigenous","The Refactoring Ritual","The Census Ritual","Etch the Empire"], 3000);
+    });
+
+    // Align breakpoint with your CSS
+    const mq = window.matchMedia('(min-width: 1024px)');
+    const collections = document.querySelector('#collections');
+    const origTrack   = collections.querySelector(':scope > .cc-track'); // original track
+    const cardSelector = ':scope > a.group'; // anchors are direct children of the track
+
+   
+    // --- Shuffle collections order on each load ---
+    (function () {
+      const track = document.querySelector('#collections .cc-track');
+      if (!track) return;
+
+      // Optional opt-outs:
+      // 1) Add data-noshuffle="true" to .cc-track
+      // 2) Use ?order=fixed in the URL
+      const noshuffle = track.dataset.noshuffle === 'true'
+        || new URLSearchParams(location.search).get('order') === 'fixed';
+      if (noshuffle) return;
+
+      // Get direct child cards
+      const cards = Array.from(track.querySelectorAll(':scope > a.group'));
+      if (cards.length < 2) return;
+
+      // Fisher–Yates with crypto for better randomness
+      const rand = (max) => {
+        const buf = new Uint32Array(1);
+        crypto.getRandomValues(buf);
+        return Math.floor((buf[0] / 2**32) * max);
+      };
+
+      for (let i = cards.length - 1; i > 0; i--) {
+        const j = rand(i + 1);
+        [cards[i], cards[j]] = [cards[j], cards[i]];
+      }
+
+      // Re-append in the new order
+      cards.forEach(card => track.appendChild(card));
+
+      // Optional: keep order stable for the current tab session
+      // sessionStorage.setItem('collectionsOrder', cards.map(c => c.outerHTML).join(''));
+    })();
+
+
+
+    // Desktop carousel (finite, rightmost dot active)
+    (function(){
+      const mq = window.matchMedia('(min-width: 1025px)');
+      const collections = document.querySelector('#collections');
+      if (!collections) return;
+
+      // const cardSelector = ':scope > a.group';
+      // changing card 
+      const cardSelector = '.cc-track > a.group';
+      let shell = null, viewport = null, track = null, prevBtn = null, nextBtn = null, dotsWrap = null, dots = [];
+      let cardsCache = []; let index = 0; let stepPx = 0; let slotsPerView = 1; let pages = 1; let ro = null;
+      let rafId = 0, scrollIdleTimer = 0; const SCROLL_IDLE_MS = 140;
+
+      function getGap(){ const cs = getComputedStyle(track); const g = parseFloat(cs.columnGap || cs.gap || 0); return isNaN(g) ? 0 : g; }
+      function getCardWidth(){ const card = track?.querySelector('a.group'); return card ? card.getBoundingClientRect().width : 0; }
+      function clamp(i){ return Math.max(0, Math.min(i, pages - 1)); }
+
+      function measure(){
+        const cardW = getCardWidth(); const gap = getGap(); stepPx = cardW + gap;
+        const EPS = .01; const vw = viewport.clientWidth; slotsPerView = Math.max(1, Math.floor((vw + gap - EPS) / Math.max(stepPx, 1)));
+        pages = Math.max(1, cardsCache.length - slotsPerView + 1);
+      }
+
+      function updateArrows(){ if (!prevBtn || !nextBtn) return; const hide = pages <= 1; prevBtn.style.display = hide ? 'none' : ''; nextBtn.style.display = hide ? 'none' : ''; prevBtn.disabled = index <= 0; nextBtn.disabled = index >= (pages - 1); }
+      function activeDotIndex(){ const rightMost = Math.min(index + slotsPerView - 1, cardsCache.length - 1); return rightMost; }
+
+      function buildDots(){
+  if (!dotsWrap) return;
+  dotsWrap.innerHTML = '';
+  dots = [];
+
+  // Use up to 4 evenly-spaced dots across the whole range of pages.
+  const count = Math.min(Math.max(pages, 1), 4);
+  if (count <= 1) { dotsWrap.style.display = 'none'; return; }
+  dotsWrap.style.display = 'flex';
+
+  for (let i = 0; i < count; i++) {
+    const b = document.createElement('button');
+    b.type = 'button';
+    b.className = 'cc-dot';
+    b.setAttribute('aria-label', `Go to position ${i+1} of ${count}`);
+
+    // Target page: proportional position from 0 → pages-1.
+    // When count === 1 (not possible here), denom would be 0; safe because count>1.
+    const denom = (count - 1);
+    const t = denom > 0 ? i / denom : 0;              // 0, ~.33, ~.66, 1 for 4 dots
+    const targetPage = Math.round(t * (pages - 1));   // map to 0..pages-1
+
+    b.addEventListener('click', () => {
+      goToIndex(targetPage, true);
+    });
+
+    dotsWrap.appendChild(b);
+    dots.push(b);
+  }
+  updateDots();
+}
+
+  function updateDots(){
+    if (!dotsWrap || !dots.length) return;
+
+    // Determine which proportional bucket the current index falls into.
+    const count = dots.length;
+    if (pages <= 1) { dots.forEach(d => d.classList.remove('is-active')); return; }
+
+    // Current position ratio across all pages 0..1
+    const ratio = pages > 1 ? (index / (pages - 1)) : 0;
+    const activeIdx = Math.min(
+      count - 1,
+      Math.max(0, Math.round(ratio * (count - 1)))
+    );
+
+    dots.forEach((d, i) => {
+      const on = i === activeIdx;
+      d.classList.toggle('is-active', on);
+      d.setAttribute('aria-current', on ? 'true' : 'false');
+    });
+  }
+
+
+      function goToIndex(i, smooth=true){ index = clamp(i); const left = index * stepPx; if (smooth && 'scrollTo' in viewport) viewport.scrollTo({left, behavior:'smooth'}); else viewport.scrollLeft = left; updateArrows(); updateDots(); }
+
+      function onScroll(){ if (rafId) cancelAnimationFrame(rafId); rafId = requestAnimationFrame(()=>{ if (stepPx <= 0) return; const pending = clamp(Math.round(viewport.scrollLeft / stepPx)); updateArrows(); clearTimeout(scrollIdleTimer); scrollIdleTimer = setTimeout(()=>{ if (index !== pending) index = pending; updateDots(); }, SCROLL_IDLE_MS); }); }
+
+      function enable() {
+  if (shell) return;
+
+  // Get the cards from the ORIGINAL track
+  const allCards = Array.from(origTrack.querySelectorAll(cardSelector));
+  if (!allCards.length) return;
+
+  cardsCache = allCards; // no de-dupe — move exactly what's there
+
+  shell    = document.createElement('div'); shell.className = 'collections-carousel';
+  viewport = document.createElement('div'); viewport.className = 'cc-viewport'; viewport.tabIndex = 0;
+  track    = document.createElement('div'); track.className = 'cc-track';
+
+  const controls = document.createElement('div'); controls.className = 'cc-controls';
+  const mk = (cls, label, path) => {
+    const b = document.createElement('button');
+    b.type = 'button';
+    b.className = `cc-arrow ${cls}`;
+    b.setAttribute('aria-label', label);
+    b.innerHTML = `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="${path}"/></svg>`;
+    return b;
+  };
+  prevBtn = mk('cc-prev','Previous','M15 5 L8 12 L15 19');
+  nextBtn = mk('cc-next','Next','M9 5 L16 12 L9 19');
+  controls.append(prevBtn, nextBtn);
+
+  dotsWrap = document.createElement('div'); dotsWrap.className = 'cc-dots';
+
+  viewport.appendChild(track);
+  const heading = collections.querySelector('h2');
+  (heading ? collections.insertBefore(shell, heading.nextSibling) : collections.appendChild(shell));
+  shell.append(viewport, controls, dotsWrap);
+
+  // Move ALL cards into the new track
+  cardsCache.forEach(card => track.appendChild(card));
+
+  prevBtn.addEventListener('click', () => goToIndex(index - 1, true));
+  nextBtn.addEventListener('click', () => goToIndex(index + 1, true));
+  viewport.addEventListener('scroll', onScroll, { passive: true });
+  viewport.addEventListener('keydown', (e)=>{ if (e.key === 'ArrowRight') nextBtn.click(); if (e.key === 'ArrowLeft') prevBtn.click(); });
+
+  ro = new ResizeObserver(() => {
+    const oldPages = pages, oldSlots = slotsPerView, oldIndex = index;
+    measure();
+    if (pages !== oldPages || slotsPerView !== oldSlots) {
+      buildDots();
+      goToIndex(Math.min(oldIndex, pages - 1), false);
+    } else {
+      updateDots();
+    }
+    updateArrows();
+  });
+  ro.observe(viewport);
+
+  // initial and safety re-measures
+  requestAnimationFrame(() => {
+    measure(); buildDots(); goToIndex(index, false); updateArrows(); updateDots();
+  });
+  setTimeout(() => { measure(); buildDots(); updateArrows(); updateDots(); }, 300);
+}
+
+    function disable() {
+      if (!shell) return;
+      // Restore cards to the ORIGINAL track
+      cardsCache.forEach(card => origTrack.appendChild(card));
+      ro?.disconnect();
+      shell.remove();
+      shell = viewport = track = prevBtn = nextBtn = dotsWrap = null;
+      dots = [];
+      cardsCache = [];
+      index = 0; stepPx = 0; slotsPerView = 1; pages = 1;
+    }
+
+      // function disable(){ if (!shell) return; const anchor = shell; cardsCache.forEach(card=> collections.insertBefore(card, anchor)); ro?.disconnect(); shell.remove(); shell = viewport = track = prevBtn = nextBtn = dotsWrap = null; dots = []; cardsCache = []; index = 0; stepPx = 0; slotsPerView = 1; pages = 1; }
+
+      function handle(){ mq.matches ? enable() : disable(); }
+      handle(); mq.addEventListener('change', handle);
+    })();
+
+    // Footer year
+    document.addEventListener('DOMContentLoaded', ()=>{
+      const p = document.getElementById('copyright');
+      const y = new Date().getFullYear();
+      if (p) p.innerHTML = `&copy; ${y} Dream Agent. All rights reserved.`;
+    });
+
+    // Slide-in menu
+    (function(){
+      const html = document.documentElement;
+      const menuBtn = document.getElementById('menuBtn');
+      const drawer  = document.getElementById('siteDrawer');
+      const overlay = document.getElementById('drawerOverlay');
+      const closeBtn= document.getElementById('closeDrawer');
+
+      if (!menuBtn || !drawer || !overlay) return;
+
+      let lastFocus = null;
+
+      const focusableSel = [
+        'a[href]', 'button:not([disabled])', 'input:not([disabled])',
+        'select:not([disabled])', 'textarea:not([disabled])',
+        '[tabindex]:not([tabindex="-1"])'
+      ].join(',');
+
+      function trapFocus(e){
+        if (e.key !== 'Tab') return;
+        const focusables = drawer.querySelectorAll(focusableSel);
+        if (!focusables.length) return;
+        const first = focusables[0];
+        const last = focusables[focusables.length - 1];
+        if (e.shiftKey && document.activeElement === first) {
+          e.preventDefault(); last.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+          e.preventDefault(); first.focus();
+        }
+      }
+
+      function openDrawer(){
+        lastFocus = document.activeElement;
+        html.classList.add('has-drawer');
+        document.body.classList.add('drawer-open');
+        drawer.setAttribute('aria-hidden', 'false');
+        menuBtn.setAttribute('aria-expanded', 'true');
+        // move focus into drawer
+        setTimeout(() => {
+          const first = drawer.querySelector(focusableSel);
+          (first || drawer).focus();
+        }, 10);
+
+        document.addEventListener('keydown', onKeydown);
+        drawer.addEventListener('keydown', trapFocus);
+      }
+
+      function closeDrawer(){
+        html.classList.remove('has-drawer');
+        document.body.classList.remove('drawer-open');
+        drawer.setAttribute('aria-hidden', 'true');
+        menuBtn.setAttribute('aria-expanded', 'false');
+
+        document.removeEventListener('keydown', onKeydown);
+        drawer.removeEventListener('keydown', trapFocus);
+
+        if (lastFocus) lastFocus.focus();
+      }
+
+      function onKeydown(e){
+        if (e.key === 'Escape') closeDrawer();
+      }
+
+      // Toggle handlers
+      menuBtn.addEventListener('click', openDrawer);
+      overlay.addEventListener('click', closeDrawer);
+      closeBtn?.addEventListener('click', closeDrawer);
+
+      // Close after clicking any nav link
+      drawer.querySelectorAll('a[href]').forEach(a => {
+        a.addEventListener('click', closeDrawer);
+      });
+    })();
+
+
+  </script>
+</body>
+</html>

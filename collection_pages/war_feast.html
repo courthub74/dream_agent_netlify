@@ -196,6 +196,72 @@
     .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 
   </style>
+  <style>
+    /* Lightbox modal */
+    #lightboxModal {
+      position: fixed;
+      inset: 0;
+      display: none;
+      place-items: center;
+      background: rgba(0,0,0,0.88);
+      z-index: 1200;
+      padding: 2.5rem;
+      -webkit-backdrop-filter: blur(6px);
+      backdrop-filter: blur(6px);
+    }
+    #lightboxModal.open { display: grid; }
+    #lightboxModal .lb-content {
+      max-width: 92vw;
+      max-height: 92vh;
+      width: auto;
+      height: auto;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: .5rem;
+    }
+    #lightboxModal img {
+      max-width: 100%;
+      max-height: 84vh;
+      object-fit: contain;
+      border-radius: 10px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.6);
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+    }
+    #lightboxModal .lb-title {
+      color: rgba(255,255,255,0.92);
+      font-weight: 600;
+      text-align: center;
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: 1.02rem;
+      margin-top: .25rem;
+    }
+    #lightboxModal .lb-close {
+      position: absolute;
+      top: -10px;
+      right: -10px;
+      background: rgba(0,0,0,0.45);
+      border: 1px solid rgba(255,255,255,0.08);
+      color: white;
+      padding: 6px 8px;
+      border-radius: 9999px;
+      cursor: pointer;
+      z-index: 2;
+    }
+    #lightboxModal .lb-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      color: white;
+      font-size: 1.6rem;
+      background: rgba(0,0,0,0.35);
+      border: 1px solid rgba(255,255,255,0.06);
+      width: 44px; height: 44px; display:flex;align-items:center;justify-content:center;border-radius:9999px;cursor:pointer;backdrop-filter: blur(2px);
+    }
+    #lightboxModal .lb-prev { left: 18px; }
+    #lightboxModal .lb-next { right: 18px; }
+  </style>
 
   <!-- put this in <head> after Tailwind -->
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
@@ -291,13 +357,16 @@
      <!-- CTA buttons -->
       <div class="mt-10 flex items-center gap-3 flex-wrap">
         <!-- View Full Size (no glow, same border as unlockable) -->
-        <a
-          class="inline-flex items-center justify-center rounded-full px-5 py-3 text-sm font-semibold text-white
-                bg-white/10 border border-white/20 ring-0 shadow-none transition-colors
-                hover:bg-white/15 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#133B70]
-                active:translate-y-[1px] cursor-default md:cursor-pointer">
-                View Full Size
-        </a>
+  <a id="viewFullBtn"
+    href="#"
+    target="_blank"
+    rel="noopener noreferrer"
+    class="inline-flex items-center justify-center rounded-full px-5 py-3 text-sm font-semibold text-white
+    bg-white/10 border border-white/20 ring-0 shadow-none transition-colors
+    hover:bg-white/15 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#133B70]
+    active:translate-y-[1px] cursor-pointer md:cursor-pointer">
+    View Full Size
+  </a>
 
 
         <!-- Marketplace icons inline with the button (no glow) -->
@@ -650,6 +719,7 @@
   const xrpBtn   = document.getElementById("xrpBtn");
   const osBtn    = document.getElementById("osBtn");
   const srBtn    = document.getElementById("srBtn");
+  const viewFullBtn = document.getElementById("viewFullBtn");
 
   function paragraphsHTML(desc) {
   const arr = Array.isArray(desc) ? desc : [desc || ""];
@@ -721,6 +791,12 @@
       xrpBtn.href = w.links?.xrp || "#";
       osBtn.href  = w.links?.os  || "#";
       srBtn.href  = w.links?.sr  || "#";
+      if (viewFullBtn) {
+        // point the full-size button to the high-res file (open in new tab)
+        viewFullBtn.href = w.img || img.src || "#";
+        viewFullBtn.title = `Open full-size: ${w.title || 'Artwork'}`;
+        viewFullBtn.style.pointerEvents = (w.img ? '' : 'none');
+      }
 
       // artImg.src = img.src;
       // artTitle.textContent = w.title;
@@ -994,6 +1070,81 @@ if (mobileStrip) {
     renderWork(current);
 
 
+    // Lightbox modal wiring
+    (function setupLightbox(){
+      // Ensure the element exists in DOM (markup inserted below)
+      const modal = document.getElementById('lightboxModal');
+      const modalImg = document.getElementById('lightboxImg');
+      const modalTitle = document.getElementById('lightboxTitle');
+      const modalClose = document.getElementById('lightboxClose');
+      const btnPrev = document.getElementById('lightboxPrev');
+      const btnNext = document.getElementById('lightboxNext');
+
+      function openLightbox(src, title){
+        if (!modal) return;
+        modalImg.src = src || artImg.src || '';
+        modalTitle.textContent = title || '';
+        modal.classList.add('open');
+        document.body.style.overflow = 'hidden';
+        if (!prefersReduced && window.gsap) gsap.fromTo(modal, {opacity:0}, {opacity:1, duration:0.28, ease:'power2.out'});
+      }
+
+      function closeLightbox(){
+        if (!modal) return;
+        modal.classList.remove('open');
+        document.body.style.overflow = '';
+      }
+
+      // open via the full-size button
+      viewFullBtn?.addEventListener('click', (e)=>{
+        e.preventDefault();
+        const w = works[current];
+        openLightbox(w?.img || artImg.src, w?.title || 'Artwork');
+      });
+
+      // also open by clicking the viewer image
+      if (artImg) {
+        artImg.style.cursor = 'zoom-in';
+        artImg.addEventListener('click', ()=>{
+          const w = works[current];
+          openLightbox(w?.img || artImg.src, w?.title || 'Artwork');
+        });
+      }
+
+      // overlay close and close button
+      modal?.addEventListener('click', (e)=>{
+        if (e.target === modal || e.target === modalClose) closeLightbox();
+      });
+
+      // prev/next in lightbox
+      btnPrev?.addEventListener('click', (e)=>{
+        e.preventDefault();
+        current = (current - 1 + works.length) % works.length;
+        renderWork(current);
+        const w = works[current];
+        openLightbox(w?.img || artImg.src, w?.title || 'Artwork');
+      });
+      btnNext?.addEventListener('click', (e)=>{
+        e.preventDefault();
+        current = (current + 1) % works.length;
+        renderWork(current);
+        const w = works[current];
+        openLightbox(w?.img || artImg.src, w?.title || 'Artwork');
+      });
+
+      // keyboard support
+      document.addEventListener('keydown', (e)=>{
+        if (!modal) return;
+        if (e.key === 'Escape') closeLightbox();
+        if (e.key === 'ArrowRight' && modal.classList.contains('open')){
+          current = (current + 1) % works.length; renderWork(current); openLightbox(works[current].img, works[current].title);
+        }
+        if (e.key === 'ArrowLeft' && modal.classList.contains('open')){
+          current = (current - 1 + works.length) % works.length; renderWork(current); openLightbox(works[current].img, works[current].title);
+        }
+      });
+    })();
+
     // Header link intro animation (respects reduced motion)
 (function animateHeaderLinks(){
   const back = document.getElementById('backLink');
@@ -1017,6 +1168,18 @@ if (mobileStrip) {
 
     </script>
 
+    <!-- Lightbox modal markup -->
+    <div id="lightboxModal" aria-hidden="true" role="dialog" aria-label="Full-size artwork">
+      <div class="lb-content">
+        <button id="lightboxClose" class="lb-close" aria-label="Close">✕</button>
+        <button id="lightboxPrev" class="lb-nav lb-prev" aria-label="Previous">‹</button>
+        <div style="display:flex;flex-direction:column;align-items:center;">
+          <img id="lightboxImg" src="" alt="Full size artwork">
+          <div id="lightboxTitle" class="lb-title"></div>
+        </div>
+        <button id="lightboxNext" class="lb-nav lb-next" aria-label="Next">›</button>
+      </div>
+    </div>
 
-</body>
-</html>
+    </body>
+    </html>

@@ -257,7 +257,7 @@
           <div class="flex flex-col lg:flex-row lg:items-center lg:gap-0">
           <p class="text-white/80 text-sm mt-1 lg:mt-0">Recurring signs in perpetual drift</p>
           <p class="text-white/80 text-sm lg:ml-4">
-          <span class="opacity-90">5 Works</span> • <span class="opacity-90">2017–2025</span>
+          <span class="opacity-90"><span id="collection-count"></span> Works</span> • <span class="opacity-90">2017–2025</span>
         </p>
       </div>
         <!-- <p class="text-white/85 text-sm mt-3 max-w-3xl">A cabinet of moving emblems—objects that migrate between memory and myth, pausing just long enough to be seen.</p> -->
@@ -574,6 +574,18 @@
       years: "2017–2024"
     }
   ];
+
+  // ITERATE OVER OTHER COLLECTIONS TO RENDER STRIP
+  // store collection count in a variable
+  const totalCollections = works.length;
+  // test print
+  console.log(`Total other collections: ${totalCollections}`);
+  // now set the count in the header
+  const countElement = document.getElementById("collection-count");
+  if (countElement) {
+    countElement.textContent = `${totalCollections}`;
+  }
+
 
   const currentCollectionName =
     document.querySelector("h1.serif")?.textContent?.trim() || "";

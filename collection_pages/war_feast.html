@@ -761,6 +761,59 @@
     });
   }
 
+  // Try common high-res variants for a given image path. Returns a Promise that resolves
+  // with the first URL that successfully loads, or falls back to the original src.
+  async function chooseHighRes(src){
+    if (!src) return src;
+    const candidates = [];
+    // filename-based variants: -full, -hires, @2x
+    candidates.push(src.replace(/(\.[a-z0-9]+)$/i, '-full$1'));
+    candidates.push(src.replace(/(\.[a-z0-9]+)$/i, '-hires$1'));
+    candidates.push(src.replace(/(\.[a-z0-9]+)$/i, '@2x$1'));
+
+    // masters subfolder variant: insert /masters/ before filename
+    candidates.push(src.replace(/(\/)([^\/]+)$/,'$1masters/$2'));
+
+    // also consider a sibling folder named 'fullsize'
+    candidates.push(src.replace(/(\/)([^\/]+)$/,'$1fullsize/$2'));
+
+    // Deduplicate and ensure original src is last fallback
+    const uniq = [...new Set(candidates.filter(Boolean))];
+    uniq.push(src);
+
+    for (const c of uniq){
+      try {
+        await preload(c);
+        return c; // first that loads
+      } catch (e) {
+        // try next
+      }
+    }
+    return src;
+  }
+
+  // Utilities to prefer images inside img/collection_works
+  function basenameFromPath(p){
+    if (!p) return '';
+    return p.split('/').pop();
+  }
+
+  function slugFromHeader(){
+    const h = document.querySelector('h1.serif')?.textContent || '';
+    const s = h.toLowerCase().replace(/[^a-z0-9]+/g, '_').replace(/^_+|_+$/g,'');
+    return s || 'collection';
+  }
+
+  // Given an original src (or filename), return a normalized path inside collection_works
+  function collectionWorksPathFor(src){
+    if (!src) return src;
+    // If src already points inside collection_works, return as-is
+    if (src.includes('/collection_works/')) return src;
+    const name = basenameFromPath(src) || src;
+    const slug = slugFromHeader();
+    return `../img/collection_works/${slug}/${name}`;
+  }
+
   // Render with crossfade/scale
   async function renderWork(i){
     if (switching) return;
@@ -780,11 +833,12 @@
     animate([artTitle, artMeta, artDesc], {opacity:1, y:0}, {opacity:0, y:6}, 0.18);
 
     try {
-      const img = await preload(w.img);
+      // Prefer collection_works path and attempt high-res variants
+      const preferred = collectionWorksPathFor(w.img || '');
+      const bestSrc = await chooseHighRes(preferred || (w.img||''));
 
       // Swap content
-      // Swap content
-      artImg.src = img.src;
+      artImg.src = bestSrc || (w.img || '');
       artTitle.textContent = w.title || "";
       artMeta.innerHTML = `<span>${w.year||""}</span><span>•</span><span>${w.style||""}</span>`;
       artDesc.innerHTML = paragraphsHTML(w.desc);
@@ -792,10 +846,15 @@
       osBtn.href  = w.links?.os  || "#";
       srBtn.href  = w.links?.sr  || "#";
       if (viewFullBtn) {
-        // point the full-size button to the high-res file (open in new tab)
-        viewFullBtn.href = w.img || img.src || "#";
-        viewFullBtn.title = `Open full-size: ${w.title || 'Artwork'}`;
-        viewFullBtn.style.pointerEvents = (w.img ? '' : 'none');
+        // prefer images that live inside img/collection_works for full-size
+        const base = collectionWorksPathFor(w.img || img.src || '');
+        chooseHighRes(base).then((best) => {
+          viewFullBtn.href = best || (w.img || img.src || "#");
+          viewFullBtn.title = `Open full-size: ${w.title || 'Artwork'}`;
+          viewFullBtn.style.pointerEvents = (best ? '' : '');
+        }).catch(()=>{
+          viewFullBtn.href = w.img || img.src || "#";
+        });
       }
 
       // artImg.src = img.src;
@@ -820,8 +879,9 @@
 
 
     // Preload the next image opportunistically
-    const nextIndex = (i + 1) % works.length;
-    preload(works[nextIndex].img).catch(()=>{});
+  const nextIndex = (i + 1) % works.length;
+  // Kick off chooseHighRes for the next image (it preloads internally)
+  chooseHighRes(collectionWorksPathFor(works[nextIndex].img || '')).catch(()=>{});
 
     artDesc.innerHTML = paragraphsHTML(w.desc);
   }
@@ -952,7 +1012,7 @@ if (sidebar) {
 
     a.innerHTML = `
     <div class="thumb relative z-10 rounded-xl ring-1 ring-white/15 overflow-hidden flex-shrink-0">
-      <img src="${w.img}" loading="lazy"
+      <img src="${collectionWorksPathFor(w.img)}" loading="lazy"
           class="h-16 w-16 object-cover"
           alt="${w.title ? w.title.replace(/"/g,'&quot;') : 'Artwork'}">
     </div>
@@ -1012,7 +1072,7 @@ if (mobileStrip) {
     li.className = "min-w-[220px] snap-start";
     li.innerHTML = `
       <a href="#${id}" data-work-id="${id}" class="work-link flex items-center gap-3 p-2 rounded-xl bg-white/5 hover:bg-white/10 transition ring-1 ring-white/10">
-        <img src="${w.img}" loading="lazy"
+        <img src="${collectionWorksPathFor(w.img)}" loading="lazy"
              class="h-14 w-14 rounded-lg object-cover flex-shrink-0 ring-1 ring-white/20"
              alt="${w.title ? w.title.replace(/"/g,'&quot;') : 'Artwork'}" />
         <div class="min-w-0">
@@ -1082,7 +1142,14 @@ if (mobileStrip) {
 
       function openLightbox(src, title){
         if (!modal) return;
-        modalImg.src = src || artImg.src || '';
+        // try to open a higher-res version when possible
+        // prefer collection_works versions for the modal as well
+        const base = collectionWorksPathFor(src || artImg.src || '');
+        chooseHighRes(base).then(best => {
+          modalImg.src = best || (src || artImg.src || '');
+        }).catch(()=>{
+          modalImg.src = src || artImg.src || '';
+        });
         modalTitle.textContent = title || '';
         modal.classList.add('open');
         document.body.style.overflow = 'hidden';

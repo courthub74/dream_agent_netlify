@@ -291,14 +291,16 @@
 
      <!-- CTA buttons -->
       <div class="mt-10 flex items-center gap-3 flex-wrap">
-        <!-- View Full Size (no glow, same border as unlockable) -->
-        <a
+        <!-- View Full Size (opens modal) -->
+        <button
+          id="viewFullBtn"
+          type="button"
           class="inline-flex items-center justify-center rounded-full px-5 py-3 text-sm font-semibold text-white
                 bg-white/10 border border-white/20 ring-0 shadow-none transition-colors
                 hover:bg-white/15 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#133B70]
-                active:translate-y-[1px] cursor-default md:cursor-pointer">
-                View Full Size
-        </a>
+                active:translate-y-[1px] cursor-pointer">
+          View Full Size
+        </button>
 
 
         <!-- Marketplace icons inline with the button (no glow) -->
@@ -701,6 +703,46 @@
         });
       }
 
+      // Helpers: prefer high-res variants in img/collection_works when available
+      function basenameFromPath(p) {
+        if (!p) return '';
+        const parts = p.split('/');
+        return parts[parts.length - 1];
+      }
+
+      function slugFromHeader() {
+        const h = document.querySelector('h1.serif')?.textContent || '';
+        return h.toLowerCase().replace(/[^a-z0-9]+/g,'_').replace(/^_+|_+$/g,'') || 'collection';
+      }
+
+      function collectionWorksPathFor(src) {
+        if (!src) return src;
+        if (src.includes('/collection_works/')) return src;
+        const name = basenameFromPath(src);
+        const slug = slugFromHeader();
+        return `../img/collection_works/${slug}/${name}`;
+      }
+
+      async function chooseHighRes(preferredPath) {
+        if (!preferredPath) return null;
+        const name = basenameFromPath(preferredPath).replace(/\s+/g, '_');
+        const baseDir = preferredPath.replace(/\/[^\/]*$/, '');
+
+        const candidates = [
+          preferredPath,
+          `${baseDir}/${name.replace(/(\.[^.]+)$/, '-full$1')}`,
+          `${baseDir}/${name.replace(/(\.[^.]+)$/, '-hires$1')}`,
+          `${baseDir}/${name.replace(/(\.[^.]+)$/, '@2x$1')}`,
+          `${baseDir}/masters/${name}`,
+          `${baseDir}/fullsize/${name}`
+        ];
+
+        for (const c of candidates) {
+          try { await preload(c); return c; } catch(e) { /* try next */ }
+        }
+        return null;
+      }
+
       // Render with crossfade/scale
       async function renderWork(i){
         if (switching) return;
@@ -720,11 +762,16 @@
         animate([artTitle, artMeta, artDesc], {opacity:1, y:0}, {opacity:0, y:6}, 0.18);
 
         try {
-          const img = await preload(w.img);
+          const preferred = collectionWorksPathFor(w.img);
+          let bestSrc = null;
+          try { bestSrc = await chooseHighRes(preferred); } catch(_) { bestSrc = null; }
+          bestSrc = bestSrc || w.img;
+
+          const img = await preload(bestSrc);
 
           // Swap content
-          // Swap content
           artImg.src = img.src;
+          try { const v = document.getElementById('viewFullBtn'); if (v) v.href = bestSrc; } catch(e) {}
           artTitle.textContent = w.title || "";
           artMeta.innerHTML = `<span>${w.year||""}</span><span>•</span><span>${w.style||""}</span>`;
           artDesc.innerHTML = paragraphsHTML(w.desc);
@@ -886,9 +933,9 @@
 
         a.innerHTML = `
         <div class="thumb relative z-10 rounded-xl ring-1 ring-white/15 overflow-hidden flex-shrink-0">
-          <img src="${w.img}" loading="lazy"
+            <img src="${collectionWorksPathFor(w.img)}" loading="lazy"
               class="h-16 w-16 object-cover"
-              alt="${w.title ? w.title.replace(/"/g,'&quot;') : 'Artwork'}">
+              alt="${w.title ? w.title.replace(/\"/g,'&quot;') : 'Artwork'}">
         </div>
 
         <div class="min-w-0">
@@ -946,9 +993,9 @@
         li.className = "min-w-[220px] snap-start";
         li.innerHTML = `
           <a href="#${id}" data-work-id="${id}" class="work-link flex items-center gap-3 p-2 rounded-xl bg-white/5 hover:bg-white/10 transition ring-1 ring-white/10">
-            <img src="${w.img}" loading="lazy"
-                class="h-14 w-14 rounded-lg object-cover flex-shrink-0 ring-1 ring-white/20"
-                alt="${w.title ? w.title.replace(/"/g,'&quot;') : 'Artwork'}" />
+            <img src="${collectionWorksPathFor(w.img)}" loading="lazy"
+              class="h-14 w-14 rounded-lg object-cover flex-shrink-0 ring-1 ring-white/20"
+              alt="${w.title ? w.title.replace(/\"/g,'&quot;') : 'Artwork'}" />
             <div class="min-w-0">
               <p class="text-sm font-medium truncate" title="${w.title || ''}">${w.title || 'Untitled'}</p>
               <p class="text-[11px] text-white/60">${w.year ?? ''} • ${w.style ?? ''}</p>
@@ -1026,6 +1073,78 @@
             { opacity: 1, y: 0, duration: 0.45, ease: 'power2.out', stagger: 0.06 }
         );
         });
+    </script>
+
+    <!-- Full-size modal -->
+<div
+  id="fullsizeModal"
+  class="fixed inset-0 z-[80] hidden flex items-center justify-center bg-black/70 backdrop-blur-sm p-4"
+  aria-hidden="true"
+>
+  <div id="fullsizeBackdrop" class="absolute inset-0"></div>
+
+  <div class="relative w-full max-w-[1200px] max-h-[90vh] mx-auto my-6 sm:my-0 rounded-2xl bg-black/70 border border-white/20 overflow-auto shadow-2xl flex flex-col">
+    <div class="flex items-center justify-between px-4 sm:px-5 py-3 border-b border-white/15">
+      <div class="min-w-0">
+        <h2 id="fullsizeTitle" class="serif text-sm sm:text-base font-medium truncate">Artwork title</h2>
+        <p id="fullsizeMeta" class="text-[11px] text-white/60 mt-0.5">2024 • Oil-style</p>
+      </div>
+      <button id="fullsizeClose" type="button" class="ml-4 inline-flex h-8 w-8 items-center justify-center rounded-full border border-white/20 text-white/80 hover:bg-white/10 hover:border-white/40 transition" aria-label="Close full size view">✕</button>
+    </div>
+    <div class="flex-1 flex items-center justify-center bg-black/60">
+      <img id="fullsizeImg" src="" alt="" class="max-h-[80vh] max-w-full object-contain" />
+    </div>
+  </div>
+</div>
+
+    <script>
+    // Modal wiring for signals
+    document.addEventListener('DOMContentLoaded', () => {
+      const viewFullBtn = document.getElementById('viewFullBtn');
+      const fullsizeModal = document.getElementById('fullsizeModal');
+      const fullsizeBackdrop = document.getElementById('fullsizeBackdrop');
+      const fullsizeImg = document.getElementById('fullsizeImg');
+      const fullsizeTitle = document.getElementById('fullsizeTitle');
+      const fullsizeMeta = document.getElementById('fullsizeMeta');
+      const fullsizeClose = document.getElementById('fullsizeClose');
+
+      let modalOpen = false;
+
+      function openFullsizeModal() {
+        if (!artImg || !fullsizeModal) return;
+        fullsizeImg.src = artImg.src;
+        fullsizeImg.alt = artImg.alt || artTitle.textContent || 'Artwork';
+        fullsizeTitle.textContent = artTitle.textContent || '';
+        fullsizeMeta.textContent = artMeta?.innerText?.trim() || '';
+        fullsizeModal.classList.remove('hidden');
+        fullsizeModal.setAttribute('aria-hidden','false');
+        modalOpen = true;
+        if (prefersReduced || !window.gsap) return;
+        gsap.fromTo(fullsizeModal, {opacity:0}, {opacity:1, duration:0.25, ease: 'power2.out'});
+        const card = fullsizeModal.querySelector('div.relative.max-w-[1200px]');
+        if (card) gsap.fromTo(card, {y:16, scale:0.96, opacity:0}, {y:0, scale:1, opacity:1, duration:0.3, ease:'power2.out', delay:0.05});
+      }
+
+      function closeFullsizeModal() {
+        if (!fullsizeModal || !modalOpen) return;
+        if (prefersReduced || !window.gsap) { fullsizeModal.classList.add('hidden'); fullsizeModal.setAttribute('aria-hidden','true'); modalOpen=false; return; }
+        const card = fullsizeModal.querySelector('div.relative.max-w-[1200px]');
+        const tl = gsap.timeline({ onComplete: ()=>{ fullsizeModal.classList.add('hidden'); fullsizeModal.setAttribute('aria-hidden','true'); modalOpen=false; } });
+        tl.to(card, { y:10, scale:0.97, opacity:0, duration:0.2, ease:'power1.inOut' }).to(fullsizeModal, { opacity:0, duration:0.18, ease:'power1.out' }, '<');
+      }
+
+      if (viewFullBtn && fullsizeModal) { viewFullBtn.addEventListener('click', openFullsizeModal); try { if (artImg) artImg.addEventListener('click', openFullsizeModal); } catch(e){} }
+      if (fullsizeBackdrop) fullsizeBackdrop.addEventListener('click', closeFullsizeModal);
+      if (fullsizeClose) fullsizeClose.addEventListener('click', closeFullsizeModal);
+      document.addEventListener('keydown', (e)=>{ if (!modalOpen) return; if (e.key==='Escape' || e.key==='Esc') closeFullsizeModal(); });
+
+      // touch swipe
+      try {
+        let touchStartX=0, touchStartY=0, SWIPE_THRESHOLD=50;
+        fullsizeModal.addEventListener('touchstart', (ev)=>{ const t=ev.touches&&ev.touches[0]; if(!t) return; touchStartX=t.clientX; touchStartY=t.clientY; }, {passive:true});
+        fullsizeModal.addEventListener('touchend', async (ev)=>{ const t=ev.changedTouches&&ev.changedTouches[0]; if(!t) return; const dx=t.clientX-touchStartX, dy=t.clientY-touchStartY; if(Math.abs(dx)>Math.abs(dy) && Math.abs(dx)>SWIPE_THRESHOLD){ if (dx<0){ current=(current+1)%works.length; await renderWork(current); syncActiveHighlight(); } else { current=(current-1+works.length)%works.length; await renderWork(current); syncActiveHighlight(); } fullsizeImg.src = artImg.src; fullsizeTitle.textContent = artTitle.textContent||''; fullsizeMeta.textContent = artMeta?.innerText?.trim()||''; } }, {passive:true});
+      } catch(e) { console.debug('touch handlers not attached', e); }
+    });
     </script>
 
 

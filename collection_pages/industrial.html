@@ -293,12 +293,12 @@
      <!-- CTA buttons -->
       <div class="mt-10 flex items-center gap-3 flex-wrap">
         <!-- View Full Size (no glow, same border as unlockable) -->
-        <a
+        <a id="viewFullBtn" href="#"
           class="inline-flex items-center justify-center rounded-full px-5 py-3 text-sm font-semibold text-white
-                bg-white/10 border border-white/20 ring-0 shadow-none transition-colors
-                hover:bg-white/15 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#133B70]
-                active:translate-y-[1px] cursor-default md:cursor-pointer">
-                View Full Size
+          bg-white/10 border border-white/20 ring-0 shadow-none transition-colors
+          hover:bg-white/15 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#133B70]
+          active:translate-y-[1px] cursor-pointer">
+          View Full Size
         </a>
 
 
@@ -435,6 +435,18 @@
       </div>
     </div>
   </footer>
+
+  <!-- Full-size lightbox modal -->
+  <div id="fullsizeModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/75 p-4">
+    <div class="max-w-[96%] max-h-[96%] w-full overflow-auto p-4">
+      <div class="relative bg-transparent">
+        <button id="fullsizeClose" aria-label="Close" class="absolute right-2 top-2 text-white text-2xl">×</button>
+        <img id="fullsizeImg" src="" alt="Full size artwork" class="mx-auto max-h-[80vh] object-contain rounded" />
+        <div id="fullsizeTitle" class="serif text-lg text-white text-center mt-4"></div>
+        <div id="fullsizeMeta" class="text-sm text-white/80 text-center mt-1"></div>
+      </div>
+    </div>
+  </div>
 
   <script>
   // ALL THE PICTURES & DATA
@@ -706,6 +718,43 @@
     });
   }
 
+  // ----- helpers to prefer collection_works and detect high-res variants -----
+  function basenameFromPath(p){
+    if(!p) return '';
+    const parts = p.split('/'); return parts[parts.length-1];
+  }
+  function slugFromHeader(){
+    const h = document.querySelector('h1.serif');
+    if(!h) return '';
+    return String(h.textContent || '').toLowerCase().replace(/[^a-z0-9]+/g,'_').replace(/^_+|_+$/g,'');
+  }
+  function collectionWorksPathFor(src){
+    // If the src already looks like collection_works, return as-is
+    if(!src) return src;
+    if(src.includes('collection_works')) return src;
+    const name = basenameFromPath(src);
+    const slug = slugFromHeader() || 'unknown';
+    return `../img/collection_works/${slug}/${name}`;
+  }
+
+  async function chooseHighRes(preferred){
+    // Try several common high-res candidate patterns and return first that preloads
+    if(!preferred) throw new Error('no preferred');
+    const name = basenameFromPath(preferred).replace(/\s+/g,'%20');
+    const dir = preferred.replace(/\/[^/]*$/, '');
+    const candidates = [
+      `${dir}/${name.replace(/(\.[^.]+)$/, '-full$1')}`,
+      `${dir}/${name.replace(/(\.[^.]+)$/, '-hires$1')}`,
+      `${dir}/${name.replace(/(\.[^.]+)$/, '@2x$1')}`,
+      `${dir}/masters/${name}`,
+      preferred
+    ];
+    for(const c of candidates){
+      try{ await preload(c); return c; }catch(e){}
+    }
+    throw new Error('no candidate');
+  }
+
   // Render with crossfade/scale
   async function renderWork(i){
     if (switching) return;
@@ -725,11 +774,20 @@
     animate([artTitle, artMeta, artDesc], {opacity:1, y:0}, {opacity:0, y:6}, 0.18);
 
     try {
-      const img = await preload(w.img);
+      // Prefer images in img/collection_works and attempt high-res variants
+      const preferred = collectionWorksPathFor(w.img);
+      let bestSrc = w.img;
+      try { bestSrc = await chooseHighRes(preferred); } catch(e) { bestSrc = w.img; }
+
+      // Preload chosen source (fallback to w.img)
+      let img = null;
+      try { img = await preload(bestSrc); } catch(e) { try { img = await preload(w.img); bestSrc = w.img; } catch(e2) { img = null; } }
 
       // Swap content
-      // Swap content
-      artImg.src = img.src;
+      artImg.src = img?.src || w.img;
+      // update the "View Full Size" href so modal/open uses best source
+      const vf = document.getElementById('viewFullBtn');
+      if(vf) vf.href = bestSrc || w.img;
       artTitle.textContent = w.title || "";
       artMeta.innerHTML = `<span>${w.year||""}</span><span>•</span><span>${w.style||""}</span>`;
       artDesc.innerHTML = paragraphsHTML(w.desc);
@@ -1000,6 +1058,35 @@ if (mobileStrip) {
         renderWork(current);
         syncActiveHighlight();
     };
+
+    // --- Full-size modal wiring ---
+    const fullsizeModal = document.getElementById('fullsizeModal');
+    const fullsizeImg = document.getElementById('fullsizeImg');
+    const fullsizeClose = document.getElementById('fullsizeClose');
+    const fullsizeTitle = document.getElementById('fullsizeTitle');
+    const fullsizeMeta = document.getElementById('fullsizeMeta');
+    const viewFullBtn = document.getElementById('viewFullBtn');
+
+    function openFullModal(){
+      const w = works[current];
+      const src = (viewFullBtn && viewFullBtn.href && viewFullBtn.href !== '#') ? viewFullBtn.href : (w.img || '');
+      fullsizeImg.src = src;
+      fullsizeTitle.textContent = w.title || '';
+      fullsizeMeta.textContent = `${w.year || ''} • ${w.style || ''}`;
+      fullsizeModal.classList.remove('hidden');
+      fullsizeModal.focus?.();
+    }
+
+    function closeFullModal(){
+      fullsizeModal.classList.add('hidden');
+      fullsizeImg.src = '';
+    }
+
+    if(viewFullBtn) viewFullBtn.addEventListener('click', (e)=>{ e.preventDefault(); openFullModal(); });
+    if(artImg) artImg.addEventListener('click', ()=> openFullModal());
+    if(fullsizeClose) fullsizeClose.addEventListener('click', closeFullModal);
+    if(fullsizeModal) fullsizeModal.addEventListener('click', (e)=>{ if(e.target === fullsizeModal) closeFullModal(); });
+    document.addEventListener('keydown', (e)=>{ if(e.key === 'Escape') closeFullModal(); });
 
     // First paint: let the image fade in on load
     artImg.addEventListener("load", ()=>{

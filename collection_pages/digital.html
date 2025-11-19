@@ -1030,19 +1030,38 @@ function syncActiveHighlight() {
         const fullsizeMeta = document.getElementById('fullsizeMeta');
         const viewFullBtn = document.getElementById('viewFullBtn');
 
+        // GSAP-enhanced modal open/close + image transitions
+        async function setFullsizeImage(src){
+          if (!fullsizeImg) return;
+          const base = collectionWorksPathFor(src || artImg.src || '');
+          try {
+            const best = await chooseHighRes(base);
+            fullsizeImg.onload = () => {
+              try { if (!prefersReduced && window.gsap) { gsap.killTweensOf(fullsizeImg); gsap.fromTo(fullsizeImg, { opacity: 0, y: 12, scale: 0.985 }, { opacity: 1, y: 0, scale: 1, duration: 0.34, ease: 'power2.out' }); } } catch(e){}
+            };
+            fullsizeImg.src = best || src || artImg.src || '';
+          } catch(e){ fullsizeImg.src = src || artImg.src || ''; }
+        }
+
         function openFullModal(){
           const w = works[current];
-          const src = (viewFullBtn && viewFullBtn.href && viewFullBtn.href !== '#') ? viewFullBtn.href : (w.img || '');
-          fullsizeImg.src = src;
           fullsizeTitle.textContent = w.title || '';
           fullsizeMeta.textContent = `${w.year || ''} • ${w.style || ''}`;
           fullsizeModal.classList.remove('hidden');
-          fullsizeModal.focus?.();
+          document.body.style.overflow = 'hidden';
+          if (!prefersReduced && window.gsap) { gsap.killTweensOf(fullsizeModal); gsap.set(fullsizeModal, { opacity: 0 }); gsap.to(fullsizeModal, { opacity: 1, duration: 0.28, ease: 'power2.out' }); }
+          setFullsizeImage((viewFullBtn && viewFullBtn.href && viewFullBtn.href !== '#') ? viewFullBtn.href : (w.img || artImg.src || ''));
         }
 
         function closeFullModal(){
-          fullsizeModal.classList.add('hidden');
-          fullsizeImg.src = '';
+          if (!prefersReduced && window.gsap) {
+            gsap.killTweensOf(fullsizeModal);
+            gsap.to(fullsizeModal, { opacity: 0, duration: 0.2, ease: 'power1.in', onComplete() { fullsizeModal.classList.add('hidden'); document.body.style.overflow = ''; try{ fullsizeImg.src=''; }catch(e){} } });
+          } else {
+            fullsizeModal.classList.add('hidden');
+            try{ fullsizeImg.src=''; }catch(e){}
+            document.body.style.overflow = '';
+          }
         }
 
         if(viewFullBtn) viewFullBtn.addEventListener('click', (e)=>{ e.preventDefault(); openFullModal(); });
@@ -1050,6 +1069,12 @@ function syncActiveHighlight() {
         if(fullsizeClose) fullsizeClose.addEventListener('click', closeFullModal);
         if(fullsizeModal) fullsizeModal.addEventListener('click', (e)=>{ if(e.target === fullsizeModal) closeFullModal(); });
         document.addEventListener('keydown', (e)=>{ if(e.key === 'Escape') closeFullModal(); });
+
+        // prev/next handlers animate modal image swap
+        const modalPrev = document.getElementById('fullsizePrev');
+        const modalNext = document.getElementById('fullsizeNext');
+        if (modalPrev) modalPrev.addEventListener('click', async (ev)=>{ ev.preventDefault(); try{ if(!prefersReduced && window.gsap) await gsap.to(fullsizeImg, { opacity:0, x:20, duration:0.18, ease:'power1.in' }); }catch(e){} current = (current - 1 + works.length) % works.length; renderWork(current); const w = works[current]; fullsizeTitle.textContent = w.title || ''; setFullsizeImage(w.img || artImg.src); });
+        if (modalNext) modalNext.addEventListener('click', async (ev)=>{ ev.preventDefault(); try{ if(!prefersReduced && window.gsap) await gsap.to(fullsizeImg, { opacity:0, x:-20, duration:0.18, ease:'power1.in' }); }catch(e){} current = (current + 1) % works.length; renderWork(current); const w = works[current]; fullsizeTitle.textContent = w.title || ''; setFullsizeImage(w.img || artImg.src); });
 
         // First paint: let the image fade in on load
         artImg.addEventListener("load", ()=>{

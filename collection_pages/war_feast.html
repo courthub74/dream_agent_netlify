@@ -496,6 +496,19 @@
     </div>
   </footer>
 
+    <!-- Lightbox modal markup (moved here so script can find elements) -->
+    <div id="lightboxModal" aria-hidden="true" role="dialog" aria-label="Full-size artwork">
+      <div class="lb-content">
+        <button id="lightboxClose" class="lb-close" aria-label="Close">✕</button>
+        <button id="lightboxPrev" class="lb-nav lb-prev" aria-label="Previous">‹</button>
+        <div style="display:flex;flex-direction:column;align-items:center;">
+          <img id="lightboxImg" src="" alt="Full size artwork">
+          <div id="lightboxTitle" class="lb-title"></div>
+        </div>
+        <button id="lightboxNext" class="lb-nav lb-next" aria-label="Next">›</button>
+      </div>
+    </div>
+
   <script>
   // ALL THE PICTURES & DATA
   ////////////////////////////////////////////////////////////////////////////////////////////
@@ -1138,26 +1151,59 @@ if (mobileStrip) {
       const btnPrev = document.getElementById('lightboxPrev');
       const btnNext = document.getElementById('lightboxNext');
 
+      // helper: load & animate modal image (prefers collection_works + high-res variants)
+      async function setModalImage(src){
+        if (!modalImg) return;
+        const base = collectionWorksPathFor(src || artImg.src || '');
+        try {
+          const best = await chooseHighRes(base);
+          // attach onload animation
+          modalImg.onload = () => {
+            try {
+              if (!prefersReduced && window.gsap) {
+                gsap.killTweensOf(modalImg);
+                gsap.fromTo(modalImg, { opacity: 0, y: 12, scale: 0.985 }, { opacity: 1, y: 0, scale: 1, duration: 0.34, ease: 'power2.out' });
+              }
+            } catch (e) { /* ignore */ }
+          };
+          modalImg.src = best || src || artImg.src || '';
+        } catch (e) {
+          modalImg.src = src || artImg.src || '';
+        }
+      }
+
       function openLightbox(src, title){
         if (!modal) return;
-        // try to open a higher-res version when possible
-        // prefer collection_works versions for the modal as well
-        const base = collectionWorksPathFor(src || artImg.src || '');
-        chooseHighRes(base).then(best => {
-          modalImg.src = best || (src || artImg.src || '');
-        }).catch(()=>{
-          modalImg.src = src || artImg.src || '';
-        });
         modalTitle.textContent = title || '';
         modal.classList.add('open');
         document.body.style.overflow = 'hidden';
-        if (!prefersReduced && window.gsap) gsap.fromTo(modal, {opacity:0}, {opacity:1, duration:0.28, ease:'power2.out'});
+
+        // animate backdrop/card
+        if (!prefersReduced && window.gsap) {
+          gsap.killTweensOf(modal);
+          gsap.set(modal, { opacity: 0 });
+          gsap.to(modal, { opacity: 1, duration: 0.28, ease: 'power2.out' });
+        }
+
+        // load & animate the image once ready
+        setModalImage(src || artImg.src);
       }
 
       function closeLightbox(){
         if (!modal) return;
-        modal.classList.remove('open');
-        document.body.style.overflow = '';
+        if (!prefersReduced && window.gsap) {
+          gsap.killTweensOf(modal);
+          gsap.to(modal, { opacity: 0, duration: 0.2, ease: 'power1.in', onComplete() {
+            modal.classList.remove('open');
+            document.body.style.overflow = '';
+            // clear src to free memory
+            try { modalImg.src = ''; } catch(e){}
+          }});
+        } else {
+          modal.classList.remove('open');
+          document.body.style.overflow = '';
+          try { modalImg.src = ''; } catch(e){}
+        }
       }
 
       // open via the full-size button
@@ -1181,20 +1227,34 @@ if (mobileStrip) {
         if (e.target === modal || e.target === modalClose) closeLightbox();
       });
 
-      // prev/next in lightbox
-      btnPrev?.addEventListener('click', (e)=>{
+      // prev/next in lightbox — animate image swap
+      btnPrev?.addEventListener('click', async (e)=>{
         e.preventDefault();
+        // animate current modal image out
+        try {
+          if (!prefersReduced && window.gsap) {
+            await gsap.to(modalImg, { opacity: 0, x: 20, duration: 0.18, ease: 'power1.in' });
+          }
+        } catch(e){}
         current = (current - 1 + works.length) % works.length;
         renderWork(current);
         const w = works[current];
-        openLightbox(w?.img || artImg.src, w?.title || 'Artwork');
+        modalTitle.textContent = w?.title || 'Artwork';
+        setModalImage(w?.img || artImg.src);
       });
-      btnNext?.addEventListener('click', (e)=>{
+
+      btnNext?.addEventListener('click', async (e)=>{
         e.preventDefault();
+        try {
+          if (!prefersReduced && window.gsap) {
+            await gsap.to(modalImg, { opacity: 0, x: -20, duration: 0.18, ease: 'power1.in' });
+          }
+        } catch(e){}
         current = (current + 1) % works.length;
         renderWork(current);
         const w = works[current];
-        openLightbox(w?.img || artImg.src, w?.title || 'Artwork');
+        modalTitle.textContent = w?.title || 'Artwork';
+        setModalImage(w?.img || artImg.src);
       });
 
       // keyboard support
@@ -1232,19 +1292,6 @@ if (mobileStrip) {
 })();
 
     </script>
-
-    <!-- Lightbox modal markup -->
-    <div id="lightboxModal" aria-hidden="true" role="dialog" aria-label="Full-size artwork">
-      <div class="lb-content">
-        <button id="lightboxClose" class="lb-close" aria-label="Close">✕</button>
-        <button id="lightboxPrev" class="lb-nav lb-prev" aria-label="Previous">‹</button>
-        <div style="display:flex;flex-direction:column;align-items:center;">
-          <img id="lightboxImg" src="" alt="Full size artwork">
-          <div id="lightboxTitle" class="lb-title"></div>
-        </div>
-        <button id="lightboxNext" class="lb-nav lb-next" aria-label="Next">›</button>
-      </div>
-    </div>
 
     </body>
     </html>

@@ -41,6 +41,8 @@
 \* ~View Full Size behavior on largest screens~
 
 \* ~Digital~
-\* Dominion
+\* ~Dominion~
+
+\* ~Reintroduce a safe non-blocking high-res probe that falls back to w.img (so -full/-hires is attempted but won't break the modal)~
 
 \* Colleections layout behavior on largest screens

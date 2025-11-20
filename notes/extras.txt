@@ -1,15 +1,255 @@
-For the Cloudy Body
-<body class="bg-[url('./img/vers_one_shorter.png')] bg-cover bg-center h-screen w-full">
+Looking at the differences between `war_feast.html` and the other files, I can see that `war_feast.html` has a more sophisticated lightbox modal with navigation controls and GSAP animations. Here's what you need to add to match that functionality:
 
-<body class="bg-[#032D82] bg-cover bg-center h-screen w-full">
+## Key Differences in war_feast.html:
 
+1. **Different modal structure** with prev/next navigation buttons inside the lightbox
+2. **GSAP-enhanced image transitions** when navigating between artworks in the modal
+3. **More sophisticated modal styling** with better positioning and backdrop
+4. **Lightbox-specific navigation** (prev/next within the modal itself)
 
-Some Improvements: 9/30/2025
+## Implementation Guide:
 
-Breadcrumbs: You already have “Collections › Symbols In Motion,” but adding subtle hover interaction (fade/underline) makes navigation feel alive.
+### Step 1: Replace the Modal HTML
 
-Mobile Scaling: Ensure the long text block collapses or uses a “Read More” toggle to avoid overwhelming small screens.
+In each file, replace the existing `#fullsizeModal` div with this structure (from war_feast.html):
 
-Mood Accent: Try a subtle parallax background behind the main artwork image, so the painting feels like it’s floating in its own symbolic space.
+```html
+<!-- Lightbox modal markup -->
+<div id="lightboxModal" aria-hidden="true" role="dialog" aria-label="Full-size artwork">
+  <div class="lb-content">
+    <button id="lightboxClose" class="lb-close" aria-label="Close">✕</button>
+    <button id="lightboxPrev" class="lb-nav lb-prev" aria-label="Previous">‹</button>
+    <div style="display:flex;flex-direction:column;align-items:center;">
+      <img id="lightboxImg" src="" alt="Full size artwork">
+      <div id="lightboxTitle" class="lb-title"></div>
+    </div>
+    <button id="lightboxNext" class="lb-nav lb-next" aria-label="Next">›</button>
+  </div>
+</div>
+```
 
-Collector Badges: Add small tags like “New,” “Rare,” “Featured” in the “All Works” sidebar to gamify browsing.
+### Step 2: Add the Lightbox CSS
+
+Add this CSS to the `<style>` section in the `<head>`:
+
+```css
+/* Lightbox modal */
+#lightboxModal {
+  position: fixed;
+  inset: 0;
+  display: none;
+  place-items: center;
+  background: rgba(0,0,0,0.88);
+  z-index: 1200;
+  padding: 2.5rem;
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+}
+#lightboxModal.open { display: grid; }
+#lightboxModal .lb-content {
+  max-width: 92vw;
+  max-height: 92vh;
+  width: auto;
+  height: auto;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .5rem;
+}
+#lightboxModal img {
+  max-width: 100%;
+  max-height: 84vh;
+  object-fit: contain;
+  border-radius: 10px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.6);
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+}
+#lightboxModal .lb-title {
+  color: rgba(255,255,255,0.92);
+  font-weight: 600;
+  text-align: center;
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 1.02rem;
+  margin-top: .25rem;
+}
+#lightboxModal .lb-close {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  background: rgba(0,0,0,0.45);
+  border: 1px solid rgba(255,255,255,0.08);
+  color: white;
+  padding: 6px 8px;
+  border-radius: 9999px;
+  cursor: pointer;
+  z-index: 2;
+}
+#lightboxModal .lb-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  color: white;
+  font-size: 1.6rem;
+  background: rgba(0,0,0,0.35);
+  border: 1px solid rgba(255,255,255,0.06);
+  width: 44px; height: 44px; display:flex;align-items:center;justify-content:center;border-radius:9999px;cursor:pointer;backdrop-filter: blur(2px);
+}
+#lightboxModal .lb-prev { left: 18px; }
+#lightboxModal .lb-next { right: 18px; }
+```
+
+### Step 3: Replace the Modal JavaScript
+
+Replace the entire modal setup section (usually in the `DOMContentLoaded` event or after renderWork function) with this code from war_feast.html:
+
+```javascript
+// Lightbox modal wiring
+(function setupLightbox(){
+  const modal = document.getElementById('lightboxModal');
+  const modalImg = document.getElementById('lightboxImg');
+  const modalTitle = document.getElementById('lightboxTitle');
+  const modalClose = document.getElementById('lightboxClose');
+  const btnPrev = document.getElementById('lightboxPrev');
+  const btnNext = document.getElementById('lightboxNext');
+
+  // helper: load & animate modal image (prefers collection_works + high-res variants)
+  async function setModalImage(src){
+    if (!modalImg) return;
+    const base = collectionWorksPathFor(src || artImg.src || '');
+    try {
+      const best = await chooseHighRes(base);
+      modalImg.onload = () => {
+        try {
+          if (!prefersReduced && window.gsap) {
+            gsap.killTweensOf(modalImg);
+            gsap.fromTo(modalImg, { opacity: 0, y: 12, scale: 0.985 }, { opacity: 1, y: 0, scale: 1, duration: 0.34, ease: 'power2.out' });
+          }
+        } catch (e) { /* ignore */ }
+      };
+      modalImg.src = best || src || artImg.src || '';
+    } catch (e) {
+      modalImg.src = src || artImg.src || '';
+    }
+  }
+
+  function openLightbox(src, title){
+    if (!modal) return;
+    modalTitle.textContent = title || '';
+    modal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+
+    if (!prefersReduced && window.gsap) {
+      gsap.killTweensOf(modal);
+      gsap.set(modal, { opacity: 0 });
+      gsap.to(modal, { opacity: 1, duration: 0.28, ease: 'power2.out' });
+    }
+
+    setModalImage(src || artImg.src);
+  }
+
+  function closeLightbox(){
+    if (!modal) return;
+    if (!prefersReduced && window.gsap) {
+      gsap.killTweensOf(modal);
+      gsap.to(modal, { opacity: 0, duration: 0.2, ease: 'power1.in', onComplete() {
+        modal.classList.remove('open');
+        document.body.style.overflow = '';
+        try { modalImg.src = ''; } catch(e){}
+      }});
+    } else {
+      modal.classList.remove('open');
+      document.body.style.overflow = '';
+      try { modalImg.src = ''; } catch(e){}
+    }
+  }
+
+  // open via the full-size button
+  viewFullBtn?.addEventListener('click', (e)=>{
+    e.preventDefault();
+    const w = works[current];
+    openLightbox(w?.img || artImg.src, w?.title || 'Artwork');
+  });
+
+  // also open by clicking the viewer image
+  if (artImg) {
+    artImg.style.cursor = 'zoom-in';
+    artImg.addEventListener('click', ()=>{
+      const w = works[current];
+      openLightbox(w?.img || artImg.src, w?.title || 'Artwork');
+    });
+  }
+
+  // overlay close and close button
+  modal?.addEventListener('click', (e)=>{
+    if (e.target === modal || e.target === modalClose) closeLightbox();
+  });
+
+  // prev/next in lightbox
+  btnPrev?.addEventListener('click', async (e)=>{
+    e.preventDefault();
+    try {
+      if (!prefersReduced && window.gsap) {
+        await gsap.to(modalImg, { opacity: 0, x: 20, duration: 0.18, ease: 'power1.in' });
+      }
+    } catch(e){}
+    current = (current - 1 + works.length) % works.length;
+    renderWork(current);
+    const w = works[current];
+    modalTitle.textContent = w?.title || 'Artwork';
+    setModalImage(w?.img || artImg.src);
+  });
+
+  btnNext?.addEventListener('click', async (e)=>{
+    e.preventDefault();
+    try {
+      if (!prefersReduced && window.gsap) {
+        await gsap.to(modalImg, { opacity: 0, x: -20, duration: 0.18, ease: 'power1.in' });
+      }
+    } catch(e){}
+    current = (current + 1) % works.length;
+    renderWork(current);
+    const w = works[current];
+    modalTitle.textContent = w?.title || 'Artwork';
+    setModalImage(w?.img || artImg.src);
+  });
+
+  // keyboard support
+  document.addEventListener('keydown', (e)=>{
+    if (!modal) return;
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowRight' && modal.classList.contains('open')){
+      current = (current + 1) % works.length; renderWork(current); openLightbox(works[current].img, works[current].title);
+    }
+    if (e.key === 'ArrowLeft' && modal.classList.contains('open')){
+      current = (current - 1 + works.length) % works.length; renderWork(current); openLightbox(works[current].img, works[current].title);
+    }
+  });
+})();
+```
+
+### Step 4: Update the View Full Size Button
+
+Make sure your View Full Size button has the correct ID:
+
+```html
+<a id="viewFullBtn"
+   href="#"
+   class="inline-flex items-center justify-center rounded-full px-5 py-3 text-sm font-semibold text-white
+   bg-white/10 border border-white/20 ring-0 shadow-none transition-colors
+   hover:bg-white/15 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#133B70]
+   active:translate-y-[1px] cursor-pointer md:cursor-pointer">
+  View Full Size
+</a>
+```
+
+## Summary of Changes:
+
+1. New modal uses `#lightboxModal` instead of `#fullsizeModal`
+2. Includes prev/next navigation buttons inside the lightbox
+3. Better GSAP animations for image transitions
+4. Click on main image also opens lightbox
+5. Keyboard navigation (arrow keys) works inside lightbox
+6. Smoother transitions when navigating between artworks
+
+This will give all your collection pages the same polished lightbox experience as war_feast.html!

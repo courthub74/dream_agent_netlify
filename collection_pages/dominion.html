@@ -718,6 +718,7 @@
         const xrpBtn   = document.getElementById("xrpBtn");
         const osBtn    = document.getElementById("osBtn");
         const srBtn    = document.getElementById("srBtn");
+        const viewFullBtn = document.getElementById('viewFullBtn');
 
         function paragraphsHTML(desc) {
         const arr = Array.isArray(desc) ? desc : [desc || ""];
@@ -1070,18 +1071,10 @@
               // helper: load & animate modal image (prefers collection_works + high-res variants)
               async function setModalImage(src){
                 if (!modalImg) return;
-                const base = collectionWorksPathFor(src || artImg.src || '');
-                let best = base;
-                let error = null;
-                try {
-                  best = await chooseHighRes(base);
-                } catch (e) {
-                  error = e;
-                  best = src || artImg.src || '';
-                }
+                // Use the original image path (w.img) or provided src directly.
+                const chosen = src || artImg.src || '';
                 modalImg.onerror = () => {
-                  console.error('Modal image failed to load:', best, error);
-                  // Show a visible error overlay
+                  console.error('Modal image failed to load:', chosen);
                   if (!document.getElementById('lbImgError')) {
                     const errDiv = document.createElement('div');
                     errDiv.id = 'lbImgError';
@@ -1091,7 +1084,6 @@
                   }
                 };
                 modalImg.onload = () => {
-                  // Remove error overlay if present
                   const errDiv = document.getElementById('lbImgError');
                   if (errDiv) errDiv.remove();
                   try {
@@ -1101,7 +1093,7 @@
                     }
                   } catch (e) { /* ignore */ }
                 };
-                modalImg.src = best;
+                modalImg.src = chosen;
               }
 
               function openLightbox(src, title){

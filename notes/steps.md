@@ -34,10 +34,13 @@
 
 ## Things to fix (include in your README)
 
-\* The About section for very large screens needs to fill the screen properly
+\* ~The About section for very large screens a bit wider~
 
 \* Fix the clip off of the last square on the carousel as it does it on the first load, then displays fine
 
-\* View Full Size behavior on largest screens
+\* ~View Full Size behavior on largest screens~
+
+\* ~Digital~
+\* Dominion
 
 \* Colleections layout behavior on largest screens

@@ -516,6 +516,19 @@
     0 6px 18px rgba(0,0,0,.28);
 }
 
+  /* Widen About container on very large screens */
+  @media (min-width: 1601px) {
+    :root {
+      --content-max: 88rem; /* ~1408px — increases About width on large desktops */
+    }
+    .mobile_about_container { max-width: var(--content-max); }
+  }
+
+  @media (min-width: 2000px) {
+    :root { --content-max: 96rem; /* ~1536px — for ultra-wide displays */ }
+    .mobile_about_container { max-width: var(--content-max); }
+  }
+
 
 
     

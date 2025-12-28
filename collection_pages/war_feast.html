@@ -196,6 +196,72 @@
     .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 
   </style>
+  <style>
+    /* Lightbox modal */
+    #lightboxModal {
+      position: fixed;
+      inset: 0;
+      display: none;
+      place-items: center;
+      background: rgba(0,0,0,0.88);
+      z-index: 1200;
+      padding: 2.5rem;
+      -webkit-backdrop-filter: blur(6px);
+      backdrop-filter: blur(6px);
+    }
+    #lightboxModal.open { display: grid; }
+    #lightboxModal .lb-content {
+      max-width: 92vw;
+      max-height: 92vh;
+      width: auto;
+      height: auto;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: .5rem;
+    }
+    #lightboxModal img {
+      max-width: 100%;
+      max-height: 84vh;
+      object-fit: contain;
+      border-radius: 10px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.6);
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+    }
+    #lightboxModal .lb-title {
+      color: rgba(255,255,255,0.92);
+      font-weight: 600;
+      text-align: center;
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: 1.02rem;
+      margin-top: .25rem;
+    }
+    #lightboxModal .lb-close {
+      position: absolute;
+      top: -10px;
+      right: -10px;
+      background: rgba(0,0,0,0.45);
+      border: 1px solid rgba(255,255,255,0.08);
+      color: white;
+      padding: 6px 8px;
+      border-radius: 9999px;
+      cursor: pointer;
+      z-index: 2;
+    }
+    #lightboxModal .lb-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      color: white;
+      font-size: 1.6rem;
+      background: rgba(0,0,0,0.35);
+      border: 1px solid rgba(255,255,255,0.06);
+      width: 44px; height: 44px; display:flex;align-items:center;justify-content:center;border-radius:9999px;cursor:pointer;backdrop-filter: blur(2px);
+    }
+    #lightboxModal .lb-prev { left: 18px; }
+    #lightboxModal .lb-next { right: 18px; }
+  </style>
 
   <!-- put this in <head> after Tailwind -->
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
@@ -291,13 +357,14 @@
      <!-- CTA buttons -->
       <div class="mt-10 flex items-center gap-3 flex-wrap">
         <!-- View Full Size (no glow, same border as unlockable) -->
-        <a
-          class="inline-flex items-center justify-center rounded-full px-5 py-3 text-sm font-semibold text-white
-                bg-white/10 border border-white/20 ring-0 shadow-none transition-colors
-                hover:bg-white/15 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#133B70]
-                active:translate-y-[1px] cursor-default md:cursor-pointer">
-                View Full Size
-        </a>
+  <a id="viewFullBtn"
+    href="#"
+    class="inline-flex items-center justify-center rounded-full px-5 py-3 text-sm font-semibold text-white
+    bg-white/10 border border-white/20 ring-0 shadow-none transition-colors
+    hover:bg-white/15 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#133B70]
+    active:translate-y-[1px] cursor-pointer md:cursor-pointer">
+    View Full Size
+  </a>
 
 
         <!-- Marketplace icons inline with the button (no glow) -->
@@ -428,6 +495,19 @@
       </div>
     </div>
   </footer>
+
+    <!-- Lightbox modal markup (moved here so script can find elements) -->
+    <div id="lightboxModal" aria-hidden="true" role="dialog" aria-label="Full-size artwork">
+      <div class="lb-content">
+        <button id="lightboxClose" class="lb-close" aria-label="Close">✕</button>
+        <button id="lightboxPrev" class="lb-nav lb-prev" aria-label="Previous">‹</button>
+        <div style="display:flex;flex-direction:column;align-items:center;">
+          <img id="lightboxImg" src="" alt="Full size artwork">
+          <div id="lightboxTitle" class="lb-title"></div>
+        </div>
+        <button id="lightboxNext" class="lb-nav lb-next" aria-label="Next">›</button>
+      </div>
+    </div>
 
   <script>
   // ALL THE PICTURES & DATA
@@ -650,6 +730,7 @@
   const xrpBtn   = document.getElementById("xrpBtn");
   const osBtn    = document.getElementById("osBtn");
   const srBtn    = document.getElementById("srBtn");
+  const viewFullBtn = document.getElementById("viewFullBtn");
 
   function paragraphsHTML(desc) {
   const arr = Array.isArray(desc) ? desc : [desc || ""];
@@ -691,6 +772,59 @@
     });
   }
 
+  // Try common high-res variants for a given image path. Returns a Promise that resolves
+  // with the first URL that successfully loads, or falls back to the original src.
+  async function chooseHighRes(src){
+    if (!src) return src;
+    const candidates = [];
+    // filename-based variants: -full, -hires, @2x
+    candidates.push(src.replace(/(\.[a-z0-9]+)$/i, '-full$1'));
+    candidates.push(src.replace(/(\.[a-z0-9]+)$/i, '-hires$1'));
+    candidates.push(src.replace(/(\.[a-z0-9]+)$/i, '@2x$1'));
+
+    // masters subfolder variant: insert /masters/ before filename
+    candidates.push(src.replace(/(\/)([^\/]+)$/,'$1masters/$2'));
+
+    // also consider a sibling folder named 'fullsize'
+    candidates.push(src.replace(/(\/)([^\/]+)$/,'$1fullsize/$2'));
+
+    // Deduplicate and ensure original src is last fallback
+    const uniq = [...new Set(candidates.filter(Boolean))];
+    uniq.push(src);
+
+    for (const c of uniq){
+      try {
+        await preload(c);
+        return c; // first that loads
+      } catch (e) {
+        // try next
+      }
+    }
+    return src;
+  }
+
+  // Utilities to prefer images inside img/collection_works
+  function basenameFromPath(p){
+    if (!p) return '';
+    return p.split('/').pop();
+  }
+
+  function slugFromHeader(){
+    const h = document.querySelector('h1.serif')?.textContent || '';
+    const s = h.toLowerCase().replace(/[^a-z0-9]+/g, '_').replace(/^_+|_+$/g,'');
+    return s || 'collection';
+  }
+
+  // Given an original src (or filename), return a normalized path inside collection_works
+  function collectionWorksPathFor(src){
+    if (!src) return src;
+    // If src already points inside collection_works, return as-is
+    if (src.includes('/collection_works/')) return src;
+    const name = basenameFromPath(src) || src;
+    const slug = slugFromHeader();
+    return `../img/collection_works/${slug}/${name}`;
+  }
+
   // Render with crossfade/scale
   async function renderWork(i){
     if (switching) return;
@@ -710,17 +844,29 @@
     animate([artTitle, artMeta, artDesc], {opacity:1, y:0}, {opacity:0, y:6}, 0.18);
 
     try {
-      const img = await preload(w.img);
+      // Prefer collection_works path and attempt high-res variants
+      const preferred = collectionWorksPathFor(w.img || '');
+      const bestSrc = await chooseHighRes(preferred || (w.img||''));
 
       // Swap content
-      // Swap content
-      artImg.src = img.src;
+      artImg.src = bestSrc || (w.img || '');
       artTitle.textContent = w.title || "";
       artMeta.innerHTML = `<span>${w.year||""}</span><span>•</span><span>${w.style||""}</span>`;
       artDesc.innerHTML = paragraphsHTML(w.desc);
       xrpBtn.href = w.links?.xrp || "#";
       osBtn.href  = w.links?.os  || "#";
       srBtn.href  = w.links?.sr  || "#";
+      if (viewFullBtn) {
+        // prefer images that live inside img/collection_works for full-size
+        const base = collectionWorksPathFor(w.img || img.src || '');
+        chooseHighRes(base).then((best) => {
+          viewFullBtn.href = best || (w.img || img.src || "#");
+          viewFullBtn.title = `Open full-size: ${w.title || 'Artwork'}`;
+          viewFullBtn.style.pointerEvents = (best ? '' : '');
+        }).catch(()=>{
+          viewFullBtn.href = w.img || img.src || "#";
+        });
+      }
 
       // artImg.src = img.src;
       // artTitle.textContent = w.title;
@@ -744,8 +890,9 @@
 
 
     // Preload the next image opportunistically
-    const nextIndex = (i + 1) % works.length;
-    preload(works[nextIndex].img).catch(()=>{});
+  const nextIndex = (i + 1) % works.length;
+  // Kick off chooseHighRes for the next image (it preloads internally)
+  chooseHighRes(collectionWorksPathFor(works[nextIndex].img || '')).catch(()=>{});
 
     artDesc.innerHTML = paragraphsHTML(w.desc);
   }
@@ -876,7 +1023,7 @@ if (sidebar) {
 
     a.innerHTML = `
     <div class="thumb relative z-10 rounded-xl ring-1 ring-white/15 overflow-hidden flex-shrink-0">
-      <img src="${w.img}" loading="lazy"
+      <img src="${collectionWorksPathFor(w.img)}" loading="lazy"
           class="h-16 w-16 object-cover"
           alt="${w.title ? w.title.replace(/"/g,'&quot;') : 'Artwork'}">
     </div>
@@ -936,7 +1083,7 @@ if (mobileStrip) {
     li.className = "min-w-[220px] snap-start";
     li.innerHTML = `
       <a href="#${id}" data-work-id="${id}" class="work-link flex items-center gap-3 p-2 rounded-xl bg-white/5 hover:bg-white/10 transition ring-1 ring-white/10">
-        <img src="${w.img}" loading="lazy"
+        <img src="${collectionWorksPathFor(w.img)}" loading="lazy"
              class="h-14 w-14 rounded-lg object-cover flex-shrink-0 ring-1 ring-white/20"
              alt="${w.title ? w.title.replace(/"/g,'&quot;') : 'Artwork'}" />
         <div class="min-w-0">
@@ -994,6 +1141,135 @@ if (mobileStrip) {
     renderWork(current);
 
 
+    // Lightbox modal wiring
+    (function setupLightbox(){
+      // Ensure the element exists in DOM (markup inserted below)
+      const modal = document.getElementById('lightboxModal');
+      const modalImg = document.getElementById('lightboxImg');
+      const modalTitle = document.getElementById('lightboxTitle');
+      const modalClose = document.getElementById('lightboxClose');
+      const btnPrev = document.getElementById('lightboxPrev');
+      const btnNext = document.getElementById('lightboxNext');
+
+      // helper: load & animate modal image (prefers collection_works + high-res variants)
+      async function setModalImage(src){
+        if (!modalImg) return;
+        const base = collectionWorksPathFor(src || artImg.src || '');
+        try {
+          const best = await chooseHighRes(base);
+          // attach onload animation
+          modalImg.onload = () => {
+            try {
+              if (!prefersReduced && window.gsap) {
+                gsap.killTweensOf(modalImg);
+                gsap.fromTo(modalImg, { opacity: 0, y: 12, scale: 0.985 }, { opacity: 1, y: 0, scale: 1, duration: 0.34, ease: 'power2.out' });
+              }
+            } catch (e) { /* ignore */ }
+          };
+          modalImg.src = best || src || artImg.src || '';
+        } catch (e) {
+          modalImg.src = src || artImg.src || '';
+        }
+      }
+
+      function openLightbox(src, title){
+        if (!modal) return;
+        modalTitle.textContent = title || '';
+        modal.classList.add('open');
+        document.body.style.overflow = 'hidden';
+
+        // animate backdrop/card
+        if (!prefersReduced && window.gsap) {
+          gsap.killTweensOf(modal);
+          gsap.set(modal, { opacity: 0 });
+          gsap.to(modal, { opacity: 1, duration: 0.28, ease: 'power2.out' });
+        }
+
+        // load & animate the image once ready
+        setModalImage(src || artImg.src);
+      }
+
+      function closeLightbox(){
+        if (!modal) return;
+        if (!prefersReduced && window.gsap) {
+          gsap.killTweensOf(modal);
+          gsap.to(modal, { opacity: 0, duration: 0.2, ease: 'power1.in', onComplete() {
+            modal.classList.remove('open');
+            document.body.style.overflow = '';
+            // clear src to free memory
+            try { modalImg.src = ''; } catch(e){}
+          }});
+        } else {
+          modal.classList.remove('open');
+          document.body.style.overflow = '';
+          try { modalImg.src = ''; } catch(e){}
+        }
+      }
+
+      // open via the full-size button
+      viewFullBtn?.addEventListener('click', (e)=>{
+        e.preventDefault();
+        const w = works[current];
+        openLightbox(w?.img || artImg.src, w?.title || 'Artwork');
+      });
+
+      // also open by clicking the viewer image
+      if (artImg) {
+        artImg.style.cursor = 'zoom-in';
+        artImg.addEventListener('click', ()=>{
+          const w = works[current];
+          openLightbox(w?.img || artImg.src, w?.title || 'Artwork');
+        });
+      }
+
+      // overlay close and close button
+      modal?.addEventListener('click', (e)=>{
+        if (e.target === modal || e.target === modalClose) closeLightbox();
+      });
+
+      // prev/next in lightbox — animate image swap
+      btnPrev?.addEventListener('click', async (e)=>{
+        e.preventDefault();
+        // animate current modal image out
+        try {
+          if (!prefersReduced && window.gsap) {
+            await gsap.to(modalImg, { opacity: 0, x: 20, duration: 0.18, ease: 'power1.in' });
+          }
+        } catch(e){}
+        current = (current - 1 + works.length) % works.length;
+        renderWork(current);
+        const w = works[current];
+        modalTitle.textContent = w?.title || 'Artwork';
+        setModalImage(w?.img || artImg.src);
+      });
+
+      btnNext?.addEventListener('click', async (e)=>{
+        e.preventDefault();
+        try {
+          if (!prefersReduced && window.gsap) {
+            await gsap.to(modalImg, { opacity: 0, x: -20, duration: 0.18, ease: 'power1.in' });
+          }
+        } catch(e){}
+        current = (current + 1) % works.length;
+        renderWork(current);
+        const w = works[current];
+        modalTitle.textContent = w?.title || 'Artwork';
+        setModalImage(w?.img || artImg.src);
+      });
+
+      // keyboard support
+      document.addEventListener('keydown', (e)=>{
+        if (!modal) return;
+        if (e.key === 'Escape') closeLightbox();
+        if (e.key === 'ArrowRight' && modal.classList.contains('open')){
+          current = (current + 1) % works.length; renderWork(current); openLightbox(works[current].img, works[current].title);
+        }
+        if (e.key === 'ArrowLeft' && modal.classList.contains('open')){
+          current = (current - 1 + works.length) % works.length; renderWork(current); openLightbox(works[current].img, works[current].title);
+        }
+      });
+    })();
+
     // Header link intro animation (respects reduced motion)
 (function animateHeaderLinks(){
   const back = document.getElementById('backLink');
@@ -1017,6 +1293,5 @@ if (mobileStrip) {
 
     </script>
 
-
-</body>
-</html>
+    </body>
+    </html>

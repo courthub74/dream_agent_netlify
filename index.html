@@ -516,6 +516,19 @@
     0 6px 18px rgba(0,0,0,.28);
 }
 
+  /* Widen About container on very large screens */
+  @media (min-width: 1601px) {
+    :root {
+      --content-max: 88rem; /* ~1408px — increases About width on large desktops */
+    }
+    .mobile_about_container { max-width: var(--content-max); }
+  }
+
+  @media (min-width: 2000px) {
+    :root { --content-max: 96rem; /* ~1536px — for ultra-wide displays */ }
+    .mobile_about_container { max-width: var(--content-max); }
+  }
+
 
 
     
@@ -617,14 +630,19 @@
     </nav>
 
     <div class="mt-auto px-4 py-4 border-t border-white/8">
-  <p class="flex items-center gap-2 text-sm text-white/70">
+  <a href="https://courdevelops.com"
+     target="_blank"
+     rel="noopener"
+     class="flex items-center gap-2 text-sm text-white/70 hover:text-white">
     <img src="img/icons/developer/courdevelops.svg"
-         alt="CourDevelops logo"
-         class="w-6 h-6 opacity-40 rounded-md"
+         alt="CourDevelops — AI-integrated web development studio"
+         class="w-6 h-6 opacity-60 rounded-md"
          width="24" height="24">
-    <span>Powered by <a href="#" class="underline hover:text-white">CourDevelops</a></span>
-  </p>
+    <span>Powered by CourDevelops</span>
+  </a>
 </div>
+
+
   </aside>
 
   <main>
@@ -664,7 +682,7 @@
 
              <!-- SYMBOLS IN MOTION -->
             <a href="collection_pages/symbols.html" class="group reveal-card reveal-left">
-              <img src="img/collection_covers/symbols_in_motion.png" alt="symbols_in_motion" width="1200" height="800" />
+              <img src="img/collection_covers/symbols_in_motion.png"  alt="Dream Agent AI surrealist artwork — Symbols in Motion collection" width="1200" height="800" />
               <div class="shade"></div>
               <div class="copy">
                 <h3 class="text-lg sm:text-xl font-normal mb-1 collection-title">Symbols in Motion</h3>
@@ -678,7 +696,7 @@
 
             <!-- SIGNALS & ASCENSIONS -->
             <a href="collection_pages/signals.html" class="group reveal-card reveal-left">
-              <img src="img/collection_covers/signals_and_ascensions.png" alt="signals_and_ascensions" width="1200" height="800" />
+              <img src="img/collection_covers/signals_and_ascensions.png" alt="Dream Agent AI surrealist artwork — Signals and Ascensions" width="1200" height="800" />
               <div class="shade"></div>
               <div class="copy">
                 <h3 class="text-lg sm:text-xl font-normal mb-1 collection-title">Signals &amp; Ascensions</h3>
@@ -692,7 +710,7 @@
 
             <!-- WAR & FEAST -->
             <a href="collection_pages/war_feast.html" class="group reveal-card reveal-left">
-              <img src="img/collection_covers/war_and_feast.png" alt="war_and_feast" width="1200" height="800" />
+              <img src="img/collection_covers/war_and_feast.png" alt="Dream Agent AI surrealist artwork — War and Feast" width="1200" height="800" />
               <div class="shade"></div>
               <div class="copy">
                 <h3 class="text-lg sm:text-xl font-normal mb-1 collection-title">War &amp; Feast</h3>
@@ -706,7 +724,7 @@
 
             <!-- INDUSTRIAL MYTHS -->
             <a href="collection_pages/industrial.html" class="group reveal-card reveal-left">
-              <img src="img/collection_covers/industrial_myths.png" alt="industrial_myths" width="1200" height="800" />
+              <img src="img/collection_covers/industrial_myths.png" alt="Dream Agent AI surrealist artwork — Industrial Myths" width="1200" height="800" />
               <div class="shade"></div>
               <div class="copy">
                 <h3 class="text-lg sm:text-xl font-normal mb-1 collection-title">Industrial Myths</h3>
@@ -720,7 +738,7 @@
 
             <!-- THE DIGITAL UNCONSCIOUS -->
             <a href="collection_pages/digital.html" class="group reveal-card reveal-left">
-              <img src="img/collection_covers/digital_unconscious.png" alt="the_digital_unconscious" width="1200" height="800" />
+              <img src="img/collection_covers/digital_unconscious.png" alt="Dream Agent AI surrealist artwork — The Digital Unconscious" width="1200" height="800" />
               <div class="shade"></div>
               <div class="copy">
                 <h3 class="text-lg sm:text-xl font-normal mb-1 collection-title">The Digital Unconscious</h3>
@@ -734,7 +752,7 @@
 
             <!-- THE DOMINION ARCHIVE -->
             <a href="collection_pages/dominion.html" class="group reveal-card reveal-left">
-              <img src="img/collection_covers/dominion_archives.png" alt="the_dominion_archive" width="1200" height="800" />
+              <img src="img/collection_covers/dominion_archives.png" alt="Dream Agent AI surrealist artwork — The Dominion Archive" width="1200" height="800" />
               <div class="shade"></div>
               <div class="copy">
                 <h3 class="text-lg sm:text-xl font-normal mb-1 collection-title">The Dominion Archive</h3>
@@ -749,6 +767,8 @@
         </section>
       </div>
     </section>
+
+    
     <!-- FOOTER -->
     <footer class="mt-10">
      <div class="max-w-6xl mx-auto px-4 py-4 sm:pt-12 rounded-xl">
@@ -781,12 +801,24 @@
         <!-- </div> -->
        <!-- right group: copyright / attribution -->
       <div class="flex flex-col items-center gap-2 text-xs text-white/30">
-        <p>© 2025 Dream Agent. All rights reserved.</p>
-        <!-- <p class="flex items-center gap-1">
-          <img src="./img/round_logos/Courdevelops.svg" alt="CourDevelops logo" class="w-8 h-8 opacity-30" width="16" height="16">
-          Powered by CourDevelops
-        </p> -->
-      </div>
+          <p>© 2025 Dream Agent. All rights reserved.</p>
+          <p class="flex items-center gap-2">
+            <img src="img/icons/developer/courdevelops.svg"
+                alt="CourDevelops — AI-integrated web development studio"
+                class="w-5 h-5 opacity-60"
+                width="20" height="20">
+            <span>
+              Powered by
+              <a href="https://courdevelops.com"
+                target="_blank"
+                rel="noopener"
+                class="underline hover:text-white/80">
+                CourDevelops
+              </a>
+            </span>
+          </p>
+        </div>
+
       </div>
     </div>
   </footer>

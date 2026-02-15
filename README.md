@@ -1,11 +1,10 @@
-<img src="./img/logos/DreamAgentBlue.jpg" width="180" alt="Dream Agent Logo" align="center">
-# dreamagent.art
+<img src="./img/logos/DreamAgentBlue.jpg" width="150" alt="Dream Agent Logo" align="center">
 
-<p align="center">
-  <strong>Official promotional website of Dream Agent</strong>
-</p>
+<strong>Official promotional website of Dream Agent</strong>
 
 ---
+
+# dreamagent.art
 
 ## Overview
 

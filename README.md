@@ -1,8 +1,6 @@
-<p align="center">
-  <img src="./img/logos/DreamAgentBlue.jpg" width="180" alt="Dream Agent Logo">
-</p>
-
 # dreamagent.art
+
+<img src="./img/logos/DreamAgentBlue.jpg" width="180" alt="Dream Agent Logo">
 
 <p align="center">
   <strong>Official promotional website of Dream Agent</strong>
@@ -83,9 +81,11 @@ The interface exists to frame the work — not compete with it.
 
 All artwork and branding are © Dream Agent.  
 Site engineering and system architecture by CourDevelops.
-<img src="./img/logos/neo_logo_white.png" width="24" alt="CourDevelops Logo" align="center">
+<img src="./img/logos/neo_logo_white.png" width="40" alt="CourDevelops Logo" align="center">
 
 ---
 
-dreamagent.art  
+dreamagent.art
+<img src="./img/logos/DreamAgentBlue.jpg" width="180" alt="Dream Agent Logo">
+
 No Face. No Fame. Just the Vision.

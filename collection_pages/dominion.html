@@ -195,6 +195,70 @@
     .no-scrollbar::-webkit-scrollbar { display: none; }
     .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 
+    /* Lightbox modal */
+    #lightboxModal {
+      position: fixed;
+      inset: 0;
+      display: none;
+      place-items: center;
+      background: rgba(0,0,0,0.88);
+      z-index: 1200;
+      padding: 2.5rem;
+      -webkit-backdrop-filter: blur(6px);
+      backdrop-filter: blur(6px);
+    }
+    #lightboxModal.open { display: grid; }
+    #lightboxModal .lb-content {
+      max-width: 92vw;
+      max-height: 92vh;
+      width: auto;
+      height: auto;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: .5rem;
+    }
+    #lightboxModal img {
+      max-width: 100%;
+      max-height: 84vh;
+      object-fit: contain;
+      border-radius: 10px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.6);
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+    }
+    #lightboxModal .lb-title {
+      color: rgba(255,255,255,0.92);
+      font-weight: 600;
+      text-align: center;
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: 1.02rem;
+      margin-top: .25rem;
+    }
+    #lightboxModal .lb-close {
+      position: absolute;
+      top: -10px;
+      right: -10px;
+      background: rgba(0,0,0,0.45);
+      border: 1px solid rgba(255,255,255,0.08);
+      color: white;
+      padding: 6px 8px;
+      border-radius: 9999px;
+      cursor: pointer;
+      z-index: 2;
+    }
+    #lightboxModal .lb-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      color: white;
+      font-size: 1.6rem;
+      background: rgba(0,0,0,0.35);
+      border: 1px solid rgba(255,255,255,0.06);
+      width: 44px; height: 44px; display:flex;align-items:center;justify-content:center;border-radius:9999px;cursor:pointer;backdrop-filter: blur(2px);
+    }
+    #lightboxModal .lb-prev { left: 18px; }
+    #lightboxModal .lb-next { right: 18px; }
   </style>
 
   <!-- put this in <head> after Tailwind -->
@@ -292,12 +356,12 @@
      <!-- CTA buttons -->
       <div class="mt-10 flex items-center gap-3 flex-wrap">
         <!-- View Full Size (no glow, same border as unlockable) -->
-        <a
+        <a id="viewFullBtn" href="#"
           class="inline-flex items-center justify-center rounded-full px-5 py-3 text-sm font-semibold text-white
-                bg-white/10 border border-white/20 ring-0 shadow-none transition-colors
-                hover:bg-white/15 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#133B70]
-                active:translate-y-[1px] cursor-default md:cursor-pointer">
-                View Full Size
+          bg-white/10 border border-white/20 ring-0 shadow-none transition-colors
+          hover:bg-white/15 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#133B70]
+          active:translate-y-[1px] cursor-pointer">
+          View Full Size
         </a>
 
 
@@ -430,6 +494,19 @@
     </div>
   </footer>
 
+  <!-- Lightbox modal markup -->
+  <div id="lightboxModal" aria-hidden="true" role="dialog" aria-label="Full-size artwork">
+    <div class="lb-content">
+      <button id="lightboxClose" class="lb-close" aria-label="Close">✕</button>
+      <button id="lightboxPrev" class="lb-nav lb-prev" aria-label="Previous">‹</button>
+      <div style="display:flex;flex-direction:column;align-items:center;">
+        <img id="lightboxImg" src="" alt="Full size artwork">
+        <div id="lightboxTitle" class="lb-title"></div>
+      </div>
+      <button id="lightboxNext" class="lb-nav lb-next" aria-label="Next">›</button>
+    </div>
+  </div>
+
   <script>
         // ALL THE PICTURES & DATA
         ////////////////////////////////////////////////////////////////////////////////////////////
@@ -441,7 +518,7 @@
             // CENSUS RITUAL
             { title:"The Census Ritual", year:"2020", style:"Oil-style",
             tags:["portal","desert"],
-            img:"../img/collection_works/dominon_archives/the_census_ritual.png",
+            img:"../img/collection_works/dominion_archives/the_census_ritual.png",
             desc:[
                 "A solemn procession of robed figures winds across a cracked desert floor, funneled through a monolithic stone frame etched with the year 1868—a date loaded with political memory and post-war reshuffling. Towering over the crowd, a bald sentinel holds open the gate, as if officiating a rite of passage or a reckoning of identities. The twin red horns atop the stone portal echo silent warning.",
                 "'The Census Ritual' explores themes of enumeration, erasure, and conformity within the historical machinery of power. Here, the ritual of “counting” becomes symbolic of control—of being seen not as individuals, but as entries in a ledger of empire.",
@@ -452,7 +529,7 @@
             // DISCOVERY OF THE INDIGENOUS
             { title:"Discovery of the Indigenous", year:"2024", style:"Oil-style",
             tags:["pan","copper"],
-            img:"../img/collection_works/dominon_archives/discovery_of_the_indigenous.png",
+            img:"../img/collection_works/dominion_archives/discovery_of_the_indigenous.png",
             desc:[
                "In 'Discovery of the Indigenous', Dream Agent constructs a searing, symbolic kitchen scene where myth, media, and memory simmer in a glowing amber palette. At its center, a radiant coin illuminates a countertop tableau—a surreal altar of distorted Americana. A headless torso pours forth a nested maternal figure into a green bottle labeled 'The Agriculture was already KNOWN', confronting narratives of invention with truths of ancestral cultivation. Beside it, a reddish bottle declares, 'THEY AIN'T AFRICAN', challenging imposed identities and colonial mislabeling.",
                "Above, a melting stick of butter stamped 'WIKIPEDIA Googled BUTTER SPREAD' slowly drips, its American flag suggesting the spoon-fed digital rewriting of history. Below, a skillet of golden liquid overflows, blending nourishment and loss, as a crumpled flag sinks beside it—symbol of a buried or burned truth. On the stove’s surface, a woman’s portrait gazes forward from a round frame, echoed in the form emerging from the man's chest—an emblem of lineage and remembrance.",
@@ -463,7 +540,7 @@
             // SALTWATER ELECTRONICS
             { title:"Saltwater Electronics", year:"2021", style:"Oil-style",
             tags:["ocean","gods"],
-            img:"../img/collection_works/dominon_archives/saltwater_electronics.png",
+            img:"../img/collection_works/dominion_archives/saltwater_electronics.png",
             desc:[
                 "Three ancient bronze gods of logic, sea, and war stand on the edge of civilization’s ocean, lifting an 'Etch A Sketch' like a new divine tablet. The crude map it displays—arrows of commerce, migration, and data—etches a nervous system over the American continent. Beneath, the sand cracks with 'electrical salt', where old myth meets circuitry. A salt shaker, a bottle, and a date (1846) whisper of invention, revolution, and dissolution.",
                 "In 'Saltwater Electronics', Dream Agent fuses mythological statuary with post-industrial nostalgia, asking: 'What happens when the gods inherit our technology and redraw the world from the beach of history'",
@@ -473,7 +550,7 @@
             // BIG FOREST TAHHEED
             { title:"Big Forest Taheed", year:"2025", style:"Oil-style",
             tags:["desert","spaghetti"],
-            img:"../img/collection_works/dominon_archives/big_forest_taheed.png",
+            img:"../img/collection_works/dominion_archives/big_forest_taheed.png",
             desc:[
                 "'Big Forest Taheed' presents a monumental figure standing between the myth of the frontier and the modern paradox of restraint. Dressed in a sailor’s uniform, carrying an axe over his shoulder, the figure is not a conqueror but a steward—his presence bound by the sign at his feet: 'Just enough for shelter, nothing more.'",
                 "The painting confronts the legacy of industry, expansion, and survival, reframing them through an ethic of balance. The bottles at the base serve as mute totems—red and green, warning and permission—while the vast field of corn and evergreen trees remind us of the eternal tension between cultivation and wilderness.",
@@ -484,7 +561,7 @@
             // THE REFACTORING RITUAL
             { title:"The Refactoring Ritual", year:"2025", style:"Oil-style",
             tags:["spy","birds"],
-            img:"../img/collection_works/dominon_archives/the_refactoring_ritual.png",
+            img:"../img/collection_works/dominion_archives/the_refactoring_ritual.png",
             desc:[
                 "'The Refactoring Ritual' by Dream Agent is a surreal procession through the archway of time, marked '1940'. At its helm looms a faceless figure in a black tuxedo and top hat, holding the stone portal adorned with twin horns. On one side, the crowd emerges in muted earth tones—on the other, they dissolve into stark silhouettes of black and white, as if stripped to archetypes. The skyline towers like watchful sentinels, the air thick with unspoken agreements.", 
                 "This work speaks to the reprogramming of societies—where identity, morality, and memory are refactored into a binary code of belonging and erasure.",
@@ -641,6 +718,7 @@
         const xrpBtn   = document.getElementById("xrpBtn");
         const osBtn    = document.getElementById("osBtn");
         const srBtn    = document.getElementById("srBtn");
+        const viewFullBtn = document.getElementById('viewFullBtn');
 
         function paragraphsHTML(desc) {
         const arr = Array.isArray(desc) ? desc : [desc || ""];
@@ -701,11 +779,19 @@
             animate([artTitle, artMeta, artDesc], {opacity:1, y:0}, {opacity:0, y:6}, 0.18);
 
             try {
-            const img = await preload(w.img);
+            // Prefer images in img/collection_works and attempt high-res variants
+            function basenameFromPath(p){ if(!p) return ''; const parts = p.split('/'); return parts[parts.length-1]; }
+            function slugFromHeader(){ return 'dominion_archives'; }
+            function collectionWorksPathFor(src){ if(!src) return src; if(src.includes('collection_works')) return src; const name = basenameFromPath(src); const slug = slugFromHeader() || 'unknown'; return `../img/collection_works/${slug}/${name}`; }
+            async function chooseHighRes(preferred){ if(!preferred) throw new Error('no preferred'); const name = basenameFromPath(preferred).replace(/\s+/g,'%20'); const dir = preferred.replace(/\\[^/]*$/, ''); const candidates = [ `${dir}/${name.replace(/(\.[^.]+)$/, '-full$1')}`, `${dir}/${name.replace(/(\.[^.]+)$/, '-hires$1')}`, `${dir}/${name.replace(/(\.[^.]+)$/, '@2x$1')}`, `${dir}/masters/${name}`, preferred ]; for(const c of candidates){ try{ await preload(c); return c; }catch(e){} } throw new Error('no candidate'); }
 
-            // Swap content
-            // Swap content
-            artImg.src = img.src;
+            const preferred = collectionWorksPathFor(w.img);
+            let bestSrc = w.img;
+            try { bestSrc = await chooseHighRes(preferred); } catch(e) { bestSrc = w.img; }
+            let img = null;
+            try { img = await preload(bestSrc); } catch(e) { try { img = await preload(w.img); bestSrc = w.img; } catch(e2) { img = null; } }
+
+            artImg.src = img?.src || w.img;
             artTitle.textContent = w.title || "";
             artMeta.innerHTML = `<span>${w.year||""}</span><span>•</span><span>${w.style||""}</span>`;
             artDesc.innerHTML = paragraphsHTML(w.desc);
@@ -713,11 +799,7 @@
             osBtn.href  = w.links?.os  || "#";
             srBtn.href  = w.links?.sr  || "#";
 
-            // artImg.src = img.src;
-            // artTitle.textContent = w.title;
-            // artMeta.innerHTML = `<span>${w.year}</span><span>•</span><span>${w.style}</span>`;
-            // artDesc.textContent = w.desc;
-            // xrpBtn.href = w.links.xrp; osBtn.href = w.links.os; srBtn.href = w.links.sr;
+            try { const v = document.getElementById('viewFullBtn'); if (v) v.href = bestSrc; } catch(e) {}
 
             // Animate in
             animate(artImg, {opacity:0, scale:0.985}, {opacity:1, scale:1}, 0.4);
@@ -977,34 +1059,136 @@
                 syncActiveHighlight();
             };
 
-            // First paint: let the image fade in on load
-            artImg.addEventListener("load", ()=>{
-                animate(artImg, {opacity:0, scale:0.985}, {opacity:1, scale:1}, 0.45);
-            }, { once:true });
+            // Lightbox modal wiring
+            (function setupLightbox(){
+              const modal = document.getElementById('lightboxModal');
+              const modalImg = document.getElementById('lightboxImg');
+              const modalTitle = document.getElementById('lightboxTitle');
+              const modalClose = document.getElementById('lightboxClose');
+              const btnPrev = document.getElementById('lightboxPrev');
+              const btnNext = document.getElementById('lightboxNext');
 
-            renderWork(current);
+              // helper: load & animate modal image (prefers collection_works + high-res variants)
+              async function setModalImage(src){
+                if (!modalImg) return;
+                // Use the original image path (w.img) or provided src directly.
+                const chosen = src || artImg.src || '';
+                modalImg.onerror = () => {
+                  console.error('Modal image failed to load:', chosen);
+                  if (!document.getElementById('lbImgError')) {
+                    const errDiv = document.createElement('div');
+                    errDiv.id = 'lbImgError';
+                    errDiv.textContent = 'Image failed to load.';
+                    errDiv.style = 'position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);color:#fff;background:rgba(0,0,0,0.7);padding:1em 2em;border-radius:8px;z-index:10;font-size:1.1em;text-align:center;';
+                    modalImg.parentElement.appendChild(errDiv);
+                  }
+                };
+                modalImg.onload = () => {
+                  const errDiv = document.getElementById('lbImgError');
+                  if (errDiv) errDiv.remove();
+                  try {
+                    if (!prefersReduced && window.gsap) {
+                      gsap.killTweensOf(modalImg);
+                      gsap.fromTo(modalImg, { opacity: 0, y: 12, scale: 0.985 }, { opacity: 1, y: 0, scale: 1, duration: 0.34, ease: 'power2.out' });
+                    }
+                  } catch (e) { /* ignore */ }
+                };
+                modalImg.src = chosen;
+              }
 
+              function openLightbox(src, title){
+                if (!modal) return;
+                modalTitle.textContent = title || '';
+                modal.classList.add('open');
+                document.body.style.overflow = 'hidden';
 
-        // Header link intro animation (respects reduced motion)
-        (function animateHeaderLinks(){
-        const back = document.getElementById('backLink');
-        const next = document.getElementById('nextLink');
-        if (!back || !next) return;
+                if (!prefersReduced && window.gsap) {
+                  gsap.killTweensOf(modal);
+                  gsap.set(modal, { opacity: 0 });
+                  gsap.to(modal, { opacity: 1, duration: 0.28, ease: 'power2.out' });
+                }
 
-        if (prefersReduced) {
-            // ensure visible without motion
-            gsap.set([back, next], { opacity: 1, y: 0 });
-            return;
-        }
+                setModalImage(src || artImg.src);
+              }
 
-        gsap.from([back, next], {
-            opacity: 0,
-            y: -6,
-            duration: 0.45,
-            ease: "power2.out",
-            stagger: 0.06
-        });
-        })();
+              function closeLightbox(){
+                if (!modal) return;
+                if (!prefersReduced && window.gsap) {
+                  gsap.killTweensOf(modal);
+                  gsap.to(modal, { opacity: 0, duration: 0.2, ease: 'power1.in', onComplete() {
+                    modal.classList.remove('open');
+                    document.body.style.overflow = '';
+                    try { modalImg.src = ''; } catch(e){}
+                  }});
+                } else {
+                  modal.classList.remove('open');
+                  document.body.style.overflow = '';
+                  try { modalImg.src = ''; } catch(e){}
+                }
+              }
+
+              // open via the full-size button
+              viewFullBtn?.addEventListener('click', (e)=>{
+                e.preventDefault();
+                const w = works[current];
+                openLightbox(w?.img || artImg.src, w?.title || 'Artwork');
+              });
+
+              // also open by clicking the viewer image
+              if (artImg) {
+                artImg.style.cursor = 'zoom-in';
+                artImg.addEventListener('click', ()=>{
+                  const w = works[current];
+                  openLightbox(w?.img || artImg.src, w?.title || 'Artwork');
+                });
+              }
+
+              // overlay close and close button
+              modal?.addEventListener('click', (e)=>{
+                if (e.target === modal || e.target === modalClose) closeLightbox();
+              });
+
+              // prev/next in lightbox
+              btnPrev?.addEventListener('click', async (e)=>{
+                e.preventDefault();
+                try {
+                  if (!prefersReduced && window.gsap) {
+                    await gsap.to(modalImg, { opacity: 0, x: 20, duration: 0.18, ease: 'power1.in' });
+                  }
+                } catch(e){}
+                current = (current - 1 + works.length) % works.length;
+                renderWork(current);
+                const w = works[current];
+                modalTitle.textContent = w?.title || 'Artwork';
+                setModalImage(w?.img || artImg.src);
+              });
+
+              btnNext?.addEventListener('click', async (e)=>{
+                e.preventDefault();
+                try {
+                  if (!prefersReduced && window.gsap) {
+                    await gsap.to(modalImg, { opacity: 0, x: -20, duration: 0.18, ease: 'power1.in' });
+                  }
+                } catch(e){}
+                current = (current + 1) % works.length;
+                renderWork(current);
+                const w = works[current];
+                modalTitle.textContent = w?.title || 'Artwork';
+                setModalImage(w?.img || artImg.src);
+              });
+
+              // keyboard support
+              document.addEventListener('keydown', (e)=>{
+                if (!modal) return;
+                if (e.key === 'Escape') closeLightbox();
+                if (e.key === 'ArrowRight' && modal.classList.contains('open')){
+                  current = (current + 1) % works.length; renderWork(current); openLightbox(works[current].img, works[current].title);
+                }
+                if (e.key === 'ArrowLeft' && modal.classList.contains('open')){
+                  current = (current - 1 + works.length) % works.length; renderWork(current); openLightbox(works[current].img, works[current].title);
+                }
+              });
+            })();
 
     </script>
 

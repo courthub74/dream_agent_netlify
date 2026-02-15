@@ -195,6 +195,71 @@
     .no-scrollbar::-webkit-scrollbar { display: none; }
     .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 
+    /* Lightbox modal */
+    #lightboxModal {
+      position: fixed;
+      inset: 0;
+      display: none;
+      place-items: center;
+      background: rgba(0,0,0,0.88);
+      z-index: 1200;
+      padding: 2.5rem;
+      -webkit-backdrop-filter: blur(6px);
+      backdrop-filter: blur(6px);
+    }
+    #lightboxModal.open { display: grid; }
+    #lightboxModal .lb-content {
+      max-width: 92vw;
+      max-height: 92vh;
+      width: auto;
+      height: auto;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: .5rem;
+    }
+    #lightboxModal img {
+      max-width: 100%;
+      max-height: 84vh;
+      object-fit: contain;
+      border-radius: 10px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.6);
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+    }
+    #lightboxModal .lb-title {
+      color: rgba(255,255,255,0.92);
+      font-weight: 600;
+      text-align: center;
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: 1.02rem;
+      margin-top: .25rem;
+    }
+    #lightboxModal .lb-close {
+      position: absolute;
+      top: -10px;
+      right: -10px;
+      background: rgba(0,0,0,0.45);
+      border: 1px solid rgba(255,255,255,0.08);
+      color: white;
+      padding: 6px 8px;
+      border-radius: 9999px;
+      cursor: pointer;
+      z-index: 2;
+    }
+    #lightboxModal .lb-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      color: white;
+      font-size: 1.6rem;
+      background: rgba(0,0,0,0.35);
+      border: 1px solid rgba(255,255,255,0.06);
+      width: 44px; height: 44px; display:flex;align-items:center;justify-content:center;border-radius:9999px;cursor:pointer;backdrop-filter: blur(2px);
+    }
+    #lightboxModal .lb-prev { left: 18px; }
+    #lightboxModal .lb-next { right: 18px; }
+
   </style>
 
   <!-- put this in <head> after Tailwind -->
@@ -293,12 +358,13 @@
      <!-- CTA buttons -->
       <div class="mt-10 flex items-center gap-3 flex-wrap">
         <!-- View Full Size (no glow, same border as unlockable) -->
-        <a
+        <a id="viewFullBtn"
+          href="#"
           class="inline-flex items-center justify-center rounded-full px-5 py-3 text-sm font-semibold text-white
-                bg-white/10 border border-white/20 ring-0 shadow-none transition-colors
-                hover:bg-white/15 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#133B70]
-                active:translate-y-[1px] cursor-default md:cursor-pointer">
-                View Full Size
+          bg-white/10 border border-white/20 ring-0 shadow-none transition-colors
+          hover:bg-white/15 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#133B70]
+          active:translate-y-[1px] cursor-pointer md:cursor-pointer">
+          View Full Size
         </a>
 
 
@@ -435,6 +501,19 @@
       </div>
     </div>
   </footer>
+
+  <!-- Lightbox modal markup -->
+<div id="lightboxModal" aria-hidden="true" role="dialog" aria-label="Full-size artwork">
+  <div class="lb-content">
+    <button id="lightboxClose" class="lb-close" aria-label="Close">✕</button>
+    <button id="lightboxPrev" class="lb-nav lb-prev" aria-label="Previous">‹</button>
+    <div style="display:flex;flex-direction:column;align-items:center;">
+      <img id="lightboxImg" src="" alt="Full size artwork">
+      <div id="lightboxTitle" class="lb-title"></div>
+    </div>
+    <button id="lightboxNext" class="lb-nav lb-next" aria-label="Next">›</button>
+  </div>
+</div>
 
   <script>
   // ALL THE PICTURES & DATA
@@ -706,6 +785,43 @@
     });
   }
 
+  // ----- helpers to prefer collection_works and detect high-res variants -----
+  function basenameFromPath(p){
+    if(!p) return '';
+    const parts = p.split('/'); return parts[parts.length-1];
+  }
+  function slugFromHeader(){
+    const h = document.querySelector('h1.serif');
+    if(!h) return '';
+    return String(h.textContent || '').toLowerCase().replace(/[^a-z0-9]+/g,'_').replace(/^_+|_+$/g,'');
+  }
+  function collectionWorksPathFor(src){
+    // If the src already looks like collection_works, return as-is
+    if(!src) return src;
+    if(src.includes('collection_works')) return src;
+    const name = basenameFromPath(src);
+    const slug = slugFromHeader() || 'unknown';
+    return `../img/collection_works/${slug}/${name}`;
+  }
+
+  async function chooseHighRes(preferred){
+    // Try several common high-res candidate patterns and return first that preloads
+    if(!preferred) throw new Error('no preferred');
+    const name = basenameFromPath(preferred).replace(/\s+/g,'%20');
+    const dir = preferred.replace(/\/[^/]*$/, '');
+    const candidates = [
+      `${dir}/${name.replace(/(\.[^.]+)$/, '-full$1')}`,
+      `${dir}/${name.replace(/(\.[^.]+)$/, '-hires$1')}`,
+      `${dir}/${name.replace(/(\.[^.]+)$/, '@2x$1')}`,
+      `${dir}/masters/${name}`,
+      preferred
+    ];
+    for(const c of candidates){
+      try{ await preload(c); return c; }catch(e){}
+    }
+    throw new Error('no candidate');
+  }
+
   // Render with crossfade/scale
   async function renderWork(i){
     if (switching) return;
@@ -725,11 +841,20 @@
     animate([artTitle, artMeta, artDesc], {opacity:1, y:0}, {opacity:0, y:6}, 0.18);
 
     try {
-      const img = await preload(w.img);
+      // Prefer images in img/collection_works and attempt high-res variants
+      const preferred = collectionWorksPathFor(w.img);
+      let bestSrc = w.img;
+      try { bestSrc = await chooseHighRes(preferred); } catch(e) { bestSrc = w.img; }
+
+      // Preload chosen source (fallback to w.img)
+      let img = null;
+      try { img = await preload(bestSrc); } catch(e) { try { img = await preload(w.img); bestSrc = w.img; } catch(e2) { img = null; } }
 
       // Swap content
-      // Swap content
-      artImg.src = img.src;
+      artImg.src = img?.src || w.img;
+      // update the "View Full Size" href so modal/open uses best source
+      const vf = document.getElementById('viewFullBtn');
+      if(vf) vf.href = bestSrc || w.img;
       artTitle.textContent = w.title || "";
       artMeta.innerHTML = `<span>${w.year||""}</span><span>•</span><span>${w.style||""}</span>`;
       artDesc.innerHTML = paragraphsHTML(w.desc);
@@ -1001,12 +1126,128 @@ if (mobileStrip) {
         syncActiveHighlight();
     };
 
-    // First paint: let the image fade in on load
-    artImg.addEventListener("load", ()=>{
-        animate(artImg, {opacity:0, scale:0.985}, {opacity:1, scale:1}, 0.45);
-    }, { once:true });
+    // Lightbox modal wiring
+(function setupLightbox(){
+  const modal = document.getElementById('lightboxModal');
+  const modalImg = document.getElementById('lightboxImg');
+  const modalTitle = document.getElementById('lightboxTitle');
+  const modalClose = document.getElementById('lightboxClose');
+  const btnPrev = document.getElementById('lightboxPrev');
+  const btnNext = document.getElementById('lightboxNext');
 
+  // helper: load & animate modal image (prefers collection_works + high-res variants)
+  async function setModalImage(src){
+    if (!modalImg) return;
+    const base = collectionWorksPathFor(src || artImg.src || '');
+    try {
+      const best = await chooseHighRes(base);
+      modalImg.onload = () => {
+        try {
+          if (!prefersReduced && window.gsap) {
+            gsap.killTweensOf(modalImg);
+            gsap.fromTo(modalImg, { opacity: 0, y: 12, scale: 0.985 }, { opacity: 1, y: 0, scale: 1, duration: 0.34, ease: 'power2.out' });
+          }
+        } catch (e) { /* ignore */ }
+      };
+      modalImg.src = best || src || artImg.src || '';
+    } catch (e) {
+      modalImg.src = src || artImg.src || '';
+    }
+  }
+
+  function openLightbox(src, title){
+    if (!modal) return;
+    modalTitle.textContent = title || '';
+    modal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+
+    if (!prefersReduced && window.gsap) {
+      gsap.killTweensOf(modal);
+      gsap.set(modal, { opacity: 0 });
+      gsap.to(modal, { opacity: 1, duration: 0.28, ease: 'power2.out' });
+    }
+
+    setModalImage(src || artImg.src);
+  }
+
+  function closeLightbox(){
+    if (!modal) return;
+    if (!prefersReduced && window.gsap) {
+      gsap.killTweensOf(modal);
+      gsap.to(modal, { opacity: 0, duration: 0.2, ease: 'power1.in', onComplete() {
+        modal.classList.remove('open');
+        document.body.style.overflow = '';
+        try { modalImg.src = ''; } catch(e){}
+      }});
+    } else {
+      modal.classList.remove('open');
+      document.body.style.overflow = '';
+      try { modalImg.src = ''; } catch(e){}
+    }
+  }
+
+  // open via the full-size button
+  viewFullBtn?.addEventListener('click', (e)=>{
+    e.preventDefault();
+    const w = works[current];
+    openLightbox(w?.img || artImg.src, w?.title || 'Artwork');
+  });
+
+  // also open by clicking the viewer image
+  if (artImg) {
+    artImg.style.cursor = 'zoom-in';
+    artImg.addEventListener('click', ()=>{
+      const w = works[current];
+      openLightbox(w?.img || artImg.src, w?.title || 'Artwork');
+    });
+  }
+
+  // overlay close and close button
+  modal?.addEventListener('click', (e)=>{
+    if (e.target === modal || e.target === modalClose) closeLightbox();
+  });
+
+  // prev/next in lightbox
+  btnPrev?.addEventListener('click', async (e)=>{
+    e.preventDefault();
+    try {
+      if (!prefersReduced && window.gsap) {
+        await gsap.to(modalImg, { opacity: 0, x: 20, duration: 0.18, ease: 'power1.in' });
+      }
+    } catch(e){}
+    current = (current - 1 + works.length) % works.length;
     renderWork(current);
+    const w = works[current];
+    modalTitle.textContent = w?.title || 'Artwork';
+    setModalImage(w?.img || artImg.src);
+  });
+
+  btnNext?.addEventListener('click', async (e)=>{
+    e.preventDefault();
+    try {
+      if (!prefersReduced && window.gsap) {
+        await gsap.to(modalImg, { opacity: 0, x: -20, duration: 0.18, ease: 'power1.in' });
+      }
+    } catch(e){}
+    current = (current + 1) % works.length;
+    renderWork(current);
+    const w = works[current];
+    modalTitle.textContent = w?.title || 'Artwork';
+    setModalImage(w?.img || artImg.src);
+  });
+
+  // keyboard support
+  document.addEventListener('keydown', (e)=>{
+    if (!modal) return;
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowRight' && modal.classList.contains('open')){
+      current = (current + 1) % works.length; renderWork(current); openLightbox(works[current].img, works[current].title);
+    }
+    if (e.key === 'ArrowLeft' && modal.classList.contains('open')){
+      current = (current - 1 + works.length) % works.length; renderWork(current); openLightbox(works[current].img, works[current].title);
+    }
+  });
+})();
     </script>
 
 

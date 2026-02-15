@@ -75,11 +75,11 @@ The interface exists to frame the work — not compete with it.
 
 All artwork and branding are © Dream Agent.  
 Site engineering and system architecture by CourDevelops.
-<img src="./img/logos/neo_logo_white.png" width="40" alt="CourDevelops Logo" align="center">
+<img src="./img/logos/neo_logo_white.png" width="50" alt="CourDevelops Logo" align="center">
 
 ---
 
 dreamagent.art
 
 No Face. No Fame. Just the Vision.
-<img src="./img/logos/DreamAgentBlue.jpg" width="40" alt="Dream Agent Logo" align="center">
+<img src="./img/logos/DreamAgentBlue.jpg" width="50" alt="Dream Agent Logo" align="center">

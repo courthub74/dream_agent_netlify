@@ -17,12 +17,11 @@ dreamagent.art operates as a public-facing presentation layer.
 
 Creation and structured workflow occur within:
 
-<h3>
+<h3 style="display: flex; align-items: center; justify-content: center; gap: 10px;">
   <img src="./img/logos/origin-os.png"
        width="40"
-       alt="Origin OS Logo"
-       style="vertical-align: middle; margin-right: 8px;">
-  Origin OS
+       alt="Origin OS Logo">
+  <span>Origin OS</span>
 </h3>
 
 A creator-first operating system developed by CourDevelops that powers:

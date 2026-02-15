@@ -1,6 +1,5 @@
+<img src="./img/logos/DreamAgentBlue.jpg" width="180" alt="Dream Agent Logo" align="center">
 # dreamagent.art
-
-<img src="./img/logos/DreamAgentBlue.jpg" width="180" alt="Dream Agent Logo">
 
 <p align="center">
   <strong>Official promotional website of Dream Agent</strong>
@@ -86,6 +85,6 @@ Site engineering and system architecture by CourDevelops.
 ---
 
 dreamagent.art
-<img src="./img/logos/DreamAgentBlue.jpg" width="180" alt="Dream Agent Logo">
 
 No Face. No Fame. Just the Vision.
+<img src="./img/logos/DreamAgentBlue.jpg" width="40" alt="Dream Agent Logo" align="center">

@@ -1,6 +1,7 @@
-<img src="./img/logos/DreamAgentBlue.jpg" width="150" alt="Dream Agent Logo" align="center">
-
-<strong>Official promotional website of Dream Agent</strong>
+<p align="center">
+    <img src="./img/logos/DreamAgentBlue.jpg" width="150" alt="Dream Agent Logo" align="center">
+    <strong>Official promotional website of Dream Agent</strong>
+</p>
 
 ---
 

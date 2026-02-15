@@ -25,10 +25,6 @@ dreamagent.art operates as a public-facing presentation layer.
 
 Creation and structured workflow occur within:
 
-<p align="center">
-  <img src="./img/logos/neo_logo_white.png" width="150" alt="CourDevelops Logo">
-</p>
-
 ### Origin OS
 
 A creator-first operating system developed by CourDevelops that powers:
@@ -87,6 +83,10 @@ The interface exists to frame the work — not compete with it.
 
 All artwork and branding are © Dream Agent.  
 Site engineering and system architecture by CourDevelops.
+
+<p align="center">
+    <img src="./img/logos/neo_logo_white.png" width="80" alt="CourDevelops Logo">
+</p>
 
 ---
 

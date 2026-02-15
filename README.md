@@ -83,8 +83,7 @@ The interface exists to frame the work — not compete with it.
 
 All artwork and branding are © Dream Agent.  
 Site engineering and system architecture by CourDevelops.
-Site engineering and system architecture by CourDevelops
-<img src="./img/logos/neo_logo_white.png" width="20" alt="CourDevelops Logo" align="center">
+<img src="./img/logos/neo_logo_white.png" width="24" alt="CourDevelops Logo" align="center">
 
 ---
 

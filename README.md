@@ -19,6 +19,8 @@ Creation and structured workflow occur within:
 
 ### Origin OS
 
+<img src="./img/logos/origin-os.png" width="50" alt="Origin OS Logo" align="center">
+
 A creator-first operating system developed by CourDevelops that powers:
 
 - AI-assisted image generation

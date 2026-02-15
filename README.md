@@ -1,6 +1,4 @@
-<img src="./img/logos/DreamAgentBlue.jpg" width="150" alt="Dream Agent Logo">
-
-<strong>dreamagent.art</strong>
+<img src="./img/logos/DreamAgentBlue.jpg" width="150" alt="Dream Agent Logo" align="center">
 
 ## Overview
 

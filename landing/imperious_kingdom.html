@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Imperious Kingdom — Dream Agent</title>
+  <style>
+    body {
+      margin: 0;
+      background: #050505;
+      color: #f0f0f0;
+      font-family: Arial, sans-serif;
+      overflow-x: hidden;
+    }
+
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .hero img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.45;
+    }
+
+    .overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(0,0,0,0.35),
+        rgba(0,0,0,0.7)
+      );
+    }
+
+    .content {
+      position: relative;
+      z-index: 2;
+      max-width: 760px;
+      padding: 24px;
+    }
+
+    .eyebrow {
+      font-size: 0.9rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      opacity: 0.8;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      font-size: clamp(2.2rem, 6vw, 4.5rem);
+      margin: 0 0 18px;
+      line-height: 1.02;
+    }
+
+    .subtext {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      opacity: 0.88;
+      margin: 0 auto 34px;
+      max-width: 580px;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 28px;
+    }
+
+    button {
+      background: transparent;
+      border: 1px solid rgba(255,255,255,0.75);
+      color: #f0f0f0;
+      padding: 14px 24px;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: 0.25s ease;
+    }
+
+    button:hover {
+      background: #f0f0f0;
+      color: #050505;
+    }
+
+    .mid {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 72px 24px 56px;
+      text-align: center;
+      line-height: 1.8;
+      opacity: 0.86;
+    }
+
+    .footer {
+      text-align: center;
+      padding: 36px 24px 56px;
+      opacity: 0.6;
+      font-size: 0.95rem;
+    }
+
+     /* Mobile Styles */
+    @media (max-width: 768px) {
+
+        .hero {
+            height: 100vh;
+            padding: 20px;
+        }
+
+        .content {
+            max-width: 90%;
+            padding: 10px;
+        }
+
+        .eyebrow {
+            font-size: 0.7rem;
+            letter-spacing: 0.15em;
+            margin-bottom: 12px;
+        }
+
+        h1 {
+            font-size: 2rem;
+            line-height: 1.2;
+        }
+
+        .subtext {
+            font-size: 0.95rem;
+            margin-bottom: 30px;
+        }
+
+        .buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        button {
+            width: 100%;
+            padding: 14px;
+            font-size: 0.95rem;
+        }
+
+        .mid {
+            padding: 60px 20px;
+            font-size: 0.95rem;
+        }
+
+    }
+
+    .fade-in {
+        opacity: 0;
+        transform: translateY(10px);
+        animation: fadeIn 1.2s ease forwards;
+        }
+
+        .fade-in-delay-1 {
+        animation-delay: 0.4s;
+        }
+
+        .fade-in-delay-2 {
+        animation-delay: 0.8s;
+        }
+
+        .fade-in-delay-3 {
+        animation-delay: 1.2s;
+        }
+
+        @keyframes fadeIn {
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+  </style>
+</head>
+<body>
+  <section class="hero">
+    <img src="../img/collection_works/dominion_archives/imperious_kingdom.png" alt="Imperious Kingdom" />
+    <div class="overlay"></div>
+
+    <div class="content">
+      <div class="eyebrow fade-in">Dream Agent</div>
+      <h1 class="fade-in fade-in-delay-1">Imperious Kingdom</h1>
+      <p class="subtext fade-in fade-in-delay-2">
+        Power rendered as structure.<br/>
+        Authority without a face
+      </p>
+
+      <div class="buttons fade-in fade-in-delay-3">
+        <button onclick="enterCollection()">Enter Archive</button>
+        <button onclick="acquireWork()">Acquire the Work</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="mid">
+    <p>
+      This work is not isolated.<br/>
+      It belongs to a larger system.
+    </p>
+  </section>
+
+  <section class="footer">
+    <p>Ownership is entry.</p>
+  </section>
+
+  <script>
+    function enterCollection() {
+      window.location.href = "https://dreamagent.art/collection_pages/dominion#imperious-kingdom";
+    }
+
+    function acquireWork() {
+      window.location.href = "https://xrp.cafe/dreamagent7";
+    }
+  </script>
+</body>
+</html>

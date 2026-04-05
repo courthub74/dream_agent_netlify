@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>The Future of Industry — Dream Agent</title>
+
+  <style>
+    body {
+      margin: 0;
+      background: #050505;
+      color: #f0f0f0;
+      font-family: Arial, sans-serif;
+      overflow-x: hidden;
+    }
+
+    .hero {
+      position: relative;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .hero-img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.5;
+    }
+
+    .overlay {
+      position: absolute;
+      inset: 0;
+        background: linear-gradient(
+        to bottom,
+        rgba(0,0,0,0.10),
+        rgba(0,0,0,0.40)
+      );
+    }
+
+    .content {
+      position: relative;
+      z-index: 2;
+      max-width: 700px;
+      padding: 20px;
+    }
+
+    .logo {
+      width: 70px;
+      height: auto;
+      display: block;
+      margin: 0 auto 20px;
+    }
+
+    h1 {
+      font-size: 2.6rem;
+      margin-bottom: 10px;
+    }
+
+    .subtext {
+      opacity: 0.85;
+      margin-bottom: 40px;
+      line-height: 1.5;
+    }
+
+    .buttons {
+      margin-top: 30px;
+    }
+
+    button {
+      background: transparent;
+      border: 1px solid #f0f0f0;
+      color: #f0f0f0;
+      padding: 12px 24px;
+      margin: 10px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: #f0f0f0;
+      color: #050505;
+    }
+
+    .mid {
+      padding: 80px 20px;
+      text-align: center;
+      max-width: 700px;
+      margin: auto;
+      line-height: 1.7;
+      opacity: 0.85;
+    }
+
+    .eyebrow {
+      font-size: 0.9rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      opacity: 0.8;
+      margin-bottom: 18px;
+    }
+
+    .footer {
+      text-align: center;
+      padding: 50px;
+      opacity: 0.6;
+    }
+
+     /* Mobile Styles */
+    @media (max-width: 768px) {
+
+        .hero {
+            height: 100vh;
+            padding: 20px;
+        }
+
+        .content {
+            max-width: 90%;
+            padding: 10px;
+        }
+
+        .eyebrow {
+            font-size: 0.7rem;
+            letter-spacing: 0.15em;
+            margin-bottom: 12px;
+        }
+
+        h1 {
+            font-size: 2rem;
+            line-height: 1.2;
+        }
+
+        .subtext {
+            font-size: 0.95rem;
+            margin-bottom: 30px;
+        }
+
+        .buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        button {
+            width: 100%;
+            padding: 14px;
+            font-size: 0.95rem;
+        }
+
+        .mid {
+            padding: 60px 20px;
+            font-size: 0.95rem;
+        }
+    }
+
+    .fade-in {
+      opacity: 0;
+      transform: translateY(10px);
+      animation: fadeIn 1.2s ease forwards;
+    }
+
+    .fade-in-delay-1 {
+      animation-delay: 0.4s;
+    }
+
+    .fade-in-delay-2 {
+      animation-delay: 0.8s;
+    }
+
+    .fade-in-delay-3 {
+      animation-delay: 1.2s;
+    }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+  }
+  </style>
+</head>
+<body data-artwork-slug="future-of-industry">
+
+  <!-- HERO -->
+  <section class="hero">
+    <img src="../img/added_images/the_future_of_industry.png" class="hero-img" />
+
+    <div class="overlay"></div>
+
+    <div class="content">
+      <!-- <img src="../img/logos/DreamAgentBlue.jpg" class="logo"/> -->
+
+      <div class="eyebrow fade-in">Dream Agent</div>
+
+      <h1 class="fade-in fade-in-delay-1">The Future of Industry</h1>
+
+      <p class="subtext fade-in fade-in-delay-2">
+        Work is being restructured.<br/>
+        Most people haven’t noticed yet.
+      </p>
+
+      <div class="buttons fade-in fade-in-delay-3">
+        <button onclick="enterArchive()">Enter the Archive</button>
+        <button onclick="acquire()">Acquire the Work</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- MID -->
+  <section class="mid">
+    <p>
+      The system does not remove labor.<br/>
+      It redefines where it exists.
+    </p>
+
+    <p>
+      What disappears is not work.<br/>
+      It is visibility.
+    </p>
+  </section>
+
+  <!-- FOOTER -->
+  <section class="footer">
+    <p>Participation is no longer obvious.</p>
+  </section>
+
+<script>
+function enterArchive() {
+  trackEvent("enter_archive_click", {
+    destination: "https://dreamagent.art/collection_pages/industrial#the-future-of-industry"
+  });
+  window.location.href = "https://dreamagent.art/collection_pages/industrial#the-future-of-industry";
+}
+
+function acquire() {
+  trackEvent("acquire_click", {
+    destination: "https://xrp.cafe/nft/00081388B57E780C6A5EF299540E01B0E8C6DB1B83CFC91675DD2ED405CBFA3B"
+  });
+  window.location.href = "https://xrp.cafe/nft/00081388B57E780C6A5EF299540E01B0E8C6DB1B83CFC91675DD2ED405CBFA3B";
+}
+</script>
+
+</body>
+</html>

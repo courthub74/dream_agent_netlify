@@ -108,22 +108,106 @@
       opacity: 0.6;
       font-size: 0.95rem;
     }
+
+    /* Mobile Styles */
+    @media (max-width: 768px) {
+
+        .hero {
+            height: 100vh;
+            padding: 20px;
+        }
+
+        .content {
+            max-width: 90%;
+            padding: 10px;
+        }
+
+        .eyebrow {
+            font-size: 0.7rem;
+            letter-spacing: 0.15em;
+            margin-bottom: 12px;
+        }
+
+        h1 {
+            font-size: 2rem;
+            line-height: 1.2;
+        }
+
+        .subtext {
+            font-size: 0.95rem;
+            margin-bottom: 30px;
+        }
+
+        .buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        button {
+            width: 100%;
+            padding: 14px;
+            font-size: 0.95rem;
+        }
+
+        .mid {
+            padding: 60px 20px;
+            font-size: 0.95rem;
+        }
+    }
+
+    .fade-in {
+        opacity: 0;
+        transform: translateY(10px);
+        animation: fadeIn 1.2s ease forwards;
+        }
+
+        .fade-in-delay-1 {
+        animation-delay: 0.4s;
+        }
+
+        .fade-in-delay-2 {
+        animation-delay: 0.8s;
+        }
+
+        .fade-in-delay-3 {
+        animation-delay: 1.2s;
+        }
+
+        @keyframes fadeIn {
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    /* Slow Image Reveal */
+    .hero-img {
+        opacity: 0;
+        animation: imageFade 1.5s ease forwards;
+        }
+
+        @keyframes imageFade {
+        to {
+            opacity: 0.5;
+        }
+    }
   </style>
 </head>
 <body>
   <section class="hero">
-    <img src="../img/collection_works/war_and_feast/the_starving_millionare.png" alt="The Starving Millionaire" />
+    <img src="../img/collection_works/war_and_feast/the_starving_millionare.png" class="hero-img" alt="The Starving Millionaire" />
     <div class="overlay"></div>
 
     <div class="content">
-      <div class="eyebrow">Dream Agent</div>
-      <h1>The Starving Millionaire</h1>
-      <p class="subtext">
+      <div class="eyebrow fade-in">Dream Agent</div>
+      <h1 class="fade-in fade-in-delay-1">The Starving Millionaire</h1>
+      <p class="subtext fade-in fade-in-delay-2">
         Wealth appears intact.<br />
         The structure beneath it has already failed.
       </p>
 
-      <div class="buttons">
+      <div class="buttons fade-in fade-in-delay-3">
         <button onclick="enterCollection()">Enter Archive</button>
         <button onclick="acquireWork()">Acquire the Work</button>
       </div>

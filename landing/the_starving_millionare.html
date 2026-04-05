@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Starving Millionaire — Dream Agent</title>
+  <style>
+    body {
+      margin: 0;
+      background: #050505;
+      color: #f0f0f0;
+      font-family: Arial, sans-serif;
+      overflow-x: hidden;
+    }
+
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .hero img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.45;
+    }
+
+    .overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(0,0,0,0.35),
+        rgba(0,0,0,0.7)
+      );
+    }
+
+    .content {
+      position: relative;
+      z-index: 2;
+      max-width: 760px;
+      padding: 24px;
+    }
+
+    .eyebrow {
+      font-size: 0.9rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      opacity: 0.8;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      font-size: clamp(2.2rem, 6vw, 4.5rem);
+      margin: 0 0 18px;
+      line-height: 1.02;
+    }
+
+    .subtext {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      opacity: 0.88;
+      margin: 0 auto 34px;
+      max-width: 580px;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 28px;
+    }
+
+    button {
+      background: transparent;
+      border: 1px solid rgba(255,255,255,0.75);
+      color: #f0f0f0;
+      padding: 14px 24px;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: 0.25s ease;
+    }
+
+    button:hover {
+      background: #f0f0f0;
+      color: #050505;
+    }
+
+    .mid {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 72px 24px 56px;
+      text-align: center;
+      line-height: 1.8;
+      opacity: 0.86;
+    }
+
+    .footer {
+      text-align: center;
+      padding: 36px 24px 56px;
+      opacity: 0.6;
+      font-size: 0.95rem;
+    }
+  </style>
+</head>
+<body>
+  <section class="hero">
+    <img src="../img/collection_works/war_and_feast/the_starving_millionare.png" alt="The Starving Millionaire" />
+    <div class="overlay"></div>
+
+    <div class="content">
+      <div class="eyebrow">Dream Agent</div>
+      <h1>The Starving Millionaire</h1>
+      <p class="subtext">
+        Wealth appears intact.<br />
+        The structure beneath it has already failed.
+      </p>
+
+      <div class="buttons">
+        <button onclick="enterCollection()">Enter Archive</button>
+        <button onclick="acquireWork()">Acquire the Work</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="mid">
+    <p>
+      This image does not document abundance.<br />
+      It documents the ritual of maintaining its appearance.
+    </p>
+  </section>
+
+  <section class="footer">
+    <p>Collection is a form of alignment.</p>
+  </section>
+
+  <script>
+    function enterCollection() {
+      window.location.href = "https://dreamagent.art/collection_pages/war_feast#the-starving-millionare";
+    }
+
+    function acquireWork() {
+      window.location.href = "https://xrp.cafe/nft/00081388B57E780C6A5EF299540E01B0E8C6DB1B83CFC91648118CD505CBFA39";
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dream Agent</title>
+  <style type="text/css">
+    body {
+  margin: 0;
+  background: #050505 url('img/background_imgs/plain_background_bigger.png') no-repeat center center fixed;
+  background-size: cover;
+  color: #e8e1d4;
+  font-family: Georgia, serif;
+  
+}
+
+.container {
+  width: 90%;
+  max-width: 1100px;
+  margin: auto;
+}
+
+.header {
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  padding: 20px 0;
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.brand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1em;
+}
+
+nav a {
+  margin-left: 20px;
+  color: #aaa;
+  text-decoration: none;
+}
+
+nav a:hover {
+  color: #fff;
+}
+
+.hero {
+  padding: 100px 0;
+  text-align: center;
+}
+
+.hero h2 {
+  font-size: 2rem;
+}
+
+.hero p {
+  color: #aaa;
+}
+
+.doors {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+  margin-top: 50px;
+}
+
+.door {
+  background: #111;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.door img {
+  width: 100%;
+  border-radius: 8px;
+}
+
+.featured {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  margin-top: 80px;
+}
+
+.featured img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.archive-link {
+  text-align: center;
+  margin: 60px 0;
+}
+
+.archive-link a {
+  color: #aaa;
+}
+
+.footer {
+  text-align: center;
+  padding: 40px 0;
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+.btn {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 10px 16px;
+  border: 1px solid #666;
+  color: #fff;
+  text-decoration: none;
+}
+
+.btn.primary {
+  background: #11579e;
+  border: none;
+  color: #ffff;
+}
+  </style>
+</head>
+
+<body>
+
+<header class="header">
+  <div class="container nav">
+    <div class="brand">
+      <!-- <h1>Dream Agent</h1> -->
+       <img src="./img/icons/artist/hero_logo.png" alt="dream agent logo" style="width: 120px; height: 100px;">
+      <span>Machine dreams in metaphor</span>
+    </div>
+    <nav>
+      <a href="#systems">Collections</a>
+      <a href="#conflict">Marketplace</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container hero-content">
+    <!-- <h2>About Dream Agent</h2> -->
+    <p>Dream Agent is.......</p>
+    <a href="#doors" class="btn primary">Enter the Archive</a>
+  </div>
+</section>
+
+<section id="doors" class="doors container">
+
+  <div id="systems" class="door">
+    <img src="images/systems.jpg" alt="">
+    <h3>Collections</h3>
+    <p>The Collections are .........</p>
+    <a href="YOUR-INDUSTRIAL-MYTHS-LINK" class="btn">Enter</a>
+  </div>
+
+  <div id="conflict" class="door">
+    <img src="images/conflict.jpg" alt="">
+    <h3>Marketplace</h3>
+    <p>Find the Platforms to get ..........</p>
+    <a href="YOUR-WAR-AND-FEAST-LINK" class="btn">Enter</a>
+  </div>
+
+  <div id="signals" class="door">
+    <img src="images/signals.jpg" alt="">
+    <h3>Drops</h3>
+    <p>Keep in with the droposphere.......</p>
+    <a href="YOUR-DIGITAL-UNCONSCIOUS-LINK" class="btn">Enter</a>
+  </div>
+
+</section>
+
+<section class="featured container">
+  <div class="featured-img">
+    <img src="images/featured.jpg" alt="">
+  </div>
+  <div class="featured-text">
+    <h3>Cursor of Fate</h3>
+    <p>Selection is not random. The interface is the ritual.</p>
+    <a href="YOUR-DIGITAL-UNCONSCIOUS-LINK" class="btn primary">View Work</a>
+  </div>
+</section>
+
+<div class="archive-link">
+  <a href="https://xrp.cafe/collection/dreamagent7">View Full Record</a>
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <p>Dream Agent — No Face No Fame, Just the Vision</p>
+  </div>
+</footer>
+
+</body>
+</html>

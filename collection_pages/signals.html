@@ -1166,152 +1166,157 @@
     </script>
 
     <!-- Full-size modal -->
-<div
-  id="fullsizeModal"
-  class="fixed inset-0 z-[80] hidden flex items-center justify-center bg-black/70 backdrop-blur-sm p-4"
-  aria-hidden="true"
->
-  <div id="fullsizeBackdrop" class="absolute inset-0"></div>
+    <div
+      id="fullsizeModal"
+      class="fixed inset-0 z-[80] hidden flex items-center justify-center bg-black/70 backdrop-blur-sm p-4"
+      aria-hidden="true"
+    >
+      <div id="fullsizeBackdrop" class="absolute inset-0"></div>
 
-  <div class="relative w-full max-w-[1200px] max-h-[90vh] mx-auto my-6 sm:my-0 rounded-2xl bg-black/70 border border-white/20 overflow-auto shadow-2xl flex flex-col">
-    <div class="flex items-center justify-between px-4 sm:px-5 py-3 border-b border-white/15">
-      <div class="min-w-0">
-        <h2 id="fullsizeTitle" class="serif text-sm sm:text-base font-medium truncate">Artwork title</h2>
-        <p id="fullsizeMeta" class="text-[11px] text-white/60 mt-0.5">2024 • Oil-style</p>
+      <div class="relative w-full max-w-[1200px] max-h-[90vh] mx-auto my-6 sm:my-0 rounded-2xl bg-black/70 border border-white/20 overflow-auto shadow-2xl flex flex-col">
+        <div class="flex items-center justify-between px-4 sm:px-5 py-3 border-b border-white/15">
+          <div class="min-w-0">
+            <h2 id="fullsizeTitle" class="serif text-sm sm:text-base font-medium truncate">Artwork title</h2>
+            <p id="fullsizeMeta" class="text-[11px] text-white/60 mt-0.5">2024 • Oil-style</p>
+          </div>
+          <button id="fullsizeClose" type="button" class="ml-4 inline-flex h-8 w-8 items-center justify-center rounded-full border border-white/20 text-white/80 hover:bg-white/10 hover:border-white/40 transition" aria-label="Close full size view">✕</button>
+        </div>
+        <div class="flex-1 flex items-center justify-center bg-black/60">
+          <img id="fullsizeImg" src="" alt="" class="max-h-[80vh] max-w-full object-contain" />
+        </div>
       </div>
-      <button id="fullsizeClose" type="button" class="ml-4 inline-flex h-8 w-8 items-center justify-center rounded-full border border-white/20 text-white/80 hover:bg-white/10 hover:border-white/40 transition" aria-label="Close full size view">✕</button>
     </div>
-    <div class="flex-1 flex items-center justify-center bg-black/60">
-      <img id="fullsizeImg" src="" alt="" class="max-h-[80vh] max-w-full object-contain" />
-    </div>
-  </div>
-</div>
 
-    <script>
-    // Lightbox modal wiring
-(function setupLightbox(){
-  const modal = document.getElementById('lightboxModal');
-  const modalImg = document.getElementById('lightboxImg');
-  const modalTitle = document.getElementById('lightboxTitle');
-  const modalClose = document.getElementById('lightboxClose');
-  const btnPrev = document.getElementById('lightboxPrev');
-  const btnNext = document.getElementById('lightboxNext');
+        <script>
+        // Lightbox modal wiring
+    (function setupLightbox(){
+      const modal = document.getElementById('lightboxModal');
+      const modalImg = document.getElementById('lightboxImg');
+      const modalTitle = document.getElementById('lightboxTitle');
+      const modalClose = document.getElementById('lightboxClose');
+      const btnPrev = document.getElementById('lightboxPrev');
+      const btnNext = document.getElementById('lightboxNext');
 
-  // helper: load & animate modal image (prefers collection_works + high-res variants)
-  async function setModalImage(src){
-    if (!modalImg) return;
-    const base = collectionWorksPathFor(src || artImg.src || '');
-    try {
-      const best = await chooseHighRes(base);
-      modalImg.onload = () => {
+      // helper: load & animate modal image (prefers collection_works + high-res variants)
+      async function setModalImage(src){
+        if (!modalImg) return;
+        const base = collectionWorksPathFor(src || artImg.src || '');
+        try {
+          const best = await chooseHighRes(base);
+          modalImg.onload = () => {
+            try {
+              if (!prefersReduced && window.gsap) {
+                gsap.killTweensOf(modalImg);
+                gsap.fromTo(modalImg, { opacity: 0, y: 12, scale: 0.985 }, { opacity: 1, y: 0, scale: 1, duration: 0.34, ease: 'power2.out' });
+              }
+            } catch (e) { /* ignore */ }
+          };
+          modalImg.src = best || src || artImg.src || '';
+        } catch (e) {
+          modalImg.src = src || artImg.src || '';
+        }
+      }
+
+      function openLightbox(src, title){
+        if (!modal) return;
+        modalTitle.textContent = title || '';
+        modal.classList.add('open');
+        document.body.style.overflow = 'hidden';
+
+        if (!prefersReduced && window.gsap) {
+          gsap.killTweensOf(modal);
+          gsap.set(modal, { opacity: 0 });
+          gsap.to(modal, { opacity: 1, duration: 0.28, ease: 'power2.out' });
+        }
+
+        setModalImage(src || artImg.src);
+      }
+
+      function closeLightbox(){
+        if (!modal) return;
+        if (!prefersReduced && window.gsap) {
+          gsap.killTweensOf(modal);
+          gsap.to(modal, { opacity: 0, duration: 0.2, ease: 'power1.in', onComplete() {
+            modal.classList.remove('open');
+            document.body.style.overflow = '';
+            try { modalImg.src = ''; } catch(e){}
+          }});
+        } else {
+          modal.classList.remove('open');
+          document.body.style.overflow = '';
+          try { modalImg.src = ''; } catch(e){}
+        }
+      }
+
+      // open via the full-size button
+      viewFullBtn?.addEventListener('click', (e)=>{
+        e.preventDefault();
+        const w = works[current];
+        openLightbox(w?.img || artImg.src, w?.title || 'Artwork');
+      });
+
+      // also open by clicking the viewer image
+      if (artImg) {
+        artImg.style.cursor = 'zoom-in';
+        artImg.addEventListener('click', ()=>{
+          const w = works[current];
+          openLightbox(w?.img || artImg.src, w?.title || 'Artwork');
+        });
+      }
+
+      // overlay close and close button
+      modal?.addEventListener('click', (e)=>{
+        if (e.target === modal || e.target === modalClose) closeLightbox();
+      });
+
+      // prev/next in lightbox
+      btnPrev?.addEventListener('click', async (e)=>{
+        e.preventDefault();
         try {
           if (!prefersReduced && window.gsap) {
-            gsap.killTweensOf(modalImg);
-            gsap.fromTo(modalImg, { opacity: 0, y: 12, scale: 0.985 }, { opacity: 1, y: 0, scale: 1, duration: 0.34, ease: 'power2.out' });
+            await gsap.to(modalImg, { opacity: 0, x: 20, duration: 0.18, ease: 'power1.in' });
           }
-        } catch (e) { /* ignore */ }
-      };
-      modalImg.src = best || src || artImg.src || '';
-    } catch (e) {
-      modalImg.src = src || artImg.src || '';
-    }
-  }
+        } catch(e){}
+        current = (current - 1 + works.length) % works.length;
+        renderWork(current);
+        const w = works[current];
+        modalTitle.textContent = w?.title || 'Artwork';
+        setModalImage(w?.img || artImg.src);
+      });
 
-  function openLightbox(src, title){
-    if (!modal) return;
-    modalTitle.textContent = title || '';
-    modal.classList.add('open');
-    document.body.style.overflow = 'hidden';
+      btnNext?.addEventListener('click', async (e)=>{
+        e.preventDefault();
+        try {
+          if (!prefersReduced && window.gsap) {
+            await gsap.to(modalImg, { opacity: 0, x: -20, duration: 0.18, ease: 'power1.in' });
+          }
+        } catch(e){}
+        current = (current + 1) % works.length;
+        renderWork(current);
+        const w = works[current];
+        modalTitle.textContent = w?.title || 'Artwork';
+        setModalImage(w?.img || artImg.src);
+      });
 
-    if (!prefersReduced && window.gsap) {
-      gsap.killTweensOf(modal);
-      gsap.set(modal, { opacity: 0 });
-      gsap.to(modal, { opacity: 1, duration: 0.28, ease: 'power2.out' });
-    }
-
-    setModalImage(src || artImg.src);
-  }
-
-  function closeLightbox(){
-    if (!modal) return;
-    if (!prefersReduced && window.gsap) {
-      gsap.killTweensOf(modal);
-      gsap.to(modal, { opacity: 0, duration: 0.2, ease: 'power1.in', onComplete() {
-        modal.classList.remove('open');
-        document.body.style.overflow = '';
-        try { modalImg.src = ''; } catch(e){}
-      }});
-    } else {
-      modal.classList.remove('open');
-      document.body.style.overflow = '';
-      try { modalImg.src = ''; } catch(e){}
-    }
-  }
-
-  // open via the full-size button
-  viewFullBtn?.addEventListener('click', (e)=>{
-    e.preventDefault();
-    const w = works[current];
-    openLightbox(w?.img || artImg.src, w?.title || 'Artwork');
-  });
-
-  // also open by clicking the viewer image
-  if (artImg) {
-    artImg.style.cursor = 'zoom-in';
-    artImg.addEventListener('click', ()=>{
-      const w = works[current];
-      openLightbox(w?.img || artImg.src, w?.title || 'Artwork');
-    });
-  }
-
-  // overlay close and close button
-  modal?.addEventListener('click', (e)=>{
-    if (e.target === modal || e.target === modalClose) closeLightbox();
-  });
-
-  // prev/next in lightbox
-  btnPrev?.addEventListener('click', async (e)=>{
-    e.preventDefault();
-    try {
-      if (!prefersReduced && window.gsap) {
-        await gsap.to(modalImg, { opacity: 0, x: 20, duration: 0.18, ease: 'power1.in' });
-      }
-    } catch(e){}
-    current = (current - 1 + works.length) % works.length;
-    renderWork(current);
-    const w = works[current];
-    modalTitle.textContent = w?.title || 'Artwork';
-    setModalImage(w?.img || artImg.src);
-  });
-
-  btnNext?.addEventListener('click', async (e)=>{
-    e.preventDefault();
-    try {
-      if (!prefersReduced && window.gsap) {
-        await gsap.to(modalImg, { opacity: 0, x: -20, duration: 0.18, ease: 'power1.in' });
-      }
-    } catch(e){}
-    current = (current + 1) % works.length;
-    renderWork(current);
-    const w = works[current];
-    modalTitle.textContent = w?.title || 'Artwork';
-    setModalImage(w?.img || artImg.src);
-  });
-
-  // keyboard support
-  document.addEventListener('keydown', (e)=>{
-    if (!modal) return;
-    if (e.key === 'Escape') closeLightbox();
-    if (e.key === 'ArrowRight' && modal.classList.contains('open')){
-      current = (current + 1) % works.length; renderWork(current); openLightbox(works[current].img, works[current].title);
-    }
-    if (e.key === 'ArrowLeft' && modal.classList.contains('open')){
-      current = (current - 1 + works.length) % works.length; renderWork(current); openLightbox(works[current].img, works[current].title);
-    }
-  });
-})();
+      // keyboard support
+      document.addEventListener('keydown', (e)=>{
+        if (!modal) return;
+        if (e.key === 'Escape') closeLightbox();
+        if (e.key === 'ArrowRight' && modal.classList.contains('open')){
+          current = (current + 1) % works.length; renderWork(current); openLightbox(works[current].img, works[current].title);
+        }
+        if (e.key === 'ArrowLeft' && modal.classList.contains('open')){
+          current = (current - 1 + works.length) % works.length; renderWork(current); openLightbox(works[current].img, works[current].title);
+        }
+      });
+    })();
     </script>
 
+    <!-- Marketplace links -->
+    <script src="../js/market.js"></script>
+
+    <!-- Marketplace modal -->
+    <script src="../js/market-modal.js"></script>
 
 </body>
 </html>

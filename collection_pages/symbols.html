@@ -270,7 +270,14 @@
 #lightboxModal .lb-prev { left: 18px; }
 #lightboxModal .lb-next { right: 18px; }
 
+/* Artwork description debug helper */
+#artDesc {
+  /* outline: 2px solid lime; */
+}
 
+#artTitle {
+  /* outline: 2px solid lime; */
+}
 
     /* VERY SOFT LINEAR FLOW AURA DIVIDER */
     /* @keyframes auraLineFlow {
@@ -411,6 +418,7 @@
               active:translate-y-[1px]">
               Collect
           </button>
+
           <!-- XRP Café -->
             <!-- <a id="xrpBtn" target="_blank" href="https://xrp.cafe/collection/dreamagent7" data-label="XRP Café"
               class="market-btn inline-flex items-center justify-center w-10 h-10 rounded-full
@@ -995,9 +1003,14 @@
       artTitle.textContent = w.title || "";
       artMeta.innerHTML = `<span>${w.year||""}</span><span>•</span><span>${w.style||""}</span>`;
       artDesc.innerHTML = paragraphsHTML(w.desc);
-      xrpBtn.href = w.links?.xrp || "#";
-      osBtn.href  = w.links?.os  || "#";
-      srBtn.href  = w.links?.sr  || "#";
+
+      const marketXrp = document.getElementById("marketXrp");
+      const marketOpenSea = document.getElementById("marketOpenSea");
+      const marketSuperRare = document.getElementById("marketSuperRare");
+
+      if (marketXrp) marketXrp.href = w.links?.xrp || "#";
+      if (marketOpenSea) marketOpenSea.href = w.links?.os || "#";
+      if (marketSuperRare) marketSuperRare.href = w.links?.sr || "#";
 
       // artImg.src = img.src;
       // artTitle.textContent = w.title;

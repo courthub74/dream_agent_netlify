@@ -270,7 +270,14 @@
 #lightboxModal .lb-prev { left: 18px; }
 #lightboxModal .lb-next { right: 18px; }
 
+/* Artwork description debug helper */
+#artDesc {
+  /* outline: 2px solid lime; */
+}
 
+#artTitle {
+  /* outline: 2px solid lime; */
+}
 
     /* VERY SOFT LINEAR FLOW AURA DIVIDER */
     /* @keyframes auraLineFlow {
@@ -398,38 +405,54 @@
 
         <!-- Marketplace icons inline with the button (no glow) -->
         <div class="flex items-center gap-2 flex-nowrap">
+
+          <!-- REPLACE THE MARKETPLACE BUTTONS WITH 'COLLECT' -->
           
-          <!-- <p class="text-white/80 text-[12px]">View on:</p> -->
+          <!-- Replace the XRP / OpenSea / SuperRare icon group with this -->
+          <button
+            id="collectBtn"
+            type="button"
+            class="inline-flex items-center justify-center rounded-full
+            px-10 py-3 text-sm font-medium text-black/90
+            bg-white/90 border border-white/30 w-full max-w-md
+            hover:border-white/60 hover:bg-black/60 hover:text-white
+            shadow-[0_0_12px_rgba(255,255,255,0.1)]
+            hover:shadow-[0_0_20px_rgba(255,255,255,0.25)]
+            transition-all
+            focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/50
+            active:translate-y-[1px]">
+            Collect
+        </button>
+
           <!-- XRP Café -->
-            <a id="xrpBtn" target="_blank" href="https://xrp.cafe/collection/dreamagent7" data-label="XRP Café"
+            <!-- <a id="xrpBtn" target="_blank" href="https://xrp.cafe/collection/dreamagent7" data-label="XRP Café"
               class="market-btn inline-flex items-center justify-center w-10 h-10 rounded-full
               border border-white/20 ring-0 shadow-none
               hover:border-white/30 transition">
               <img src="../img/icons/marketplaces/xrpcafe_circle.png" alt="xrpcafe"
               class="w-9 h-9 rounded-full object-cover">
-            </a>
-            <!-- <p class="text-white/80 text-[9px]">XRP Cafe</p> -->
+            </a> -->
 
 
           <!-- OpenSea -->
-          <a id="osBtn" href="#" data-label="OpenSea"
+          <!-- <a id="osBtn" href="#" data-label="OpenSea"
              class="market-btn inline-flex items-center justify-center w-10 h-10 rounded-full
                     border border-white/20 ring-0 shadow-none
                     hover:border-white/30 transition">
                 <img src="../img/icons/marketplaces/opensea_circle.png" alt="opensea"
                 class="w-9 h-9 rounded-full object-cover">
           </a>
-           <!-- <p class="text-white/80 text-[9px]">OpenSea</p> -->
+            -->
 
           <!-- SuperRare -->
-          <a id="srBtn" href="#" data-label="SuperRare"
+          <!-- <a id="srBtn" href="#" data-label="SuperRare"
             class="market-btn inline-flex items-center justify-center w-10 h-10 rounded-full
                     border border-white/20 ring-0 shadow-none
                     hover:border-white/30 transition">
             <img src="../img/icons/marketplaces/superrare_circle.png" alt="superrare"
                 class="w-9 h-9 rounded-full object-cover">
-          </a>
-           <!-- <p class="text-white/80 text-[9px]">SuperRare</p> -->
+          </a> -->
+          
         </div>
       </div>
       </article>
@@ -548,6 +571,48 @@
       <div id="lightboxTitle" class="lb-title"></div>
     </div>
     <button id="lightboxNext" class="lb-nav lb-next" aria-label="Next">›</button>
+  </div>
+</div>
+
+<!-- Market modal -->
+<div id="marketModal" class="fixed inset-0 hidden place-items-center bg-black/70 backdrop-blur-md z-[1300] px-4">
+  <div class="w-full max-w-md rounded-2xl bg-white/10 border border-white/20 p-6 text-white shadow-2xl">
+    <div class="flex items-start justify-between gap-4 mb-5">
+      <div>
+        <h3 class="serif text-xl">Select Acquisition Path</h3>
+        <p id="marketWorkTitle" class="text-sm text-white/60 mt-1"></p>
+      </div>
+
+      <button id="closeMarketModal" class="w-9 h-9 rounded-full bg-black/30 border border-white/20 hover:bg-black/45">
+        ✕
+      </button>
+    </div>
+
+    <div class="space-y-3">
+      <a id="marketXrp" target="_blank" class="market-option flex items-center justify-between gap-4 rounded-xl bg-white/10 border border-white/15 p-4 hover:bg-white/15 transition">
+        <span>
+          <strong class="block">XRP Cafe</strong>
+          <small class="text-white/60">XRP Ledger</small>
+        </span>
+        <span class="text-sm text-white/70">XRP</span>
+      </a>
+
+      <a id="marketOpenSea" target="_blank" class="market-option flex items-center justify-between gap-4 rounded-xl bg-white/10 border border-white/15 p-4 hover:bg-white/15 transition">
+        <span>
+          <strong class="block">OpenSea</strong>
+          <small class="text-white/60">Ethereum Marketplace</small>
+        </span>
+        <span class="text-sm text-white/70">ETH</span>
+      </a>
+
+      <a id="marketSuperRare" target="_blank" class="market-option flex items-center justify-between gap-4 rounded-xl bg-white/10 border border-white/15 p-4 hover:bg-white/15 transition">
+        <span>
+          <strong class="block">SuperRare</strong>
+          <small class="text-white/60">Curated Ethereum Listing</small>
+        </span>
+        <span class="text-sm text-white/70">ETH</span>
+      </a>
+    </div>
   </div>
 </div>
 
@@ -943,9 +1008,15 @@
       artTitle.textContent = w.title || "";
       artMeta.innerHTML = `<span>${w.year||""}</span><span>•</span><span>${w.style||""}</span>`;
       artDesc.innerHTML = paragraphsHTML(w.desc);
-      xrpBtn.href = w.links?.xrp || "#";
-      osBtn.href  = w.links?.os  || "#";
-      srBtn.href  = w.links?.sr  || "#";
+
+      const marketXrp = document.getElementById("marketXrp");
+      const marketOpenSea = document.getElementById("marketOpenSea");
+      const marketSuperRare = document.getElementById("marketSuperRare");
+
+      // if the market links are available, update them
+      if (marketXrp) marketXrp.href = w.links?.xrp || "#";
+      if (marketOpenSea) marketOpenSea.href = w.links?.os || "#";
+      if (marketSuperRare) marketSuperRare.href = w.links?.sr || "#";
 
       // artImg.src = img.src;
       // artTitle.textContent = w.title;
@@ -1027,6 +1098,45 @@ function highlightActive(workId) {
     }
   });
 }
+
+const collectBtn = document.getElementById("collectBtn");
+const marketModal = document.getElementById("marketModal");
+const closeMarketModal = document.getElementById("closeMarketModal");
+
+const marketWorkTitle = document.getElementById("marketWorkTitle");
+const marketXrp = document.getElementById("marketXrp");
+const marketOpenSea = document.getElementById("marketOpenSea");
+const marketSuperRare = document.getElementById("marketSuperRare");
+
+// Open the market modal
+function openMarketModal() {
+    const work = works[current];
+
+    marketWorkTitle.textContent = work.title;
+
+    marketXrp.href = work.links?.xrp || "#";
+    marketOpenSea.href = work.links?.os || "#";
+    marketSuperRare.href = work.links?.sr || "#";
+
+    marketModal.classList.remove("hidden");
+    marketModal.classList.add("grid");
+  }
+
+  function closeMarkets() {
+    marketModal.classList.add("hidden");
+    marketModal.classList.remove("grid");
+  }
+
+  collectBtn.addEventListener("click", openMarketModal);
+  closeMarketModal.addEventListener("click", closeMarkets);
+
+  marketModal.addEventListener("click", (e) => {
+    if (e.target === marketModal) closeMarkets();
+  });
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") closeMarkets();
+});
 
 // Keep active highlight in sync after render
 function syncActiveHighlight() {

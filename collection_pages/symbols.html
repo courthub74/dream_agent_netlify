@@ -660,7 +660,7 @@
           "It’s about the moments when power is an attitude, not an answer."
       ],
       links:{ xrp:"https://xrp.cafe/nft/00080BB8B57E780C6A5EF299540E01B0E8C6DB1B83CFC9164A57450F05CBFA71", 
-      os:"#", 
+      os:"https://opensea.io/item/ethereum/0x870520570ea3cd36ec19a8494c2a08b131727a83/2", 
       sr:"#"}
     },
 
@@ -675,7 +675,7 @@
           "This is not just a painting—it’s a portal.", 
       ],
       links:{ xrp:"https://xrp.cafe/nft/00080BB8B57E780C6A5EF299540E01B0E8C6DB1B83CFC9161205E0EB05CBFA4D", 
-      os:"#", 
+      os:"https://opensea.io/item/ethereum/0x870520570ea3cd36ec19a8494c2a08b131727a83/1", 
       sr:"#"}
     },
 
@@ -1138,9 +1138,33 @@ function openMarketModal() {
 
     marketWorkTitle.textContent = work.title;
 
-    marketXrp.href = work.links?.xrp || "#";
-    marketOpenSea.href = work.links?.os || "#";
-    marketSuperRare.href = work.links?.sr || "#";
+    // Set the links for each marketplace
+    // marketXrp.href = work.links?.xrp || "#";
+    // marketOpenSea.href = work.links?.os || "#";
+    // marketSuperRare.href = work.links?.sr || "#";
+
+    // Set the display of each marketplace link based on whether it exists
+
+    // XRP
+    if (marketXrp) {
+      const link = work.links?.xrp;
+      marketXrp.href = link || "#";
+      marketXrp.style.display = (link && link !== "#") ? "flex" : "none";
+    }
+
+    // OpenSea
+    if (marketOpenSea) {
+      const link = work.links?.os;
+      marketOpenSea.href = link || "#";
+      marketOpenSea.style.display = (link && link !== "#") ? "flex" : "none";
+    }
+
+    // SuperRare
+    if (marketSuperRare) {
+      const link = work.links?.sr;
+      marketSuperRare.href = link || "#";
+      marketSuperRare.style.display = (link && link !== "#") ? "flex" : "none";
+    }
 
     marketModal.classList.remove("hidden");
     marketModal.classList.add("grid");

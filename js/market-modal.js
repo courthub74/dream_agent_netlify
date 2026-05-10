@@ -12,9 +12,32 @@ function openMarketModal() {
 
   marketWorkTitle.textContent = work.title;
 
-  marketXrp.href = work.links?.xrp || "#";
-  marketOpenSea.href = work.links?.os || "#";
-  marketSuperRare.href = work.links?.sr || "#";
+  // marketXrp.href = work.links?.xrp || "#";
+  // marketOpenSea.href = work.links?.os || "#";
+  // marketSuperRare.href = work.links?.sr || "#";
+
+   // Set the display of each marketplace link based on whether it exists
+
+    // XRP
+    if (marketXrp) {
+      const link = work.links?.xrp;
+      marketXrp.href = link || "#";
+      marketXrp.style.display = (link && link !== "#") ? "flex" : "none";
+    }
+
+    // OpenSea
+    if (marketOpenSea) {
+      const link = work.links?.os;
+      marketOpenSea.href = link || "#";
+      marketOpenSea.style.display = (link && link !== "#") ? "flex" : "none";
+    }
+
+    // SuperRare
+    if (marketSuperRare) {
+      const link = work.links?.sr;
+      marketSuperRare.href = link || "#";
+      marketSuperRare.style.display = (link && link !== "#") ? "flex" : "none";
+    }
 
   marketModal.classList.remove("hidden");
   marketModal.classList.add("grid");

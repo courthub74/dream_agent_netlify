@@ -155,8 +155,9 @@
     /* .works-include { font-family: 'Times New Roman', Times, serif; font-size: clamp(11px, .8vw, 13px); font-weight: 500; text-transform: uppercase; letter-spacing: .5px; color: var(--ink-70); margin-bottom: .15rem; } */
 
     /* .flashing-title { font-family: 'Times New Roman', Times, serif; font-size: clamp(12px, 1vw, 15px); font-weight: 400; color: var(--ink-70); } */
-    .flashing-title { font-family: 'Inter', sans-serif; font-size: clamp(12px, 1vw, 15px); font-weight: 400; color: var(--ink-70); }
+    /* .flashing-title { font-family: 'Inter', sans-serif; font-size: clamp(12px, 1vw, 15px); font-weight: 400; color: var(--ink-70); } */
     .flashing-title { font-family: 'Inter', sans-serif; font-size: .8rem; font-weight: 400; color: var(--ink-70); }
+    .flashing-title { font-family: 'intel One Mono', monospace; font-size: .7rem; font-weight: 300; opacity: .7; color: var(--ink-70); }
 
     /* Hairline divider (fade on right only) */
     #collections a.group .worklist { position: relative; margin-top: .35rem; padding-top: .45rem; }
@@ -690,7 +691,7 @@
         <p class="mobile_about_portion mt-2">An anonymous digital artist emerging from the shadows of the digital realm, not as a face but as a surrealist force.... <button class="read_more"><b>Read More</b></button></p>
 
         <p class="mobile_about_paragraph hidden">
-          An anonymous digital artist emerging from the shadows of the digital realm, not as a face but as a surrealist force. Each work transforms digital vision into symbolic worlds, less an image than a portal—inviting viewers to question, decode, and reflect.
+          An anonymous digital artist emerging from the shadows of the digital realm, not as a face but as a surrealist force. Each work transforms digital vision into symbolic worlds, less an image than a portal, inviting viewers to question, decode, and reflect.
         </p>
 
         <!-- Divider -->
@@ -698,7 +699,7 @@
 
         <!-- COLLECTIONS -->
         <section id="collections" class="mx-auto py-10 space-y-8">
-          <h2 class="collections-title font-semibold mb-2">Choose a System</h2>
+          <h2 class="collections-title font-semibold mb-2">Enter a System</h2>
           <div class="cc-track">
 
              <!-- SYMBOLS IN MOTION -->
@@ -707,7 +708,7 @@
               <div class="shade"></div>
               <div class="copy">
                 <h3 class="text-lg sm:text-xl font-normal mb-1 collection-title" id="symbols">Symbols in Motion</h3>
-                <p class="collection-description">Recurring signs caught in perpetual drift.</p>
+                <p class="collection-description">Recurring signs in perpetual drift.</p>
                 <ul class="worklist mt-2 space-y-1 text-sm text-neutral-300">
                   <!-- <li class="font-semibold works-include">Works include:</li> -->
                   <li id="symbol-title" class="flashing-title" aria-live="polite"></li>
@@ -735,7 +736,7 @@
               <div class="shade"></div>
               <div class="copy">
                 <h3 class="text-lg sm:text-xl font-normal mb-1 collection-title" id="war_feast">War &amp; Feast</h3>
-                <p class="collection-description">Conflict, appetite, and ceremonial excess.</p>
+                <p class="collection-description">Conflict, appetite, and ceremonial consumption.</p>
                 <ul class="worklist mt-2 space-y-1 text-sm text-neutral-300">
                   <!-- <li class="font-semibold works-include">Works include:</li> -->
                   <li id="war-title" class="flashing-title" aria-live="polite"></li>
@@ -952,9 +953,9 @@
       makeRotator(document.getElementById('symbol-title'),    ["Temple of Openings","Binary Tree", "The Tech Era", "The Rusher, The Incrementer and..", "Prince Carl laying in front of the Telly....", "Polar Bear","Dream Agent making birds", "Hormones '95"], 3000);
       makeRotator(document.getElementById('signal-title'),    ["Hip Hop 1978", "Lori's House", "The Biblicals", "Revolutionary Balloon", "Conrads House", "Tartarian Standard Deluxe", "The Magic of ’86", "Sephardic Tango"], 3000);
       makeRotator(document.getElementById('war-title'),       ["The Wine Wars", "The Starving Millionare", "Coeur of the Grapes","The Soap Wars", "Internet of the 3rd Kingdom", "The Asymmetrical Jayse", "Some Things Were Meant to...", "Mammon Stadium"], 3000);
-      makeRotator(document.getElementById('industrial-title'),["The Cursor of Fate","The Future of Industry","The Fear Room"], 3000);
+      makeRotator(document.getElementById('industrial-title'),["The Cursor of Fate","The Future of Industry","The Fear Room","Daniels vision from another angle"], 3000);
       makeRotator(document.getElementById('digital-title'),   ["Internet of the Old World","The Rinse of Trust","Internet of the Middle World","Technology and Desire","Cursor of Fate","Internet of the New World","The Great Divide"], 3000);
-      makeRotator(document.getElementById('dominion-title'),  ["Bottling the Republic","Discovery of the Indigenous","The Refactoring Ritual","The Census Ritual","Etch the Empire"], 3000);
+      makeRotator(document.getElementById('dominion-title'),  ["Bottling the Republic","Discovery of the Indigenous","The Refactoring Ritual","Imperious Kingdom","The Census Ritual"], 3000);
     });
 
     // Align breakpoint with your CSS

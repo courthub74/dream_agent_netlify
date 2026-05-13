@@ -67,10 +67,25 @@
       background-attachment: scroll;
     }
 
-    /* PLAYFAIR LOGO */
+    /* PLAYFAIR LOGO AND COLLECTION TITLES */
     h1, h2, h3, h4, #title, .about-link, .overlay-text, .mobile_about_header, .mobile_about_collections_header, .hero_phrase, .footer_slogan, #cta {
       font-family: 'Playfair Display', serif;
     }
+
+    /* Collection Titles */
+    #symbols, #industrial {
+      color: #467da8;
+      color: #5a85a5;
+    }
+    #war_feast, #dominion {
+      color: #d06363;
+      color: #cd7b7b;
+    }
+    #signals, #digital {
+      color: #619462;
+      color: #719272;
+    }
+   
 
     main { flex: 1 0 auto;  background:
       linear-gradient(rgba(0, 87, 184, 0.5), rgba(0, 87, 184, 0.4)),
@@ -135,8 +150,13 @@
     /* Text scale */
     .collection-title { font-weight: 400; font-size: clamp(15px, 1vw, 18px); line-height: 1.25; color: rgba(255,255,255,.95); margin-bottom: .25rem; letter-spacing: .2px; }
     .collection-description { font-family: 'Times New Roman', Times, serif; font-weight: 400; font-size: clamp(12px, .9vw, 14px); line-height: 1.35; color: var(--ink-78); margin-bottom: .4rem; }
-    .works-include { font-family: 'Times New Roman', Times, serif; font-size: clamp(11px, .8vw, 13px); font-weight: 500; text-transform: uppercase; letter-spacing: .5px; color: var(--ink-70); margin-bottom: .15rem; }
-    .flashing-title { font-family: 'Times New Roman', Times, serif; font-size: clamp(12px, 1vw, 15px); font-weight: 400; color: var(--ink-70); }
+    .collection-description { font-family: 'Inter', sans-serif; font-weight: 400; font-size: clamp(12px, .9vw, 14px); line-height: 1.35; color: var(--ink-78); margin-bottom: .4rem; }
+    .collection-description { font-family: 'Inter', sans-serif; font-weight: 400; font-size: .9rem; line-height: 1.35; color: var(--ink-78); margin-bottom: .4rem; }
+    /* .works-include { font-family: 'Times New Roman', Times, serif; font-size: clamp(11px, .8vw, 13px); font-weight: 500; text-transform: uppercase; letter-spacing: .5px; color: var(--ink-70); margin-bottom: .15rem; } */
+
+    /* .flashing-title { font-family: 'Times New Roman', Times, serif; font-size: clamp(12px, 1vw, 15px); font-weight: 400; color: var(--ink-70); } */
+    .flashing-title { font-family: 'Inter', sans-serif; font-size: clamp(12px, 1vw, 15px); font-weight: 400; color: var(--ink-70); }
+    .flashing-title { font-family: 'Inter', sans-serif; font-size: .8rem; font-weight: 400; color: var(--ink-70); }
 
     /* Hairline divider (fade on right only) */
     #collections a.group .worklist { position: relative; margin-top: .35rem; padding-top: .45rem; }
@@ -197,6 +217,7 @@
       overflow: hidden;
     }
 
+  
 
     /* Footer */
     footer { text-align: center; color: #EAEFF7; background: linear-gradient(to bottom, #114C92, #022A54); position: relative; margin-top: auto; border-radius: 5px; padding-block: 4rem; border-top: 1px solid rgba(255,255,255,0.2); }
@@ -666,10 +687,10 @@
         <h1 class="mobile_about_header">Who is Dream Agent?</h1>
 
          <!-- short intro + read more -->
-        <p class="mobile_about_portion mt-2">An anonymous surrealist artist creating neo-symbolist NFT collections and machine-hallucinated paintings... <button class="read_more"><b>Read More</b></button></p>
+        <p class="mobile_about_portion mt-2">An anonymous digital artist emerging from the shadows of the digital realm, not as a face but as a surrealist force.... <button class="read_more"><b>Read More</b></button></p>
 
         <p class="mobile_about_paragraph hidden">
-          An anonymous surrealist artist creating neo-symbolist NFT collections and machine-hallucinated paintings. Dream Agent emerges from the shadows of the digital realm not as a face, but as a surrealist force. A curator of machine visions who paints with prompts and sculpts meaning from code, they transform AI-generated art into deeply symbolic worlds. Each piece is less a picture and more a portal—one that invites viewers to question, decode, and reflect.
+          An anonymous digital artist emerging from the shadows of the digital realm, not as a face but as a surrealist force. Each work transforms digital vision into symbolic worlds, less an image than a portal—inviting viewers to question, decode, and reflect.
         </p>
 
         <!-- Divider -->
@@ -685,10 +706,10 @@
               <img src="img/collection_covers/new_covers/symbols_in_motion_cover.png"  alt="Dream Agent AI surrealist artwork — Symbols in Motion collection" width="1200" height="800" />
               <div class="shade"></div>
               <div class="copy">
-                <h3 class="text-lg sm:text-xl font-normal mb-1 collection-title">Symbols in Motion</h3>
-                <p class="text-sm sm:text-base collection-description">Recurring signs caught in perpetual drift.</p>
+                <h3 class="text-lg sm:text-xl font-normal mb-1 collection-title" id="symbols">Symbols in Motion</h3>
+                <p class="collection-description">Recurring signs caught in perpetual drift.</p>
                 <ul class="worklist mt-2 space-y-1 text-sm text-neutral-300">
-                  <li class="font-semibold works-include">Works include:</li>
+                  <!-- <li class="font-semibold works-include">Works include:</li> -->
                   <li id="symbol-title" class="flashing-title" aria-live="polite"></li>
                 </ul>
               </div>
@@ -699,10 +720,10 @@
               <img src="img/collection_covers/new_covers/signals_and_ascensions_cover.png" alt="Dream Agent AI surrealist artwork — Signals and Ascensions" width="1200" height="800" />
               <div class="shade"></div>
               <div class="copy">
-                <h3 class="text-lg sm:text-xl font-normal mb-1 collection-title">Signals &amp; Ascensions</h3>
-                <p class="text-sm sm:text-base collection-description">Messages in transit between epochs.</p>
+                <h3 class="text-lg sm:text-xl font-normal mb-1 collection-title" id="signals">Signals &amp; Ascensions</h3>
+                <p class="collection-description">Messages in transit between epochs.</p>
                 <ul class="worklist mt-2 space-y-1 text-sm text-neutral-300">
-                  <li class="font-semibold works-include">Works include:</li>
+                  <!-- <li class="font-semibold works-include">Works include:</li> -->
                   <li id="signal-title" class="flashing-title" aria-live="polite"></li>
                 </ul>
               </div>
@@ -713,10 +734,10 @@
               <img src="img/collection_covers/new_covers/war_and_feast_cover.png" alt="Dream Agent AI surrealist artwork — War and Feast" width="1200" height="800" />
               <div class="shade"></div>
               <div class="copy">
-                <h3 class="text-lg sm:text-xl font-normal mb-1 collection-title">War &amp; Feast</h3>
-                <p class="text-sm sm:text-base collection-description">Conflict, appetite, and ceremonial excess.</p>
+                <h3 class="text-lg sm:text-xl font-normal mb-1 collection-title" id="war_feast">War &amp; Feast</h3>
+                <p class="collection-description">Conflict, appetite, and ceremonial excess.</p>
                 <ul class="worklist mt-2 space-y-1 text-sm text-neutral-300">
-                  <li class="font-semibold works-include">Works include:</li>
+                  <!-- <li class="font-semibold works-include">Works include:</li> -->
                   <li id="war-title" class="flashing-title" aria-live="polite"></li>
                 </ul>
               </div>
@@ -727,10 +748,10 @@
               <img src="img/collection_covers/new_covers/industrial_myths_cover.png" alt="Dream Agent AI surrealist artwork — Industrial Myths" width="1200" height="800" />
               <div class="shade"></div>
               <div class="copy">
-                <h3 class="text-lg sm:text-xl font-normal mb-1 collection-title">Industrial Myths</h3>
-                <p class="text-sm sm:text-base collection-description">Machines, labor, and systems reimagined.</p>
+                <h3 class="text-lg sm:text-xl font-normal mb-1 collection-title" id="industrial">Industrial Myths</h3>
+                <p class="collection-description">Machines, labor, and systems reimagined.</p>
                 <ul class="worklist mt-2 space-y-1 text-sm text-neutral-300">
-                  <li class="font-semibold works-include">Works include:</li>
+                  <!-- <li class="font-semibold works-include">Works include:</li> -->
                   <li id="industrial-title" class="flashing-title" aria-live="polite"></li>
                 </ul>
               </div>
@@ -741,10 +762,10 @@
               <img src="img/collection_covers/new_covers/digital_unconscious_cover.png" alt="Dream Agent AI surrealist artwork — The Digital Unconscious" width="1200" height="800" />
               <div class="shade"></div>
               <div class="copy">
-                <h3 class="text-lg sm:text-xl font-normal mb-1 collection-title">The Digital Unconscious</h3>
-                <p class="text-sm sm:text-base collection-description">Where AI dreams and data remembers.</p>
+                <h3 class="text-lg sm:text-xl font-normal mb-1 collection-title" id="digital">The Digital Unconscious</h3>
+                <p class="collection-description">Where AI dreams and data remembers.</p>
                 <ul class="worklist mt-2 space-y-1 text-sm text-neutral-300">
-                  <li class="font-semibold works-include">Works include:</li>
+                  <!-- <li class="font-semibold works-include">Works include:</li> -->
                   <li id="digital-title" class="flashing-title" aria-live="polite"></li>
                 </ul>
               </div>
@@ -755,10 +776,10 @@
               <img src="img/collection_covers/new_covers/dominion_archives_cover.png" alt="Dream Agent AI surrealist artwork — The Dominion Archive" width="1200" height="800" />
               <div class="shade"></div>
               <div class="copy">
-                <h3 class="text-lg sm:text-xl font-normal mb-1 collection-title">The Dominion Archive</h3>
-                <p class="text-sm sm:text-base collection-description">Power recorded, repackaged, ritualized.</p>
+                <h3 class="text-lg sm:text-xl font-normal mb-1 collection-title" id="dominion">The Dominion Archive</h3>
+                <p class="collection-description">Power recorded, repackaged, ritualized.</p>
                 <ul class="worklist mt-2 space-y-1 text-sm text-neutral-300">
-                  <li class="font-semibold works-include">Works include:</li>
+                  <!-- <li class="font-semibold works-include">Works include:</li> -->
                   <li id="dominion-title" class="flashing-title" aria-live="polite"></li>
                 </ul>
               </div>

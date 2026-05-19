@@ -582,6 +582,49 @@
   }
 
 
+  .system-header{
+    display:inline-flex;
+    align-items:center;
+
+    padding: .65rem 1.2rem;
+
+    border-radius: 999px;
+
+    background: rgba(255,255,255,.10);
+
+    border: 1px solid rgba(255,255,255,.22);
+
+    backdrop-filter: blur(10px);
+
+    box-shadow:
+      0 6px 20px rgba(0,0,0,.18),
+      inset 0 1px 0 rgba(255,255,255,.10);
+
+    color: rgba(255,255,255,.94);
+
+    letter-spacing: .2px;
+
+    font-size: 1.1rem;
+    font-weight: 600;
+  }
+
+  .system-header::after{
+    content:"";
+    position:absolute;
+    inset:-6px;
+    border-radius:inherit;
+
+    background: radial-gradient(
+      60% 60% at 50% 50%,
+      rgba(255,255,255,.18),
+      rgba(0,87,184,.12) 55%,
+      transparent 100%
+    );
+
+    filter: blur(10px);
+    opacity:.5;
+    z-index:-1;
+  }
 
     
   </style>
@@ -729,7 +772,7 @@
 
         <!-- COLLECTIONS -->
         <section id="collections" class="mx-auto py-10 space-y-8">
-          <h2 class="collections-title font-semibold mb-2">Enter a System</h2>
+          <h2 class="collections-title font-semibold mb-2 system-header">Enter a System</h2>
           <div class="cc-track">
 
              <!-- SYMBOLS IN MOTION -->

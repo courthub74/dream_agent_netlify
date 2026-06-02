@@ -902,7 +902,7 @@
         <!-- </div> -->
        <!-- right group: copyright / attribution -->
       <div class="flex flex-col items-center gap-2 text-xs text-white/30">
-          <p>© 2025 Dream Agent. All rights reserved.</p>
+          <p>© <span id="copyright-year"></span> Dream Agent. All rights reserved.</p>
           <p class="flex items-center gap-2">
             <img src="img/icons/developer/courdevelops.svg"
                 alt="CourDevelops — AI-integrated web development studio"
@@ -1312,18 +1312,25 @@
 
       function onKeydown(e){
         if (e.key === 'Escape') closeDrawer();
-      }
+        }
 
-      // Toggle handlers
-      menuBtn.addEventListener('click', openDrawer);
-      overlay.addEventListener('click', closeDrawer);
-      closeBtn?.addEventListener('click', closeDrawer);
+        // Toggle handlers
+        menuBtn.addEventListener('click', openDrawer);
+        overlay.addEventListener('click', closeDrawer);
+        closeBtn?.addEventListener('click', closeDrawer);
 
-      // Close after clicking any nav link
-      drawer.querySelectorAll('a[href]').forEach(a => {
-        a.addEventListener('click', closeDrawer);
-      });
+        // Close after clicking any nav link
+        drawer.querySelectorAll('a[href]').forEach(a => {
+          a.addEventListener('click', closeDrawer);
+        });
     })();
+
+    // Dynamic Date in Footer
+    const copyrightYear = document.getElementById("copyright-year");
+
+    if (copyrightYear) {
+      copyrightYear.textContent = new Date().getFullYear();
+    }
 
 
   </script>

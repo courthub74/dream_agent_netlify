@@ -679,6 +679,37 @@
     display: none;
   }
 }
+
+@media (min-width: 1601px) {
+  .mobile_about_container {
+    margin-top: 1rem; /* was 4rem */
+  }
+}
+
+#mobile_about #collections {
+  margin-top: -70px; /* was -50px */
+}
+
+.about-network-layer {
+  margin-top: 1.25rem;
+  padding-bottom: 2rem;
+}
+
+.about-network-divider {
+  width: 9rem;
+  margin: 0 auto 1.5rem;
+  opacity: .55;
+}
+
+.about-network-divider {
+  display: none;
+}
+
+@media (min-width: 1025px) {
+  .mobile_about_container {
+    transform: translateY(-40px);
+  }
+}
   </style>
 </head>
 <body>
@@ -940,7 +971,14 @@
 
     <div class="about-network-meta">
       <p>© <span id="about-copyright-year"></span> Dream Agent. All rights reserved.</p>
-      <p>Powered by <a href="https://courdevelops.com" target="_blank" rel="noopener">CourDevelops</a></p>
+      <div class="flex items-center gap-2">
+        <img src="img/icons/developer/courdevelops.svg"
+                  alt="CourDevelops — AI-integrated web development studio"
+                  class="w-5 h-5 opacity-60"
+                  width="20" height="20">
+        <p>Powered by 
+          <a href="https://courdevelops.com" target="_blank" rel="noopener">CourDevelops</a></p>
+      </div>
     </div>
   </div>
 </div>

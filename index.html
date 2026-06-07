@@ -243,7 +243,9 @@
 
     /* Footer */
     footer { text-align: center; color: #EAEFF7; background: linear-gradient(to bottom, #114C92, #022A54); position: relative; margin-top: auto; border-radius: 5px; padding-block: 4rem; border-top: 1px solid rgba(255,255,255,0.2); }
-
+    footer {
+      display: none;
+    }
     /* Mobile tweaks */
     @media (max-width: 480px) {
       #collections a.group { height: clamp(220px, 42vh, 320px); }
@@ -632,6 +634,51 @@
       align-items: center;
       gap: 0.75rem;
     }
+
+    /* For New Footer */
+    .about-network-layer {
+  margin-top: 2.5rem;
+  padding-bottom: 2rem;
+}
+
+.about-network-divider {
+  width: 14rem;
+  height: 1px;
+  margin: 0 auto 2rem;
+  background: rgba(255,255,255,.22);
+  box-shadow: 0 0 8px rgba(255,255,255,.25);
+}
+
+.about-network-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.about-network-meta {
+  display: flex;
+  flex-direction: column;
+  gap: .35rem;
+  font-size: .75rem;
+  color: rgba(255,255,255,.35);
+}
+
+.about-network-meta a {
+  text-decoration: underline;
+}
+
+@media (max-width: 1024px) {
+  .about-network-layer {
+    display: none;
+  }
+}
+
+@media (min-width: 1025px) {
+  footer {
+    display: none;
+  }
+}
   </style>
 </head>
 <body>
@@ -865,6 +912,38 @@
             </a>
           </div>
         </section>
+
+        <!-- New Footer -->
+         <div class="about-network-layer">
+  <div class="about-network-divider"></div>
+
+  <div class="about-network-content">
+    <div class="slogan_logo">
+      <img src="img/icons/artist/dream_agent_logo_blue.png" alt="Dream Agent" class="footer-icon" width="50" height="50">
+      <p class="text-white/80 text-sm font-bold footer_slogan">No face. No fame. Just the vision.</p>
+    </div>
+
+    <div class="footer-icons flex items-center gap-3">
+      <a target="_blank" href="https://x.com/dream_agent7" aria-label="Twitter" class="icon-wrap" data-pulse title="Twitter">
+        <img src="img/icons/socials/new_socials/twitter.png" alt="twitter" class="footer-icon">
+      </a>
+      <a target="_blank" href="https://www.instagram.com/dream.agent7/" aria-label="Instagram" class="icon-wrap" data-pulse title="Instagram">
+        <img src="img/icons/socials/new_socials/instagram.png" alt="instagram" class="footer-icon">
+      </a>
+      <a target="_blank" href="https://bsky.app/profile/dreamagent7.bsky.social" aria-label="Bluesky" class="icon-wrap" data-pulse title="Bluesky">
+        <img src="img/icons/socials/new_socials/bluesky.png" alt="bluesky" class="footer-icon">
+      </a>
+      <a target="_blank" href="https://www.tiktok.com/@dream_agent7" aria-label="TikTok" class="icon-wrap" data-pulse title="TikTok">
+        <img src="img/icons/socials/new_socials/tiktok.png" alt="tik_tok" class="footer-icon">
+      </a>
+    </div>
+
+    <div class="about-network-meta">
+      <p>© <span id="about-copyright-year"></span> Dream Agent. All rights reserved.</p>
+      <p>Powered by <a href="https://courdevelops.com" target="_blank" rel="noopener">CourDevelops</a></p>
+    </div>
+  </div>
+</div>
       </div>
     </section>
 
@@ -1326,11 +1405,11 @@
     })();
 
     // Dynamic Date in Footer
-    const copyrightYear = document.getElementById("copyright-year");
+   const copyrightYear = document.getElementById("copyright-year");
+    const aboutCopyrightYear = document.getElementById("about-copyright-year");
 
-    if (copyrightYear) {
-      copyrightYear.textContent = new Date().getFullYear();
-    }
+    if (copyrightYear) copyrightYear.textContent = new Date().getFullYear();
+    if (aboutCopyrightYear) aboutCopyrightYear.textContent = new Date().getFullYear();
 
 
   </script>

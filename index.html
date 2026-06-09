@@ -635,6 +635,31 @@
       gap: 0.75rem;
     }
 
+    /* Stack slogan and attribution vertically while keeping logo left-aligned */
+    .slogan_logo .slogan-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+      align-items: flex-start;
+    }
+
+    .slogan_logo .powered-by {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 0.125rem;
+      color: rgba(255,255,255,.75);
+      font-size: 0.82rem; /* slightly smaller */
+      opacity: 0.55;     /* dim the whole line */
+      transform: translateY(1px);
+    }
+
+    .slogan_logo .powered-by img {
+      width: 16px;
+      height: 16px;
+      opacity: 0.7; /* keep icon slightly more visible than text */
+    }
+
     /* For New Footer */
     .about-network-layer {
   margin-top: 2.5rem;
@@ -652,7 +677,8 @@
 .about-network-content {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  /* justify-content: space-between; */
+  justify-content: space-around;
   gap: 2rem;
 }
 
@@ -661,14 +687,61 @@
   flex-direction: column;
   gap: .35rem;
   font-size: .75rem;
+  font-size: .85rem;
   color: rgba(255,255,255,.35);
+  color: rgba(255,255,255,.50);
 }
 
 .about-network-meta a {
   text-decoration: underline;
 }
 
+/* Mobile keeps original footer visible */
+
+/* @media (max-width: 1024px) {
+  .about-network-layer {
+    display: none;
+  }
+} */
+
+/* FOOTER FOR MOBILE */
+
+.about-network-layer {
+  margin-top: 1.75rem;
+  padding-bottom: 2rem;
+}
+
 @media (max-width: 1024px) {
+  .about-network-content {
+    flex-direction: column;
+    justify-content: center;
+    gap: 1.25rem;
+    text-align: center;
+  }
+
+  .slogan_logo {
+    flex-direction: column;
+    gap: .75rem;
+  }
+
+  .slogan_logo .slogan-meta {
+    align-items: center;
+  }
+
+  .about-network-meta {
+    align-items: center;
+    font-size: .75rem;
+    color: rgba(255,255,255,.5);
+  }
+}
+
+@media (min-width: 1025px) {
+  footer {
+    display: none;
+  }
+}
+
+/* @media (max-width: 1024px) {
   .about-network-layer {
     display: none;
   }
@@ -678,7 +751,7 @@
   footer {
     display: none;
   }
-}
+} */
 
 @media (min-width: 1601px) {
   .mobile_about_container {
@@ -948,10 +1021,21 @@
          <div class="about-network-layer">
   <div class="about-network-divider"></div>
 
-  <div class="about-network-content">
+    <div class="about-network-content">
     <div class="slogan_logo">
       <img src="img/icons/artist/dream_agent_logo_blue.png" alt="Dream Agent" class="footer-icon" width="50" height="50">
-      <p class="text-white/80 text-sm font-bold footer_slogan">No face. No fame. Just the vision.</p>
+      <div class="slogan-meta">
+        <p class="text-white/80 text-sm font-bold footer_slogan">No face. No fame. Just the vision.</p>
+        <div class="powered-by">
+          <img src="img/icons/developer/courdevelops.svg"
+               alt="CourDevelops — AI-integrated web development studio"
+               class="w-5 h-5 opacity-60"
+               width="20" height="20">
+          <p class="m-0">Powered by 
+            <a href="https://courdevelops.com" target="_blank" rel="noopener">CourDevelops</a>
+          </p>
+        </div>
+      </div>
     </div>
 
     <div class="footer-icons flex items-center gap-3">
@@ -972,12 +1056,12 @@
     <div class="about-network-meta">
       <p>© <span id="about-copyright-year"></span> Dream Agent. All rights reserved.</p>
       <div class="flex items-center gap-2">
-        <img src="img/icons/developer/courdevelops.svg"
+        <!-- <img src="img/icons/developer/courdevelops.svg"
                   alt="CourDevelops — AI-integrated web development studio"
                   class="w-5 h-5 opacity-60"
-                  width="20" height="20">
-        <p>Powered by 
-          <a href="https://courdevelops.com" target="_blank" rel="noopener">CourDevelops</a></p>
+                  width="20" height="20"> -->
+        <!-- <p>Powered by 
+          <a href="https://courdevelops.com" target="_blank" rel="noopener">CourDevelops</a></p> -->
       </div>
     </div>
   </div>

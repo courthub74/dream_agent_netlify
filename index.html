@@ -106,6 +106,7 @@
         linear-gradient(rgba(0, 87, 184, 0.5), rgba(0, 87, 184, 0.4)),
         url('./img/largest_about_background.png') center/100% 100% no-repeat; */
       min-height: 55vh;
+      min-height: auto;
       padding-top: 1rem;
     
       display: flex;
@@ -128,18 +129,18 @@
 
     .mobile_about_container { max-width: var(--content-max); margin-inline: auto; padding-inline: var(--content-pad); }
     .mobile_about_header { text-align: left; font-size: 1.5rem; font-weight: 700; padding-left: .25rem; margin-top: 1rem; }
-    .mobile_about_paragraph { max-width: 760px; font-family: 'Playfair Display', serif; line-height: 1.65; margin: 1rem 0 2rem; }
+    /* .mobile_about_paragraph { max-width: 760px; font-family: 'Playfair Display', serif; line-height: 1.55; margin: 1rem 0 2rem; font-weight: 400;  background: rgba(255,255,255,.05); padding: 1.25rem; border-radius: 12px; border: 1px solid rgba(255,255,255,.10); font-size: clamp(1rem, 3.5vw, 1.3rem); } */
+    .mobile_about_paragraph { max-width: 760px; font-family: 'Playfair Display', serif; line-height: 1.55; margin: 1rem 0 2rem; font-weight: 400; font-size: clamp(1rem, 2.5vw, 1.2rem); }
     .mobile_about_paragraph, .mobile_about_paragraph b { font-family: 'Playfair Display', serif; }
     .mobile_about_paragraph {
       margin-top: 1.5rem;
       margin-bottom: 3rem;
     } 
 
-    .mobile_about_paragraph {
-      /* font-size: clamp(1.15rem, 4.8vw, 1.55rem); */
+    /* .mobile_about_paragraph {
       font-size: clamp(1rem, 3.5vw, 1.3rem);
       line-height: 1.55;
-    }
+    } */
 
     @media (max-width: 480px) {
       .mobile_about_paragraph {
@@ -241,9 +242,14 @@
 
   
 
-    /* Footer */
-    footer { text-align: center; color: #EAEFF7; background: linear-gradient(to bottom, #114C92, #022A54); position: relative; margin-top: auto; border-radius: 5px; padding-block: 4rem; border-top: 1px solid rgba(255,255,255,0.2); }
+    /* Original Footer */
 
+    /* Desktop footer */
+    @media (min-width: 1025px) {
+      footer {
+        display: none;
+      }
+    }
     /* Mobile tweaks */
     @media (max-width: 480px) {
       #collections a.group { height: clamp(220px, 42vh, 320px); }
@@ -276,6 +282,7 @@
       .mobile_about_paragraph { display: block !important; }
       section.mobile_about {
         min-height: 100vh;
+        min-height: 60vh;
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
@@ -295,7 +302,7 @@
       .mobile_about_portion { display: none !important; }
       .mobile_about_paragraph { display: block !important; }
       section.mobile_about {
-        min-height: 100vh;
+        min-height: 60vh;
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
@@ -315,7 +322,8 @@
       .mobile_about_portion { display: none !important; }
       .mobile_about_paragraph { display: block !important; }
       section.mobile_about {
-        min-height: 100vh;
+        /* min-height: 100vh; */
+        min-height: 60vh;
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
@@ -327,6 +335,17 @@
         padding-top: 1rem;
       }
     }
+
+    footer {
+  margin-top: 0;
+}
+
+    /* Hide the Desktop Footer */
+    @media (max-width: 1024px) {
+    .about-network-layer {
+      display: none;
+    }
+}
 
     /* Landscape phones & tablets: smaller/shorter collection cards */
     @media (orientation: landscape) and (max-width: 1024px) {
@@ -441,6 +460,7 @@
     /* Optional: soften the nudge on very small screens */
     @media (max-width: 480px) {
       #mobile_about #collections { margin-top: -32px; }
+      /* #mobile_about #collections { margin-top: -89px; } */
     }
 
     /* Lighter default opacity for carousel dots (additive) */
@@ -526,6 +546,33 @@
   opacity: .40;                     /* idle aura */
   transition: opacity .25s ease, transform .25s ease, filter .25s ease;
   z-index: 0;                       /* behind the icon */
+}
+
+.footer-icons {
+  margin-top: .75rem;
+  margin-bottom: .75rem;
+}
+
+.slogan-meta {
+  display: flex;
+  flex-direction: column;
+  gap: .25rem;
+}
+
+.about-network-meta p {
+  margin: 0;
+}
+
+.about-network-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+@media (max-width: 1024px) {
+  #mobile-about-divider {
+    display: none;
+  }
 }
 
 /* Soft pulse (dreamlike) */
@@ -632,6 +679,181 @@
       align-items: center;
       gap: 0.75rem;
     }
+
+
+    /* Stack slogan and attribution vertically while keeping logo left-aligned */
+    .slogan_logo .slogan-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+      align-items: flex-start;
+    }
+
+    .slogan_logo .powered-by {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 0.125rem;
+      color: rgba(255,255,255,.75);
+      font-size: 0.82rem; /* slightly smaller */
+      opacity: 0.55;     /* dim the whole line */
+      transform: translateY(1px);
+    }
+
+    .slogan_logo .powered-by img {
+      width: 16px;
+      height: 16px;
+      opacity: 0.7; /* keep icon slightly more visible than text */
+    }
+
+    /* For New Footer */
+    .about-network-layer {
+      margin-top: 2.5rem;
+      /* margin-top: -34px; */
+      padding-bottom: 2rem;
+    }
+
+.about-network-divider {
+  width: 14rem;
+  height: 1px;
+  margin: 0 auto 2rem;
+  background: rgba(255,255,255,.22);
+  box-shadow: 0 0 8px rgba(255,255,255,.25);
+}
+
+.about-network-content {
+  display: flex;
+  align-items: center;
+  /* justify-content: space-between; */
+  justify-content: space-around;
+  gap: 2rem;
+}
+
+.about-network-meta {
+  display: flex;
+  flex-direction: column;
+  gap: .35rem;
+  font-size: .75rem;
+  font-size: .85rem;
+  color: rgba(255,255,255,.35);
+  color: rgba(255,255,255,.50);
+}
+
+.about-network-meta a {
+  text-decoration: underline;
+}
+
+/* Mobile keeps original footer visible */
+
+/* @media (max-width: 1024px) {
+  .about-network-layer {
+    display: none;
+  }
+} */
+
+/* FOOTER FOR MOBILE */
+
+.about-network-layer {
+  margin-top: 1.75rem;
+  padding-bottom: 2rem;
+}
+
+@media (max-width: 1024px) {
+
+  .about-network-content {
+    flex-direction: column;
+    justify-content: center;
+    gap: 1.25rem;
+    text-align: center;
+  }
+
+  .slogan_logo {
+    flex-direction: column;
+    gap: .75rem;
+  }
+
+  .slogan_logo .slogan-meta {
+    align-items: center;
+  }
+
+  .about-network-meta {
+    align-items: center;
+    font-size: .75rem;
+    color: rgba(255,255,255,.5);
+  }
+
+  .about-network-layer {
+    padding-top: 0;
+  }
+}
+
+/* @media (max-width: 1024px) {
+  .about-network-layer {
+    margin-top: calc(-0.5rem - 50px); 
+    padding-bottom: 1rem;
+  }
+} */
+
+
+
+/* DESKTOP DISPLAY */
+@media (min-width: 1025px) {
+  footer {
+    display: none;
+  }
+}
+
+/* @media (max-width: 1024px) {
+  .about-network-layer {
+    display: none;
+  }
+}
+
+@media (min-width: 1025px) {
+  footer {
+    display: none;
+  }
+} */
+
+@media (min-width: 1601px) {
+  .mobile_about_container {
+    margin-top: 1rem; /* was 4rem */
+  }
+}
+
+#mobile_about #collections {
+  margin-top: -70px; 
+}
+
+.about-network-layer {
+  margin-top: 1.25rem;
+  margin-top: 0;
+  padding-bottom: 2rem;
+}
+
+.about-network-divider {
+  width: 9rem;
+  margin: 0 auto 1.5rem;
+  opacity: .55;
+}
+
+.about-network-divider {
+  display: none;
+}
+
+/* Desktop-only: nudge the footer down slightly without affecting mobile */
+@media (min-width: 1025px) {
+  .about-network-layer {
+    margin-top: 2.5rem;
+  }
+}
+
+@media (min-width: 1025px) {
+  .mobile_about_container {
+    transform: translateY(-40px);
+  }
+}
+
   </style>
 </head>
 <body>
@@ -691,7 +913,7 @@
   <a class="flex items-center gap-3 px-3 py-3 rounded-lg text-white/90 hover:bg-white/10 hover:text-white transition"
      href="#mobile_about">
     <!-- About icon (SVG) -->
-    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-white/80" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-white/80 about-divider" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
       <path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12c0 4.97-4.03 9-9 9s-9-4.03-9-9 4.03-9 9-9 9 4.03 9 9z" />
     </svg>
     <span>About</span>
@@ -776,7 +998,7 @@
         <div id="mobile-about-divider" class="w-40 sm:w-56 h-[2px] bg-white/30 mx-auto my-6 sm:my-10 lg:my-12 rounded-full shadow-[0_0_8px_rgba(255,255,255,0.4)] opacity-0 scale-x-0 transition-transform duration-700 ease-out"></div>
 
         <!-- COLLECTIONS -->
-        <section id="collections" class="mx-auto py-10 space-y-8">
+        <section id="collections" class="mx-auto pt-10 pb-0 space-y-8">
           <h2 class="collections-title font-semibold mb-2 system-header">Enter a System</h2>
           <div class="cc-track">
 
@@ -865,12 +1087,62 @@
             </a>
           </div>
         </section>
+
+  <!-- New Footer -->
+  <div class="about-network-layer">
+  <!-- <div class="about-network-divider"></div> -->
+
+    <div class="about-network-content">
+    <div class="slogan_logo">
+      <img src="img/icons/artist/dream_agent_logo_blue.png" alt="Dream Agent" class="footer-icon" width="50" height="50">
+      <div class="slogan-meta">
+        <p class="text-white/80 text-sm font-bold footer_slogan">No face. No fame. Just the vision.</p>
+        <div class="powered-by">
+          <img src="img/icons/developer/courdevelops.svg"
+               alt="CourDevelops — AI-integrated web development studio"
+               class="w-5 h-5 opacity-60"
+               width="20" height="20">
+          <p class="m-0">Powered by 
+            <a href="https://courdevelops.com" target="_blank" rel="noopener">CourDevelops</a>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-icons flex items-center gap-3">
+      <a target="_blank" href="https://x.com/dream_agent7" aria-label="Twitter" class="icon-wrap" data-pulse title="Twitter">
+        <img src="img/icons/socials/new_socials/twitter.png" alt="twitter" class="footer-icon">
+      </a>
+      <a target="_blank" href="https://www.instagram.com/dream.agent7/" aria-label="Instagram" class="icon-wrap" data-pulse title="Instagram">
+        <img src="img/icons/socials/new_socials/instagram.png" alt="instagram" class="footer-icon">
+      </a>
+      <a target="_blank" href="https://bsky.app/profile/dreamagent7.bsky.social" aria-label="Bluesky" class="icon-wrap" data-pulse title="Bluesky">
+        <img src="img/icons/socials/new_socials/bluesky.png" alt="bluesky" class="footer-icon">
+      </a>
+      <a target="_blank" href="https://www.tiktok.com/@dream_agent7" aria-label="TikTok" class="icon-wrap" data-pulse title="TikTok">
+        <img src="img/icons/socials/new_socials/tiktok.png" alt="tik_tok" class="footer-icon">
+      </a>
+    </div>
+
+    <div class="about-network-meta">
+      <p>© <span id="about-copyright-year"></span> Dream Agent. All rights reserved.</p>
+      <div class="flex items-center gap-2">
+        <!-- <img src="img/icons/developer/courdevelops.svg"
+                  alt="CourDevelops — AI-integrated web development studio"
+                  class="w-5 h-5 opacity-60"
+                  width="20" height="20"> -->
+        <!-- <p>Powered by 
+          <a href="https://courdevelops.com" target="_blank" rel="noopener">CourDevelops</a></p> -->
+      </div>
+    </div>
+  </div>
+</div>
       </div>
     </section>
 
     
     <!-- FOOTER -->
-    <footer class="mt-10">
+    <footer class="mt-0">
      <div class="max-w-6xl mx-auto px-4 py-4 sm:pt-12 rounded-xl">
       <div class="flex flex-col sm:flex-row items-center justify-between gap-4 sm:gap-6">
         <!-- <div class="flex flex-col sm:flex-row items-center gap-4 sm:gap-6"> -->
@@ -1326,11 +1598,11 @@
     })();
 
     // Dynamic Date in Footer
-    const copyrightYear = document.getElementById("copyright-year");
+   const copyrightYear = document.getElementById("copyright-year");
+    const aboutCopyrightYear = document.getElementById("about-copyright-year");
 
-    if (copyrightYear) {
-      copyrightYear.textContent = new Date().getFullYear();
-    }
+    if (copyrightYear) copyrightYear.textContent = new Date().getFullYear();
+    if (aboutCopyrightYear) aboutCopyrightYear.textContent = new Date().getFullYear();
 
 
   </script>

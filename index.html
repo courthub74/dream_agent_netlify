@@ -831,6 +831,13 @@
   display: none;
 }
 
+/* Desktop-only: nudge the footer down slightly without affecting mobile */
+@media (min-width: 1025px) {
+  .about-network-layer {
+    margin-top: 2.5rem;
+  }
+}
+
 @media (min-width: 1025px) {
   .mobile_about_container {
     transform: translateY(-40px);

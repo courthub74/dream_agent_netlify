@@ -241,10 +241,13 @@
 
   
 
-    /* Footer */
-    footer { text-align: center; color: #EAEFF7; background: linear-gradient(to bottom, #114C92, #022A54); position: relative; margin-top: auto; border-radius: 5px; padding-block: 4rem; border-top: 1px solid rgba(255,255,255,0.2); }
-    footer {
-      display: none;
+    /* Original Footer */
+
+    /* Desktop footer */
+    @media (min-width: 1025px) {
+      footer {
+        display: none;
+      }
     }
     /* Mobile tweaks */
     @media (max-width: 480px) {
@@ -317,7 +320,8 @@
       .mobile_about_portion { display: none !important; }
       .mobile_about_paragraph { display: block !important; }
       section.mobile_about {
-        min-height: 100vh;
+        /* min-height: 100vh; */
+        min-height: 60vh;
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
@@ -735,6 +739,8 @@
   }
 }
 
+
+/* DESKTOP DISPLAY */
 @media (min-width: 1025px) {
   footer {
     display: none;

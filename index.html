@@ -281,6 +281,7 @@
       .mobile_about_paragraph { display: block !important; }
       section.mobile_about {
         min-height: 100vh;
+        min-height: 60vh;
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
@@ -300,7 +301,7 @@
       .mobile_about_portion { display: none !important; }
       .mobile_about_paragraph { display: block !important; }
       section.mobile_about {
-        min-height: 100vh;
+        min-height: 60vh;
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
@@ -333,6 +334,12 @@
         padding-top: 1rem;
       }
     }
+
+    @media (max-width: 1024px) {
+    .about-network-layer {
+      display: none;
+    }
+}
 
     /* Landscape phones & tablets: smaller/shorter collection cards */
     @media (orientation: landscape) and (max-width: 1024px) {

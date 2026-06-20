@@ -539,19 +539,19 @@
             <!-- <img src="../img/icons/artist/dream_agent_logo_blue.png" alt="Dream Agent" class="footer-icon"> -->
             </span>
             <a target="_blank" href="https://x.com/dream_agent7" aria-label="Twitter" class="icon-wrap" data-pulse title="Twitter">
-              <img src="../img/icons/socials/twitter_black_circle.png" alt="Twitter" class="footer-icon">
+              <img src="../img/icons/socials/new_socials/twitter.png" alt="Twitter" class="footer-icon">
             </a>
             <!-- <a target="_blank" href="https://sora.chatgpt.com/profile/dreamagent7" aria-label="Sora" class="icon-wrap" data-pulse title="Sora">
               <img src="../img/icons/socials/sora.png" alt="Sora" class="footer-icon">
             </a> -->
             <a target="_blank" href="https://www.instagram.com/dream.agent7/" aria-label="Instagram" class="icon-wrap" data-pulse title="Instagram">
-              <img src="../img/icons/socials/instagram_red_circle.png" alt="Instagram" class="footer-icon">
+              <img src="../img/icons/socials/new_socials/instagram.png" alt="Instagram" class="footer-icon">
             </a>
             <a target="_blank" href="https://bsky.app/profile/dreamagent7.bsky.social" aria-label="Bluesky" class="icon-wrap" data-pulse title="Bluesky">
-              <img src="../img/icons/socials/bluesky_liteblue_circle.png" alt="Bluesky" class="footer-icon">
+              <img src="../img/icons/socials/new_socials/bluesky.png" alt="Bluesky" class="footer-icon">
             </a>
             <a target="_blank" href="https://www.tiktok.com/@dream_agent7" aria-label="TikTok" class="icon-wrap" data-pulse title="TikTok">
-              <img src="../img/icons/socials/tiktok_black_circle.png" alt="TikTok" class="footer-icon">
+              <img src="../img/icons/socials/new_socials/tiktok.png" alt="TikTok" class="footer-icon">
             </a>
          </div>
        
@@ -1546,6 +1546,14 @@ if (mobileStrip) {
     }
   });
 })();
+
+ // Dynamic Date in Footer
+   const copyrightYear = document.getElementById("copyright-year");
+    const aboutCopyrightYear = document.getElementById("about-copyright-year");
+
+    if (copyrightYear) copyrightYear.textContent = new Date().getFullYear();
+    if (aboutCopyrightYear) aboutCopyrightYear.textContent = new Date().getFullYear();
+
 
     </script>
 

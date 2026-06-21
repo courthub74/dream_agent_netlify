@@ -708,9 +708,11 @@
 
     /* For New Footer */
     .about-network-layer {
-      margin-top: 2.5rem;
-      /* margin-top: -34px; */
-      padding-bottom: 2rem;
+      margin-top: 1.5rem;
+      padding-bottom: 1rem; /* reduce excess bottom whitespace */
+      max-width: var(--content-max); /* align with About container */
+      margin-inline: auto;
+      padding-inline: var(--content-pad);
     }
 
 .about-network-divider {
@@ -724,8 +726,7 @@
 .about-network-content {
   display: flex;
   align-items: center;
-  /* justify-content: space-between; */
-  justify-content: space-around;
+  justify-content: space-between; /* align edges with container */
   gap: 2rem;
 }
 
@@ -754,8 +755,11 @@
 /* FOOTER FOR MOBILE */
 
 .about-network-layer {
-  margin-top: 1.75rem;
-  padding-bottom: 2rem;
+  margin-top: 1rem;
+  padding-bottom: 0.75rem;
+  max-width: var(--content-max);
+  margin-inline: auto;
+  padding-inline: var(--content-pad);
 }
 
 @media (max-width: 1024px) {
@@ -826,9 +830,11 @@
 }
 
 .about-network-layer {
-  margin-top: 1.25rem;
-  margin-top: 0;
-  padding-bottom: 2rem;
+  margin-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  max-width: var(--content-max);
+  margin-inline: auto;
+  padding-inline: var(--content-pad);
 }
 
 .about-network-divider {
@@ -979,7 +985,7 @@
 
     <!-- ABOUT -->
     <section id="mobile_about" class="mobile_about">
-      <div class="mobile_about_container py-8">
+      <div class="mobile_about_container pt-8 pb-4">
 
         <!-- --------------------------------------------------------------------------------------- -->
         <!-- --------------------------------------------------------------------------------------- -->

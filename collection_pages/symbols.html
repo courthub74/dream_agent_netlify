@@ -158,6 +158,7 @@
                 rgba(255,255,255,.35),
                 rgba(0,87,184,.18) 55%,
                 rgba(255,255,255,0) 100%);
+    
     filter: blur(10px);
     opacity: .40;                     /* idle aura */
     transition: opacity .25s ease, transform .25s ease, filter .25s ease;
@@ -272,13 +273,16 @@
 #lightboxModal .lb-prev { left: 18px; }
 #lightboxModal .lb-next { right: 18px; }
 
-/* Artwork description debug helper */
-#artDesc {
-  /* outline: 2px solid lime; */
+
+.collection-footer {
+  background: rgba(255,255,255,0.02);
 }
 
-#artTitle {
-  /* outline: 2px solid lime; */
+@media (max-width: 640px) {
+  footer.collection-footer > div {
+    padding-top: 1.5rem !important;
+    padding-bottom: 1.5rem !important;
+  }
 }
 
     /* VERY SOFT LINEAR FLOW AURA DIVIDER */
@@ -345,7 +349,7 @@
    </div>
 
   <!-- Main Grid -->
-  <main class="max-w-6xl mx-auto px-4 pb-20 pt-8 grid grid-cols-1 lg:grid-cols-12 gap-8">
+  <main class="max-w-6xl mx-auto px-4 pt-8 grid grid-cols-1 lg:grid-cols-12 gap-8">
     <!-- Artwork column -->
     <section class="lg:col-span-7">
       <article class="panel rounded-2xl px-4 sm:px-6 pt-2 sm:pt-4 pb-8 -mt-2">
@@ -521,43 +525,54 @@
   </main>
 
   <!-- FOOTER -->
-  <footer class="mt-10 bg-white/5">
+  <footer class="mt-5 collection-footer">
     <div class="max-w-6xl mx-auto px-4 py-20 sm:pt-12 rounded-xl">
       <div class="flex flex-col sm:flex-row items-center justify-between gap-4 sm:gap-6">
    
-            <div class="text-center sm:text-left">
+            <div class="flex flex-col sm:flex-row sm:items-center sm:gap-3 text-center sm:text-left mb-2 sm:mb-0">
+              <img src="../img/icons/artist/dream_agent_logo_blue.png" alt="Dream Agent" class="footer-dream-agent-logo mb-2 sm:mb-0 mx-auto sm:mx-0 w-[50px] sm:w-[45px] pb-[10px] sm:pb-0" width="auto" height="auto">
               <p class="text-white/80 text-sm font-bold footer_slogan">No face. No fame. Just the vision.</p>
             </div>
             <!-- logos moved next to the text and tightened gap -->
             <div class="footer-icons flex items-center gap-3">
             <span class="icon-wrap" data-pulse>
-            <img src="../img/icons/artist/dream_agent_logo_blue.png" alt="Dream Agent" class="footer-icon">
+            <!-- <img src="../img/icons/artist/dream_agent_logo_blue.png" alt="Dream Agent" class="footer-icon"> -->
             </span>
             <a target="_blank" href="https://x.com/dream_agent7" aria-label="Twitter" class="icon-wrap" data-pulse title="Twitter">
-              <img src="../img/icons/socials/twitter_black_circle.png" alt="Twitter" class="footer-icon">
+              <img src="../img/icons/socials/symbols_socials/twitter.png" alt="Twitter" class="footer-icon">
             </a>
             <!-- <a target="_blank" href="https://sora.chatgpt.com/profile/dreamagent7" aria-label="Sora" class="icon-wrap" data-pulse title="Sora">
               <img src="../img/icons/socials/sora.png" alt="Sora" class="footer-icon">
             </a> -->
             <a target="_blank" href="https://www.instagram.com/dream.agent7/" aria-label="Instagram" class="icon-wrap" data-pulse title="Instagram">
-              <img src="../img/icons/socials/instagram_red_circle.png" alt="Instagram" class="footer-icon">
+              <img src="../img/icons/socials/symbols_socials/instagram.png" alt="Instagram" class="footer-icon">
             </a>
             <a target="_blank" href="https://bsky.app/profile/dreamagent7.bsky.social" aria-label="Bluesky" class="icon-wrap" data-pulse title="Bluesky">
-              <img src="../img/icons/socials/bluesky_liteblue_circle.png" alt="Bluesky" class="footer-icon">
+              <img src="../img/icons/socials/symbols_socials/bluesky.png" alt="Bluesky" class="footer-icon">
             </a>
             <a target="_blank" href="https://www.tiktok.com/@dream_agent7" aria-label="TikTok" class="icon-wrap" data-pulse title="TikTok">
-              <img src="../img/icons/socials/tiktok_black_circle.png" alt="TikTok" class="footer-icon">
+              <img src="../img/icons/socials/symbols_socials/tik_tok.png" alt="TikTok" class="footer-icon">
             </a>
          </div>
        
          
          <!-- right group: copyright / attribution -->
         <div class="flex flex-col items-center gap-2 text-xs text-white/30">
-          <p>© 2025 Dream Agent. All rights reserved.</p>
-          <!-- <p class="flex items-center gap-1">
-            <img src="../img/round_logos/Courdevelops.svg" alt="CourDevelops logo" class="w-6 h-6 opacity-30" width="16" height="16">
-            Powered by CourDevelops
-          </p> -->
+          <p>© <span id="copyright-year"></span> Dream Agent. All rights reserved.</p>
+          <p class="flex items-center gap-2">
+            <img src="../img/icons/developer/courdevelops.svg"
+                alt="CourDevelops — AI-integrated web development studio"
+                class="w-5 h-5 opacity-60"
+                width="20" height="20">
+            <span>
+              Powered by
+              <a href="https://courdevelops.com"
+                target="_blank"
+                rel="noopener"
+                class="underline hover:text-white/80">
+                CourDevelops
+              </a>
+            </span>
         </div>
       </div>
     </div>
@@ -758,35 +773,35 @@
     {
       title: "Signals & Ascensions",
       href: "./signals.html",
-      img: "../img/collection_covers/signals_and_ascensions.png",
+      img: "../img/collection_covers/new_covers/signals_and_ascensions_cover.png",
       count: 7,
       years: "2019–2025"
     },
     {
       title: "Industrial Myths",
       href: "./industrial.html",
-      img: "../img/collection_covers/industrial_myths.png",
+      img: "../img/collection_covers/new_covers/industrial_myths_cover.png",
       count: 5,
       years: "2018–2024"
     },
     {
       title: "Digital Unconscious",
       href: "./digital.html",
-      img: "../img/collection_covers/digital_unconscious.png",
+      img: "../img/collection_covers/new_covers/digital_unconscious_cover.png",
       count: 5,
       years: "2020–2025"
     },
     {
       title: "Dominion Archive",
       href: "./dominion.html",
-      img: "../img/collection_covers/dominion_archives.png",
+      img: "../img/collection_covers/new_covers/dominion_archives_cover.png",
       count: 6,
       years: "2017–2024"
     },
     {
       title: "War & Feast",
       href: "./war_feast.html",
-      img: "../img/collection_covers/war_feast.png",
+      img: "../img/collection_covers/new_covers/war_and_feast_cover.png",
       count: 6,
       years: "2017–2024"
     }
@@ -1531,6 +1546,14 @@ if (mobileStrip) {
     }
   });
 })();
+
+ // Dynamic Date in Footer
+   const copyrightYear = document.getElementById("copyright-year");
+    const aboutCopyrightYear = document.getElementById("about-copyright-year");
+
+    if (copyrightYear) copyrightYear.textContent = new Date().getFullYear();
+    if (aboutCopyrightYear) aboutCopyrightYear.textContent = new Date().getFullYear();
+
 
     </script>
 

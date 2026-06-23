@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Dream Agent — Symbols In Motion</title>
+  <title>Dream Agent — Industrial Myths</title>
    <!-- FAVICON -->
   <link rel="icon" href="/img/favicon/favicon.png" sizes="any">
   <script src="https://cdn.tailwindcss.com"></script>
@@ -191,6 +191,11 @@
     box-shadow:
         0 0 0 1px rgba(255,255,255,.26),
         0 6px 18px rgba(0,0,0,.28);
+    }
+
+     /* PLAYFAIR LOGO */
+    h1, h2, h3, h4, #title, .about-link, .overlay-text, .mobile_about_header, .mobile_about_collections_header, .hero_phrase, .footer_slogan, #cta {
+      font-family: 'Playfair Display', serif;
     }
 
     /* --- No scrollbar class for horizontal scroller (OTHER COLLECTIONS) --- */
@@ -474,43 +479,54 @@
   </main>
 
   <!-- FOOTER -->
-  <footer class="mt-10 bg-white/5">
-    <div class="max-w-6xl mx-auto px-4 py-20 sm:pt-12 rounded-xl">
+  <footer class="mt-5 bg-white/5 collection-footer">
+  <div class="max-w-6xl mx-auto px-4 py-6 sm:pt-12 sm:pb-20 rounded-xl">
       <div class="flex flex-col sm:flex-row items-center justify-between gap-4 sm:gap-6">
    
-            <div class="text-center sm:text-left">
-            <p class="text-white/80 text-sm font-bold serif">No face. No fame. Just the vision.</p>
+            <div class="flex flex-col sm:flex-row sm:items-center sm:gap-3 text-center sm:text-left mb-2 sm:mb-0">
+              <img src="../img/icons/artist/dream_agent_logo_blue.png" alt="Dream Agent" class="footer-dream-agent-logo mb-2 sm:mb-0 mx-auto sm:mx-0 w-[50px] sm:w-[45px] pb-[10px] sm:pb-0" width="auto" height="auto">
+              <p class="text-white/80 text-sm font-bold footer_slogan">No face. No fame. Just the vision.</p>
             </div>
             <!-- logos moved next to the text and tightened gap -->
             <div class="footer-icons flex items-center gap-3">
             <span class="icon-wrap" data-pulse>
-            <img src="../img/icons/artist/dream_agent_logo_blue.png" alt="Dream Agent" class="footer-icon" width="44" height="44">
+            <!-- <img src="../img/icons/artist/dream_agent_logo_blue.png" alt="Dream Agent" class="footer-icon"> -->
             </span>
             <a target="_blank" href="https://x.com/dream_agent7" aria-label="Twitter" class="icon-wrap" data-pulse title="Twitter">
-              <img src="../img/icons/socials/twitter_black_circle.png" alt="Twitter" class="footer-icon">
+              <img src="../img/icons/socials/industrial_socials/twitter.png" alt="Twitter" class="footer-icon">
             </a>
             <!-- <a target="_blank" href="https://sora.chatgpt.com/profile/dreamagent7" aria-label="Sora" class="icon-wrap" data-pulse title="Sora">
               <img src="../img/icons/socials/sora.png" alt="Sora" class="footer-icon">
             </a> -->
             <a target="_blank" href="https://www.instagram.com/dream.agent7/" aria-label="Instagram" class="icon-wrap" data-pulse title="Instagram">
-              <img src="../img/icons/socials/instagram_red_circle.png" alt="Instagram" class="footer-icon">
+              <img src="../img/icons/socials/industrial_socials/instagram.png" alt="Instagram" class="footer-icon">
             </a>
             <a target="_blank" href="https://bsky.app/profile/dreamagent7.bsky.social" aria-label="Bluesky" class="icon-wrap" data-pulse title="Bluesky">
-              <img src="../img/icons/socials/bluesky_liteblue_circle.png" alt="Bluesky" class="footer-icon">
+              <img src="../img/icons/socials/industrial_socials/bluesky.png" alt="Bluesky" class="footer-icon">
             </a>
             <a target="_blank" href="https://www.tiktok.com/@dream_agent7" aria-label="TikTok" class="icon-wrap" data-pulse title="TikTok">
-              <img src="../img/icons/socials/tiktok_black_circle.png" alt="TikTok" class="footer-icon">
+              <img src="../img/icons/socials/industrial_socials/tiktok.png" alt="TikTok" class="footer-icon">
             </a>
          </div>
        
          
          <!-- right group: copyright / attribution -->
         <div class="flex flex-col items-center gap-2 text-xs text-white/30">
-          <p>© 2025 Dream Agent. All rights reserved.</p>
-          <!-- <p class="flex items-center gap-1">
-            <img src="../img/round_logos/Courdevelops.svg" alt="CourDevelops logo" class="w-6 h-6 opacity-30" width="16" height="16">
-            Powered by CourDevelops
-          </p> -->
+          <p>© <span id="copyright-year"></span> Dream Agent. All rights reserved.</p>
+          <p class="flex items-center gap-2">
+            <img src="../img/icons/developer/courdevelops.svg"
+                alt="CourDevelops — AI-integrated web development studio"
+                class="w-5 h-5 opacity-60"
+                width="20" height="20">
+            <span>
+              Powered by
+              <a href="https://courdevelops.com"
+                target="_blank"
+                rel="noopener"
+                class="underline hover:text-white/80">
+                CourDevelops
+              </a>
+            </span>
         </div>
       </div>
     </div>

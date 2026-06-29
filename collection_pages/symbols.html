@@ -298,6 +298,13 @@
       will-change: transform;
     } */
 
+    /* Related Works Section */
+
+    #relatedWorks {
+      display: flex;
+      gap: 0.5rem;
+    }
+
     .related-img {
       width: 105px;
       height: 105px;
@@ -434,7 +441,7 @@
         </p>
 
         <!-- Related Works -->
-         <div id="relatedWorks" class="mt-6">
+         <div id="relatedWorks" class="mt-6 flex flex-col gap-3">
           <h3 class="serif text-lg mb-2">Related Works</h3>
 
           <div class="flex flex-wrap gap-2">
@@ -1080,10 +1087,6 @@
     if (switching) return;
     switching = true;
 
-    // artTitle.textContent = w.title || "";
-    // // ensure it’s visible before the enter animation kicks in
-    // gsap.set(artTitle, { opacity: 1, y: 0 });   // <- add this line
-
     const w = works[i];
     // Disable nav while animating
     document.getElementById("prevBtn").disabled = true;
@@ -1149,6 +1152,22 @@
         await preload(nextBest);
       } catch(e) {}
     })();
+
+    // check for related works and update the related section if it exists
+    const relatedSection = document.getElementById("relatedWorks");
+    if (relatedSection) {
+      const relatedWorks = works.filter(w3 => w.related?.includes(w2.title));
+      if (relatedWorks.length > 0) {
+        relatedSection.innerHTML = relatedWorks.map(rw => `
+          <a href="#${toId(rw.title, works.indexOf(rw))}" class="related-work-link related-chip">
+            <img src="${rw.img}" alt="${rw.title}" class="related-img">
+            <span class="related-work-title">${rw.title}</span>
+          </a>
+        `).join("");
+      } else {
+        relatedSection.innerHTML = "<p>No related works available.</p>";
+      }
+    }
 
     artDesc.innerHTML = paragraphsHTML(w.desc);
   }

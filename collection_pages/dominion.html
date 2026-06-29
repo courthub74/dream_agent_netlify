@@ -14,8 +14,18 @@
       font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial;
       color: white;
      background:
-      radial-gradient(1200px 600px at 20% 0%, rgba(255,255,255,0.04), transparent),
-      linear-gradient(180deg, rgba(90, 15, 25, 0.88), rgba(30, 5, 10, 0.95)),
+      /* radial-gradient(1200px 600px at 20% 0%, rgba(255,255,255,0.04), transparent),
+      linear-gradient(180deg, rgba(90, 15, 25, 0.88), rgba(30, 5, 10, 0.95)), */
+        radial-gradient(
+          1200px 600px at 20% 0%,
+          rgba(255, 214, 120, 0.06),
+          transparent
+        ),
+        linear-gradient(
+          180deg,
+          rgba(92, 54, 24, 0.92),
+          rgba(42, 24, 14, 0.98)
+        ),
       url('../img/background_imgs/even_larger_about_background.png') center/cover no-repeat;
     }
     .serif{ font-family:"Playfair Display", Georgia, serif; }
@@ -435,13 +445,13 @@
             <!-- JS builds this list --> 
         </div>
          <!-- Other Collections: horizontal strip with thumbs + arrows -->
-        <div id="otherCollectionsStrip" class="mt-4 overflow-hidden">
+        <div id="otherCollectionsStrip" class="mt-4 overflow-visible">
           <h3 class="serif text-base sm:text-lg mb-2">Other collections</h3>
 
           <div class="relative">
             <!-- gradient edges -->
-            <div class="pointer-events-none absolute inset-y-0 left-0 w-10 bg-gradient-to-r from-black/40 to-transparent z-10"></div>
-            <div class="pointer-events-none absolute inset-y-0 right-0 w-10 bg-gradient-to-l from-black/40 to-transparent z-10"></div>
+            <!-- <div class="pointer-events-none absolute inset-y-0 left-0 w-10 bg-gradient-to-r from-black/40 to-transparent z-10"></div>
+            <div class="pointer-events-none absolute inset-y-0 right-0 w-10 bg-gradient-to-l from-black/40 to-transparent z-10"></div> -->
 
             <!-- arrows -->
             <button id="ocPrev"
@@ -462,7 +472,7 @@
             <!-- one-line scroller -->
             <div id="ocScroller"
                 class="flex items-center gap-2 sm:gap-3 overflow-x-auto whitespace-nowrap no-scrollbar
-                        snap-x snap-mandatory px-2 py-1">
+                        snap-x snap-mandatory px-2 py-3">
               <!-- JS injects cards -->
             </div>
           </div>
@@ -693,35 +703,35 @@
                 {
                 title: "Symbols In Motion",
                 href: "../collection_pages/symbols.html",
-                img: "./img/collection_covers/symbols_in_motion.png",
+                img: "./img/collection_covers/new_covers/symbols_in_motion_cover.png",
                 count: 5,
                 years: "2020–2025"
                 },
                 {
                 title: "Signals & Ascensions",
                 href: "../collection_pages/signals.html",
-                img: "./img/collection_covers/signals_and_ascensions.png",
+                img: "./img/collection_covers/new_covers/signals_and_ascensions_cover.png",
                 count: 6,
                 years: "2020–2025"
                 },
                 {
                 title: "The Digital Unconscious",
                 href: "../collection_pages/digital.html",
-                img: "./img/collection_covers/digital_unconscious.png",
+                img: "./img/collection_covers/new_covers/digital_unconscious_cover.png",
                 count: 5,
                 years: "2019–2025"
                 },
                 {
                 title: "Industrial Myths",
                 href: "../collection_pages/industrial.html",
-                img: "./img/collection_covers/industrial_myths.png",
+                img: "./img/collection_covers/new_covers/industrial_myths_cover.png",
                 count: 5,
                 years: "2018–2024"
                 },
                 {
                 title: "War & Feast",
                 href: "../collection_pages/war_feast.html",
-                img: "./img/collection_covers/war_and_feast.png",
+                img: "./img/collection_covers/new_covers/war_and_feast_cover.png",
                 count: 6,
                 years: "2017–2024"
                 }
@@ -758,11 +768,11 @@
                   const href = normalizeHref(c.href || '#');
                   return `
                     <a href="${href}"
-                      class="group inline-flex items-center gap-3 rounded-xl
-                              ring-1 ring-white/15 bg-white/5
+                      class="group inline-flex shrink-0 items-center gap-3 rounded-xl
+                              ring-0 ring-white/5 bg-white/5
                               hover:bg-white/10 hover:ring-white/30 transition
                               snap-start pr-3">
-                      <span class="block h-14 w-24 sm:h-16 sm:w-28 overflow-hidden rounded-l-xl">
+                      <span class="block h-14 w-14 sm:h-16 sm:w-16 overflow-hidden rounded-full shrink-0 ring-1 ring-white/20">
                         <img src="${c.img}" loading="lazy" alt="${c.title}" class="h-full w-full object-cover">
                       </span>
                       <span class="flex items-baseline gap-2 pr-1">

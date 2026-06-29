@@ -1,0 +1,372 @@
+// ALLWORKS 
+
+/*
+--------------------------------------------------------
+Dream Agent Master Artwork Archive
+
+Single source of truth for all Dream Agent works.
+
+Collection pages filter from this dataset.
+
+Used by:
+- Collection pages
+- Related Works
+- Search
+- Archive
+- Future React components
+--------------------------------------------------------
+*/
+
+console.log("artworks.js loaded");
+
+window.allWorks = [
+    /////////////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////////////
+    // SYMBOLS IN MOTION
+    /////////////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////////////
+
+    // TEMPLE OF OPENINGS
+    { 
+      id: "temple_of_openings",
+      collection: "symbols",
+      title:"Temple of Openings", 
+      year:"2021", 
+      style:"Oil-style",
+      featured: true,
+      dateCreated: "2021-09-15",
+      related:["binary_tree", "polar_bear", "the_great_divide"],
+      motifs: ["strategy wood", "chessboard", "temple", "ocean"],
+      themes: ["beginnings", "civilization", "colonialism", "faith", "doubt"],
+      img:"../img/collection_works/symbols_in_motion/temple_of_openings.png",
+      desc:[
+          "Two chessboards face the Pacific at sunset — one arranged for faith, the other for doubt. The white pieces align in formation before the ancient temple, where water pours from marble columns like divine cognition.",
+          "The black side stands fractured, its pawns hybridized — red, yellow, brown, white — hinting at civilization’s mixed motives. Above them rises **Strategy Wood**, a parody of “Hollywood,” where the myths of empire meet the algorithms of game theory.",
+          "This is a painting about 'beginnings' — the first move, the spiritual economy of intention, and the theater of all creation.",
+          "Every opening is both an offering and a deception."
+      ],
+      links:{ xrp:"https://xrp.cafe/nft/00081388B57E780C6A5EF299540E01B0E8C6DB1B83CFC916BA8EA1DA05CBFA3E", 
+      os:"#", 
+      sr:"#"}
+    },
+    // BINARY TREE
+    { 
+      id: "binary_tree",
+      collection: "symbols",
+      title:"Binary Tree", 
+      year:"2026", 
+      style:"Oil-style",
+      featured: true,
+      dateCreated: "2026-10-15",
+      related:["temple_of_openings", "polar_bear", "the_great_divide"],
+      motifs: ["tree", "choices", "consequences", "paths"],
+      themes: ["ambiguity", "authority", "decision-making", "indecision"],
+      img:"../img/collection_works/symbols_in_motion/binary_tree.png",
+      desc:[
+          "'Binary Tree' unfolds inside a surreal Palm-Royale-style club where elegance and ambiguity mingle.",
+          "A poised woman in a split green-and-white dress stands between two faceless servers—one masked in green, one masked in white—each offering a symbolic choice: a bonsai and martini on one side, a bronze breastplate and white wine on the other.",
+          "Behind them, a great window shaped like a branching tree echoes the theme of decision, divergence, and the illusions of control. Portraits stare from the walls like silent judges, while directional arrows quietly insist that every path is deliberate—even when the chooser isn’t sure.",
+          "This is a study of 'ambiguous authority', 'binary thinking', and the elegance of indecision.",
+          "It’s about the moments when power is an attitude, not an answer."
+      ],
+      links:{ xrp:"https://xrp.cafe/nft/00080BB8B57E780C6A5EF299540E01B0E8C6DB1B83CFC9164A57450F05CBFA71", 
+      os:"https://opensea.io/item/ethereum/0x870520570ea3cd36ec19a8494c2a08b131727a83/2", 
+      sr:"#"}
+    },
+    // THE TECH ERA
+    { 
+      id: "the_tech_era",
+      collection: "symbols",
+      title:"The Tech Era", 
+      year:"2025", 
+      style:"Oil-style",
+      featured: true,
+      dateCreated: "2025-08-25",
+      related: ["cursor_of_fate", "internet_of_the_modern_world"],
+      motifs: ["technology", "urban life", "prosperity"],
+      themes: ["progress", "isolation", "synchronization"],
+      img:"../img/collection_works/symbols_in_motion/the_tech_era.png",
+      desc:[
+          "In 'The Tech Era,' Dream Agent conjures a surreal crossroads of technological elegance and ancient mystery. A cadre of faceless urbanites—Yuppies, Buppies, and Cypherpunks—glide through a snow-laced city on electric scooters, disconnected yet synchronized.", 
+          "They pass a glowing crystal ball ceremony, a hypnotic marble garage spewing water from the mountains, and a mystical Zoltar figure beside a woman carefully sewing a half-finished turban.",
+          "Above, a giant floating tooth—a relic or prophecy?—hovers between two epochs: analog ruin and digital rebirth. Symbols abound: the neon globe of globalism, the ever-watching mountain temple, and a store sign encoded in planetary language.",
+          "This is not just a painting—it’s a portal.", 
+      ],
+      links:{ xrp:"https://xrp.cafe/nft/00080BB8B57E780C6A5EF299540E01B0E8C6DB1B83CFC9161205E0EB05CBFA4D", 
+      os:"https://opensea.io/item/ethereum/0x870520570ea3cd36ec19a8494c2a08b131727a83/1", 
+      sr:"#"}
+    },
+    // THE RUSHER THE INCREMENTER AND THE PROTESTER
+    { 
+      id: "the_rusher_the_incrementer_and_the_protester",
+      collection: "symbols",
+      title:"The Rusher, The Incrementer and the Protester", 
+      year:"2025", 
+      style:"Oil-style",
+      featured: true,
+      dateCreated: "2025-09-15",
+      related:[],
+      motifs: ["bar", "archetypes"],
+      themes: ["conflict", "identity", "agency"],
+      img:"../img/collection_works/symbols_in_motion/the_rusher_the_incrementer_and_the_protester.png",
+      desc:[
+          "Three men sit at a dimly lit bar — a timeless tribunal of modern archetypes: The Rusher, clenched in frustration, his glass half-empty and fists tighter still; The Incrementer, precise and calculating, a monocled figure clad in pinstripes, sipping with a measured grace; and The Protester, puffed-cheeked and clad in a tracksuit, caught mid-reaction, somewhere between rebellion and retreat.",
+          "Each man drinks from a different vessel — a whiskey tumbler, a wine glass, and a crushed beer can — reflecting their strategy in the silent war of agency. Crushed sugar cubes and spent lighters scatter the bar, symbols of fuel and burnout.",
+          "This oil-style portrait isn’t just a study in temperament — it’s a tension-filled séance of capitalism, identity, and pacing in the digital age.",
+          "Which one are you?",
+      ],
+      links:{ xrp:"https://xrp.cafe/nft/00081388B57E780C6A5EF299540E01B0E8C6DB1B83CFC916D17472D905CBFA3F", os:"#", sr:"#"}
+    },
+    // PRINCE CARL LAYING 
+    { 
+      id: "prince_carl_laying",
+      collection: "symbols",
+      title:"Prince Carl laying in front of the Telly, denying himself to watch it", 
+      year:"2025", 
+      style:"Oil-style",
+      featured: true,
+      dateCreated: "2025-03-12",
+      related:["prince_carl_after_the_salt_conquering_speaking_an_ancient_language"],
+      motifs: ["hotel", "cane"],
+      themes: ["isolation", "power", "contemplation"],
+      img:"../img/collection_works/symbols_in_motion/prince_carl.png",
+      desc:[
+          "In a hotel room of neutral tones and soft lighting, a solitary figure in regal military dress — Prince Carl — lies across a bed, locked in contemplation before a blank television screen. His ornate baton rests beside him, unused. The TV, cold and dark, reflects nothing but the silence of his choice.",
+          "Before it, a curious console: a humanoid figure with a monitor for a head and a crystal ball in its hands. A green mountain labeled “Strategywood” rises like a false oracle, flanked by miniature flags — fragments of world powers reduced to decoration.", 
+          "Behind a slightly ajar door, a shower curtain bears a cryptic insignia: intelligence behind the veil.",
+          "The cursor on the screen invites, yet Prince Carl resists — denying himself the seduction of spectacle, prophecy, or command. This is the portrait of power in a moment of withdrawal.",
+          "Surveillance, strategy, and prophecy lie at arm's reach… but he waits.",
+          "What happens when a sovereign refuses the screen? A meditation on control, voyeurism, and the quiet rebellion of inaction.", 
+      ],
+      links:{ xrp:"https://xrp.cafe/nft/00080BB8B57E780C6A5EF299540E01B0E8C6DB1B83CFC91628EBB1EA05CBFA4E", 
+      os:"#", 
+      sr:"#"}
+    },
+    // POLAR BEAR
+    { 
+      id: "polar_bear",
+      collection: "symbols",
+      title:"Polar Bear", 
+      year:"2026", 
+      style:"Oil-style",
+      featured: true,
+      dateCreated: "2026-01-15",
+      related:["temple_of_openings", "binary_tree", "the_great_divide"],
+      motifs: ["temperature", "dualities"],
+      themes: ["climate", "balance", "fragility"],
+      img:"../img/collection_works/symbols_in_motion/polar_bear.png",
+      desc:[
+         "A checkerboard plain stages two masked figures labeled *let* and *const*, paused in mutual orientation as a thermometer rises between them. Behind, an alabaster basilica and a wounded crystal sphere establish a frozen system where variables face limits, and permanence bears marks of force.",
+         "The work fixes logic, architecture, and ritual into a single climatic moment. Change is measured, not felt, while stability carries visible damage."
+      ],
+      links:{ xrp:"https://xrp.cafe/nft/000807D0B57E780C6A5EF299540E01B0E8C6DB1B83CFC9163FD182E905CBFA4F", 
+      os:"#", 
+      sr:"#"}
+    },
+    // DREAM AGENT MAKING BIRDS
+    { 
+      id: "dream_agent_making_birds",
+      collection: "symbols",
+      title:"Dream Agent Making Birds", 
+      year:"2025", 
+      style:"Oil-style",
+      featured: true,
+      dateCreated: "2025-07-15",
+      related:["wizard_of_agent_dreams"],
+      motifs: ["spy", "machine", "birds"],
+      themes: ["mystery", "devotion", "transformation"],
+      img:"../img/collection_works/symbols_in_motion/dream_agent_making_birds.png",
+      desc:[
+         "'Dream Agent Making Birds' captures the faceless spy in a sacred moment of release. Standing before a red cage that holds a glowing machine, the spy extends his gloved hands—not to release a bird, but to reveal wings of light. Above, a chain of birds arcs through the morning sky, echoing the engraving 'Soli Deo Gloria' on the window sill. It is both prayer and ritual: an act of making, not owning—where flight itself becomes the art.",
+         "This piece bridges mystery and devotion, weaving together technology, faith, and surreal transformation. A meditation on creation, release, and the unseen hands that move history.",
+      ],
+      links:{ xrp:"https://xrp.cafe/nft/00080FA0B57E780C6A5EF299540E01B0E8C6DB1B83CFC91656B753E805CBFA50", 
+      os:"#", 
+      sr:"#"}
+    },
+    // HORMONES 95
+    { 
+      id: "hormones_95",
+      collection: "symbols",
+      title: "Hormones '95", 
+      year: "2026", 
+      style: "Oil-style",
+      featured: true,
+      dateCreated: "2026-02-15",
+      related: [],
+      motifs: ["bat", "evening"],
+      themes: ["transience", "intimacy", "contemplation"],
+      img: "../img/collection_works/symbols_in_motion/hormones_95.png",
+      desc:[
+           "'Hormones ’95' captures a private interior moment framed against an exterior disturbance. A young woman stands within the warm geometry of a lit window, her posture composed and downward facing, while the night outside carries an approaching shape.",
+           "The painting contrasts two forms of emergence: the quiet architecture of self-presentation and the sudden arrival of instinct. Pearls, evening fabric, and controlled posture form the interior language of social structure, while the winged presence in the night sky introduces a separate rhythm.",
+           "The composition situates the viewer between these systems. The window frame functions as a threshold device, dividing cultivated identity from the unpredictable mechanics of the outside world.",
+           "Within the Dream Agent archive, 'Hormones ’95' belongs to the category of transitional works: paintings that document the moment when internal order meets external signal."
+      ],
+      links:{ xrp:"https://xrp.cafe/nft/000807D0B57E780C6A5EF299540E01B0E8C6DB1B83CFC9166D9D24EF05CBFA51", 
+      os:"#", 
+      sr:"#"}
+    },
+
+    /////////////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////////////
+    // THE DIGITAL UNCONSCIOUS
+    /////////////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////////////
+
+    //  THE GREAT DIVIDE
+    { 
+      id: "the_great_divide",
+      collection: "digital",
+      title:"The Great Divide", 
+      year:"2018", 
+      style:"Oil-style",
+      featured: true,
+      dateCreated: "2018-6-15",
+      related:["lactation_of_the_ledger","temple_of_openings", "binary_tree"],
+      motifs: ["bitcoin", "baby", "protest"],
+      themes: ["generational conflict", "digital value", "rebirth"],
+      img:"../img/collection_works/digital_unconscious/the_great_divide.png",
+      desc:[
+        "The Great Divide is a meditation on the birth of digital value amidst generational and ideological conflict. A solemn green matriarch cradles a golden baby marked with the Bitcoin symbol — a digital messiah wrapped in swaddling wealth. Around her, the youth sit silently with laptops, bearing the weight of a new world, while protesters and skeptics stand on the opposing cliff, holding blank signs and accusations.",
+        "Set against a cosmic desert canyon under constellations of coded systems, this painting questions what is inherited, what is mined, and what is rejected. The gold rock at the feet of the critic speaks to the relics of the past; the baby to a future still being written.",
+        "🪐 Blockchain as womb. Protest as ritual. Code as constellation.",
+        "This is not just a divide — it is a rebirth.",
+      ],
+      links:{ xrp:"https://xrp.cafe/nft/00081388B57E780C6A5EF299540E01B0E8C6DB1B83CFC916AE2E92F105CBFA5F", 
+      os:"#", 
+      sr:"#"}
+    },
+    //  INTERNET OF THE MIDDLE WORLD
+    { 
+      id: "internet_of_the_middle_world",
+      collection: "digital",
+      title:"Internet of the Middle World", 
+      year:"2022", 
+      style:"Oil-style",
+      featured: true,
+      dateCreated: "2022-10-06",
+      related:["internet_of_the_old_world", "internet_of_the_new_world"],
+      motifs: ["mall", "crystal ball"],
+      themes: ["digital culture", "nostalgia", "ritual"],
+      img:"../img/collection_works/digital_unconscious/internet_of_the_middle_world.png",
+      desc:[
+         "'Internet of the Middle World' captures a surreal 1980s-style mall scene where the digital age seeps into analog life. Neon signs divide the corridor into 'INTER' and 'NET', while glowing orbs—crystal-ball-like internet terminals—float atop fountains and pedestals. Shoppers gaze into them with reverence, as if accessing forgotten futures.", 
+         "The color palette leans into nostalgic earth tones, contrasted with electric blues, subtly evoking early digital aesthetics. The arcade machines flicker like proto-portals, while every character appears paused between eras—caught between the physical and the virtual, the mundane and the mythic.", 
+         "This piece reimagines the birth of the internet not as a tech boom, but as a spiritual-commercial ritual in the temple of capitalism.",
+        ],
+      links:{ xrp:"https://xrp.cafe/nft/00080BB8B57E780C6A5EF299540E01B0E8C6DB1B83CFC9169748C1F205CBFA5E", 
+      os:"#", 
+      sr:"#"}
+    },
+    //  CURSOR OF FATE
+    { 
+      id: "cursor_of_fate",
+      collection: "digital",
+      title:"Cursor of Fate", 
+      year:"2025", 
+      style:"Oil-style",
+      featured: true,
+      dateCreated: "2025-11-15",
+      related:["the_tech_era", "internet_of_the_modern_world"],
+      motifs: ["fortune teller", "cursor"],
+      themes: ["agency", "automation", "illusion of choice"],
+      img:"../img/collection_works/digital_unconscious/cursor_of_fate.png",
+      desc:[
+        "A modern oracle trapped between code and karma. In Cursor of Fate, Dream Agent reimagines the iconic Zoltar fortune teller with a surrealist twist—his face replaced by a glowing screen and cursor, a digital mask for divination in the information age. Surrounded by axes, chainsaws, laptops, and a glowing orb, this techno-mystic peers through the algorithms of destiny.",
+        "On the table: a toy dump truck, sports car, bonsai waterfall, and a pixelated crystal ball represent choices both mundane and monumental. The cursor hovers as if awaiting your decision—fortune, or feedback loop?",
+        "This piece is a meditation on agency, automation, and the illusion of choice in an era where prompts shape prophecy.",
+      ],
+      links:{ xrp:"https://xrp.cafe/nft/00080BB8B57E780C6A5EF299540E01B0E8C6DB1B83CFC916C51463F005CBFA60", 
+      os:"#", 
+      sr:"#"}
+    },
+    // LACTATION OF THE LEDGER
+    { 
+      id: "lactation_of_the_ledger",
+      collection: "digital",
+      title:"Lactation of the Ledger", 
+      year:"2025", 
+      style:"Oil-style",
+      featured: true,
+      dateCreated: "2025-11-15",
+      related:["the_tech_era", "the_great_divide"],
+      motifs: ["mother", "ledger"],
+      themes: ["decentralization", "motherhood", "finance"],
+      img:"../img/collection_works/digital_unconscious/lactation_of_the_ledger.png",
+      desc:[
+         "In 'Lactation of the Ledger', Bitcoin becomes the green Madonna — the mother of digital value — nursing her black-and-white child, XRP. Around them stand veiled nations, watching as the milk of liquidity flows across rivers and bridges — the arteries of a new global economy. “Healthy Bacteria” packets line the earth below: symbols of the unseen agents that keep systems alive — the microbes of trust and decay.",
+         "This piece visualizes the paradox of decentralization: motherhood and machinery, faith and finance, blockchain and body. It is both nurturing and unsettling, inviting viewers to question who feeds the future and who digests it.",
+        ],
+      links:{ xrp:"https://xrp.cafe/nft/00080FA0B57E780C6A5EF299540E01B0E8C6DB1B83CFC916DBFA34F705CBFA61", 
+      os:"#", 
+      sr:"#"}
+    },
+    //  INTERNET OF THE MIDDLE WORLD
+    { 
+      id: "internet_of_the_old_world",
+      collection: "digital",
+      title:"Internet of the Old World", 
+      year:"2022", 
+      style:"Oil-style",
+      featured: true,
+      dateCreated: "2022-10-06",
+      related:["internet_of_the_middle_world", "internet_of_the_new_world"],
+      motifs: ["kingdom", "crystal ball"],
+      themes: ["digital culture", "ritual", "medievalism"],
+      img:"../img/collection_works/digital_unconscious/internet_of_the_old_world.png",
+      desc:[
+         "Step into a mythic past where the digital future is foretold. 'Internet of the Old World' by Dream Agent reimagines our virtual age through the lens of medieval mysticism. Gathered before a crystal orb, cloaked figures kneel in reverence—priests, nobles, and peasants alike—before a mysterious apparition inside the orb. Looming behind them, a castle gate boldly inscribed “INTERNET” evokes a new kind of kingdom.",
+         "This painting explores how ancient rituals mirror the collective awe and submission we now show digital networks. It invites viewers to reflect on our shared data as modern prophecy and the internet as a sacred architecture of the new world order.",
+        ],
+      links:{ xrp:"https://xrp.cafe/nft/000807D0B57E780C6A5EF299540E01B0E8C6DB1B83CFC916F2E005F605CBFA62", 
+      os:"#", 
+      sr:"#"}
+    },
+    //  RINSE OF TRUST
+    { 
+      id: "rinse_of_trust",
+      collection: "digital",
+      title:"Rinse of Trust", 
+      year:"2021", 
+      style:"Oil-style",
+      featured: true,
+      dateCreated: "2021-11-15",
+      related:["lactation_of_the_ledger", "dream_agent_distilleries"],
+      motifs: ["shower", "dollar sheets"],
+      themes: ["faith", "economy", "ritual"],
+      img:"../img/collection_works/digital_unconscious/rinse_of_trust.png",
+      desc:[
+         "In this chamber of blue and gold, faith is scrubbed clean. The faucet drips with the insignia of digital empires — XRP tears drip from one of two shower heads.  The second shower head, drips nothing hinting at a mysterious system shrouded in secrecy.",
+         "A hand extends from the glow, offering the bar of belief back to the system.",
+         "Below, soaked currency hangs like towels of devotion, dripping into the floor — the cost of staying pure in an economy of confession.",
+         "'The Rinse of Trust' examines the fragility of confidence — the way markets, religions, and algorithms depend on a constant cleansing of faith. Every rinse resets the narrative, but the residue of doubt remains.",
+        ],
+      links:{ xrp:"https://xrp.cafe/nft/00080BB8B57E780C6A5EF299540E01B0E8C6DB1B83CFC91609C5D6F505CBFA63", 
+      os:"#", 
+      sr:"#"}
+    },
+
+    // INTERNET OF THE MODERN WORLD
+    { 
+      id: "internet_of_the_modern_world",
+      collection: "digital",
+      title:"Internet of the Modern World", 
+      year:"2022", 
+      style:"Oil-style",
+      featured: true,
+      dateCreated: "2022-10-06",
+      related:["the_tech_era", "cursor_of_fate"],
+      motifs: ["orbs", "glowing"],
+      themes: ["digital culture", "seclusion", "contemplation"],
+      img:"../img/collection_works/digital_unconscious/internet_of_the_modern_world.png",
+      desc:[
+         "In Internet of the Modern World, Dream Agent visualizes the internet not as cables and code, but as orbs of knowledge, communion, and mystery — floating quietly within domestic space. Rendered in a palette of calm teals and soft golds, four vignettes capture anonymous digital citizens, each engaging with luminous spheres that defy gravity. These orbs represent the fragments of the modern internet: ideas passed hand-to-hand, data preserved in cold storage, and interfaces that glow with silent intelligence.",
+         "The posters behind each figure subtly spell out 'internet,' while their shirts display concentric symbols — perhaps a new language of connection. Though the setting is minimal, the symbolism runs deep: the kitchen becomes a data hub, the bedroom a meditation zone, the living room a portal.",
+         "This painting reflects a modern condition: being always online, always alone — yet tethered to something larger, shared, and glowing just beyond reach.",
+        ],
+      links:{ xrp:"https://xrp.cafe/nft/00080BB8B57E780C6A5EF299540E01B0E8C6DB1B83CFC91620ABA7F405CBFA64", 
+      os:"#", 
+      sr:"#"}
+    },
+  ];

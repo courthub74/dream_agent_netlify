@@ -460,13 +460,13 @@
 
 
         <!-- Other Collections: horizontal strip with thumbs + arrows -->
-        <div id="otherCollectionsStrip" class="mt-4 overflow-hidden">
+        <div id="otherCollectionsStrip" class="mt-4 overflow-visible">
           <h3 class="serif text-base sm:text-lg mb-2">Other collections</h3>
 
           <div class="relative">
             <!-- gradient edges -->
-            <div class="pointer-events-none absolute inset-y-0 left-0 w-10 bg-gradient-to-r from-black/40 to-transparent z-10"></div>
-            <div class="pointer-events-none absolute inset-y-0 right-0 w-10 bg-gradient-to-l from-black/40 to-transparent z-10"></div>
+            <!-- <div class="pointer-events-none absolute inset-y-0 left-0 w-10 bg-gradient-to-r from-black/40 to-transparent z-10"></div>
+            <div class="pointer-events-none absolute inset-y-0 right-0 w-10 bg-gradient-to-l from-black/40 to-transparent z-10"></div> -->
 
             <!-- arrows -->
             <button id="ocPrev"
@@ -487,7 +487,7 @@
             <!-- one-line scroller -->
             <div id="ocScroller"
                 class="flex items-center gap-2 sm:gap-3 overflow-x-auto whitespace-nowrap no-scrollbar
-                        snap-x snap-mandatory px-2 py-1">
+                        snap-x snap-mandatory px-2 py-3">
               <!-- JS injects cards -->
             </div>
           </div>
@@ -792,18 +792,18 @@
         const href = normalizeHref(c.href || '#');
         return `
           <a href="${href}"
-            class="group inline-flex items-center gap-3 rounded-xl
-                    ring-1 ring-white/15 bg-white/5
-                    hover:bg-white/10 hover:ring-white/30 transition
-                    snap-start pr-3">
-            <span class="block h-14 w-24 sm:h-16 sm:w-28 overflow-hidden rounded-l-xl">
-              <img src="${c.img}" loading="lazy" alt="${c.title}" class="h-full w-full object-cover">
-            </span>
-            <span class="flex items-baseline gap-2 pr-1">
-              <span class="serif text-sm sm:text-base">${c.title}</span>
-              <span class="text-[11px] text-white/70">· ${c.count}</span>
-            </span>
-          </a>
+          class="group inline-flex shrink-0 items-center gap-3 rounded-xl
+                  ring-0 ring-white/5 bg-white/5
+                  hover:bg-white/10 hover:ring-white/30 transition
+                  snap-start pr-3">
+          <span class="block h-14 w-14 sm:h-16 sm:w-16 overflow-hidden rounded-full shrink-0 ring-1 ring-white/20">
+            <img src="${c.img}" loading="lazy" alt="${c.title}" class="h-full w-full object-cover">
+          </span>
+          <span class="flex items-baseline gap-2 pr-1">
+            <span class="serif text-sm sm:text-base">${c.title}</span>
+            <span class="text-[11px] text-white/70">· ${c.count}</span>
+          </span>
+        </a>
         `;
       }).join("");
 

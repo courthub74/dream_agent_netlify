@@ -369,4 +369,175 @@ window.allWorks = [
       os:"#", 
       sr:"#"}
     },
-  ];
+    /////////////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////////////
+    // THE DOMINION ARCHIVE
+    /////////////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////////////
+    // CENSUS RITUAL
+            { 
+            id: "the_census_ritual",
+            collection: "dominion",
+            title:"The Census Ritual", 
+            year:"2020", 
+            style:"Oil-style",
+            featured: true,
+            dateCreated: "2020-10-03",
+            related:["discovery_of_the_indigenous", "the_refactoring_ritual", "saltwater_electronics"],
+            motifs: ["procession", "stone gate", "desert"],
+            img:"../img/collection_works/dominion_archives/the_census_ritual.png",
+            desc:[
+                "A solemn procession of robed figures winds across a cracked desert floor, funneled through a monolithic stone frame etched with the year 1868—a date loaded with political memory and post-war reshuffling. Towering over the crowd, a bald sentinel holds open the gate, as if officiating a rite of passage or a reckoning of identities. The twin red horns atop the stone portal echo silent warning.",
+                "'The Census Ritual' explores themes of enumeration, erasure, and conformity within the historical machinery of power. Here, the ritual of “counting” becomes symbolic of control—of being seen not as individuals, but as entries in a ledger of empire.",
+
+            ],
+            links:{ xrp:"https://xrp.cafe/nft/000807D0B57E780C6A5EF299540E01B0E8C6DB1B83CFC9168482F5E705CBFA52", 
+            os:"#", 
+            sr:"#"}
+            },
+            // DISCOVERY OF THE INDIGENOUS
+            { 
+              id: "discovery_of_the_indigenous",
+              collection: "dominion",
+              title:"Discovery of the Indigenous", 
+              year:"2024", 
+              style:"Oil-style",
+              featured: true,
+              dateCreated: "2024-01-01",
+              related:["the_census_ritual", "the_refactoring_ritual", "saltwater_electronics"],
+              motifs: ["kitchen", "myth", "memory"],
+              img:"../img/collection_works/dominion_archives/discovery_of_the_indigenous.png",
+              desc:[
+                 "In 'Discovery of the Indigenous', Dream Agent constructs a searing, symbolic kitchen scene where myth, media, and memory simmer in a glowing amber palette. At its center, a radiant coin illuminates a countertop tableau—a surreal altar of distorted Americana. A headless torso pours forth a nested maternal figure into a green bottle labeled 'The Agriculture was already KNOWN', confronting narratives of invention with truths of ancestral cultivation. Beside it, a reddish bottle declares, 'THEY AIN'T AFRICAN', challenging imposed identities and colonial mislabeling.",
+                 "Above, a melting stick of butter stamped 'WIKIPEDIA Googled BUTTER SPREAD' slowly drips, its American flag suggesting the spoon-fed digital rewriting of history. Below, a skillet of golden liquid overflows, blending nourishment and loss, as a crumpled flag sinks beside it—symbol of a buried or burned truth. On the stove’s surface, a woman’s portrait gazes forward from a round frame, echoed in the form emerging from the man's chest—an emblem of lineage and remembrance,",
+                 "With uncanny warmth and spiritual satire, this painting deconstructs the narrative of “discovery” and reclaims it through layered indigenous presence, agricultural memory, and the falsity of erasure. The kitchen, both domestic and historical, becomes a site of alchemical resistance.",
+            ],
+            links:{ xrp:"https://xrp.cafe/nft/00080BB8B57E780C6A5EF299540E01B0E8C6DB1B83CFC9169B68C6E405CBFA53", 
+            os:"#", 
+            sr:"#"}
+            },
+            // SALTWATER ELECTRONICS
+            { 
+              id: "saltwater_electronics",
+              collection: "dominion",
+              title:"Saltwater Electronics", 
+              year:"2021", 
+              style:"Oil-style",
+              featured: true,
+              dateCreated: "2021-10-11",
+              related:["the_census_ritual", "the_refactoring_ritual", "discovery_of_the_indigenous"],
+              motifs: ["ocean", "gods"],
+              img:"../img/collection_works/dominion_archives/saltwater_electronics.png",
+              desc:[
+                  "Three ancient bronze gods of logic, sea, and war stand on the edge of civilization’s ocean, lifting an 'Etch A Sketch' like a new divine tablet. The crude map it displays—arrows of commerce, migration, and data—etches a nervous system over the American continent. Beneath, the sand cracks with 'electrical salt', where old myth meets circuitry. A salt shaker, a bottle, and a date (1846) whisper of invention, revolution, and dissolution.",
+                  "In 'Saltwater Electronics', Dream Agent fuses mythological statuary with post-industrial nostalgia, asking: 'What happens when the gods inherit our technology and redraw the world from the beach of history'",
+              ],
+              links:{ xrp:"https://xrp.cafe/nft/00080000B57E780C6A5EF299540E01B0E8C6DB1B83CFC916B24E97E505CBFA54", 
+              os:"#", 
+              sr:"#"}
+            },
+            // BIG FOREST TAHHEED
+            { 
+              id: "big_forest_taheed",
+              collection: "dominion",
+              title:"Big Forest Taheed", 
+              year:"2025", 
+              style:"Oil-style",
+              featured: true,
+              dateCreated: "2025-09-18",
+              related:[ "the_census_ritual", "the_refactoring_ritual", "imperious_kingdom"],
+              motifs: ["forest", "stewardship"],
+              img:"../img/collection_works/dominion_archives/big_forest_taheed.png",
+              desc:[
+                  "'Big Forest Taheed' presents a monumental figure standing between the myth of the frontier and the modern paradox of restraint. Dressed in a sailor’s uniform, carrying an axe over his shoulder, the figure is not a conqueror but a steward—his presence bound by the sign at his feet: 'Just enough for shelter, nothing more.'",
+                  "The painting confronts the legacy of industry, expansion, and survival, reframing them through an ethic of balance. The bottles at the base serve as mute totems—red and green, warning and permission—while the vast field of corn and evergreen trees remind us of the eternal tension between cultivation and wilderness.",
+                  "A meditation on sufficiency, stewardship, and the human scale within endless landscapes.",
+                  ],
+              links:{ xrp:"https://xrp.cafe/nft/00080BB8B57E780C6A5EF299540E01B0E8C6DB1B83CFC916C93468FA05CBFA55", 
+              os:"#", 
+              sr:"#"}
+            },
+            // IMPERIOUS KINGDOM
+            { 
+              id: "imperious_kingdom",
+              collection: "dominion",
+              title:"Imperious Kingdom", 
+              year:"2026", 
+              style:"Oil-style",
+              featured: true,
+              dateCreated: "2026-03-16",
+              related:["some_things_sound_like_the_morning", "the_biblicals"],
+              motifs: ["city", "power", "ceremony", "order"],
+              img:"../img/collection_works/dominion_archives/imperious_kingdom.png",
+              desc:[
+                  "A monumental profile occupies the foreground, seated before a ceremonial landscape where ritualized figures assemble beneath the pediment marked 'Northland'. The woman’s posture is still, composed, and detached from the activity unfolding behind her. Gold adornment and architectural symmetry elevate the scene into a formal tableau of order and hierarchy.",
+                  "The figures gathered across the lawn exchange gestures of recognition and alignment while the central subject remains outside their exchange. Authority is not performed in motion but established through position, scale, and separation. The composition records the architecture of power: the individual who embodies it, and the system that assembles around it."
+              ],
+              links:{ xrp:"https://xrp.cafe/nft/00081388B57E780C6A5EF299540E01B0E8C6DB1B83CFC916E01A39FB05CBFA56", 
+              os:"#", 
+              sr:"#"}
+            },
+            // THE REFACTORING RITUAL
+            { 
+              id: "the_refactoring_ritual",
+              collection: "dominion",
+              title:"The Refactoring Ritual", 
+              year:"2025", 
+              style:"Oil-style",
+              featured: true,
+              dateCreated: "2025-10-15",
+              related:["the_census_ritual", "bottling_the_republic", "saltwater_electronics"],
+              tags:["spy","birds"],
+              img:"../img/collection_works/dominion_archives/the_refactoring_ritual.png",
+              desc:[
+                  "'The Refactoring Ritual' by Dream Agent is a surreal procession through the archway of time, marked '1940'. At its helm looms a faceless figure in a black tuxedo and top hat, holding the stone portal adorned with twin horns. On one side, the crowd emerges in muted earth tones—on the other, they dissolve into stark silhouettes of black and white, as if stripped to archetypes. The skyline towers like watchful sentinels, the air thick with unspoken agreements.", 
+                  "This work speaks to the reprogramming of societies—where identity, morality, and memory are refactored into a binary code of belonging and erasure.",
+                  ],
+              links:{ xrp:"https://xrp.cafe/nft/00080BB8B57E780C6A5EF299540E01B0E8C6DB1B83CFC916F7000AF805CBFA57", 
+              os:"#", 
+              sr:"#"}
+            },
+            // SOME THINGS SOUND LIKE THE MORNING
+            { 
+              id: "some_things_sound_like_the_morning",
+              collection: "dominion",
+              title:"Some Things Sound Like the Morning", 
+              year:"2026",
+              style:"Oil-style",
+              featured: true,
+              dateCreated: "2026-06-15",
+              related:["imperious_kingdom", "the_biblicals"],
+              motifs:["shower","light","bonsai waterfall"],
+              img:"../img/collection_works/dominion_archives/some_things_sound_like_the_morning.png",
+              desc:[
+                  "Every civilization begins with a language it cannot fully explain., 'Some Things Sound Like the Morning' transforms an ordinary shower into a sanctuary of transmission. Morning sunlight pours through the fixture, replacing flowing water, casting golden frequencies across a chamber where a microphone waits beneath the light. On one wall, 'M = Mineral' suggests that voice originates in the deep architecture of the earth. On another, the Hebrew word חיים (Life) quietly anchors the composition, introducing breath, spirit, and living memory into the ritual.",
+                  "Between them stands the figure, suspended between stone and speech, matter and meaning. The bonsai waterfall reinforces the painting's central current: life is not manufactured but cultivated, flowing patiently through generations before emerging as language. This work asks whether the first sounds of civilization were less an invention than a reception, as though every morning still carries echoes of the world's original voice.",
+              ],
+              links:{ xrp:"https://xrp.cafe/nft/00080BB8B57E780C6A5EF299540E01B0E8C6DB1B83CFC916F7000AF805CBFA57", 
+              os:"#", 
+              sr:"#"}
+            },
+            // PRINCE CARL AFTER THE SALT CONQUERING SPEAKING AN ANCIENT LANGUAGE
+            { 
+              id: "prince_carl_after_the_salt_conquering_speaking_an_ancient_language",
+              collection: "dominion",
+              title:"Prince Carl after the Salt Conquering Speaking an Ancient Language", 
+              year:"2026",
+              style:"Oil-style",
+              featured: true,
+              dateCreated: "2026-06-15",
+              related:["prince_carl_laying" , "internet_of_the_new_world"],
+              motifs:["salt","language","conquest"],
+              img:"../img/collection_works/dominion_archives/prince_carl_after_the_salt_conquering.png",
+              desc:[
+                  "After the Salt Conquering, Prince Carl sits upon the edge of the Atlantic, wrapped in furs, speaking in a language older than kingdoms and newer than algorithms.",
+                  "A glowing orb rests before him like a captured star while two silent witnesses listen from the margins. Around his neck hangs a pendant reading *Social Media*, transforming a modern phrase into a royal relic.",
+                  "In this surreal vision, Dream Agent collapses centuries into a single moment: ancient ritual, digital communication, and the eternal human desire to be heard.",
+                  "Is Prince Carl a conqueror, a prophet, an influencer, or merely another storyteller speaking into the void?",
+                  "As waves crash against dark stone and the sky fractures with celestial light, the distinction becomes irrelevant."
+              ],
+              links:{ xrp:"https://xrp.cafe/nft/00080BB8B57E780C6A5EF299540E01B0E8C6DB1B83CFC916F7000AF805CBFA57", 
+              os:"#", 
+              sr:"#"}
+            },
+          ];

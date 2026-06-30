@@ -303,7 +303,7 @@
     } */
 
     /* Related Works Section */
-    #relatedWorks {
+    /* #relatedWorks {
       display: flex;
       gap: 0.5rem;
     }
@@ -344,7 +344,69 @@
         justify-content: center;
         gap: 0.45rem;
       }
-    }
+    } */
+
+    /* Related Works */
+
+#relatedWorks {
+  margin-top: 2rem;
+}
+
+#relatedWorksList {
+  display: flex;
+  justify-content: center;
+  gap: 1.2rem;
+  flex-wrap: wrap;
+}
+
+.related-work-link {
+  width: 95px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .6rem;
+  color: rgba(255,255,255,.82);
+  transition: transform .25s ease, opacity .25s ease;
+}
+
+.related-work-link:hover {
+  transform: translateY(-3px);
+}
+
+.related-img {
+  width: 90px;
+  height: 90px;
+  object-fit: cover;
+  border-radius: 9999px;
+  border: 1px solid rgba(255,255,255,.18);
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,.08),
+    0 8px 20px rgba(0,0,0,.28);
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+
+.related-work-link:hover .related-img {
+  transform: scale(1.05);
+  box-shadow:
+    0 0 14px rgba(255,255,255,.25),
+    0 8px 22px rgba(0,0,0,.35);
+}
+
+.related-title {
+  font-size: .68rem;
+  line-height: 1.2;
+  text-align: center;
+  color: rgba(255,255,255,.72);
+}
+
+.related-work-link:hover .related-title {
+  color: white;
+}
+
+
 
   </style>
 
@@ -984,9 +1046,9 @@
       relatedSection.style.display = "block";
 
       relatedList.innerHTML = relatedItems.map(item => `
-        <button type="button" class="related-chip" data-related-id="${item.id}">
+        <button type="button" class="related-work-link" data-related-id="${item.id}">
           <img src="${item.img}" alt="${item.title}" class="related-img">
-          <span class="related-work-title">${item.title}</span>
+          <span class="related-title">${item.title}</span>
         </button>
       `).join("");
     }
@@ -1109,11 +1171,11 @@
   section.style.display = "block";
 
   list.innerHTML = relatedItems.map(item => `
-    <button type="button" class="related-chip" data-related-id="${item.id}">
-      <img src="${item.img}" alt="${item.title}" class="related-img">
-      <span class="related-work-title">${item.title}</span>
-    </button>
-  `).join("");
+  <button type="button" class="related-work-link" data-related-id="${item.id}">
+    <img src="${item.img}" alt="${item.title}" class="related-img">
+    <span class="related-title">${item.title}</span>
+  </button>
+`).join("");
 
   console.log("related DOM after insert:", list.innerHTML);
 }

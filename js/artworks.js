@@ -172,7 +172,7 @@ window.allWorks = [
       style:"Oil-style",
       featured: true,
       dateCreated: "2025-07-15",
-      related:["wizard_of_agent_dreams"],
+      related:["turquoise_plate","wizard_of_agent_dreams"],
       motifs: ["spy", "machine", "birds"],
       themes: ["mystery", "devotion", "transformation"],
       img:"../img/collection_works/symbols_in_motion/dream_agent_making_birds.png",

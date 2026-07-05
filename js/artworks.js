@@ -376,24 +376,24 @@ window.allWorks = [
     /////////////////////////////////////////////////////////////////
     // CENSUS RITUAL
             { 
-            id: "the_census_ritual",
-            collection: "dominion",
-            title:"The Census Ritual", 
-            year:"2020", 
-            style:"Oil-style",
-            featured: true,
-            dateCreated: "2020-10-03",
-            related:["discovery_of_the_indigenous", "the_refactoring_ritual", "saltwater_electronics"],
-            motifs: ["procession", "stone gate", "desert"],
-            img:"../img/collection_works/dominion_archives/the_census_ritual.png",
-            desc:[
-                "A solemn procession of robed figures winds across a cracked desert floor, funneled through a monolithic stone frame etched with the year 1868—a date loaded with political memory and post-war reshuffling. Towering over the crowd, a bald sentinel holds open the gate, as if officiating a rite of passage or a reckoning of identities. The twin red horns atop the stone portal echo silent warning.",
-                "'The Census Ritual' explores themes of enumeration, erasure, and conformity within the historical machinery of power. Here, the ritual of “counting” becomes symbolic of control—of being seen not as individuals, but as entries in a ledger of empire.",
+              id: "the_census_ritual",
+              collection: "dominion",
+              title:"The Census Ritual", 
+              year:"2020", 
+              style:"Oil-style",
+              featured: true,
+              dateCreated: "2020-10-03",
+              related:["discovery_of_the_indigenous", "the_refactoring_ritual", "saltwater_electronics"],
+              motifs: ["procession", "stone gate", "desert"],
+              img:"../img/collection_works/dominion_archives/the_census_ritual.png",
+              desc:[
+                  "A solemn procession of robed figures winds across a cracked desert floor, funneled through a monolithic stone frame etched with the year 1868—a date loaded with political memory and post-war reshuffling. Towering over the crowd, a bald sentinel holds open the gate, as if officiating a rite of passage or a reckoning of identities. The twin red horns atop the stone portal echo silent warning.",
+                  "'The Census Ritual' explores themes of enumeration, erasure, and conformity within the historical machinery of power. Here, the ritual of “counting” becomes symbolic of control—of being seen not as individuals, but as entries in a ledger of empire.",
 
-            ],
-            links:{ xrp:"https://xrp.cafe/nft/000807D0B57E780C6A5EF299540E01B0E8C6DB1B83CFC9168482F5E705CBFA52", 
-            os:"#", 
-            sr:"#"}
+              ],
+              links:{ xrp:"https://xrp.cafe/nft/000807D0B57E780C6A5EF299540E01B0E8C6DB1B83CFC9168482F5E705CBFA52", 
+              os:"#", 
+              sr:"#"}
             },
             // DISCOVERY OF THE INDIGENOUS
             { 
@@ -445,7 +445,7 @@ window.allWorks = [
               style:"Oil-style",
               featured: true,
               dateCreated: "2025-09-18",
-              related:[ "the_census_ritual", "the_refactoring_ritual", "imperious_kingdom"],
+              related:[ "the_biblicals", "imperious_kingdom"],
               motifs: ["forest", "stewardship"],
               img:"../img/collection_works/dominion_archives/big_forest_taheed.png",
               desc:[

@@ -540,4 +540,120 @@ window.allWorks = [
               os:"#", 
               sr:"#"}
             },
+            /////////////////////////////////////////////////////////////////
+            /////////////////////////////////////////////////////////////////
+            // INDUSTRIAL MYTHS
+            /////////////////////////////////////////////////////////////////
+            /////////////////////////////////////////////////////////////////
+             //  THE FUTURE OF INDUSTRY
+            { 
+              id: "the_future_of_industry",
+              collection: "industrial",
+              title:"The Future of Industry", 
+              year:"2025", 
+              style:"Oil-style",
+              featured: true,
+              dateCreated: "2025-11-15",
+              related:["cursor_of_fate", "internet_of_the_new_world"],
+              motifs:["oracle","machine","ritual"],
+              img:"../img/collection_works/industrial_myths/the_future_of_industry.png",
+              desc:[
+                "'The Future of Industry' envisions a new epoch where human thought, machine learning, and ritual converge.",
+                "In a dimly lit hall, a faceless oracle—its features replaced by cascading code—presides over a circle of silent thinkers. Before them rest luminous brains and crystal spheres: emblems of creativity, computation, and prophecy.", 
+                "The chamber holds two thresholds—one descending into shadow and uncertainty, the other opening toward a radiant expanse of possibility. This spatial duality mirrors the conflict between the foreseen and the unforeseen, the designed and the emergent, that defines our technological ascent.",
+                "The work poses a question: when machines divine and humans compute, who truly shapes the future of labor?"
+                ],
+              links:{ xrp:"https://xrp.cafe/nft/00081388B57E780C6A5EF299540E01B0E8C6DB1B83CFC91675DD2ED405CBFA3B", 
+              os:"#", 
+              sr:"#"}
+            },
+            // THE FEAR ROOM
+            { 
+              id: "the_fear_room",
+              collection: "industrial",
+              title:"The Fear Room", 
+              year:"2023", 
+              style:"Oil-style",
+              featured: true,
+              dateCreated: "2023-06-20",
+              related:["bottling_the_republic", "daniels_vision_from_another_angle"],
+              motifs:["priest","war"],
+              img:"../img/collection_works/industrial_myths/the_fear_room.png",
+              desc:[
+                "'In The Fear Room', Dream Agent dissects the systemic machinery of submission and indoctrination. A lineup of children—bent, broken, and bowed—passes through gateways of authority and assimilation, watched over by figures of religion, capital, and control. Behind them, a portrait of soldiers against fire echoes the violence of inherited obedience.",
+                "A suited man holds out cash while guiding heads into future-making devices, beneath the glow of a microchip idol labeled 'FUTURE'—a cynical altar to technological determinism. The atmosphere is thick with unease, yet calculated and quiet. This is not chaos—it’s organized despair.",
+                "This NFT immortalizes a moment of ideological conditioning, where hope flickers in the cracks of institutionally imposed fear. One child, far right, sits upright—an ambiguous figure of peace or resignation.", 
+                "The painting invites collectors to reckon with the infrastructures of fear and the quiet violence of societal programming.",
+                ],
+              links:{ xrp:"https://xrp.cafe/nft/00081388B57E780C6A5EF299540E01B0E8C6DB1B83CFC916A3A8D0DA05CBFA3D", 
+              os:"#", 
+              sr:"#"}
+            },
+            // BOTTLING THE REPUBLIC
+            { 
+              id: "bottling_the_republic",
+              collection: "industrial",
+              title:"Bottling the Republic", 
+              year:"2025", 
+              style:"Oil-style",
+              featured: true,
+              dateCreated: "2025-01-01",
+              related:["the_fear_room", "daniels_vision_from_another_angle"],
+              motifs:["map","bottles"],
+              img:"../img/collection_works/industrial_myths/bottling_the_republic.png",
+              desc:[
+                "In 'Bottling the Republic', Dream Agent invites the viewer into a sterile, modern factory where the symbols of national identity are distilled, packaged, and prepared for consumption. On the left, dark and amber soda bottles emerge from a map of the United States—oxidized green against a burnt orange backdrop—suggesting a geographic origin stripped of borders yet full of weight. On the right, lighter bottles exit a white brick structure, their neutrality implying refinement, curation, or even erasure.",
+                "A factory worker affixes a red-crayon label to the box: 'A Case of Sovereignties'. His motion—half-routine, half-ritual—becomes a metaphor for the bureaucratic manufacturing of governance and identity. At the center, twin drinking fountains spill water onto the production line, invoking historical inequities, industrial spillage, or uncontainable truth.",
+                "Hovering above, a 1950s antenna pulses radio waves outward—a relic of a broadcast age, echoing the reach of old narratives into modern machinery.",
+                "Dream Agent fuses surrealism, political allegory, and post-industrial aesthetics into a layered visual inquiry. What does it mean to bottle a republic? And who decides the recipe?",
+                ],
+              links:{ xrp:"https://xrp.cafe/nft/00080BB8B57E780C6A5EF299540E01B0E8C6DB1B83CFC916B66E9CE605CBFA49", 
+              os:"#", 
+              sr:"#"}
+            },
+            // DANIEL'S VISION FROM ANOTHER ANGLE
+            { 
+              id: "daniels_vision_from_another_angle",
+              collection: "industrial",
+              title:"Daniel's vision from another angle", 
+              year:"2023", 
+              style:"Oil-style",
+              featured: true,
+              dateCreated: "2023-06-13",
+              related:["the_fear_room", "bottling_the_republic"],
+              motifs:["cargo","doves"],
+              img:"../img/collection_works/industrial_myths/daniels_vision_from_another_angle.png",
+              desc:[
+                "A black-sea freighter noses through fog, its deck stacked not with cargo but with institutions: a courthouse façade, a broadcast tower, glass offices, and a proud marquee that mis-spells 'EXCELLENCE'—a glitch that betrays intent. Cable-chains spill from the ship like tentacles, dragging unseen systems through the tide. Above, a faint halo of radio rings ripples the sky.",
+                "On the shore, four birds stand as witnesses—three obsidian, one pale—an echo of Daniel’s layered visions and their empires. The birds face the vessel, a dissenting conscience against industrial pageantry. What arrives is not a navy, but a narrative: empire as architecture, morality as advertising, dominion as logistics.",
+                "Dream Agent tilts the prophecy 'from another angle,' asking: Who sails whom?", 
+                "When institutions are freight, is the ocean carrying them—or are we?",
+
+                ],
+              links:{ xrp:"https://xrp.cafe/nft/000807D0B57E780C6A5EF299540E01B0E8C6DB1B83CFC916CD546DE705CBFA4A", 
+              os:"#", 
+              sr:"#"}
+            },
+            // INTERNET OF THE NEW WORLD
+            { 
+              id: "internet_of_the_new_world",
+              collection: "industrial",
+              title:"Internet of the New World", 
+              year:"2023", 
+              style:"Oil-style",
+              featured: true,
+              dateCreated: "2023-06-13",
+              related:["internet_of_the_old_world", "internet_of_the_middle_world", "internet_of_the_modern_world"],
+              motifs:["artist","coins","crystal ball"],
+              img:"../img/collection_works/industrial_myths/internet_of_the_new_world.png",
+              desc:[
+                "'Internet of the New World' captures the moment where creativity, currency, and coded prophecy converge.",
+                "A lone figure, lit by the glow of his digital canvas, draws concentric worlds that ripple into reality. Outside, golden and silver coins drift through a scorched horizon, as if migrating from one age into another. On the wall, a portrait of an old-world general gazes forward, a crystal orb clasped like a new scepter of power. Beside the artist, encrypted text floats — part address, part invocation — signaling that in this world, identity and value are written in code.",
+                "This painting is an allegory of how the digital frontier replaces empires of stone with networks of trustless exchange, and how the new architects are not kings, but coders.",
+
+                ],
+              links:{ xrp:"https://xrp.cafe/nft/00080BB8B57E780C6A5EF299540E01B0E8C6DB1B83CFC916E43A3EE405CBFA4B", 
+              os:"#", 
+              sr:"#"}
+            },
           ];

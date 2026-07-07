@@ -281,67 +281,68 @@
     #lightboxModal .lb-prev { left: 18px; }
     #lightboxModal .lb-next { right: 18px; }
 
+    /* Related Works */
     #relatedWorks {
-  margin-top: 2.25rem;
-}
+      margin-top: 2.25rem;
+    }
 
-#relatedWorks h3 {
-  text-align: left;
-}
+    #relatedWorks h3 {
+      text-align: left;
+    }
 
-#relatedWorksList {
-  display: flex;
-  justify-content: center;
-  gap: 1.2rem;
-  flex-wrap: wrap;
-}
+    #relatedWorksList {
+      display: flex;
+      justify-content: center;
+      gap: 1.2rem;
+      flex-wrap: wrap;
+    }
 
-.related-work-link {
-  width: 95px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: .6rem;
-  color: rgba(255,255,255,.82);
-  transition: transform .25s ease, opacity .25s ease;
-}
+    .related-work-link {
+      width: 95px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: .6rem;
+      color: rgba(255,255,255,.82);
+      transition: transform .25s ease, opacity .25s ease;
+    }
 
-.related-work-link:hover {
-  transform: translateY(-3px);
-}
+    .related-work-link:hover {
+      transform: translateY(-3px);
+    }
 
-.related-img {
-  width: 90px;
-  height: 90px;
-  object-fit: cover;
-  border-radius: 9999px;
-  border: 1px solid rgba(255,255,255,.18);
-  box-shadow:
-    0 0 0 1px rgba(255,255,255,.08),
-    0 8px 20px rgba(0,0,0,.28);
-  transition: transform .25s ease, box-shadow .25s ease;
-}
+    .related-img {
+      width: 90px;
+      height: 90px;
+      object-fit: cover;
+      border-radius: 9999px;
+      border: 1px solid rgba(255,255,255,.18);
+      box-shadow:
+        0 0 0 1px rgba(255,255,255,.08),
+        0 8px 20px rgba(0,0,0,.28);
+      transition: transform .25s ease, box-shadow .25s ease;
+    }
 
-.related-work-link:hover .related-img {
-  transform: scale(1.05);
-  box-shadow:
-    0 0 14px rgba(255,255,255,.25),
-    0 8px 22px rgba(0,0,0,.35);
-}
+    .related-work-link:hover .related-img {
+      transform: scale(1.05);
+      box-shadow:
+        0 0 14px rgba(255,255,255,.25),
+        0 8px 22px rgba(0,0,0,.35);
+    }
 
-.related-title {
-  font-size: .68rem;
-  line-height: 1.2;
-  text-align: center;
-  color: rgba(255,255,255,.72);
-}
+    .related-title {
+      font-size: .68rem;
+      line-height: 1.2;
+      text-align: center;
+      color: rgba(255,255,255,.72);
+    }
 
-.related-work-link:hover .related-title {
-  color: white;
-}
+    .related-work-link:hover .related-title {
+      color: white;
+    }
   </style>
 
   <!-- put this in <head> after Tailwind -->
@@ -971,53 +972,53 @@
             animate([artTitle, artMeta, artDesc], {opacity:1, y:0}, {opacity:0, y:6}, 0.18);
 
             try {
-            // Prefer images in img/collection_works and attempt high-res variants
-            function basenameFromPath(p){ if(!p) return ''; const parts = p.split('/'); return parts[parts.length-1]; }
-            function slugFromHeader(){ return 'dominion_archives'; }
-            function collectionWorksPathFor(src){ if(!src) return src; if(src.includes('collection_works')) return src; const name = basenameFromPath(src); const slug = slugFromHeader() || 'unknown'; return `../img/collection_works/${slug}/${name}`; }
-            async function chooseHighRes(preferred){ if(!preferred) throw new Error('no preferred'); const name = basenameFromPath(preferred).replace(/\s+/g,'%20'); const dir = preferred.replace(/\\[^/]*$/, ''); const candidates = [ `${dir}/${name.replace(/(\.[^.]+)$/, '-full$1')}`, `${dir}/${name.replace(/(\.[^.]+)$/, '-hires$1')}`, `${dir}/${name.replace(/(\.[^.]+)$/, '@2x$1')}`, `${dir}/masters/${name}`, preferred ]; for(const c of candidates){ try{ await preload(c); return c; }catch(e){} } throw new Error('no candidate'); }
+              // Prefer images in img/collection_works and attempt high-res variants
+              function basenameFromPath(p){ if(!p) return ''; const parts = p.split('/'); return parts[parts.length-1]; }
+              function slugFromHeader(){ return 'dominion_archives'; }
+              function collectionWorksPathFor(src){ if(!src) return src; if(src.includes('collection_works')) return src; const name = basenameFromPath(src); const slug = slugFromHeader() || 'unknown'; return `../img/collection_works/${slug}/${name}`; }
+              async function chooseHighRes(preferred){ if(!preferred) throw new Error('no preferred'); const name = basenameFromPath(preferred).replace(/\s+/g,'%20'); const dir = preferred.replace(/\\[^/]*$/, ''); const candidates = [ `${dir}/${name.replace(/(\.[^.]+)$/, '-full$1')}`, `${dir}/${name.replace(/(\.[^.]+)$/, '-hires$1')}`, `${dir}/${name.replace(/(\.[^.]+)$/, '@2x$1')}`, `${dir}/masters/${name}`, preferred ]; for(const c of candidates){ try{ await preload(c); return c; }catch(e){} } throw new Error('no candidate'); }
 
-            const preferred = collectionWorksPathFor(w.img);
-            let bestSrc = w.img;
-            try { bestSrc = await chooseHighRes(preferred); } catch(e) { bestSrc = w.img; }
-            let img = null;
-            try { img = await preload(bestSrc); } catch(e) { try { img = await preload(w.img); bestSrc = w.img; } catch(e2) { img = null; } }
+              const preferred = collectionWorksPathFor(w.img);
+              let bestSrc = w.img;
+              try { bestSrc = await chooseHighRes(preferred); } catch(e) { bestSrc = w.img; }
+              let img = null;
+              try { img = await preload(bestSrc); } catch(e) { try { img = await preload(w.img); bestSrc = w.img; } catch(e2) { img = null; } }
 
-            artImg.src = img?.src || w.img;
-            artTitle.textContent = w.title || "";
-            artMeta.innerHTML = `<span>${w.year||""}</span><span>•</span><span>${w.style||""}</span>`;
-            artDesc.innerHTML = paragraphsHTML(w.desc);
+              artImg.src = img?.src || w.img;
+              artTitle.textContent = w.title || "";
+              artMeta.innerHTML = `<span>${w.year||""}</span><span>•</span><span>${w.style||""}</span>`;
+              artDesc.innerHTML = paragraphsHTML(w.desc);
 
-            // Apply marketplace links
-            applyMarketplaceLinks(w);
-            // xrpBtn.href = w.links?.xrp || "#";
-            // osBtn.href  = w.links?.os  || "#";
-            // srBtn.href  = w.links?.sr  || "#";
+              // Apply marketplace links
+              applyMarketplaceLinks(w);
+              // xrpBtn.href = w.links?.xrp || "#";
+              // osBtn.href  = w.links?.os  || "#";
+              // srBtn.href  = w.links?.sr  || "#";
 
-            try { const v = document.getElementById('viewFullBtn'); if (v) v.href = bestSrc; } catch(e) {}
+              try { const v = document.getElementById('viewFullBtn'); if (v) v.href = bestSrc; } catch(e) {}
 
-            // Animate in
-            animate(artImg, {opacity:0, scale:0.985}, {opacity:1, scale:1}, 0.4);
-            animate([artTitle, artMeta, artDesc], {opacity:0, y:6}, {opacity:1, y:0}, 0.35);
-            } catch (e) {
-            console.error("Image failed to load:", e);
-            } finally {
-            document.getElementById("prevBtn").disabled = false;
-            document.getElementById("nextBtn").disabled = false;
-            switching = false;
-            }
+              // Animate in
+              animate(artImg, {opacity:0, scale:0.985}, {opacity:1, scale:1}, 0.4);
+              animate([artTitle, artMeta, artDesc], {opacity:0, y:6}, {opacity:1, y:0}, 0.35);
+              } catch (e) {
+              console.error("Image failed to load:", e);
+              } finally {
+              document.getElementById("prevBtn").disabled = false;
+              document.getElementById("nextBtn").disabled = false;
+              switching = false;
+              }
 
-            // Keep sidebar highlight in
-            syncActiveHighlight();
+              // Keep sidebar highlight in
+              syncActiveHighlight();
 
 
-            // Preload the next image opportunistically
-            const nextIndex = (i + 1) % works.length;
-            preload(works[nextIndex].img).catch(()=>{});
+              // Preload the next image opportunistically
+              const nextIndex = (i + 1) % works.length;
+              preload(works[nextIndex].img).catch(()=>{});
 
-            artDesc.innerHTML = paragraphsHTML(w.desc);
+              artDesc.innerHTML = paragraphsHTML(w.desc);
 
-            renderRelatedWorks(w);
+              renderRelatedWorks(w);
         }
 
         // Render related works section
@@ -1045,7 +1046,7 @@
             <span class="related-title">${item.title}</span>
           </button>
         `).join("");
-}
+    }
 
         // Build sidebar (with lazy thumbs)
         // ===== helpers =====

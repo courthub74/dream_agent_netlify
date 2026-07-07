@@ -6,7 +6,12 @@
   <title>Dream Agent — Industrial Myths</title>
    <!-- FAVICON -->
   <link rel="icon" href="/img/favicon/favicon.png" sizes="any">
+  
   <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Artwork JS -->
+  <script src="../js/artworks.js"></script>
+  
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
     :root { --glass: rgba(255,255,255,0.06); }
@@ -267,6 +272,69 @@
     #lightboxModal .lb-prev { left: 18px; }
     #lightboxModal .lb-next { right: 18px; }
 
+      /* Related Works */
+    #relatedWorks {
+      margin-top: 2.25rem;
+    }
+
+    #relatedWorks h3 {
+      text-align: left;
+    }
+
+    #relatedWorksList {
+      display: flex;
+      justify-content: center;
+      gap: 1.2rem;
+      flex-wrap: wrap;
+    }
+
+    .related-work-link {
+      width: 95px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: .6rem;
+      color: rgba(255,255,255,.82);
+      transition: transform .25s ease, opacity .25s ease;
+    }
+
+    .related-work-link:hover {
+      transform: translateY(-3px);
+    }
+
+    .related-img {
+      width: 90px;
+      height: 90px;
+      object-fit: cover;
+      border-radius: 9999px;
+      border: 1px solid rgba(255,255,255,.18);
+      box-shadow:
+        0 0 0 1px rgba(255,255,255,.08),
+        0 8px 20px rgba(0,0,0,.28);
+      transition: transform .25s ease, box-shadow .25s ease;
+    }
+
+    .related-work-link:hover .related-img {
+      transform: scale(1.05);
+      box-shadow:
+        0 0 14px rgba(255,255,255,.25),
+        0 8px 22px rgba(0,0,0,.35);
+    }
+
+    .related-title {
+      font-size: .68rem;
+      line-height: 1.2;
+      text-align: center;
+      color: rgba(255,255,255,.72);
+    }
+
+    .related-work-link:hover .related-title {
+      color: white;
+    }
+
   </style>
 
   <!-- put this in <head> after Tailwind -->
@@ -361,6 +429,17 @@
         <p id="artDesc" class="mt-4 text-[15px] leading-7 text-white/90">
           This surreal composition by Dream Agent presents an oven labeled Prosperity as an altar of permanence…
         </p>
+
+        <!-- Related Works -->
+        <div id="relatedWorks" class="mt-6">
+          <h3 class="serif text-lg mb-2">
+              Related Works
+          </h3>
+
+          <div id="relatedWorksList"
+              class="flex flex-wrap gap-2">
+          </div>
+      </div>
 
      <!-- CTA buttons -->
       <div class="mt-10 flex items-center gap-3 flex-wrap">
@@ -603,90 +682,93 @@
   ////////////////////////////////////////////////////////////////////////////////////////////
   ////////////////////////////////////////////////////////////////////////////////////////////
   ////////////////////////////////////////////////////////////////////////////////////////////
-  const works = [
-    //  THE FUTURE OF INDUSTRY
-    { title:"The Future of Industry", year:"2025", style:"Oil-style",
-      tags:["turban","brains"],
-      img:"../img/collection_works/industrial_myths/the_future_of_industry.png",
-      desc:[
-         "'The Future of Industry' envisions a new epoch where human thought, machine learning, and ritual converge.",
-         "In a dimly lit hall, a faceless oracle—its features replaced by cascading code—presides over a circle of silent thinkers. Before them rest luminous brains and crystal spheres: emblems of creativity, computation, and prophecy.", 
-         "The chamber holds two thresholds—one descending into shadow and uncertainty, the other opening toward a radiant expanse of possibility. This spatial duality mirrors the conflict between the foreseen and the unforeseen, the designed and the emergent, that defines our technological ascent.",
-         "The work poses a question: when machines divine and humans compute, who truly shapes the future of labor?"
-        ],
-      links:{ xrp:"https://xrp.cafe/nft/00081388B57E780C6A5EF299540E01B0E8C6DB1B83CFC91675DD2ED405CBFA3B", 
-      os:"#", 
-      sr:"#"}
-    },
-    // THE FEAR ROOM
-    { title:"The Fear Room", year:"2023", style:"Oil-style",
-      tags:["priest","war"],
-      img:"../img/collection_works/industrial_myths/the_fear_room.png",
-      desc:[
-         "'In The Fear Room', Dream Agent dissects the systemic machinery of submission and indoctrination. A lineup of children—bent, broken, and bowed—passes through gateways of authority and assimilation, watched over by figures of religion, capital, and control. Behind them, a portrait of soldiers against fire echoes the violence of inherited obedience.",
-         "A suited man holds out cash while guiding heads into future-making devices, beneath the glow of a microchip idol labeled 'FUTURE'—a cynical altar to technological determinism. The atmosphere is thick with unease, yet calculated and quiet. This is not chaos—it’s organized despair.",
-         "This NFT immortalizes a moment of ideological conditioning, where hope flickers in the cracks of institutionally imposed fear. One child, far right, sits upright—an ambiguous figure of peace or resignation.", 
-         "The painting invites collectors to reckon with the infrastructures of fear and the quiet violence of societal programming.",
-        ],
-      links:{ xrp:"https://xrp.cafe/nft/00081388B57E780C6A5EF299540E01B0E8C6DB1B83CFC916A3A8D0DA05CBFA3D", 
-      os:"#", 
-      sr:"#"}
-    },
-    // BOTTLING THE REPUBLIC
-    { title:"Bottling the Republic", year:"2025", style:"Oil-style",
-      tags:["map","bottles"],
-      img:"../img/collection_works/industrial_myths/bottling_the_republic.png",
-      desc:[
-         "In 'Bottling the Republic', Dream Agent invites the viewer into a sterile, modern factory where the symbols of national identity are distilled, packaged, and prepared for consumption. On the left, dark and amber soda bottles emerge from a map of the United States—oxidized green against a burnt orange backdrop—suggesting a geographic origin stripped of borders yet full of weight. On the right, lighter bottles exit a white brick structure, their neutrality implying refinement, curation, or even erasure.",
-         "A factory worker affixes a red-crayon label to the box: 'A Case of Sovereignties'. His motion—half-routine, half-ritual—becomes a metaphor for the bureaucratic manufacturing of governance and identity. At the center, twin drinking fountains spill water onto the production line, invoking historical inequities, industrial spillage, or uncontainable truth.",
-         "Hovering above, a 1950s antenna pulses radio waves outward—a relic of a broadcast age, echoing the reach of old narratives into modern machinery.",
-         "Dream Agent fuses surrealism, political allegory, and post-industrial aesthetics into a layered visual inquiry. What does it mean to bottle a republic? And who decides the recipe?",
-        ],
-      links:{ xrp:"https://xrp.cafe/nft/00080BB8B57E780C6A5EF299540E01B0E8C6DB1B83CFC916B66E9CE605CBFA49", 
-      os:"#", 
-      sr:"#"}
-    },
-    // INTERNET OF THE 3RD KINGDOM
-    // { title:"Internet of the 3rd Kingdom", year:"2025", style:"Oil-style",
-    //   tags:["printing_press","panic"],
-    //   img:"../img/collection_works/industrial_myths/internet_of_the_3rd_kingdom.png",
-    //   desc:[
-    //      "In 'Internet of the 3rd Kingdom', a secret stone corridor becomes a theater of paranoia and ritual. Figures in medieval tunics scatter with scrolls of information, as though caught in the chaos of a leaking archive. At the forefront, a faceless man holds a bleeding sphere, accompanied by a powdered judge holding a glowing Ace of Spades —symbols of chance, judgment, and hidden authority.",
-    //      "Above them, a blood-red banner bears a compass-like sigil, while a massive crystal orb in the distance swallows flying swords and documents, as if consuming history itself. This is the Kingdom of Networks—half-feudal, half-digital—where law, secrecy, and data collide.",
-    //      "Dream Agent paints a world where the 'architecture of power' is ancient, yet the *currency of control* is information.",
-    //     ],
-    //   links:{ xrp:"#", os:"#", sr:"#"}
-    // },
-    // DANIEL'S VISION FROM ANOTHER ANGLE
-    { title:"Daniel's vision from another angle", year:"2023", style:"Oil-style",
-      tags:["cargo","doves"],
-      img:"../img/collection_works/industrial_myths/daniels_vision_from_another_angle.png",
-      desc:[
-         "A black-sea freighter noses through fog, its deck stacked not with cargo but with institutions: a courthouse façade, a broadcast tower, glass offices, and a proud marquee that mis-spells 'EXCELLENCE'—a glitch that betrays intent. Cable-chains spill from the ship like tentacles, dragging unseen systems through the tide. Above, a faint halo of radio rings ripples the sky.",
-         "On the shore, four birds stand as witnesses—three obsidian, one pale—an echo of Daniel’s layered visions and their empires. The birds face the vessel, a dissenting conscience against industrial pageantry. What arrives is not a navy, but a narrative: empire as architecture, morality as advertising, dominion as logistics.",
-         "Dream Agent tilts the prophecy 'from another angle,' asking: Who sails whom?", 
-         "When institutions are freight, is the ocean carrying them—or are we?",
+  // const works = [
+  //   //  THE FUTURE OF INDUSTRY
+  //   { title:"The Future of Industry", year:"2025", style:"Oil-style",
+  //     tags:["turban","brains"],
+  //     img:"../img/collection_works/industrial_myths/the_future_of_industry.png",
+  //     desc:[
+  //        "'The Future of Industry' envisions a new epoch where human thought, machine learning, and ritual converge.",
+  //        "In a dimly lit hall, a faceless oracle—its features replaced by cascading code—presides over a circle of silent thinkers. Before them rest luminous brains and crystal spheres: emblems of creativity, computation, and prophecy.", 
+  //        "The chamber holds two thresholds—one descending into shadow and uncertainty, the other opening toward a radiant expanse of possibility. This spatial duality mirrors the conflict between the foreseen and the unforeseen, the designed and the emergent, that defines our technological ascent.",
+  //        "The work poses a question: when machines divine and humans compute, who truly shapes the future of labor?"
+  //       ],
+  //     links:{ xrp:"https://xrp.cafe/nft/00081388B57E780C6A5EF299540E01B0E8C6DB1B83CFC91675DD2ED405CBFA3B", 
+  //     os:"#", 
+  //     sr:"#"}
+  //   },
+  //   // THE FEAR ROOM
+  //   { title:"The Fear Room", year:"2023", style:"Oil-style",
+  //     tags:["priest","war"],
+  //     img:"../img/collection_works/industrial_myths/the_fear_room.png",
+  //     desc:[
+  //        "'In The Fear Room', Dream Agent dissects the systemic machinery of submission and indoctrination. A lineup of children—bent, broken, and bowed—passes through gateways of authority and assimilation, watched over by figures of religion, capital, and control. Behind them, a portrait of soldiers against fire echoes the violence of inherited obedience.",
+  //        "A suited man holds out cash while guiding heads into future-making devices, beneath the glow of a microchip idol labeled 'FUTURE'—a cynical altar to technological determinism. The atmosphere is thick with unease, yet calculated and quiet. This is not chaos—it’s organized despair.",
+  //        "This NFT immortalizes a moment of ideological conditioning, where hope flickers in the cracks of institutionally imposed fear. One child, far right, sits upright—an ambiguous figure of peace or resignation.", 
+  //        "The painting invites collectors to reckon with the infrastructures of fear and the quiet violence of societal programming.",
+  //       ],
+  //     links:{ xrp:"https://xrp.cafe/nft/00081388B57E780C6A5EF299540E01B0E8C6DB1B83CFC916A3A8D0DA05CBFA3D", 
+  //     os:"#", 
+  //     sr:"#"}
+  //   },
+  //   // BOTTLING THE REPUBLIC
+  //   { title:"Bottling the Republic", year:"2025", style:"Oil-style",
+  //     tags:["map","bottles"],
+  //     img:"../img/collection_works/industrial_myths/bottling_the_republic.png",
+  //     desc:[
+  //        "In 'Bottling the Republic', Dream Agent invites the viewer into a sterile, modern factory where the symbols of national identity are distilled, packaged, and prepared for consumption. On the left, dark and amber soda bottles emerge from a map of the United States—oxidized green against a burnt orange backdrop—suggesting a geographic origin stripped of borders yet full of weight. On the right, lighter bottles exit a white brick structure, their neutrality implying refinement, curation, or even erasure.",
+  //        "A factory worker affixes a red-crayon label to the box: 'A Case of Sovereignties'. His motion—half-routine, half-ritual—becomes a metaphor for the bureaucratic manufacturing of governance and identity. At the center, twin drinking fountains spill water onto the production line, invoking historical inequities, industrial spillage, or uncontainable truth.",
+  //        "Hovering above, a 1950s antenna pulses radio waves outward—a relic of a broadcast age, echoing the reach of old narratives into modern machinery.",
+  //        "Dream Agent fuses surrealism, political allegory, and post-industrial aesthetics into a layered visual inquiry. What does it mean to bottle a republic? And who decides the recipe?",
+  //       ],
+  //     links:{ xrp:"https://xrp.cafe/nft/00080BB8B57E780C6A5EF299540E01B0E8C6DB1B83CFC916B66E9CE605CBFA49", 
+  //     os:"#", 
+  //     sr:"#"}
+  //   },
+  //   // INTERNET OF THE 3RD KINGDOM
+  //   // { title:"Internet of the 3rd Kingdom", year:"2025", style:"Oil-style",
+  //   //   tags:["printing_press","panic"],
+  //   //   img:"../img/collection_works/industrial_myths/internet_of_the_3rd_kingdom.png",
+  //   //   desc:[
+  //   //      "In 'Internet of the 3rd Kingdom', a secret stone corridor becomes a theater of paranoia and ritual. Figures in medieval tunics scatter with scrolls of information, as though caught in the chaos of a leaking archive. At the forefront, a faceless man holds a bleeding sphere, accompanied by a powdered judge holding a glowing Ace of Spades —symbols of chance, judgment, and hidden authority.",
+  //   //      "Above them, a blood-red banner bears a compass-like sigil, while a massive crystal orb in the distance swallows flying swords and documents, as if consuming history itself. This is the Kingdom of Networks—half-feudal, half-digital—where law, secrecy, and data collide.",
+  //   //      "Dream Agent paints a world where the 'architecture of power' is ancient, yet the *currency of control* is information.",
+  //   //     ],
+  //   //   links:{ xrp:"#", os:"#", sr:"#"}
+  //   // },
+  //   // DANIEL'S VISION FROM ANOTHER ANGLE
+  //   { title:"Daniel's vision from another angle", year:"2023", style:"Oil-style",
+  //     tags:["cargo","doves"],
+  //     img:"../img/collection_works/industrial_myths/daniels_vision_from_another_angle.png",
+  //     desc:[
+  //        "A black-sea freighter noses through fog, its deck stacked not with cargo but with institutions: a courthouse façade, a broadcast tower, glass offices, and a proud marquee that mis-spells 'EXCELLENCE'—a glitch that betrays intent. Cable-chains spill from the ship like tentacles, dragging unseen systems through the tide. Above, a faint halo of radio rings ripples the sky.",
+  //        "On the shore, four birds stand as witnesses—three obsidian, one pale—an echo of Daniel’s layered visions and their empires. The birds face the vessel, a dissenting conscience against industrial pageantry. What arrives is not a navy, but a narrative: empire as architecture, morality as advertising, dominion as logistics.",
+  //        "Dream Agent tilts the prophecy 'from another angle,' asking: Who sails whom?", 
+  //        "When institutions are freight, is the ocean carrying them—or are we?",
 
-        ],
-      links:{ xrp:"https://xrp.cafe/nft/000807D0B57E780C6A5EF299540E01B0E8C6DB1B83CFC916CD546DE705CBFA4A", 
-      os:"#", 
-      sr:"#"}
-    },
-    // INTERNET OF THE NEW WORLD
-    { title:"Internet of the New World", year:"2023", style:"Oil-style",
-      tags:["cargo","doves"],
-      img:"../img/collection_works/industrial_myths/internet_of_the_new_world.png",
-      desc:[
-        "'Internet of the New World' captures the moment where creativity, currency, and coded prophecy converge.",
-        "A lone figure, lit by the glow of his digital canvas, draws concentric worlds that ripple into reality. Outside, golden and silver coins drift through a scorched horizon, as if migrating from one age into another. On the wall, a portrait of an old-world general gazes forward, a crystal orb clasped like a new scepter of power. Beside the artist, encrypted text floats — part address, part invocation — signaling that in this world, identity and value are written in code.",
-        "This painting is an allegory of how the digital frontier replaces empires of stone with networks of trustless exchange, and how the new architects are not kings, but coders.",
+  //       ],
+  //     links:{ xrp:"https://xrp.cafe/nft/000807D0B57E780C6A5EF299540E01B0E8C6DB1B83CFC916CD546DE705CBFA4A", 
+  //     os:"#", 
+  //     sr:"#"}
+  //   },
+  //   // INTERNET OF THE NEW WORLD
+  //   { title:"Internet of the New World", year:"2023", style:"Oil-style",
+  //     tags:["cargo","doves"],
+  //     img:"../img/collection_works/industrial_myths/internet_of_the_new_world.png",
+  //     desc:[
+  //       "'Internet of the New World' captures the moment where creativity, currency, and coded prophecy converge.",
+  //       "A lone figure, lit by the glow of his digital canvas, draws concentric worlds that ripple into reality. Outside, golden and silver coins drift through a scorched horizon, as if migrating from one age into another. On the wall, a portrait of an old-world general gazes forward, a crystal orb clasped like a new scepter of power. Beside the artist, encrypted text floats — part address, part invocation — signaling that in this world, identity and value are written in code.",
+  //       "This painting is an allegory of how the digital frontier replaces empires of stone with networks of trustless exchange, and how the new architects are not kings, but coders.",
 
-        ],
-      links:{ xrp:"https://xrp.cafe/nft/00080BB8B57E780C6A5EF299540E01B0E8C6DB1B83CFC916E43A3EE405CBFA4B", 
-      os:"#", 
-      sr:"#"}
-    },
-  ];
+  //       ],
+  //     links:{ xrp:"https://xrp.cafe/nft/00080BB8B57E780C6A5EF299540E01B0E8C6DB1B83CFC916E43A3EE405CBFA4B", 
+  //     os:"#", 
+  //     sr:"#"}
+  //   },
+  // ];
+
+      // FILTER WORKS FOR THIS COLLECTION
+      const works = window.allWorks.filter(work => work.collection === "industrial");
 
   // ITERATE OVER OTHER COLLECTIONS TO RENDER STRIP
   // store collection count in a variable
@@ -933,34 +1015,29 @@
 
           try {
             // Prefer images in img/collection_works and attempt high-res variants
+            function basenameFromPath(p){ if(!p) return ''; const parts = p.split('/'); return parts[parts.length-1]; }
+            function slugFromHeader(){ const h = document.querySelector('h1.serif'); if(!h) return ''; return String(h.textContent||'').toLowerCase().replace(/[^a-z0-9]+/g,'_').replace(/^_+|_+$/g,''); }
+            function collectionWorksPathFor(src){ if(!src) return src; if(src.includes('collection_works')) return src; const name = basenameFromPath(src); const slug = slugFromHeader() || 'unknown'; return `../img/collection_works/${slug}/${name}`; }
+            async function chooseHighRes(preferred){ if(!preferred) throw new Error('no preferred'); const name = basenameFromPath(preferred).replace(/\s+/g,'%20'); const dir = preferred.replace(/\\[^/]*$/, ''); const candidates = [ `${dir}/${name.replace(/(\.[^.]+)$/, '-full$1')}`, `${dir}/${name.replace(/(\.[^.]+)$/, '-hires$1')}`, `${dir}/${name.replace(/(\.[^.]+)$/, '@2x$1')}`, `${dir}/masters/${name}`, preferred ]; for(const c of candidates){ try{ await preload(c); return c; }catch(e){} } throw new Error('no candidate'); }
+
             const preferred = collectionWorksPathFor(w.img);
             let bestSrc = w.img;
             try { bestSrc = await chooseHighRes(preferred); } catch(e) { bestSrc = w.img; }
-
-            // Preload chosen source (fallback to w.img)
             let img = null;
             try { img = await preload(bestSrc); } catch(e) { try { img = await preload(w.img); bestSrc = w.img; } catch(e2) { img = null; } }
 
-            // Swap content
             artImg.src = img?.src || w.img;
-            // update the "View Full Size" href so modal/open uses best source
-            const vf = document.getElementById('viewFullBtn');
-            if(vf) vf.href = bestSrc || w.img;
             artTitle.textContent = w.title || "";
             artMeta.innerHTML = `<span>${w.year||""}</span><span>•</span><span>${w.style||""}</span>`;
             artDesc.innerHTML = paragraphsHTML(w.desc);
-
             // Apply marketplace links
             applyMarketplaceLinks(w);
             // xrpBtn.href = w.links?.xrp || "#";
             // osBtn.href  = w.links?.os  || "#";
             // srBtn.href  = w.links?.sr  || "#";
 
-            // artImg.src = img.src;
-            // artTitle.textContent = w.title;
-            // artMeta.innerHTML = `<span>${w.year}</span><span>•</span><span>${w.style}</span>`;
-            // artDesc.textContent = w.desc;
-            // xrpBtn.href = w.links.xrp; osBtn.href = w.links.os; srBtn.href = w.links.sr;
+            // Ensure the View Full Size control points to the chosen source
+            try { const v = document.getElementById('viewFullBtn'); if (v) v.href = bestSrc; } catch(e) {}
 
             // Animate in
             animate(artImg, {opacity:0, scale:0.985}, {opacity:1, scale:1}, 0.4);
@@ -982,29 +1059,58 @@
           preload(works[nextIndex].img).catch(()=>{});
 
           artDesc.innerHTML = paragraphsHTML(w.desc);
+
+          renderRelatedWorks(w);
         }
 
-        // Build sidebar (with lazy thumbs)
-      // ===== helpers =====
-      const sidebar = document.getElementById("sidebarList");   // desktop stacked list container
-      const mobileStrip = document.getElementById("mobileStrip"); // optional: mobile horizontal strip
+         // Render related works section
+        function renderRelatedWorks(work) {
+        const section = document.getElementById("relatedWorks");
+        const list = document.getElementById("relatedWorksList");
 
-      //////////////////////////////////////////////////////////////////////////
-      //////////////////////////////////////////////////////////////////////////
-      //////////////////////////////////////////////////////////////////////////
-      //////////////////////////////////////////////////////////////////////////
-      //CHANGE HERE
-      // Active highlight for just the thumbnail box
-      // so basically you are setting them all to have a tailwind ring 
-      // const THUMB_ACTIVE = ["ring-2","ring-blue-400","ring-offset-2","ring-offset-black/30"];
-      // Full-row highlight ring (even border) + soft background
-      const ROW_ACTIVE = [
-        "ring-1",            // stronger than base ring
-        "ring-white/60",     // clearer contrast
-        "ring-offset-1",
-        "ring-offset-transparent",
-        "bg-white/10"        // subtle lift
-      ];
+        if (!section || !list) return;
+
+        const relatedItems = (work.related || [])
+          .map(id => window.allWorks.find(item => item.id === id))
+          .filter(Boolean);
+
+        if (relatedItems.length === 0) {
+          section.style.display = "none";
+          list.innerHTML = "";
+          return;
+        }
+
+        section.style.display = "block";
+
+        list.innerHTML = relatedItems.map(item => `
+          <button type="button" class="related-work-link" data-related-id="${item.id}">
+            <img src="${item.img}" alt="${item.title}" class="related-img">
+            <span class="related-title">${item.title}</span>
+          </button>
+        `).join("");
+    }
+
+        // Build sidebar (with lazy thumbs)
+        // ===== helpers =====
+        const sidebar = document.getElementById("sidebarList");   // desktop stacked list container
+        const mobileStrip = document.getElementById("mobileStrip"); // optional: mobile horizontal strip
+
+        //////////////////////////////////////////////////////////////////////////
+        //////////////////////////////////////////////////////////////////////////
+        //////////////////////////////////////////////////////////////////////////
+        //////////////////////////////////////////////////////////////////////////
+        //CHANGE HERE
+        // Active highlight for just the thumbnail box
+        // so basically you are setting them all to have a tailwind ring 
+        // const THUMB_ACTIVE = ["ring-2","ring-blue-400","ring-offset-2","ring-offset-black/30"];
+        // Full-row highlight ring (even border) + soft background
+        const ROW_ACTIVE = [
+          "ring-1",            // stronger than base ring
+          "ring-white/60",     // clearer contrast
+          "ring-offset-1",
+          "ring-offset-transparent",
+          "bg-white/10"        // subtle lift
+        ];
 
 
 

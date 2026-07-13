@@ -672,6 +672,7 @@ window.allWorks = [
               dateCreated: "2021-11-15",
               related:["hip_hop_1987","the_tech_era"],
               motifs: ["train", "glowing"],
+              themes: ["music", "discovery", "ascension"],
               img:"../img/collection_works/signals_and_ascensions/hip_hop_1978.png",
               desc:[
                   "Step into the soul of the South Bronx as the birth cry of Hip Hop reverberates from subway tunnels to celestial realms. 'Hip Hop 1978' captures a young dreamer pointing to a psychedelic subway car emblazoned with the word “LOVE” and the year '1978' — a nod to the cultural ignition point of Hip Hop as a movement of rhythm, rebellion, and radiance.", 
@@ -692,7 +693,7 @@ window.allWorks = [
                 dateCreated: "2025-01-01",
                 related:["conrads_house", "shannons_house"],
                 motifs: ["stairs", "neon"],
-                themes: ["family", "identity", "rebellion"],
+                themes: ["family", "identity", "excitement"],
                 tags:["stairs","neon"],
                 img:"../img/collection_works/signals_and_ascensions/loris_house.png",
                 desc:[
@@ -714,6 +715,7 @@ window.allWorks = [
                   dateCreated: "2025-01-01",
                   related:["some_things_sound_like_the_morning", "imperious_kingdom"],
                   motifs: ["family", "heritage", "dance"],
+                  themes: ["faith", "tradition", "identity"],
                   img:"../img/collection_works/signals_and_ascensions/the_biblicals.png",
                   desc:[
                    "'The Biblicals' is a visual hymn—a layered scene where heritage, reverence, and resilience meet in a sunlit room. In the foreground, a man in an ermine fur coat and navy cap lowers his brim, guarding his gaze while embodying quiet strength. Behind him, a woman in a Choctaw dress moves in sacred rhythm, hands lifted in dance, as two children in red coats rejoice in mirrored movement. Between them all, Hebrew letters are inscribed on a clay wall, hinting at an ancient river—spiritual currents running beneath the moment. Ferns frame the scene, while bottles at the base serve as silent relics of rituals past. A piano in the corner, stacked with books, suggests memory, learning, and song.",
@@ -734,6 +736,7 @@ window.allWorks = [
                   dateCreated: "2023-06-13",
                   related:[],
                   motifs: ["balloon","ascension","knowledge"],
+                  themes: ["information flow","legacy","culture"],
                   img:"../img/collection_works/signals_and_ascensions/revolutionary_balloon.png",
                   desc:[
                     "A Renaissance-era figure ascends in a striped hot air balloon, scattering ancient knowledge—cryptic sheets of coded text—into the air. Below, four hands of diverse origins hold smartphones. One displays hieroglyph-like text, while the others burst with cascading streams of water, as if their screens were ancient fountains.",
@@ -755,6 +758,7 @@ window.allWorks = [
                   dateCreated: "2025-01-01",
                   related:["loris_house", "shannons_house"],
                   motifs: ["stairs", "star"],
+                  themes: ["family", "identity", "esteem"],
                   img:"../img/collection_works/signals_and_ascensions/conrads_house.png",
                   desc:[
                       "'Conrad’s House' captures the collision of tradition and transformation within a suburban interior. A young man descends the stairs, books in hand, carrying knowledge into a future defined by shifting symbols.", 
@@ -769,8 +773,14 @@ window.allWorks = [
                 { 
                   id: "tartarian_standard_deluxe",
                   collection: "signals",
-                  title:"Tartarian Standard Deluxe", year:"2025", style:"Oil-style",
-                  tags:["tartaria","lightening"],
+                  title:"Tartarian Standard Deluxe", 
+                  year:"2025", 
+                  style:"Oil-style",
+                  featured: true,
+                  dateCreated: "2025-01-01",
+                  related:["magic_of_86", "sephardic_tango"],
+                  motifs: ["guitarist", "tartaria","lightening"],
+                  themes: ["myth","history","value"],
                   img:"../img/collection_works/signals_and_ascensions/tartarian_standard_deluxe.png",
                   desc:[
                     "A faceless guitarist sits beneath the domes of a lost empire — the 'Tartarian skyline' glowing under a crescent moon. His hat bears the ironic brand “Standard Deluxe,” a paradox of value in a world of imitation.",
@@ -782,10 +792,17 @@ window.allWorks = [
                   sr:"#"}
                 },
                 // THE MAGIC OF '86
-                  { id: "the_magic_of_86",
+                  { 
+                    id: "magic_of_86",
                     collection: "signals",
-                    title:"Magic of '86", year:"2023", style:"Oil-style",
-                    tags:["spy","birds"],
+                    title:"Magic of '86", 
+                    year:"2023", 
+                    style:"Oil-style",
+                    featured: true,
+                    dateCreated: "2023-06-13",
+                    related:["tartarian_standard_deluxe"],
+                    motifs: ["stadium","hip-hop","punk"],
+                    themes: ["rebellion","expression","culture"],
                     img:"../img/collection_works/signals_and_ascensions/the_magic_of_86.png",
                     desc:[
                       "In 'Magic of '86', three cultural avatars—hip-hop, punk, and suburban youth—collide in a stadium of roaring multitudes. A figure in a Bubble goose down holds an electrified film reel from one side of the stage, while an Indie Rock-like vocalist in mid-cry fuses it in the middle with cinematic force. On the opposite end, a figure in a Dapper Dan-style tracksuit and gold jewelry of that era grips the other reel, completing the circuit. Each wears surrealist visors in the styles of Picasso, Klee, and Matisse. The electricity between them is symbolic, a spark of cross-genre unity, a visual remix of race, culture, and rhythm from an era that echoed rebellion and expression.",
@@ -796,10 +813,17 @@ window.allWorks = [
                     sr:"#"}
                   },
                   //   // SEPHARDIC TANGO
-                  { id: "sephardic_tango",
+                  { 
+                    id: "sephardic_tango",
                     collection: "signals",
-                    title:"Sephardic Tango", year:"2024", style:"Oil-style",
-                    tags:["dance","sephardic"],
+                    title:"Sephardic Tango", 
+                    year:"2024", 
+                    style:"Oil-style",
+                    featured: true,
+                    dateCreated: "2024-06-15",
+                    related:["tartarian_standard_deluxe"],
+                    motifs: ["dance","sephardic"],
+                    themes: ["history","memory","diaspora"],
                     img:"../img/collection_works/signals_and_ascensions/sephardic_tango.png",
                     desc:[
                       "A flamenco dancer and a conquistador lock eyes and arms in a hypnotic embrace. The tension of history, love, and legacy pulses through their movement. Behind them, silent onlookers in armor sit in colonial stillness.",

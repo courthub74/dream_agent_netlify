@@ -524,7 +524,7 @@ window.allWorks = [
       style:"Oil-style",
       featured: true,
       dateCreated: "2026-06-15",
-      related:["prince_carl_laying" , "internet_of_the_new_world"],
+      related:["prince_carl_laying"],
       motifs:["salt","language","conquest"],
       img:"../img/collection_works/dominion_archives/prince_carl_after_the_salt_conquering.png",
       desc:[

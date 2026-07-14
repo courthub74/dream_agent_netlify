@@ -834,4 +834,189 @@ window.allWorks = [
                     os:"#", 
                     sr:"#"}
                   },
+                   /////////////////////////////////////////////////////////////////
+                   /////////////////////////////////////////////////////////////////
+                   // WAR AND FEAST 
+                   /////////////////////////////////////////////////////////////////
+                   /////////////////////////////////////////////////////////////////
+                   // THE WINE WARS
+                  { 
+                    id: "the_wine_wars",
+                    collection: "war_and_feast",
+                    title:"The Wine Wars", 
+                    year:"2023", 
+                    style:"Oil-style",
+                    featured: true,
+                    dateCreated: "2023-06-13",
+                    related:["the_soap_wars", "coeur_of_the_grapes", "the_dirt_wars"],
+                    motifs:["cave","bacteria","wine"],
+                    themes:["conflict","culture","value"],
+                    img:"../img/collection_works/war_and_feast/the_wine_wars.png",
+                    desc:[
+                      "'The Wine Wars' is a surreal meditation on conflict, culture, and value. A winding river carves through a cavernous landscape, separating two opposing forces: primal microscopic organisms locked in an endless struggle, and a garden where golden coins bloom like living flora. A solitary glass sits empty, a silent witness to the chaos and creation unfolding. Above, a speaker looms—echoing voices of past and future battles.",
+                      "This piece fuses mythology, economics, and microbiology into one scene, exploring how consumption, nature, and technology intertwine in humanity's pursuit of meaning and wealth.",
+                    ],
+                    links:{ xrp:"https://xrp.cafe/nft/00080FA0B57E780C6A5EF299540E01B0E8C6DB1B83CFC9160DE5DBF205CBFA58", 
+                    os:"#", 
+                    sr:"#"}
+                  },
+
+                  // THE STARVING MILLIONARE
+                  { 
+                    id: "the_starving_millionare",
+                    collection: "war_and_feast",
+                    title: "The Starving Millionare", 
+                    year: 2026, 
+                    style:"Oil-style",
+                    featured: true,
+                    dateCreated: "2026-03-16",
+                    related:["the_generous_vagrant","the_wine_wars"],
+                    motifs:["hunger","gold"],
+                    themes:["greed","consumption","spectatorship"],
+                    img:"../img/collection_works/war_and_feast/the_starving_millionare.png",
+                    desc:[
+                      "'The Starving Millionaire' captures a paradox at the heart of modern ambition: abundance without nourishment.",
+                      "A faceless figure devours a sandwich inside a luxury vehicle, parked beneath the sign of a 'Tartarian Sandwich Shoppe'. Outside the windshield, students look on, laughing and learning, while inside the vehicle a GPS glows with a single directive: 'Monetize'.",
+                      "A book titled 'Intro to Principles' rests untouched on the console. Wealth, knowledge, hunger, and spectatorship collapse into a single frame.",
+                      "The painting examines how success can consume itself. The pursuit of value becomes an appetite that never resolves. The mask hides identity, but not the ritual. This is not a portrait of poverty or excess. It is a portrait of extraction."
+                    ],
+                    links:{ xrp:"https://xrp.cafe/nft/00081388B57E780C6A5EF299540E01B0E8C6DB1B83CFC91648118CD505CBFA39",
+                    os:"https://opensea.io/item/ethereum/0x870520570ea3cd36ec19a8494c2a08b131727a83/3", 
+                    sr:"#"}
+                  },
+
+                  // COEUR OF THE GRAPES
+                  { 
+                    id: "coeur_of_the_grapes",
+                    collection: "war_and_feast",
+                    title:"Coeur of the Grapes", 
+                    year:"2025", 
+                    style:"Oil-style",
+                    featured: true,
+                    dateCreated: "2025-11-15",
+                    related:["the_wine_wars"],
+                    motifs:["heart","river"],
+                    themes:["romance","indulgence","desire"],
+                    img:"../img/collection_works/war_and_feast/coeur_of_the_grapes.png",
+                    desc:[
+                      "'Coeur of the Grapes' is a surreal celebration of romance, indulgence, and the fragile infrastructure of desire. In this evocative composition, a monumental human heart towers over a vineyard town, pumping rich, cerulean rivers through a sun-scorched landscape. At the forefront, a woman dressed in red smiles with closed eyes, glass of sparkling wine in hand, as a disembodied hand rests on her shoulder — a gesture at once intimate and ambiguous.",
+                      "This piece plays on the French word 'coeur' (heart) and the ancient symbolism of wine as both communion and seduction. The arteries feeding the land suggest a circulatory system of love and control, while the woman’s radiant joy hints at either blissful ignorance or deep satisfaction.",
+                      "A hypnotic blend of anatomical realism and classic oil-style glamour, 'Coeur of the Grapes' is a study in beauty, power, and what we choose to celebrate — even as we’re consumed by it."
+                    ],
+                    links:{ xrp:"https://xrp.cafe/nft/00081388B57E780C6A5EF299540E01B0E8C6DB1B83CFC91652974EF705CBFA5B", 
+                    os:"#", 
+                    sr:"#"}
+                  },
+
+                  // THE SOAP WARS 
+                  { 
+                    id: "the_soap_wars",
+                    collection: "war_and_feast",
+                    title: "The Soap Wars", 
+                    year: "2026", 
+                    style: "Oil-style",
+                    featured: true,
+                    dateCreated: "2026-06-15",
+                    related: ["the_wine_wars", "the_dirt_wars"],
+                    motifs: ["bubbles", "zamboni"],
+                    themes: ["sanitation", "conflict"],
+                    img: "../img/collection_works/war_and_feast/the_soap_wars.png",
+                    desc: [
+                      "'The Soap Wars' documents a conflict staged as sanitation.",
+                      "A sterile tunnel becomes a theater where purity, avoidance, absorption, and respect are enforced through signage, machinery, and posture. Soap floods the floor. Surveillance smiles. Direction replaces dialogue.",
+                      "The conflict does not ask who is clean. It decides who is allowed to remain.",
+                    ],
+                    links: { xrp: "https://xrp.cafe/nft/00081388B57E780C6A5EF299540E01B0E8C6DB1B83CFC9161625E5DC05CBFA42", 
+                    os: "#", 
+                    sr: "#" }
+                  },
+
+                    // INTERNET OF THE 3RD KINGDOM
+                  { 
+                    id: "internet_of_the_3rd_kingdom",
+                    collection: "war_and_feast",
+                    title: "Internet of the 3rd Kingdom",
+                    year: "2025",
+                    style: "Oil-style",
+                    featured: true,
+                    dateCreated: "2025-11-15",
+                    related: ["internet_of_the_new_world"],
+                    motifs: ["printing_press", "panic"],
+                    themes: ["paranoia", "ritual"],
+                    img:"../img/collection_works/war_and_feast/internet_of_the_3rd_kingdom.png",
+                    desc:[
+                      "In 'Internet of the 3rd Kingdom', a secret stone corridor becomes a theater of paranoia and ritual. Figures in medieval tunics scatter with scrolls of information, as though caught in the chaos of a leaking archive. At the forefront, a faceless man holds a bleeding sphere, accompanied by a powdered judge holding a glowing Ace of Spades —symbols of chance, judgment, and hidden authority.",
+                      "Above them, a blood-red banner bears a compass-like sigil, while a massive crystal orb in the distance swallows flying swords and documents, as if consuming history itself. This is the Kingdom of Networks—half-feudal, half-digital—where law, secrecy, and data collide.",
+                      "Dream Agent paints a world where the 'architecture of power' is ancient, yet the 'currency of control' is information.",
+                      ],
+                    links:{ xrp:"https://xrp.cafe/nft/000807D0B57E780C6A5EF299540E01B0E8C6DB1B83CFC9163BB17DF405CBFA5A", 
+                    os:"#", 
+                    sr:"#"}
+                  },
+
+                  // THE ASYMETRICAL JACE
+                  { 
+                    id: "the_asymmetrical_jace",
+                    collection: "war_and_feast",
+                    title: "The Asymmetrical Jace",
+                    year: "2025",
+                    style: "Oil-style",
+                    featured: true,
+                    dateCreated: "2025-11-15",
+                    related: [],
+                    motifs: ["desert", "spaghetti"],
+                    themes: ["consumption", "hierarchy"],
+                    img: "../img/collection_works/war_and_feast/the_asymmetrical_jayse.png",
+                    desc: [
+                      "'The Asymmetrical Jace' bends the domestic into the mythic. Two figures consume spaghetti not as a meal, but as an allegory—one upright, disciplined, with galactic eyes veiled in the night sky, the other crouched, primal, with geometric lenses of surveillance. Between them rises the green pyramid of 'Strategy Wood', a mountain of calculation standing in stark contrast to the desert plain. This piece plays on hierarchy, asymmetry, and the rituals of consumption—both of food and of systems.",
+                      "It asks: who eats with a fork, and who eats from the ground? Who climbs Strategy Wood, and who becomes part of its base?",
+                      ],
+                    links:{ xrp:"https://xrp.cafe/nft/00080BB8B57E780C6A5EF299540E01B0E8C6DB1B83CFC91624CBACF505CBFA59", os:"#", sr:"#"}
+                  },
+
+                  // SOME THINGS WERE MEANT TO LAST FOREVER
+                  { 
+                    id: "some_things_were_meant_to_last_forever",
+                    collection: "war_and_feast",
+                    title: "Some things were meant to last forever",
+                    year: "2025",
+                    style: "Oil-style",
+                    featured: true,
+                    dateCreated: "2025-11-15",
+                    related: [],
+                    motifs: ["spy", "birds"],
+                    themes: ["espionage", "freedom"],
+                    img: "../img/collection_works/war_and_feast/some_things.png",
+                    desc:[
+                      "This surreal composition by Dream Agent presents an oven labeled Prosperity as an altar of permanence, where iconic cathedrals and basilicas from around the world rise like delicacies atop silver cake stands.",
+                      "Each structure — intricate, fragile, historic — floats in a domestic kitchen space, blurring the line between the sacred and the mundane. In this world, spiritual and cultural grandeur is both preserved and 'baked in,' as if civilization itself is something to be curated and cared for at home.",
+                      "The scene asks: What are we preserving? What do we consume? And what—if anything—transcends time? An homage to heritage, architecture, and memory, this painting is a quiet meditation on legacy in an age of impermanence."
+                      ],
+                    links:{ xrp:"https://xrp.cafe/nft/00080BB8B57E780C6A5EF299540E01B0E8C6DB1B83CFC916697D1FF605CBFA5C", 
+                    os:"#", 
+                    sr:"#"}
+                  },
+
+                  // MAMMON STADIUM
+                  { 
+                    id: "mammon_stadium",
+                    collection: "war_and_feast",
+                    title: "Mammon Stadium",
+                    year: "2025",
+                    style: "Oil-style",
+                    featured: true,
+                    dateCreated: "2025-11-15",
+                    related: [],
+                    motifs: ["bugs", "gold"],
+                    themes: ["greed", "consumption", "spectatorship"],
+                    img: "../img/collection_works/war_and_feast/mammon_stadium.png",
+                    desc: [
+                      "In 'Mammon Stadium', Dream Agent transforms the ancient coliseum into a financial amphitheater. The golden statue of Mammon towers above the fray, bathed in divine light, as gladiatorial bugs scuttle across a hockey-lined battlefield littered with pills. The crowd is not flesh but wealth itself—coins, bills, and symbols of capital—stacked into seats of power.", 
+                      "The arena becomes a surreal merger of sport, empire, addiction, and currency, where spectatorship is measured in monetary presence rather than human eyes.", 
+                      "This painting interrogates the rituals of modern finance and consumption, presenting the spectacle of wealth as both entertainment and domination.",
+                    ],
+                    links:{ xrp:"https://xrp.cafe/nft/00080BB8B57E780C6A5EF299540E01B0E8C6DB1B83CFC9167822E70E05CBFA73", 
+                    os:"#", 
+                    sr:"#"}
+                  },
           ];

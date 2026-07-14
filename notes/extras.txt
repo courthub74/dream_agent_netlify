@@ -1,7 +1,7 @@
 Steps for 'Related_Works' update
 
 1. import the artworks.js script
-2. Add the Related works div
-3. paste the renderRelatedWorks function @ line 1024 or so 
-4. redirect the works function to the artworks.js by collection
-4. add the related_works css 
+2. add the related_works css 
+3. Add the Related works div 
+4. paste the renderRelatedWorks function @ line 1024 or so 
+5. redirect the works function to the artworks.js by collection

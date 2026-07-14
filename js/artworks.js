@@ -219,7 +219,7 @@ window.allWorks = [
       style:"Oil-style",
       featured: true,
       dateCreated: "2025-11-15",
-      related:["the_tech_era", "the_great_divide"],
+      related:["the_great_divide"],
       motifs: ["mother", "ledger"],
       themes: ["decentralization", "motherhood", "finance"],
       img:"../img/collection_works/digital_unconscious/lactation_of_the_ledger.png",
@@ -300,7 +300,6 @@ window.allWorks = [
       os:"#", 
       sr:"#"}
     },
-
     // INTERNET OF THE MODERN WORLD
     { 
       id: "internet_of_the_modern_world",
@@ -310,7 +309,7 @@ window.allWorks = [
       style:"Oil-style",
       featured: true,
       dateCreated: "2022-10-06",
-      related:["the_tech_era", "cursor_of_fate"],
+      related:["the_tech_era"],
       motifs: ["orbs", "glowing"],
       themes: ["digital culture", "seclusion", "contemplation"],
       img:"../img/collection_works/digital_unconscious/internet_of_the_modern_world.png",
@@ -321,6 +320,52 @@ window.allWorks = [
         ],
       links:{ xrp:"https://xrp.cafe/nft/00080BB8B57E780C6A5EF299540E01B0E8C6DB1B83CFC91620ABA7F405CBFA64", 
       os:"#", 
+      sr:"#"}
+    },
+    // THE ARTIFICIAL MONTY
+    {
+      id: "the_artificial_monty",
+      collection: "digital",
+      title:"The Artificial Monty",
+      year:"2026",
+      style:"Oil-style",
+      featured: true,
+      dateCreated: "2026-05-15",
+      related:["the_artificial_deligate"],
+      motifs: ["robot", "ceremony", "ritual"],
+      themes: ["technology", "artificial intelligence", "data centers"],
+      img:"../img/collection_works/digital_unconscious/the_artificial_monty.png",
+      desc:[
+        "A surreal landscape exploring the hidden ecology of artificial intelligence.",
+        "The Artificial Monty portrays AI as an act of excavation rather than invention. Anonymous workers sift through the accumulated internet while a living river carries symbols of memory, mortality, and biological existence toward a monumental temple dedicated to language itself.",
+        "The painting suggests that artificial intelligence is not born from empty machines, but from humanity's collective archive of stories, knowledge, and experience.",
+        "Every answer has an ancestry.",
+      ],
+      links:{ xrp:"#", 
+      os:"#",
+      sr:"#"}
+    },
+    // HUMANS
+    {
+      id: "humans",
+      collection: "digital",
+      title:"Humans",
+      year:"2026",
+      style:"Oil-style",
+      featured: true,
+      dateCreated: "2026-06-15",
+      related:[],
+      motifs: ["prison", "freedom", "similarity"],
+      themes: ["confinement", "liberty", "existentialism"],
+      img:"../img/collection_works/digital_unconscious/humans.png",
+      desc:[
+        "A surreal meditation on visible and invisible confinement.",
+        "Humans juxtaposes two lives that appear fundamentally different. A prisoner sits behind bars while a prosperous professional relaxes in comfort, yet both occupy nearly identical poses beneath the same moon and sky.",
+        "The work suggests that material success and physical liberty do not necessarily resolve the deeper questions of fulfillment, purpose, or inner freedom.",
+        "Sometimes the strongest prisons cannot be seen.",
+      ],
+      links:{ xrp:"#",
+      os:"#",
       sr:"#"}
     },
     // INTERNET OF THE NEW WORLD

@@ -205,7 +205,32 @@ window.allWorks = [
       os:"#",
       sr:"#"}
     },
-
+    // THEM GUYS AND THE OLDER GUYS
+    {
+      id: "them_guys_and_the_older_guys",
+      collection: "symbols",
+      title:"Them Guys and the Older Guys",
+      year:"2026",
+      style:"Oil-style",
+      featured: true,
+      dateCreated: "2026-03-15",
+      related:["them_gods_and_the_older_gods"],
+      motifs: ["group", "age", "community"],
+      themes: ["community", "age", "identity"],
+      img:"../img/collection_works/symbols_in_motion/them_guys_and_the_older_guys.png",
+      desc:[
+        "'Them Guys and the Older Guys' examines the unseen architecture behind cultural narratives.",
+        "Set within a frontier saloon, the painting imagines storytellers, skeptics, and strategists gathered around a conversation that extends beyond the room itself. At the center stands a weathered monument marked 'Strategy Wood,'' a symbolic inversion of Hollywood. Rather than celebrating entertainment, it points toward the mechanisms through which stories are shaped, distributed, and remembered.",
+        "The crystal ball rests quietly on the table, suggesting that perception itself has become something to forecast, influence, and negotiate. Around it, conversations unfold between generations. The 'them guys' inherit ideas while the 'older guys' pass along methods, whether intentionally or unconsciously.",
+        "The work does not claim that culture is centrally controlled.",
+        "It suggests something more subtle.",
+        "Every society develops institutions that learn how stories influence behavior. Over time, those institutions become traditions, industries, and eventually invisible assumptions.",
+        // "This work is a meditation on the invisible forces that shape culture, the tension between innovation and tradition, and the ways in which communities negotiate their shared narratives.",
+      ],
+      links:{ xrp:"#",
+      os:"#",
+      sr:"#"}
+    },
     /////////////////////////////////////////////////////////////////
     /////////////////////////////////////////////////////////////////
     // THE DIGITAL UNCONSCIOUS

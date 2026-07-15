@@ -437,6 +437,29 @@ window.allWorks = [
     os:"#", 
     sr:"#"}
     },
+    // PRINCE CARL AFTER THE SALT CONQUERING SPEAKING AN ANCIENT LANGUAGE
+    { 
+      id: "prince_carl_after_the_salt_conquering_speaking_an_ancient_language",
+      collection: "dominion",
+      title:"Prince Carl after the Salt Conquering Speaking an Ancient Language", 
+      year:"2026",
+      style:"Oil-style",
+      featured: true,
+      dateCreated: "2026-06-15",
+      related:["prince_carl_laying"],
+      motifs:["salt","language","conquest"],
+      img:"../img/collection_works/dominion_archives/prince_carl_after_the_salt_conquering.png",
+      desc:[
+          "After the Salt Conquering, Prince Carl sits upon the edge of the Atlantic, wrapped in furs, speaking in a language older than kingdoms and newer than algorithms.",
+          "A glowing orb rests before him like a captured star while two silent witnesses listen from the margins. Around his neck hangs a pendant reading *Social Media*, transforming a modern phrase into a royal relic.",
+          "In this surreal vision, Dream Agent collapses centuries into a single moment: ancient ritual, digital communication, and the eternal human desire to be heard.",
+          "Is Prince Carl a conqueror, a prophet, an influencer, or merely another storyteller speaking into the void?",
+          "As waves crash against dark stone and the sky fractures with celestial light, the distinction becomes irrelevant."
+      ],
+      links:{ xrp:"https://xrp.cafe/nft/00080BB8B57E780C6A5EF299540E01B0E8C6DB1B83CFC916F7000AF805CBFA57", 
+      os:"#", 
+      sr:"#"}
+    },
     // SALTWATER ELECTRONICS
     { 
       id: "saltwater_electronics",
@@ -520,6 +543,29 @@ window.allWorks = [
       os:"#", 
       sr:"#"}
     },
+    // INTERNET OF THE 9TH EMPIRE
+    { 
+      id: "internet_of_the_9th_empire",
+      collection: "dominion",
+      title:"Internet of the 9th Empire", 
+      year:"2025",
+      style:"Oil-style",
+      featured: true,
+      dateCreated: "2025-10-15",
+      related:[],
+      motifs:["empire","internet","ritual"],
+      img:"../img/collection_works/dominion_archives/internet_of_the_9th_empire.png",
+      desc:[
+          "A vision of civilization after knowledge becomes its highest currency.",
+          "Internet of the 9th Empire depicts rulers who govern through illumination rather than force. Before them stretches a society where every individual holds a glowing sphere, symbolizing universal access to collective memory and shared understanding.",
+          "The work transforms the internet from a technological network into a cultural inheritance spanning generations and civilizations.",
+          "Its greatest monument is not stone.",
+          "It is connection.",
+      ],
+      links:{ xrp:"#", 
+      os:"#", 
+      sr:"#"}
+    },
     // THE REFACTORING RITUAL
     { 
       id: "the_refactoring_ritual",
@@ -555,29 +601,6 @@ window.allWorks = [
       desc:[
           "Every civilization begins with a language it cannot fully explain., 'Some Things Sound Like the Morning' transforms an ordinary shower into a sanctuary of transmission. Morning sunlight pours through the fixture, replacing flowing water, casting golden frequencies across a chamber where a microphone waits beneath the light. On one wall, 'M = Mineral' suggests that voice originates in the deep architecture of the earth. On another, the Hebrew word חיים (Life) quietly anchors the composition, introducing breath, spirit, and living memory into the ritual.",
           "Between them stands the figure, suspended between stone and speech, matter and meaning. The bonsai waterfall reinforces the painting's central current: life is not manufactured but cultivated, flowing patiently through generations before emerging as language. This work asks whether the first sounds of civilization were less an invention than a reception, as though every morning still carries echoes of the world's original voice.",
-      ],
-      links:{ xrp:"https://xrp.cafe/nft/00080BB8B57E780C6A5EF299540E01B0E8C6DB1B83CFC916F7000AF805CBFA57", 
-      os:"#", 
-      sr:"#"}
-    },
-    // PRINCE CARL AFTER THE SALT CONQUERING SPEAKING AN ANCIENT LANGUAGE
-    { 
-      id: "prince_carl_after_the_salt_conquering_speaking_an_ancient_language",
-      collection: "dominion",
-      title:"Prince Carl after the Salt Conquering Speaking an Ancient Language", 
-      year:"2026",
-      style:"Oil-style",
-      featured: true,
-      dateCreated: "2026-06-15",
-      related:["prince_carl_laying"],
-      motifs:["salt","language","conquest"],
-      img:"../img/collection_works/dominion_archives/prince_carl_after_the_salt_conquering.png",
-      desc:[
-          "After the Salt Conquering, Prince Carl sits upon the edge of the Atlantic, wrapped in furs, speaking in a language older than kingdoms and newer than algorithms.",
-          "A glowing orb rests before him like a captured star while two silent witnesses listen from the margins. Around his neck hangs a pendant reading *Social Media*, transforming a modern phrase into a royal relic.",
-          "In this surreal vision, Dream Agent collapses centuries into a single moment: ancient ritual, digital communication, and the eternal human desire to be heard.",
-          "Is Prince Carl a conqueror, a prophet, an influencer, or merely another storyteller speaking into the void?",
-          "As waves crash against dark stone and the sky fractures with celestial light, the distinction becomes irrelevant."
       ],
       links:{ xrp:"https://xrp.cafe/nft/00080BB8B57E780C6A5EF299540E01B0E8C6DB1B83CFC916F7000AF805CBFA57", 
       os:"#", 

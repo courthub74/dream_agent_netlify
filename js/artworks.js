@@ -182,6 +182,29 @@ window.allWorks = [
       os:"#", 
       sr:"#"}
     },
+    // TURQUOISE PLATE
+    {
+      id: "turquoise_plate",
+      collection: "symbols",
+      title:"Turquoise Plate",
+      year:"2026",
+      style:"Oil-style",
+      featured: true,
+      dateCreated: "2026-03-15",
+      related:["dream_agent_making_birds", "wizard_of_agent_dreams"],
+      motifs: ["plate", "ceremony", "ritual"],
+      themes: ["ceremony", "ritual", "transformation"],
+      img:"../img/collection_works/symbols_in_motion/turquoise_plate.png",
+      desc:[
+        "A symbolic relic from an imagined archive.",
+        "'Turquoise Plate' presents a silent guardian beside an intricately carved ceremonial object whose imagery hints at forgotten systems of belief. Crystal spheres, flowing water, birds, and the human heart combine into a visual language that feels familiar yet remains untranslated.",
+        "This work invites viewers to consider the significance of everyday objects in our lives and how they can become vessels for deeper meaning and spiritual connection.",
+        "The archive remembers even when history forgets."
+      ],
+      links:{ xrp:"#",
+      os:"#",
+      sr:"#"}
+    },
 
     /////////////////////////////////////////////////////////////////
     /////////////////////////////////////////////////////////////////

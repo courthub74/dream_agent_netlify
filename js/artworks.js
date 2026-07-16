@@ -248,7 +248,7 @@ window.allWorks = [
       related:["internet_of_the_old_world", "internet_of_the_new_world"],
       motifs: ["mall", "crystal ball"],
       themes: ["digital culture", "nostalgia", "ritual"],
-      img:"../img/collection_works/digital_unconscious/internet_of_the_middle_world.png",
+      img:"../img/collection_works/digital_unconscious/internet_of_the_middle_world.webp",
       desc:[
          "'Internet of the Middle World' captures a surreal 1980s-style mall scene where the digital age seeps into analog life. Neon signs divide the corridor into 'INTER' and 'NET', while glowing orbs—crystal-ball-like internet terminals—float atop fountains and pedestals. Shoppers gaze into them with reverence, as if accessing forgotten futures.", 
          "The color palette leans into nostalgic earth tones, contrasted with electric blues, subtly evoking early digital aesthetics. The arcade machines flicker like proto-portals, while every character appears paused between eras—caught between the physical and the virtual, the mundane and the mythic.", 
@@ -270,7 +270,7 @@ window.allWorks = [
       related:["the_great_divide"],
       motifs: ["mother", "ledger"],
       themes: ["decentralization", "motherhood", "finance"],
-      img:"../img/collection_works/digital_unconscious/lactation_of_the_ledger.png",
+      img:"../img/collection_works/digital_unconscious/lactation of_the_ledger.webp",
       desc:[
          "In 'Lactation of the Ledger', Bitcoin becomes the green Madonna — the mother of digital value — nursing her black-and-white child, XRP. Around them stand veiled nations, watching as the milk of liquidity flows across rivers and bridges — the arteries of a new global economy. “Healthy Bacteria” packets line the earth below: symbols of the unseen agents that keep systems alive — the microbes of trust and decay.",
          "This piece visualizes the paradox of decentralization: motherhood and machinery, faith and finance, blockchain and body. It is both nurturing and unsettling, inviting viewers to question who feeds the future and who digests it.",
@@ -291,7 +291,7 @@ window.allWorks = [
       related:["prince_carl_after_the_salt_conquering_speaking_an_ancient_language"],
       motifs: ["hotel", "cane"],
       themes: ["isolation", "power", "contemplation"],
-      img:"../img/collection_works/digital_unconscious/prince_carl_laying.png",
+      img:"../img/collection_works/digital_unconscious/prince_carl_laying.webp",
       desc:[
           "In a hotel room of neutral tones and soft lighting, a solitary figure in regal military dress — Prince Carl — lies across a bed, locked in contemplation before a blank television screen. His ornate baton rests beside him, unused. The TV, cold and dark, reflects nothing but the silence of his choice.",
           "Before it, a curious console: a humanoid figure with a monitor for a head and a crystal ball in its hands. A green mountain labeled “Strategywood” rises like a false oracle, flanked by miniature flags — fragments of world powers reduced to decoration.", 
@@ -316,7 +316,7 @@ window.allWorks = [
       related:["internet_of_the_middle_world", "internet_of_the_new_world", "internet_of_the_3rd_kingdom"],
       motifs: ["kingdom", "crystal ball"],
       themes: ["digital culture", "ritual", "medievalism"],
-      img:"../img/collection_works/digital_unconscious/internet_of_the_old_world.png",
+      img:"../img/collection_works/digital_unconscious/internet of_the_old_world.webp",
       desc:[
          "Step into a mythic past where the digital future is foretold. 'Internet of the Old World' by Dream Agent reimagines our virtual age through the lens of medieval mysticism. Gathered before a crystal orb, cloaked figures kneel in reverence—priests, nobles, and peasants alike—before a mysterious apparition inside the orb. Looming behind them, a castle gate boldly inscribed “INTERNET” evokes a new kind of kingdom.",
          "This painting explores how ancient rituals mirror the collective awe and submission we now show digital networks. It invites viewers to reflect on our shared data as modern prophecy and the internet as a sacred architecture of the new world order.",
@@ -337,7 +337,7 @@ window.allWorks = [
       related:["lactation_of_the_ledger", "dream_agent_distilleries"],
       motifs: ["shower", "dollar sheets"],
       themes: ["faith", "economy", "ritual"],
-      img:"../img/collection_works/digital_unconscious/rinse_of_trust.png",
+      img:"../img/collection_works/digital_unconscious/rinse_of_trust.webp",
       desc:[
          "In this chamber of blue and gold, faith is scrubbed clean. The faucet drips with the insignia of digital empires — XRP tears drip from one of two shower heads.  The second shower head, drips nothing hinting at a mysterious system shrouded in secrecy.",
          "A hand extends from the glow, offering the bar of belief back to the system.",
@@ -360,7 +360,7 @@ window.allWorks = [
       related:["the_tech_era"],
       motifs: ["orbs", "glowing"],
       themes: ["digital culture", "seclusion", "contemplation"],
-      img:"../img/collection_works/digital_unconscious/internet_of_the_modern_world.png",
+      img:"../img/collection_works/digital_unconscious/internet_of_the_modern_world.webp",
       desc:[
          "In Internet of the Modern World, Dream Agent visualizes the internet not as cables and code, but as orbs of knowledge, communion, and mystery — floating quietly within domestic space. Rendered in a palette of calm teals and soft golds, four vignettes capture anonymous digital citizens, each engaging with luminous spheres that defy gravity. These orbs represent the fragments of the modern internet: ideas passed hand-to-hand, data preserved in cold storage, and interfaces that glow with silent intelligence.",
          "The posters behind each figure subtly spell out 'internet,' while their shirts display concentric symbols — perhaps a new language of connection. Though the setting is minimal, the symbolism runs deep: the kitchen becomes a data hub, the bedroom a meditation zone, the living room a portal.",
@@ -382,7 +382,7 @@ window.allWorks = [
       related:["the_artificial_deligate"],
       motifs: ["robot", "ceremony", "ritual"],
       themes: ["technology", "artificial intelligence", "data centers"],
-      img:"../img/collection_works/digital_unconscious/the_artificial_monty.png",
+      img:"../img/collection_works/digital_unconscious/the_artificial_monty.webp",
       desc:[
         "A surreal landscape exploring the hidden ecology of artificial intelligence.",
         "The Artificial Monty portrays AI as an act of excavation rather than invention. Anonymous workers sift through the accumulated internet while a living river carries symbols of memory, mortality, and biological existence toward a monumental temple dedicated to language itself.",
@@ -405,7 +405,7 @@ window.allWorks = [
       related:[],
       motifs: ["prison", "freedom", "similarity"],
       themes: ["confinement", "liberty", "existentialism"],
-      img:"../img/collection_works/digital_unconscious/humans.png",
+      img:"../img/collection_works/digital_unconscious/humans.webp",
       desc:[
         "A surreal meditation on visible and invisible confinement.",
         "Humans juxtaposes two lives that appear fundamentally different. A prisoner sits behind bars while a prosperous professional relaxes in comfort, yet both occupy nearly identical poses beneath the same moon and sky.",
@@ -427,7 +427,7 @@ window.allWorks = [
       dateCreated: "2023-06-13",
       related:["internet_of_the_old_world", "internet_of_the_middle_world", "internet_of_the_modern_world"],
       motifs:["artist","coins","crystal ball"],
-      img:"../img/collection_works/digital_unconscious/internet_of_the_new_world.png",
+      img:"../img/collection_works/digital_unconscious/internet_of_the_new_world.webp",
       desc:[
         "'Internet of the New World' captures the moment where creativity, currency, and coded prophecy converge.",
         "A lone figure, lit by the glow of his digital canvas, draws concentric worlds that ripple into reality. Outside, golden and silver coins drift through a scorched horizon, as if migrating from one age into another. On the wall, a portrait of an old-world general gazes forward, a crystal orb clasped like a new scepter of power. Beside the artist, encrypted text floats — part address, part invocation — signaling that in this world, identity and value are written in code.",

@@ -182,7 +182,55 @@ window.allWorks = [
       os:"#", 
       sr:"#"}
     },
-
+    // TURQUOISE PLATE
+    {
+      id: "turquoise_plate",
+      collection: "symbols",
+      title:"Turquoise Plate",
+      year:"2026",
+      style:"Oil-style",
+      featured: true,
+      dateCreated: "2026-03-15",
+      related:["dream_agent_making_birds", "wizard_of_agent_dreams"],
+      motifs: ["plate", "ceremony", "ritual"],
+      themes: ["ceremony", "ritual", "transformation"],
+      img:"../img/collection_works/symbols_in_motion/turquoise_plate.png",
+      desc:[
+        "A symbolic relic from an imagined archive.",
+        "'Turquoise Plate' presents a silent guardian beside an intricately carved ceremonial object whose imagery hints at forgotten systems of belief. Crystal spheres, flowing water, birds, and the human heart combine into a visual language that feels familiar yet remains untranslated.",
+        "This work invites viewers to consider the significance of everyday objects in our lives and how they can become vessels for deeper meaning and spiritual connection.",
+        "The archive remembers even when history forgets."
+      ],
+      links:{ xrp:"#",
+      os:"#",
+      sr:"#"}
+    },
+    // THEM GUYS AND THE OLDER GUYS
+    {
+      id: "them_guys_and_the_older_guys",
+      collection: "symbols",
+      title:"Them Guys and the Older Guys",
+      year:"2026",
+      style:"Oil-style",
+      featured: true,
+      dateCreated: "2026-03-15",
+      related:["them_gods_and_the_older_gods"],
+      motifs: ["group", "age", "community"],
+      themes: ["community", "age", "identity"],
+      img:"../img/collection_works/symbols_in_motion/them_guys_and_the_older_guys.png",
+      desc:[
+        "'Them Guys and the Older Guys' examines the unseen architecture behind cultural narratives.",
+        "Set within a frontier saloon, the painting imagines storytellers, skeptics, and strategists gathered around a conversation that extends beyond the room itself. At the center stands a weathered monument marked 'Strategy Wood,'' a symbolic inversion of Hollywood. Rather than celebrating entertainment, it points toward the mechanisms through which stories are shaped, distributed, and remembered.",
+        "The crystal ball rests quietly on the table, suggesting that perception itself has become something to forecast, influence, and negotiate. Around it, conversations unfold between generations. The 'them guys' inherit ideas while the 'older guys' pass along methods, whether intentionally or unconsciously.",
+        "The work does not claim that culture is centrally controlled.",
+        "It suggests something more subtle.",
+        "Every society develops institutions that learn how stories influence behavior. Over time, those institutions become traditions, industries, and eventually invisible assumptions.",
+        // "This work is a meditation on the invisible forces that shape culture, the tension between innovation and tradition, and the ways in which communities negotiate their shared narratives.",
+      ],
+      links:{ xrp:"#",
+      os:"#",
+      sr:"#"}
+    },
     /////////////////////////////////////////////////////////////////
     /////////////////////////////////////////////////////////////////
     // THE DIGITAL UNCONSCIOUS
@@ -219,7 +267,7 @@ window.allWorks = [
       style:"Oil-style",
       featured: true,
       dateCreated: "2025-11-15",
-      related:["the_tech_era", "the_great_divide"],
+      related:["the_great_divide"],
       motifs: ["mother", "ledger"],
       themes: ["decentralization", "motherhood", "finance"],
       img:"../img/collection_works/digital_unconscious/lactation_of_the_ledger.png",
@@ -300,7 +348,6 @@ window.allWorks = [
       os:"#", 
       sr:"#"}
     },
-
     // INTERNET OF THE MODERN WORLD
     { 
       id: "internet_of_the_modern_world",
@@ -310,7 +357,7 @@ window.allWorks = [
       style:"Oil-style",
       featured: true,
       dateCreated: "2022-10-06",
-      related:["the_tech_era", "cursor_of_fate"],
+      related:["the_tech_era"],
       motifs: ["orbs", "glowing"],
       themes: ["digital culture", "seclusion", "contemplation"],
       img:"../img/collection_works/digital_unconscious/internet_of_the_modern_world.png",
@@ -321,6 +368,52 @@ window.allWorks = [
         ],
       links:{ xrp:"https://xrp.cafe/nft/00080BB8B57E780C6A5EF299540E01B0E8C6DB1B83CFC91620ABA7F405CBFA64", 
       os:"#", 
+      sr:"#"}
+    },
+    // THE ARTIFICIAL MONTY
+    {
+      id: "the_artificial_monty",
+      collection: "digital",
+      title:"The Artificial Monty",
+      year:"2026",
+      style:"Oil-style",
+      featured: true,
+      dateCreated: "2026-05-15",
+      related:["the_artificial_deligate"],
+      motifs: ["robot", "ceremony", "ritual"],
+      themes: ["technology", "artificial intelligence", "data centers"],
+      img:"../img/collection_works/digital_unconscious/the_artificial_monty.png",
+      desc:[
+        "A surreal landscape exploring the hidden ecology of artificial intelligence.",
+        "The Artificial Monty portrays AI as an act of excavation rather than invention. Anonymous workers sift through the accumulated internet while a living river carries symbols of memory, mortality, and biological existence toward a monumental temple dedicated to language itself.",
+        "The painting suggests that artificial intelligence is not born from empty machines, but from humanity's collective archive of stories, knowledge, and experience.",
+        "Every answer has an ancestry.",
+      ],
+      links:{ xrp:"#", 
+      os:"#",
+      sr:"#"}
+    },
+    // HUMANS
+    {
+      id: "humans",
+      collection: "digital",
+      title:"Humans",
+      year:"2026",
+      style:"Oil-style",
+      featured: true,
+      dateCreated: "2026-06-15",
+      related:[],
+      motifs: ["prison", "freedom", "similarity"],
+      themes: ["confinement", "liberty", "existentialism"],
+      img:"../img/collection_works/digital_unconscious/humans.png",
+      desc:[
+        "A surreal meditation on visible and invisible confinement.",
+        "Humans juxtaposes two lives that appear fundamentally different. A prisoner sits behind bars while a prosperous professional relaxes in comfort, yet both occupy nearly identical poses beneath the same moon and sky.",
+        "The work suggests that material success and physical liberty do not necessarily resolve the deeper questions of fulfillment, purpose, or inner freedom.",
+        "Sometimes the strongest prisons cannot be seen.",
+      ],
+      links:{ xrp:"#",
+      os:"#",
       sr:"#"}
     },
     // INTERNET OF THE NEW WORLD
@@ -391,6 +484,29 @@ window.allWorks = [
     links:{ xrp:"https://xrp.cafe/nft/00080BB8B57E780C6A5EF299540E01B0E8C6DB1B83CFC9169B68C6E405CBFA53", 
     os:"#", 
     sr:"#"}
+    },
+    // PRINCE CARL AFTER THE SALT CONQUERING SPEAKING AN ANCIENT LANGUAGE
+    { 
+      id: "prince_carl_after_the_salt_conquering_speaking_an_ancient_language",
+      collection: "dominion",
+      title:"Prince Carl after the Salt Conquering Speaking an Ancient Language", 
+      year:"2026",
+      style:"Oil-style",
+      featured: true,
+      dateCreated: "2026-06-15",
+      related:["prince_carl_laying"],
+      motifs:["salt","language","conquest"],
+      img:"../img/collection_works/dominion_archives/prince_carl_after_the_salt_conquering.png",
+      desc:[
+          "After the Salt Conquering, Prince Carl sits upon the edge of the Atlantic, wrapped in furs, speaking in a language older than kingdoms and newer than algorithms.",
+          "A glowing orb rests before him like a captured star while two silent witnesses listen from the margins. Around his neck hangs a pendant reading *Social Media*, transforming a modern phrase into a royal relic.",
+          "In this surreal vision, Dream Agent collapses centuries into a single moment: ancient ritual, digital communication, and the eternal human desire to be heard.",
+          "Is Prince Carl a conqueror, a prophet, an influencer, or merely another storyteller speaking into the void?",
+          "As waves crash against dark stone and the sky fractures with celestial light, the distinction becomes irrelevant."
+      ],
+      links:{ xrp:"https://xrp.cafe/nft/00080BB8B57E780C6A5EF299540E01B0E8C6DB1B83CFC916F7000AF805CBFA57", 
+      os:"#", 
+      sr:"#"}
     },
     // SALTWATER ELECTRONICS
     { 
@@ -475,6 +591,29 @@ window.allWorks = [
       os:"#", 
       sr:"#"}
     },
+    // INTERNET OF THE 9TH EMPIRE
+    { 
+      id: "internet_of_the_9th_empire",
+      collection: "dominion",
+      title:"Internet of the 9th Empire", 
+      year:"2025",
+      style:"Oil-style",
+      featured: true,
+      dateCreated: "2025-10-15",
+      related:[],
+      motifs:["empire","internet","ritual"],
+      img:"../img/collection_works/dominion_archives/internet_of_the_9th_empire.png",
+      desc:[
+          "A vision of civilization after knowledge becomes its highest currency.",
+          "Internet of the 9th Empire depicts rulers who govern through illumination rather than force. Before them stretches a society where every individual holds a glowing sphere, symbolizing universal access to collective memory and shared understanding.",
+          "The work transforms the internet from a technological network into a cultural inheritance spanning generations and civilizations.",
+          "Its greatest monument is not stone.",
+          "It is connection.",
+      ],
+      links:{ xrp:"#", 
+      os:"#", 
+      sr:"#"}
+    },
     // THE REFACTORING RITUAL
     { 
       id: "the_refactoring_ritual",
@@ -510,29 +649,6 @@ window.allWorks = [
       desc:[
           "Every civilization begins with a language it cannot fully explain., 'Some Things Sound Like the Morning' transforms an ordinary shower into a sanctuary of transmission. Morning sunlight pours through the fixture, replacing flowing water, casting golden frequencies across a chamber where a microphone waits beneath the light. On one wall, 'M = Mineral' suggests that voice originates in the deep architecture of the earth. On another, the Hebrew word חיים (Life) quietly anchors the composition, introducing breath, spirit, and living memory into the ritual.",
           "Between them stands the figure, suspended between stone and speech, matter and meaning. The bonsai waterfall reinforces the painting's central current: life is not manufactured but cultivated, flowing patiently through generations before emerging as language. This work asks whether the first sounds of civilization were less an invention than a reception, as though every morning still carries echoes of the world's original voice.",
-      ],
-      links:{ xrp:"https://xrp.cafe/nft/00080BB8B57E780C6A5EF299540E01B0E8C6DB1B83CFC916F7000AF805CBFA57", 
-      os:"#", 
-      sr:"#"}
-    },
-    // PRINCE CARL AFTER THE SALT CONQUERING SPEAKING AN ANCIENT LANGUAGE
-    { 
-      id: "prince_carl_after_the_salt_conquering_speaking_an_ancient_language",
-      collection: "dominion",
-      title:"Prince Carl after the Salt Conquering Speaking an Ancient Language", 
-      year:"2026",
-      style:"Oil-style",
-      featured: true,
-      dateCreated: "2026-06-15",
-      related:["prince_carl_laying"],
-      motifs:["salt","language","conquest"],
-      img:"../img/collection_works/dominion_archives/prince_carl_after_the_salt_conquering.png",
-      desc:[
-          "After the Salt Conquering, Prince Carl sits upon the edge of the Atlantic, wrapped in furs, speaking in a language older than kingdoms and newer than algorithms.",
-          "A glowing orb rests before him like a captured star while two silent witnesses listen from the margins. Around his neck hangs a pendant reading *Social Media*, transforming a modern phrase into a royal relic.",
-          "In this surreal vision, Dream Agent collapses centuries into a single moment: ancient ritual, digital communication, and the eternal human desire to be heard.",
-          "Is Prince Carl a conqueror, a prophet, an influencer, or merely another storyteller speaking into the void?",
-          "As waves crash against dark stone and the sky fractures with celestial light, the distinction becomes irrelevant."
       ],
       links:{ xrp:"https://xrp.cafe/nft/00080BB8B57E780C6A5EF299540E01B0E8C6DB1B83CFC916F7000AF805CBFA57", 
       os:"#", 
@@ -691,7 +807,7 @@ window.allWorks = [
       style:"Oil-style",
       featured: true,
       dateCreated: "2021-11-15",
-      related:["hip_hop_1987","the_tech_era"],
+      related:["hip_hop_1987"],
       motifs: ["train", "glowing"],
       themes: ["music", "discovery", "ascension"],
       img:"../img/collection_works/signals_and_ascensions/hip_hop_1978.png",
@@ -790,7 +906,31 @@ window.allWorks = [
           os:"#", 
           sr:"#"}
         },
-        //   // TATARIAN STANDARD DELUXE
+        // THEM GODS AND THE OLDER GODS
+        { 
+          id: "them_gods_and_the_older_gods",
+          collection: "signals",
+          title:"Them Gods and the Older Gods",
+          year:"2025", 
+          style:"Oil-style",
+          featured: true,
+          dateCreated: "2025-01-01",
+          related: ["them_guys_and_the_older_guys"],
+          motifs: ["gods", "mythology", "ascension"],
+          themes: ["belief", "civilization", "myth"],
+          desc:[
+              // "A meditation on the evolution of belief.",
+              "Them Gods and the Older Gods presents an imagined gathering where civilizations, philosophies, and generations overlap. Ancient architecture, timeless conversation, and symbolic figures dissolve distinctions between past and present, suggesting that humanity continually replaces one system of meaning with another.",
+              // "The work explores the invisible continuity beneath changing religions, ideologies, technologies, and cultures.",
+              "Perhaps every generation worships something.",
+              "Only history decides what becomes mythology."
+          ],
+          img:"../img/collection_works/signals_and_ascensions/them_gods_and_the_older_gods.png",
+          links:{ xrp:"#",
+          os:"#",
+          sr:"#"}
+        },
+        // TATARIAN STANDARD DELUXE
         { 
           id: "tartarian_standard_deluxe",
           collection: "signals",
@@ -799,7 +939,7 @@ window.allWorks = [
           style:"Oil-style",
           featured: true,
           dateCreated: "2025-01-01",
-          related:["magic_of_86", "sephardic_tango"],
+          related:["magic_of_86"],
           motifs: ["guitarist", "tartaria","lightening"],
           themes: ["myth","history","value"],
           img:"../img/collection_works/signals_and_ascensions/tartarian_standard_deluxe.png",
@@ -842,7 +982,7 @@ window.allWorks = [
             style:"Oil-style",
             featured: true,
             dateCreated: "2024-06-15",
-            related:["tartarian_standard_deluxe"],
+            related:[],
             motifs: ["dance","sephardic"],
             themes: ["history","memory","diaspora"],
             img:"../img/collection_works/signals_and_ascensions/sephardic_tango.png",
@@ -852,6 +992,29 @@ window.allWorks = [
               "With its blend of Spanish colonial aesthetics, Jewish historical reference, and blockchain symbolism, Sephardic Tango invites the viewer to ask: Who leads, and who remembers?"
             ],
             links:{ xrp:"https://xrp.cafe/nft/00080BB8B57E780C6A5EF299540E01B0E8C6DB1B83CFC916D7DA300805CBFA6C", 
+            os:"#", 
+            sr:"#"}
+          },
+          // FASHION STATEMENT
+          {
+            id: "fashion_statement",
+            collection: "signals",
+            title:"Fashion Statement",
+            year:"2025", 
+            style:"Oil-style",
+            featured: true,
+            dateCreated: "2025-01-01",
+            related:[],
+            motifs: ["fashion","identity","expression"],
+            themes: ["identity", "expression", "belonging"],
+            desc:[
+              "A surreal meditation on identity, evolution, and the symbols we wear.",
+              "Fashion Statement presents a ghostlike figure passing through a ceremonial corridor where animals and mysterious aerial forms are carved into opposing walls. The architecture resembles both a museum and a sacred passage, inviting viewers to consider the narratives that shape human identity.",
+              "Rather than depicting clothing, the work suggests that belief itself may be the oldest form of fashion.",
+              "Every civilization dresses the unknown in different symbols."
+            ],
+            img:"../img/collection_works/signals_and_ascensions/fashion_statement.png",
+            links:{ xrp:"#",  
             os:"#", 
             sr:"#"}
           },

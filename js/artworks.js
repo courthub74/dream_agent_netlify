@@ -917,6 +917,7 @@ window.allWorks = [
           dateCreated: "2025-01-01",
           related: ["them_guys_and_the_older_guys"],
           motifs: ["gods", "mythology", "ascension"],
+          themes: ["belief", "civilization", "myth"],
           desc:[
               // "A meditation on the evolution of belief.",
               "Them Gods and the Older Gods presents an imagined gathering where civilizations, philosophies, and generations overlap. Ancient architecture, timeless conversation, and symbolic figures dissolve distinctions between past and present, suggesting that humanity continually replaces one system of meaning with another.",
@@ -991,6 +992,29 @@ window.allWorks = [
               "With its blend of Spanish colonial aesthetics, Jewish historical reference, and blockchain symbolism, Sephardic Tango invites the viewer to ask: Who leads, and who remembers?"
             ],
             links:{ xrp:"https://xrp.cafe/nft/00080BB8B57E780C6A5EF299540E01B0E8C6DB1B83CFC916D7DA300805CBFA6C", 
+            os:"#", 
+            sr:"#"}
+          },
+          // FASHION STATEMENT
+          {
+            id: "fashion_statement",
+            collection: "signals",
+            title:"Fashion Statement",
+            year:"2025", 
+            style:"Oil-style",
+            featured: true,
+            dateCreated: "2025-01-01",
+            related:[],
+            motifs: ["fashion","identity","expression"],
+            themes: ["identity", "expression", "belonging"],
+            desc:[
+              "A surreal meditation on identity, evolution, and the symbols we wear.",
+              "Fashion Statement presents a ghostlike figure passing through a ceremonial corridor where animals and mysterious aerial forms are carved into opposing walls. The architecture resembles both a museum and a sacred passage, inviting viewers to consider the narratives that shape human identity.",
+              "Rather than depicting clothing, the work suggests that belief itself may be the oldest form of fashion.",
+              "Every civilization dresses the unknown in different symbols."
+            ],
+            img:"../img/collection_works/signals_and_ascensions/fashion_statement.png",
+            links:{ xrp:"#",  
             os:"#", 
             sr:"#"}
           },

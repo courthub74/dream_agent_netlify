@@ -105,6 +105,23 @@
       outline-offset: 2px;
     }
 
+    /* Subtle CourDevelops signature styling */
+    #siteDrawer .courdevelops-signature a {
+      opacity: 0.72;
+      font-size: 0.82rem;
+      transition: opacity 200ms ease;
+    }
+
+    #siteDrawer .courdevelops-signature img {
+      width: 19px;
+      height: 19px;
+      opacity: 0.72;
+    }
+
+    #siteDrawer .courdevelops-signature a:hover {
+      opacity: 0.92;
+    }
+
     /* Prevent background scroll while menu is open */
     html.has-drawer { overflow: hidden; }
 
@@ -954,8 +971,7 @@
         aria-hidden="true">
     <div class="flex items-center justify-between px-4 py-4 border-b border-white/10">
       <div class="flex items-center gap-3">
-        <img src="img/icons/artist/dream_agent_logo_blue.png" alt="dream_agent" class="w-9 h-9 rounded-full border border-white/10"/>
-        <span class="text-white/90 font-bold" style="font-family: 'Playfair Display', serif;">Dream Agent</span>
+        <img src="img/icons/artist/dream_agent_logo_blue.png" alt="dream_agent" class="w-12 h-12 rounded-full border border-white/10"/>
       </div>
       <button id="closeDrawer"
               class="w-10 h-10 grid place-items-center rounded-full bg-white/10 border border-white/20 hover:bg-white/20 transition"
@@ -1023,7 +1039,7 @@
       </ul>
     </nav>
 
-    <div class="mt-auto px-4 py-4 border-t border-white/8">
+    <div class="mt-auto px-4 py-4 border-t border-white/8 courdevelops-signature">
   <a href="https://courdevelops.com"
      target="_blank"
      rel="noopener"

@@ -906,7 +906,30 @@ window.allWorks = [
           os:"#", 
           sr:"#"}
         },
-        //   // TATARIAN STANDARD DELUXE
+        // THEM GODS AND THE OLDER GODS
+        { 
+          id: "them_gods_and_the_older_gods",
+          collection: "signals",
+          title:"Them Gods and the Older Gods",
+          year:"2025", 
+          style:"Oil-style",
+          featured: true,
+          dateCreated: "2025-01-01",
+          related: ["them_guys_and_the_older_guys"],
+          motifs: ["gods", "mythology", "ascension"],
+          desc:[
+              // "A meditation on the evolution of belief.",
+              "Them Gods and the Older Gods presents an imagined gathering where civilizations, philosophies, and generations overlap. Ancient architecture, timeless conversation, and symbolic figures dissolve distinctions between past and present, suggesting that humanity continually replaces one system of meaning with another.",
+              // "The work explores the invisible continuity beneath changing religions, ideologies, technologies, and cultures.",
+              "Perhaps every generation worships something.",
+              "Only history decides what becomes mythology."
+          ],
+          img:"../img/collection_works/signals_and_ascensions/them_gods_and_the_older_gods.png",
+          links:{ xrp:"#",
+          os:"#",
+          sr:"#"}
+        },
+        // TATARIAN STANDARD DELUXE
         { 
           id: "tartarian_standard_deluxe",
           collection: "signals",

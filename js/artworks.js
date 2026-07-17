@@ -248,7 +248,7 @@ window.allWorks = [
       related:["internet_of_the_old_world", "internet_of_the_new_world"],
       motifs: ["mall", "crystal ball"],
       themes: ["digital culture", "nostalgia", "ritual"],
-      img:"../img/collection_works/digital_unconscious/internet_of_the_middle_world.png",
+      img:"../img/collection_works/digital_unconscious/internet_of_the_middle_world.webp",
       desc:[
          "'Internet of the Middle World' captures a surreal 1980s-style mall scene where the digital age seeps into analog life. Neon signs divide the corridor into 'INTER' and 'NET', while glowing orbs—crystal-ball-like internet terminals—float atop fountains and pedestals. Shoppers gaze into them with reverence, as if accessing forgotten futures.", 
          "The color palette leans into nostalgic earth tones, contrasted with electric blues, subtly evoking early digital aesthetics. The arcade machines flicker like proto-portals, while every character appears paused between eras—caught between the physical and the virtual, the mundane and the mythic.", 
@@ -270,7 +270,7 @@ window.allWorks = [
       related:["the_great_divide"],
       motifs: ["mother", "ledger"],
       themes: ["decentralization", "motherhood", "finance"],
-      img:"../img/collection_works/digital_unconscious/lactation_of_the_ledger.png",
+      img:"../img/collection_works/digital_unconscious/lactation of_the_ledger.webp",
       desc:[
          "In 'Lactation of the Ledger', Bitcoin becomes the green Madonna — the mother of digital value — nursing her black-and-white child, XRP. Around them stand veiled nations, watching as the milk of liquidity flows across rivers and bridges — the arteries of a new global economy. “Healthy Bacteria” packets line the earth below: symbols of the unseen agents that keep systems alive — the microbes of trust and decay.",
          "This piece visualizes the paradox of decentralization: motherhood and machinery, faith and finance, blockchain and body. It is both nurturing and unsettling, inviting viewers to question who feeds the future and who digests it.",
@@ -291,7 +291,7 @@ window.allWorks = [
       related:["prince_carl_after_the_salt_conquering_speaking_an_ancient_language"],
       motifs: ["hotel", "cane"],
       themes: ["isolation", "power", "contemplation"],
-      img:"../img/collection_works/digital_unconscious/prince_carl_laying.png",
+      img:"../img/collection_works/digital_unconscious/prince_carl_laying.webp",
       desc:[
           "In a hotel room of neutral tones and soft lighting, a solitary figure in regal military dress — Prince Carl — lies across a bed, locked in contemplation before a blank television screen. His ornate baton rests beside him, unused. The TV, cold and dark, reflects nothing but the silence of his choice.",
           "Before it, a curious console: a humanoid figure with a monitor for a head and a crystal ball in its hands. A green mountain labeled “Strategywood” rises like a false oracle, flanked by miniature flags — fragments of world powers reduced to decoration.", 
@@ -316,7 +316,7 @@ window.allWorks = [
       related:["internet_of_the_middle_world", "internet_of_the_new_world", "internet_of_the_3rd_kingdom"],
       motifs: ["kingdom", "crystal ball"],
       themes: ["digital culture", "ritual", "medievalism"],
-      img:"../img/collection_works/digital_unconscious/internet_of_the_old_world.png",
+      img:"../img/collection_works/digital_unconscious/internet of_the_old_world.webp",
       desc:[
          "Step into a mythic past where the digital future is foretold. 'Internet of the Old World' by Dream Agent reimagines our virtual age through the lens of medieval mysticism. Gathered before a crystal orb, cloaked figures kneel in reverence—priests, nobles, and peasants alike—before a mysterious apparition inside the orb. Looming behind them, a castle gate boldly inscribed “INTERNET” evokes a new kind of kingdom.",
          "This painting explores how ancient rituals mirror the collective awe and submission we now show digital networks. It invites viewers to reflect on our shared data as modern prophecy and the internet as a sacred architecture of the new world order.",
@@ -337,7 +337,7 @@ window.allWorks = [
       related:["lactation_of_the_ledger", "dream_agent_distilleries"],
       motifs: ["shower", "dollar sheets"],
       themes: ["faith", "economy", "ritual"],
-      img:"../img/collection_works/digital_unconscious/rinse_of_trust.png",
+      img:"../img/collection_works/digital_unconscious/rinse_of_trust.webp",
       desc:[
          "In this chamber of blue and gold, faith is scrubbed clean. The faucet drips with the insignia of digital empires — XRP tears drip from one of two shower heads.  The second shower head, drips nothing hinting at a mysterious system shrouded in secrecy.",
          "A hand extends from the glow, offering the bar of belief back to the system.",
@@ -360,7 +360,7 @@ window.allWorks = [
       related:["the_tech_era"],
       motifs: ["orbs", "glowing"],
       themes: ["digital culture", "seclusion", "contemplation"],
-      img:"../img/collection_works/digital_unconscious/internet_of_the_modern_world.png",
+      img:"../img/collection_works/digital_unconscious/internet_of_the_modern_world.webp",
       desc:[
          "In Internet of the Modern World, Dream Agent visualizes the internet not as cables and code, but as orbs of knowledge, communion, and mystery — floating quietly within domestic space. Rendered in a palette of calm teals and soft golds, four vignettes capture anonymous digital citizens, each engaging with luminous spheres that defy gravity. These orbs represent the fragments of the modern internet: ideas passed hand-to-hand, data preserved in cold storage, and interfaces that glow with silent intelligence.",
          "The posters behind each figure subtly spell out 'internet,' while their shirts display concentric symbols — perhaps a new language of connection. Though the setting is minimal, the symbolism runs deep: the kitchen becomes a data hub, the bedroom a meditation zone, the living room a portal.",
@@ -382,7 +382,7 @@ window.allWorks = [
       related:["the_artificial_deligate"],
       motifs: ["robot", "ceremony", "ritual"],
       themes: ["technology", "artificial intelligence", "data centers"],
-      img:"../img/collection_works/digital_unconscious/the_artificial_monty.png",
+      img:"../img/collection_works/digital_unconscious/the_artificial_monty.webp",
       desc:[
         "A surreal landscape exploring the hidden ecology of artificial intelligence.",
         "The Artificial Monty portrays AI as an act of excavation rather than invention. Anonymous workers sift through the accumulated internet while a living river carries symbols of memory, mortality, and biological existence toward a monumental temple dedicated to language itself.",
@@ -405,7 +405,7 @@ window.allWorks = [
       related:[],
       motifs: ["prison", "freedom", "similarity"],
       themes: ["confinement", "liberty", "existentialism"],
-      img:"../img/collection_works/digital_unconscious/humans.png",
+      img:"../img/collection_works/digital_unconscious/humans.webp",
       desc:[
         "A surreal meditation on visible and invisible confinement.",
         "Humans juxtaposes two lives that appear fundamentally different. A prisoner sits behind bars while a prosperous professional relaxes in comfort, yet both occupy nearly identical poses beneath the same moon and sky.",
@@ -427,7 +427,7 @@ window.allWorks = [
       dateCreated: "2023-06-13",
       related:["internet_of_the_old_world", "internet_of_the_middle_world", "internet_of_the_modern_world"],
       motifs:["artist","coins","crystal ball"],
-      img:"../img/collection_works/digital_unconscious/internet_of_the_new_world.png",
+      img:"../img/collection_works/digital_unconscious/internet_of_the_new_world.webp",
       desc:[
         "'Internet of the New World' captures the moment where creativity, currency, and coded prophecy converge.",
         "A lone figure, lit by the glow of his digital canvas, draws concentric worlds that ripple into reality. Outside, golden and silver coins drift through a scorched horizon, as if migrating from one age into another. On the wall, a portrait of an old-world general gazes forward, a crystal orb clasped like a new scepter of power. Beside the artist, encrypted text floats — part address, part invocation — signaling that in this world, identity and value are written in code.",
@@ -454,7 +454,7 @@ window.allWorks = [
       dateCreated: "2020-10-03",
       related:["discovery_of_the_indigenous", "the_refactoring_ritual", "saltwater_electronics"],
       motifs: ["procession", "stone gate", "desert"],
-      img:"../img/collection_works/dominion_archives/the_census_ritual.png",
+      img:"../img/collection_works/dominion_archives/the_census_ritual.webp",
       desc:[
           "A solemn procession of robed figures winds across a cracked desert floor, funneled through a monolithic stone frame etched with the year 1868—a date loaded with political memory and post-war reshuffling. Towering over the crowd, a bald sentinel holds open the gate, as if officiating a rite of passage or a reckoning of identities. The twin red horns atop the stone portal echo silent warning.",
           "'The Census Ritual' explores themes of enumeration, erasure, and conformity within the historical machinery of power. Here, the ritual of “counting” becomes symbolic of control—of being seen not as individuals, but as entries in a ledger of empire.",
@@ -475,7 +475,7 @@ window.allWorks = [
       dateCreated: "2024-01-01",
       related:["the_census_ritual", "the_refactoring_ritual", "saltwater_electronics"],
       motifs: ["kitchen", "myth", "memory"],
-      img:"../img/collection_works/dominion_archives/discovery_of_the_indigenous.png",
+      img:"../img/collection_works/dominion_archives/discovery_of_the_indigenous.webp",
       desc:[
           "In 'Discovery of the Indigenous', Dream Agent constructs a searing, symbolic kitchen scene where myth, media, and memory simmer in a glowing amber palette. At its center, a radiant coin illuminates a countertop tableau—a surreal altar of distorted Americana. A headless torso pours forth a nested maternal figure into a green bottle labeled 'The Agriculture was already KNOWN', confronting narratives of invention with truths of ancestral cultivation. Beside it, a reddish bottle declares, 'THEY AIN'T AFRICAN', challenging imposed identities and colonial mislabeling.",
           "Above, a melting stick of butter stamped 'WIKIPEDIA Googled BUTTER SPREAD' slowly drips, its American flag suggesting the spoon-fed digital rewriting of history. Below, a skillet of golden liquid overflows, blending nourishment and loss, as a crumpled flag sinks beside it—symbol of a buried or burned truth. On the stove’s surface, a woman’s portrait gazes forward from a round frame, echoed in the form emerging from the man's chest—an emblem of lineage and remembrance,",
@@ -496,7 +496,7 @@ window.allWorks = [
       dateCreated: "2026-06-15",
       related:["prince_carl_laying"],
       motifs:["salt","language","conquest"],
-      img:"../img/collection_works/dominion_archives/prince_carl_after_the_salt_conquering.png",
+      img:"../img/collection_works/dominion_archives/prince_carl_after_the_salt_conquering.webp",
       desc:[
           "After the Salt Conquering, Prince Carl sits upon the edge of the Atlantic, wrapped in furs, speaking in a language older than kingdoms and newer than algorithms.",
           "A glowing orb rests before him like a captured star while two silent witnesses listen from the margins. Around his neck hangs a pendant reading *Social Media*, transforming a modern phrase into a royal relic.",
@@ -505,6 +505,48 @@ window.allWorks = [
           "As waves crash against dark stone and the sky fractures with celestial light, the distinction becomes irrelevant."
       ],
       links:{ xrp:"https://xrp.cafe/nft/00080BB8B57E780C6A5EF299540E01B0E8C6DB1B83CFC916F7000AF805CBFA57", 
+      os:"#", 
+      sr:"#"}
+    },
+     // IMPERIOUS KINGDOM
+    { 
+      id: "imperious_kingdom",
+      collection: "dominion",
+      title:"Imperious Kingdom", 
+      year:"2026", 
+      style:"Oil-style",
+      featured: true,
+      dateCreated: "2026-03-16",
+      related:["some_things_sound_like_the_morning", "the_biblicals"],
+      motifs: ["city", "power", "ceremony", "order"],
+      img:"../img/collection_works/dominion_archives/imperious_kingdom.webp",
+      desc:[
+          "A monumental profile occupies the foreground, seated before a ceremonial landscape where ritualized figures assemble beneath the pediment marked 'Northland'. The woman’s posture is still, composed, and detached from the activity unfolding behind her. Gold adornment and architectural symmetry elevate the scene into a formal tableau of order and hierarchy.",
+          "The figures gathered across the lawn exchange gestures of recognition and alignment while the central subject remains outside their exchange. Authority is not performed in motion but established through position, scale, and separation. The composition records the architecture of power: the individual who embodies it, and the system that assembles around it."
+      ],
+      links:{ xrp:"https://xrp.cafe/nft/00081388B57E780C6A5EF299540E01B0E8C6DB1B83CFC916E01A39FB05CBFA56", 
+      os:"#", 
+      sr:"#"}
+    },
+    // INTERNET OF THE 3RD KINGDOM
+    { 
+      id: "internet_of_the_3rd_kingdom",
+      collection: "dominion",
+      title: "Internet of the 3rd Kingdom",
+      year: "2025",
+      style: "Oil-style",
+      featured: true,
+      dateCreated: "2025-11-15",
+      related: ["internet_of_the_new_world"],
+      motifs: ["printing_press", "panic"],
+      themes: ["paranoia", "ritual"],
+      img:"../img/collection_works/dominion_archives/internet_of_the 3rd_kingdom.webp",
+      desc:[
+        "In 'Internet of the 3rd Kingdom', a secret stone corridor becomes a theater of paranoia and ritual. Figures in medieval tunics scatter with scrolls of information, as though caught in the chaos of a leaking archive. At the forefront, a faceless man holds a bleeding sphere, accompanied by a powdered judge holding a glowing Ace of Spades —symbols of chance, judgment, and hidden authority.",
+        "Above them, a blood-red banner bears a compass-like sigil, while a massive crystal orb in the distance swallows flying swords and documents, as if consuming history itself. This is the Kingdom of Networks—half-feudal, half-digital—where law, secrecy, and data collide.",
+        "Dream Agent paints a world where the 'architecture of power' is ancient, yet the 'currency of control' is information.",
+        ],
+      links:{ xrp:"https://xrp.cafe/nft/000807D0B57E780C6A5EF299540E01B0E8C6DB1B83CFC9163BB17DF405CBFA5A", 
       os:"#", 
       sr:"#"}
     },
@@ -519,7 +561,7 @@ window.allWorks = [
       dateCreated: "2021-10-11",
       related:["the_census_ritual", "the_refactoring_ritual", "discovery_of_the_indigenous"],
       motifs: ["ocean", "gods"],
-      img:"../img/collection_works/dominion_archives/saltwater_electronics.png",
+      img:"../img/collection_works/dominion_archives/salt_water_electronics.webp",
       desc:[
           "Three ancient bronze gods of logic, sea, and war stand on the edge of civilization’s ocean, lifting an 'Etch A Sketch' like a new divine tablet. The crude map it displays—arrows of commerce, migration, and data—etches a nervous system over the American continent. Beneath, the sand cracks with 'electrical salt', where old myth meets circuitry. A salt shaker, a bottle, and a date (1846) whisper of invention, revolution, and dissolution.",
           "In 'Saltwater Electronics', Dream Agent fuses mythological statuary with post-industrial nostalgia, asking: 'What happens when the gods inherit our technology and redraw the world from the beach of history'",
@@ -539,33 +581,13 @@ window.allWorks = [
       dateCreated: "2025-09-18",
       related:[ "the_biblicals", "imperious_kingdom"],
       motifs: ["forest", "stewardship"],
-      img:"../img/collection_works/dominion_archives/big_forest_taheed.png",
+      img:"../img/collection_works/dominion_archives/big_forest_taheed.webp",
       desc:[
           "'Big Forest Taheed' presents a monumental figure standing between the myth of the frontier and the modern paradox of restraint. Dressed in a sailor’s uniform, carrying an axe over his shoulder, the figure is not a conqueror but a steward—his presence bound by the sign at his feet: 'Just enough for shelter, nothing more.'",
           "The painting confronts the legacy of industry, expansion, and survival, reframing them through an ethic of balance. The bottles at the base serve as mute totems—red and green, warning and permission—while the vast field of corn and evergreen trees remind us of the eternal tension between cultivation and wilderness.",
           "A meditation on sufficiency, stewardship, and the human scale within endless landscapes.",
           ],
       links:{ xrp:"https://xrp.cafe/nft/00080BB8B57E780C6A5EF299540E01B0E8C6DB1B83CFC916C93468FA05CBFA55", 
-      os:"#", 
-      sr:"#"}
-    },
-    // IMPERIOUS KINGDOM
-    { 
-      id: "imperious_kingdom",
-      collection: "dominion",
-      title:"Imperious Kingdom", 
-      year:"2026", 
-      style:"Oil-style",
-      featured: true,
-      dateCreated: "2026-03-16",
-      related:["some_things_sound_like_the_morning", "the_biblicals"],
-      motifs: ["city", "power", "ceremony", "order"],
-      img:"../img/collection_works/dominion_archives/imperious_kingdom.png",
-      desc:[
-          "A monumental profile occupies the foreground, seated before a ceremonial landscape where ritualized figures assemble beneath the pediment marked 'Northland'. The woman’s posture is still, composed, and detached from the activity unfolding behind her. Gold adornment and architectural symmetry elevate the scene into a formal tableau of order and hierarchy.",
-          "The figures gathered across the lawn exchange gestures of recognition and alignment while the central subject remains outside their exchange. Authority is not performed in motion but established through position, scale, and separation. The composition records the architecture of power: the individual who embodies it, and the system that assembles around it."
-      ],
-      links:{ xrp:"https://xrp.cafe/nft/00081388B57E780C6A5EF299540E01B0E8C6DB1B83CFC916E01A39FB05CBFA56", 
       os:"#", 
       sr:"#"}
     },
@@ -581,7 +603,7 @@ window.allWorks = [
       related: [],
       motifs: ["spy", "birds"],
       themes: ["espionage", "freedom"],
-      img: "../img/collection_works/dominion_archives/some_things_were_meant_to_last_forever.png",
+      img: "../img/collection_works/dominion_archives/some things_were_meant_to_last_forever.webp",
       desc:[
         "This surreal composition by Dream Agent presents an oven labeled Prosperity as an altar of permanence, where iconic cathedrals and basilicas from around the world rise like delicacies atop silver cake stands.",
         "Each structure — intricate, fragile, historic — floats in a domestic kitchen space, blurring the line between the sacred and the mundane. In this world, spiritual and cultural grandeur is both preserved and 'baked in,' as if civilization itself is something to be curated and cared for at home.",
@@ -602,7 +624,7 @@ window.allWorks = [
       dateCreated: "2025-10-15",
       related:[],
       motifs:["empire","internet","ritual"],
-      img:"../img/collection_works/dominion_archives/internet_of_the_9th_empire.png",
+      img:"../img/collection_works/dominion_archives/internet_of_the_9th_empire.webp",
       desc:[
           "A vision of civilization after knowledge becomes its highest currency.",
           "Internet of the 9th Empire depicts rulers who govern through illumination rather than force. Before them stretches a society where every individual holds a glowing sphere, symbolizing universal access to collective memory and shared understanding.",
@@ -625,7 +647,7 @@ window.allWorks = [
       dateCreated: "2025-10-15",
       related:["the_census_ritual", "bottling_the_republic", "saltwater_electronics"],
       tags:["spy","birds"],
-      img:"../img/collection_works/dominion_archives/the_refactoring_ritual.png",
+      img:"../img/collection_works/dominion_archives/the_refactoring_ritual.webp",
       desc:[
           "'The Refactoring Ritual' by Dream Agent is a surreal procession through the archway of time, marked '1940'. At its helm looms a faceless figure in a black tuxedo and top hat, holding the stone portal adorned with twin horns. On one side, the crowd emerges in muted earth tones—on the other, they dissolve into stark silhouettes of black and white, as if stripped to archetypes. The skyline towers like watchful sentinels, the air thick with unspoken agreements.", 
           "This work speaks to the reprogramming of societies—where identity, morality, and memory are refactored into a binary code of belonging and erasure.",
@@ -645,7 +667,7 @@ window.allWorks = [
       dateCreated: "2026-06-15",
       related:["imperious_kingdom", "the_biblicals"],
       motifs:["shower","light","bonsai waterfall"],
-      img:"../img/collection_works/dominion_archives/some_things_sound_like_the_morning.png",
+      img:"../img/collection_works/dominion_archives/some_things_sound_like_the_morning.webp",
       desc:[
           "Every civilization begins with a language it cannot fully explain., 'Some Things Sound Like the Morning' transforms an ordinary shower into a sanctuary of transmission. Morning sunlight pours through the fixture, replacing flowing water, casting golden frequencies across a chamber where a microphone waits beneath the light. On one wall, 'M = Mineral' suggests that voice originates in the deep architecture of the earth. On another, the Hebrew word חיים (Life) quietly anchors the composition, introducing breath, spirit, and living memory into the ritual.",
           "Between them stands the figure, suspended between stone and speech, matter and meaning. The bonsai waterfall reinforces the painting's central current: life is not manufactured but cultivated, flowing patiently through generations before emerging as language. This work asks whether the first sounds of civilization were less an invention than a reception, as though every morning still carries echoes of the world's original voice.",
@@ -1114,30 +1136,6 @@ window.allWorks = [
             os: "#", 
             sr: "#" }
           },
-
-            // INTERNET OF THE 3RD KINGDOM
-          { 
-            id: "internet_of_the_3rd_kingdom",
-            collection: "war_and_feast",
-            title: "Internet of the 3rd Kingdom",
-            year: "2025",
-            style: "Oil-style",
-            featured: true,
-            dateCreated: "2025-11-15",
-            related: ["internet_of_the_new_world"],
-            motifs: ["printing_press", "panic"],
-            themes: ["paranoia", "ritual"],
-            img:"../img/collection_works/war_and_feast/internet_of_the_3rd_kingdom.png",
-            desc:[
-              "In 'Internet of the 3rd Kingdom', a secret stone corridor becomes a theater of paranoia and ritual. Figures in medieval tunics scatter with scrolls of information, as though caught in the chaos of a leaking archive. At the forefront, a faceless man holds a bleeding sphere, accompanied by a powdered judge holding a glowing Ace of Spades —symbols of chance, judgment, and hidden authority.",
-              "Above them, a blood-red banner bears a compass-like sigil, while a massive crystal orb in the distance swallows flying swords and documents, as if consuming history itself. This is the Kingdom of Networks—half-feudal, half-digital—where law, secrecy, and data collide.",
-              "Dream Agent paints a world where the 'architecture of power' is ancient, yet the 'currency of control' is information.",
-              ],
-            links:{ xrp:"https://xrp.cafe/nft/000807D0B57E780C6A5EF299540E01B0E8C6DB1B83CFC9163BB17DF405CBFA5A", 
-            os:"#", 
-            sr:"#"}
-          },
-
           // THE ASYMETRICAL JACE
           { 
             id: "the_asymmetrical_jace",

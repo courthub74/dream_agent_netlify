@@ -123,7 +123,30 @@
     }
 
     /* Prevent background scroll while menu is open */
-    html.has-drawer { overflow: hidden; }
+    html.has-drawer {
+  overflow: hidden;
+}
+
+#drawerOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+}
+
+#siteDrawer {
+  z-index: 70;
+}
+
+.has-drawer #drawerOverlay {
+  opacity: 1;
+  pointer-events: auto;
+  /* Temporary */
+  /* background: rgba(255, 0, 0, 0.5); */
+}
+
+.has-drawer #siteDrawer {
+  transform: translateX(0);
+}
 
 
       * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
@@ -960,100 +983,290 @@
   </svg>
 </button>
 
+<!-- -------------------------------------------------------- -->
+<!-- -------------------------------------------------------- -->
+<!-- -------------------------------------------------------- -->
+<!-- -------------------------------------------------------- -->
+<!-- -------------------------------------------------------- -->
+<!-- -------------------------------------------------------- -->
 <!-- OVERLAY -->
-<div id="drawerOverlay"
-     class="fixed inset-0 bg-black/50 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity z-[50]"></div>
 
   <!-- SLIDE-IN DRAWER -->
-  <aside id="siteDrawer"
-        class="fixed top-0 right-0 h-full w-[78%] max-w-[320px] bg-gradient-to-b from-[#0C2C55] to-[#031B36] border-r border-white/15 shadow-2xl translate-x-full transition-transform z-[70] focus:outline-none"
-        tabindex="-1"
-        aria-hidden="true">
-    <div class="flex items-center justify-between px-4 py-4 border-b border-white/10">
-      <div class="flex items-center gap-3">
-        <img src="img/icons/artist/dream_agent_logo_blue.png" alt="dream_agent" class="w-12 h-12 rounded-full border border-white/10"/>
-      </div>
-      <button id="closeDrawer"
-              class="w-10 h-10 grid place-items-center rounded-full bg-white/10 border border-white/20 hover:bg-white/20 transition"
-              aria-label="Close menu">
-        <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true">
-          <path d="M6 6l12 12M18 6L6 18" stroke="#EAF2FF" stroke-width="2" stroke-linecap="round"/>
-        </svg>
-      </button>
-    </div>
+  <!-- OVERLAY -->
+<div
+  id="drawerOverlay"
+  class="fixed inset-0 z-[50] bg-black/50 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300 ease-out"
+></div>
 
-    <nav class="px-2 py-2">
-      <ul class="flex flex-col">
-      <!-- <li><a class="block px-3 py-3 rounded-lg text-white/90 hover:bg-white/10 hover:text-white transition" href="#mobile_hero">Home</a></li>
-      <li><a class="block px-3 py-3 rounded-lg text-white/90 hover:bg-white/10 hover:text-white transition" href="#mobile_about">About</a></li> -->
-      <li>
-  <a class="flex items-center gap-3 px-3 py-3 rounded-lg text-white/90 hover:bg-white/10 hover:text-white transition"
-     href="#mobile_hero">
-    <!-- Home icon (SVG) -->
-    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-white/80" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-      <path stroke-linecap="round" stroke-linejoin="round" d="M3 12l9-9 9 9M4 10v10a1 1 0 001 1h4a1 1 0 001-1V14h4v6a1 1 0 001 1h4a1 1 0 001-1V10" />
-    </svg>
-    <span>Home</span>
-  </a>
-</li>
+<!-- SLIDE-IN DRAWER -->
+<aside
+  id="siteDrawer"
+  class="fixed top-0 right-0 z-[70] flex h-full w-[78%] max-w-[320px] flex-col
+         bg-gradient-to-b from-[#0C2C55]/95 to-[#031B36]/95
+         border-l border-white/10 shadow-2xl backdrop-blur-md
+         translate-x-full transition-transform duration-300 ease-out
+         focus:outline-none"
+  tabindex="-1"
+  aria-hidden="true"
+  aria-label="Site navigation"
+>
+  <!-- DRAWER HEADER -->
+  <div class="flex items-center justify-between px-5 py-5 border-b border-white/10">
+    <a
+      href="#mobile_hero"
+      class="flex items-center"
+      aria-label="Dream Agent home"
+    >
+      <img
+        src="img/icons/artist/dream_agent_logo_blue.png"
+        alt="Dream Agent"
+        class="w-14 h-14 rounded-full border border-white/10"
+        width="56"
+        height="56"
+      />
+    </a>
 
-<li>
-  <a class="flex items-center gap-3 px-3 py-3 rounded-lg text-white/90 hover:bg-white/10 hover:text-white transition"
-     href="#mobile_about">
-    <!-- About icon (SVG) -->
-    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-white/80 about-divider" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-      <path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12c0 4.97-4.03 9-9 9s-9-4.03-9-9 4.03-9 9-9 9 4.03 9 9z" />
-    </svg>
-    <span>About</span>
-  </a>
-</li>
-      <li>
-  <a class="flex items-center gap-3 px-3 py-3 rounded-lg text-white/90 hover:bg-white/10 hover:text-white transition"
-     href="https://xrpcafe.market/" target="_blank" rel="noopener">
-    <img src="img/icons/marketplaces/xrpcafe_circle.png" alt="XRP Cafe" class="w-6 h-6" />
-    <span>XRP Cafe</span>
-  </a>
-</li>
+    <!-- Invisible 44px tap target with clean X icon -->
+    <button
+      id="closeDrawer"
+      type="button"
+      class="group grid h-11 w-11 place-items-center text-white/75
+             hover:text-white focus-visible:outline-none
+             focus-visible:ring-2 focus-visible:ring-white/40
+             transition-colors"
+      aria-label="Close menu"
+    >
+      <svg
+        class="h-6 w-6 transition-opacity group-hover:opacity-100"
+        viewBox="0 0 24 24"
+        fill="none"
+        aria-hidden="true"
+      >
+        <path
+          d="M6 6l12 12M18 6L6 18"
+          stroke="currentColor"
+          stroke-width="1.75"
+          stroke-linecap="round"
+        />
+      </svg>
+    </button>
+  </div>
 
-<li>
-  <a class="flex items-center gap-3 px-3 py-3 rounded-lg text-white/90 hover:bg-white/10 hover:text-white transition"
-     href="https://opensea.io/" target="_blank" rel="noopener">
-    <img src="img/icons/marketplaces/opensea_circle.png" alt="OpenSea" class="w-6 h-6" />
-    <span>OpenSea</span>
-  </a>
-</li>
+  <!-- NAVIGATION -->
+  <nav class="flex-1 overflow-y-auto px-5 py-6" aria-label="Main navigation">
+    <!-- THE ARTIST -->
+    <section aria-labelledby="artist-navigation-heading">
+      <h2
+        id="artist-navigation-heading"
+        class="px-3 text-[0.68rem] font-medium uppercase tracking-[0.22em] text-white/40"
+      >
+        The Artist
+      </h2>
 
-<li>
-  <a class="flex items-center gap-3 px-3 py-3 rounded-lg text-white/90 hover:bg-white/10 hover:text-white transition"
-     href="https://superrare.com/" target="_blank" rel="noopener">
-    <img src="img/icons/marketplaces/superrare_circle.png" alt="Superrare" class="w-6 h-6" />
-    <span>Superrare</span>
-  </a>
-</li>
-
-    <style>
-      .playfair-nav {
-        font-family: 'Playfair Display', serif !important;
-      }
-    </style>
+      <ul class="mt-2 flex flex-col gap-1">
+        <li>
+          <a
+            href="#artist-statement"
+            class="block rounded-lg px-3 py-3.5 text-base font-normal
+                   text-white/85 hover:bg-white/[0.07] hover:text-white
+                   focus-visible:outline-none focus-visible:ring-2
+                   focus-visible:ring-white/30 transition"
+          >
+            Artist Statement
+          </a>
+        </li>
       </ul>
-    </nav>
+    </section>
 
-    <div class="mt-auto px-4 py-4 border-t border-white/8 courdevelops-signature">
-  <a href="https://courdevelops.com"
-     target="_blank"
-     rel="noopener"
-     class="flex items-center gap-2 text-sm text-white/70 hover:text-white">
-    <img src="img/icons/developer/courdevelops.svg"
-         alt="CourDevelops — AI-integrated web development studio"
-         class="w-6 h-6 opacity-60 rounded-md"
-         width="24" height="24">
-    <span>Powered by CourDevelops</span>
-  </a>
-</div>
+    <!-- THE WORKS -->
+    <section
+      class="mt-6 border-t border-white/10 pt-6"
+      aria-labelledby="works-navigation-heading"
+    >
+      <h2
+        id="works-navigation-heading"
+        class="px-3 text-[0.68rem] font-medium uppercase tracking-[0.22em] text-white/40"
+      >
+        The Works
+      </h2>
 
+      <ul class="mt-2 flex flex-col gap-1">
+        <li>
+          <a
+            href="#collections"
+            class="block rounded-lg px-3 py-3.5 text-base font-normal
+                   text-white/85 hover:bg-white/[0.07] hover:text-white
+                   focus-visible:outline-none focus-visible:ring-2
+                   focus-visible:ring-white/30 transition"
+          >
+            Collections
+          </a>
+        </li>
 
-  </aside>
+        <li>
+          <a
+            href="#current-works"
+            class="block rounded-lg px-3 py-3.5 text-base font-normal
+                   text-white/85 hover:bg-white/[0.07] hover:text-white
+                   focus-visible:outline-none focus-visible:ring-2
+                   focus-visible:ring-white/30 transition"
+          >
+            Current Works
+          </a>
+        </li>
+
+        <li>
+          <a
+            href="#archive"
+            class="block rounded-lg px-3 py-3.5 text-base font-normal
+                   text-white/85 hover:bg-white/[0.07] hover:text-white
+                   focus-visible:outline-none focus-visible:ring-2
+                   focus-visible:ring-white/30 transition"
+          >
+            Archive
+          </a>
+        </li>
+
+        <li>
+          <a
+            href="#exhibitions"
+            class="block rounded-lg px-3 py-3.5 text-base font-normal
+                   text-white/85 hover:bg-white/[0.07] hover:text-white
+                   focus-visible:outline-none focus-visible:ring-2
+                   focus-visible:ring-white/30 transition"
+          >
+            Exhibitions
+          </a>
+        </li>
+      </ul>
+    </section>
+
+    <!-- COLLECT -->
+    <section
+      class="mt-6 border-t border-white/10 pt-6"
+      aria-labelledby="collect-navigation-heading"
+    >
+      <h2
+        id="collect-navigation-heading"
+        class="px-3 text-[0.68rem] font-medium uppercase tracking-[0.22em] text-white/40"
+      >
+        Collect
+      </h2>
+
+      <ul class="mt-2 flex flex-col gap-1">
+        <li>
+          <a
+            href="https://xrpcafe.market/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="flex items-center gap-3 rounded-lg px-3 py-3
+                   text-base font-normal text-white/80
+                   hover:bg-white/[0.07] hover:text-white
+                   focus-visible:outline-none focus-visible:ring-2
+                   focus-visible:ring-white/30 transition"
+          >
+            <img
+              src="img/icons/marketplaces/xrpcafe_circle.png"
+              alt=""
+              class="h-6 w-6"
+              width="24"
+              height="24"
+              aria-hidden="true"
+            />
+            <span>XRP Café</span>
+
+            <span class="ml-auto text-xs text-white/30" aria-hidden="true">
+              ↗
+            </span>
+          </a>
+        </li>
+
+        <li>
+          <a
+            href="https://opensea.io/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="flex items-center gap-3 rounded-lg px-3 py-3
+                   text-base font-normal text-white/80
+                   hover:bg-white/[0.07] hover:text-white
+                   focus-visible:outline-none focus-visible:ring-2
+                   focus-visible:ring-white/30 transition"
+          >
+            <img
+              src="img/icons/marketplaces/opensea_circle.png"
+              alt=""
+              class="h-6 w-6"
+              width="24"
+              height="24"
+              aria-hidden="true"
+            />
+            <span>OpenSea</span>
+
+            <span class="ml-auto text-xs text-white/30" aria-hidden="true">
+              ↗
+            </span>
+          </a>
+        </li>
+
+        <li>
+          <a
+            href="https://superrare.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="flex items-center gap-3 rounded-lg px-3 py-3
+                   text-base font-normal text-white/80
+                   hover:bg-white/[0.07] hover:text-white
+                   focus-visible:outline-none focus-visible:ring-2
+                   focus-visible:ring-white/30 transition"
+          >
+            <img
+              src="img/icons/marketplaces/superrare_circle.png"
+              alt=""
+              class="h-6 w-6"
+              width="24"
+              height="24"
+              aria-hidden="true"
+            />
+            <span>SuperRare</span>
+
+            <span class="ml-auto text-xs text-white/30" aria-hidden="true">
+              ↗
+            </span>
+          </a>
+        </li>
+      </ul>
+    </section>
+  </nav>
+
+  <!-- COURDEVELOPS SIGNATURE -->
+  <div class="border-t border-white/10 px-5 py-4">
+    <a
+      href="https://courdevelops.com"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="flex items-center gap-2 text-xs text-white/45
+             hover:text-white/70 transition-colors"
+    >
+      <img
+        src="img/icons/developer/courdevelops.svg"
+        alt=""
+        class="h-5 w-5 rounded-md opacity-50"
+        width="20"
+        height="20"
+        aria-hidden="true"
+      />
+
+      <span>Powered by CourDevelops</span>
+    </a>
+  </div>
+</aside>
+
+<!-- -------------------------------------------------------------------- -->
+<!-- -------------------------------------------------------------------- -->
+<!-- -------------------------------------------------------------------- -->
+<!-- -------------------------------------------------------------------- -->
+<!-- -------------------------------------------------------------------- -->
+<!-- -------------------------------------------------------------------- -->
 
   <main>
     <!-- HERO -->
@@ -1612,78 +1825,94 @@
     });
 
     // Slide-in menu
-    (function(){
-      const html = document.documentElement;
-      const menuBtn = document.getElementById('menuBtn');
-      const drawer  = document.getElementById('siteDrawer');
-      const overlay = document.getElementById('drawerOverlay');
-      const closeBtn= document.getElementById('closeDrawer');
+(function () {
+  const html = document.documentElement;
+  const menuBtn = document.getElementById('menuBtn');
+  const drawer = document.getElementById('siteDrawer');
+  const overlay = document.getElementById('drawerOverlay');
+  const closeBtn = document.getElementById('closeDrawer');
 
-      if (!menuBtn || !drawer || !overlay) return;
+  if (!menuBtn || !drawer || !overlay) return;
 
-      let lastFocus = null;
+  let lastFocus = null;
 
-      const focusableSel = [
-        'a[href]', 'button:not([disabled])', 'input:not([disabled])',
-        'select:not([disabled])', 'textarea:not([disabled])',
-        '[tabindex]:not([tabindex="-1"])'
-      ].join(',');
+  const focusableSel = [
+    'a[href]',
+    'button:not([disabled])',
+    'input:not([disabled])',
+    'select:not([disabled])',
+    'textarea:not([disabled])',
+    '[tabindex]:not([tabindex="-1"])'
+  ].join(',');
 
-      function trapFocus(e){
-        if (e.key !== 'Tab') return;
-        const focusables = drawer.querySelectorAll(focusableSel);
-        if (!focusables.length) return;
-        const first = focusables[0];
-        const last = focusables[focusables.length - 1];
-        if (e.shiftKey && document.activeElement === first) {
-          e.preventDefault(); last.focus();
-        } else if (!e.shiftKey && document.activeElement === last) {
-          e.preventDefault(); first.focus();
-        }
-      }
+  function trapFocus(event) {
+    if (event.key !== 'Tab') return;
 
-      function openDrawer(){
-        lastFocus = document.activeElement;
-        html.classList.add('has-drawer');
-        document.body.classList.add('drawer-open');
-        drawer.setAttribute('aria-hidden', 'false');
-        menuBtn.setAttribute('aria-expanded', 'true');
-        // move focus into drawer
-        setTimeout(() => {
-          const first = drawer.querySelector(focusableSel);
-          (first || drawer).focus();
-        }, 10);
+    const focusables = drawer.querySelectorAll(focusableSel);
+    if (!focusables.length) return;
 
-        document.addEventListener('keydown', onKeydown);
-        drawer.addEventListener('keydown', trapFocus);
-      }
+    const first = focusables[0];
+    const last = focusables[focusables.length - 1];
 
-      function closeDrawer(){
-        html.classList.remove('has-drawer');
-        document.body.classList.remove('drawer-open');
-        drawer.setAttribute('aria-hidden', 'true');
-        menuBtn.setAttribute('aria-expanded', 'false');
+    if (event.shiftKey && document.activeElement === first) {
+      event.preventDefault();
+      last.focus();
+    } else if (!event.shiftKey && document.activeElement === last) {
+      event.preventDefault();
+      first.focus();
+    }
+  }
 
-        document.removeEventListener('keydown', onKeydown);
-        drawer.removeEventListener('keydown', trapFocus);
+  function openDrawer() {
+    lastFocus = document.activeElement;
 
-        if (lastFocus) lastFocus.focus();
-      }
+    html.classList.add('has-drawer');
+    document.body.classList.add('drawer-open');
 
-      function onKeydown(e){
-        if (e.key === 'Escape') closeDrawer();
-        }
+    drawer.setAttribute('aria-hidden', 'false');
+    menuBtn.setAttribute('aria-expanded', 'true');
 
-        // Toggle handlers
-        menuBtn.addEventListener('click', openDrawer);
-        overlay.addEventListener('click', closeDrawer);
-        closeBtn?.addEventListener('click', closeDrawer);
+    window.setTimeout(() => {
+      const firstFocusable = drawer.querySelector(focusableSel);
+      (firstFocusable || drawer).focus();
+    }, 10);
 
-        // Close after clicking any nav link
-        drawer.querySelectorAll('a[href]').forEach(a => {
-          a.addEventListener('click', closeDrawer);
-        });
-    })();
+    document.addEventListener('keydown', onKeydown);
+    drawer.addEventListener('keydown', trapFocus);
+  }
+
+  function closeDrawer() {
+    html.classList.remove('has-drawer');
+    document.body.classList.remove('drawer-open');
+
+    drawer.setAttribute('aria-hidden', 'true');
+    menuBtn.setAttribute('aria-expanded', 'false');
+
+    document.removeEventListener('keydown', onKeydown);
+    drawer.removeEventListener('keydown', trapFocus);
+
+    lastFocus?.focus();
+  }
+
+  function onKeydown(event) {
+    if (event.key === 'Escape') {
+      closeDrawer();
+    }
+  }
+
+  menuBtn.addEventListener('click', openDrawer);
+  overlay.addEventListener('click', closeDrawer);
+  closeBtn?.addEventListener('click', closeDrawer);
+
+  drawer.querySelectorAll('a[href]').forEach((link) => {
+    link.addEventListener('click', closeDrawer);
+  });
+
+  // overlay.addEventListener('click', () => {
+  // console.log('Overlay clicked');
+  // closeDrawer();
+// });
+})();
 
     // Dynamic Date in Footer
    const copyrightYear = document.getElementById("copyright-year");
@@ -1691,7 +1920,6 @@
 
     if (copyrightYear) copyrightYear.textContent = new Date().getFullYear();
     if (aboutCopyrightYear) aboutCopyrightYear.textContent = new Date().getFullYear();
-
 
   </script>
 </body>

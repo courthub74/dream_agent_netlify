@@ -233,7 +233,7 @@
     .mobile_about_container { max-width: var(--content-max); margin-inline: auto; padding-inline: var(--content-pad); }
     .mobile_about_header { text-align: left; font-size: 1.5rem; font-weight: 700; padding-left: .25rem; margin-top: 1rem; }
     /* .mobile_about_paragraph { max-width: 760px; font-family: 'Playfair Display', serif; line-height: 1.55; margin: 1rem 0 2rem; font-weight: 400;  background: rgba(255,255,255,.05); padding: 1.25rem; border-radius: 12px; border: 1px solid rgba(255,255,255,.10); font-size: clamp(1rem, 3.5vw, 1.3rem); } */
-    .mobile_about_paragraph { max-width: 760px; font-family: 'Playfair Display', serif; line-height: 1.55; margin: 1rem 0 2rem; font-weight: 400; font-size: clamp(1rem, 2.5vw, 1.2rem); }
+    .mobile_about_paragraph { max-width: 650px; font-family: 'Playfair Display', serif; line-height: 1.85; margin: 1rem 0 2rem; font-weight: 400; font-size: clamp(1rem, 2.5vw, 1.2rem); }
     .mobile_about_paragraph, .mobile_about_paragraph b { font-family: 'Playfair Display', serif; }
     .mobile_about_paragraph {
       margin-top: 1.5rem;
@@ -966,6 +966,48 @@
   }
 }
 
+
+/* Updates for New sections */
+#artist-statement,
+#current-works {
+  padding: 60px 0;
+}
+
+.current-work-item {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
+
+.mobile_about_title {
+  font-size: 12px;
+  opacity: 0.55;
+  letter-spacing: 0.5px;
+}
+
+.current-work-item img {
+  /* width: 120px;
+  height: 120px; */
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1px solid rgba(178, 182, 199, 0.486);
+}
+
+.artist-statement-button {
+  font-size: 16px;
+  opacity: 0.85;
+  letter-spacing: 0.5px;
+  transition: opacity 0.25s ease, color 0.25s ease, text-decoration-color 0.25s ease;
+}
+
+.artist-statement-button:hover,
+.artist-statement-button:focus-visible {
+  text-decoration: underline solid rgba(255,255,255,0.85);
+  opacity: 1;
+}
+
+
+
   </style>
 </head>
 <body>
@@ -1287,9 +1329,13 @@
         <!-- --------------------------------------------------------------------------------------- -->
         <!-- <h1 class="mobile_about_header">Who is Dream Agent?</h1> -->
 
+        <p class="mobile_about_title">THE RECORDING MECHANISM</p>
+
         <p class="mobile_about_paragraph">
           <b>Dream Agent</b> is a recording mechanism that traverses dreamlike systems, capturing the moments where structure becomes visible.
         </p>
+
+        <p class="mobile_about_paragraph">No face. No fame. Just the vision.</p>
 
         <!-- --------------------------------------------------------------------------------------- -->
         <!-- --------------------------------------------------------------------------------------- -->
@@ -1388,6 +1434,57 @@
             </a>
           </div>
         </section>
+
+        <!-- ----------------------------------------------------------------------------------------------------- -->
+        <!-- ----------------------------------------------------------------------------------------------------- -->
+        <!-- ----------------------------------------------------------------------------------------------------- -->
+
+        <!-- ARTIST STATEMENT -->
+        <section id="artist-statement" class="mt-12">
+          <h2 class="artist-statement-header system-header">Artist Statement</h2>
+          <p class="artist-statement-paragraph mt-4">
+            These paintings are not illustrations of dreams. They are investigations into systems, memory, mythology, technology, and the strange architectures hiding beneath ordinary life.
+          </p>
+          <button class="artist-statement-button mt-6" onclick="scrollToStatement()">○ Read the Statement →</button>
+          </section>
+        <!-- ----------------------------------------------------------------------------------------------------- -->
+        <!-- ----------------------------------------------------------------------------------------------------- -->
+        <!-- ----------------------------------------------------------------------------------------------------- -->
+
+        <!-- ----------------------------------------------------------------------------------------------------- -->
+        <!-- ----------------------------------------------------------------------------------------------------- -->
+        <!-- ----------------------------------------------------------------------------------------------------- -->
+
+        <!-- FEATURED WORKS -->
+        <section id="current-works" class="mt-12">
+          <h2 class="current-works-header system-header">Current Works</h2>
+          <p class="current-works-paragraph mt-4">
+            These works are in progress, and may be revised or removed at any time. They are not yet part of a collection.
+          </p>
+          <div class="current-works-grid mt-6">
+            <!-- Featured works will be dynamically inserted here -->
+             <div class="current-work-item">
+
+                <div class="current-work-image">
+                  <img src="./img/collection_works/digital_unconscious/humans.webp" alt="Featured Work">
+                  <p>Humans 2026</p>
+                </div>
+                <div class="current-work-image">
+                  <img src="./img/collection_works/war_and_feast/coeur_of_the_grapes.webp" alt="Featured Work">
+                  <p>Coeur of the Grapes 2025</p>
+                </div>
+                <div class="current-work-image">
+                  <img src="./img/collection_works/signals_and_ascensions/sephardic_tango.webp" alt="Featured Work">
+                  <p>Sephardic Tango 2025</p>
+                </div>
+               
+             </div>
+             <!-- <img src="./img/collection_works/digital_unconscious/humans.webp" alt=""> -->
+          </div>
+        </section>
+        <!-- ----------------------------------------------------------------------------------------------------- -->
+        <!-- ----------------------------------------------------------------------------------------------------- -->
+        <!-- ----------------------------------------------------------------------------------------------------- -->
 
   <!-- New Footer -->
   <div class="about-network-layer">

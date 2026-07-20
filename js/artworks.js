@@ -38,7 +38,7 @@ window.allWorks = [
       related:["binary_tree", "polar_bear", "the_great_divide"],
       motifs: ["strategy wood", "chessboard", "temple", "ocean"],
       themes: ["beginnings", "civilization", "colonialism", "faith", "doubt"],
-      img:"../img/collection_works/symbols_in_motion/temple_of_openings.png",
+      img:"../img/collection_works/symbols_in_motion/temple_of_openings.webp",
       desc:[
           "Two chessboards face the Pacific at sunset — one arranged for faith, the other for doubt. The white pieces align in formation before the ancient temple, where water pours from marble columns like divine cognition.",
           "The black side stands fractured, its pawns hybridized — red, yellow, brown, white — hinting at civilization’s mixed motives. Above them rises **Strategy Wood**, a parody of “Hollywood,” where the myths of empire meet the algorithms of game theory.",
@@ -61,7 +61,7 @@ window.allWorks = [
       related:["temple_of_openings", "polar_bear", "the_great_divide"],
       motifs: ["tree", "choices", "consequences", "paths"],
       themes: ["ambiguity", "authority", "decision-making", "indecision"],
-      img:"../img/collection_works/symbols_in_motion/binary_tree.png",
+      img:"../img/collection_works/symbols_in_motion/binary_tree.webp",
       desc:[
           "'Binary Tree' unfolds inside a surreal Palm-Royale-style club where elegance and ambiguity mingle.",
           "A poised woman in a split green-and-white dress stands between two faceless servers—one masked in green, one masked in white—each offering a symbolic choice: a bonsai and martini on one side, a bronze breastplate and white wine on the other.",
@@ -71,29 +71,6 @@ window.allWorks = [
       ],
       links:{ xrp:"https://xrp.cafe/nft/00080BB8B57E780C6A5EF299540E01B0E8C6DB1B83CFC9164A57450F05CBFA71", 
       os:"https://opensea.io/item/ethereum/0x870520570ea3cd36ec19a8494c2a08b131727a83/2", 
-      sr:"#"}
-    },
-    // THE TECH ERA
-    { 
-      id: "the_tech_era",
-      collection: "symbols",
-      title:"The Tech Era", 
-      year:"2025", 
-      style:"Oil-style",
-      featured: true,
-      dateCreated: "2025-08-25",
-      related: ["cursor_of_fate", "internet_of_the_modern_world"],
-      motifs: ["technology", "urban life", "prosperity"],
-      themes: ["progress", "isolation", "synchronization"],
-      img:"../img/collection_works/symbols_in_motion/the_tech_era.png",
-      desc:[
-          "In 'The Tech Era,' Dream Agent conjures a surreal crossroads of technological elegance and ancient mystery. A cadre of faceless urbanites—Yuppies, Buppies, and Cypherpunks—glide through a snow-laced city on electric scooters, disconnected yet synchronized.", 
-          "They pass a glowing crystal ball ceremony, a hypnotic marble garage spewing water from the mountains, and a mystical Zoltar figure beside a woman carefully sewing a half-finished turban.",
-          "Above, a giant floating tooth—a relic or prophecy?—hovers between two epochs: analog ruin and digital rebirth. Symbols abound: the neon globe of globalism, the ever-watching mountain temple, and a store sign encoded in planetary language.",
-          "This is not just a painting—it’s a portal.", 
-      ],
-      links:{ xrp:"https://xrp.cafe/nft/00080BB8B57E780C6A5EF299540E01B0E8C6DB1B83CFC9161205E0EB05CBFA4D", 
-      os:"https://opensea.io/item/ethereum/0x870520570ea3cd36ec19a8494c2a08b131727a83/1", 
       sr:"#"}
     },
     // THE RUSHER THE INCREMENTER AND THE PROTESTER
@@ -108,7 +85,7 @@ window.allWorks = [
       related:[],
       motifs: ["bar", "archetypes"],
       themes: ["conflict", "identity", "agency"],
-      img:"../img/collection_works/symbols_in_motion/the_rusher_the_incrementer_and_the_protester.png",
+      img:"../img/collection_works/symbols_in_motion/the_rusher_the_incrementer_and_the_protester.webp",
       desc:[
           "Three men sit at a dimly lit bar — a timeless tribunal of modern archetypes: The Rusher, clenched in frustration, his glass half-empty and fists tighter still; The Incrementer, precise and calculating, a monocled figure clad in pinstripes, sipping with a measured grace; and The Protester, puffed-cheeked and clad in a tracksuit, caught mid-reaction, somewhere between rebellion and retreat.",
           "Each man drinks from a different vessel — a whiskey tumbler, a wine glass, and a crushed beer can — reflecting their strategy in the silent war of agency. Crushed sugar cubes and spent lighters scatter the bar, symbols of fuel and burnout.",
@@ -129,7 +106,7 @@ window.allWorks = [
       related:["temple_of_openings", "binary_tree", "the_great_divide"],
       motifs: ["temperature", "dualities"],
       themes: ["climate", "balance", "fragility"],
-      img:"../img/collection_works/symbols_in_motion/polar_bear.png",
+      img:"../img/collection_works/symbols_in_motion/polar_bear.webp",
       desc:[
          "A checkerboard plain stages two masked figures labeled *let* and *const*, paused in mutual orientation as a thermometer rises between them. Behind, an alabaster basilica and a wounded crystal sphere establish a frozen system where variables face limits, and permanence bears marks of force.",
          "The work fixes logic, architecture, and ritual into a single climatic moment. Change is measured, not felt, while stability carries visible damage."
@@ -150,7 +127,7 @@ window.allWorks = [
       related:["turquoise_plate","wizard_of_agent_dreams"],
       motifs: ["spy", "machine", "birds"],
       themes: ["mystery", "devotion", "transformation"],
-      img:"../img/collection_works/symbols_in_motion/dream_agent_making_birds.png",
+      img:"../img/collection_works/symbols_in_motion/dream_agent_making_birds.webp",
       desc:[
          "'Dream Agent Making Birds' captures the faceless spy in a sacred moment of release. Standing before a red cage that holds a glowing machine, the spy extends his gloved hands—not to release a bird, but to reveal wings of light. Above, a chain of birds arcs through the morning sky, echoing the engraving 'Soli Deo Gloria' on the window sill. It is both prayer and ritual: an act of making, not owning—where flight itself becomes the art.",
          "This piece bridges mystery and devotion, weaving together technology, faith, and surreal transformation. A meditation on creation, release, and the unseen hands that move history.",
@@ -171,7 +148,7 @@ window.allWorks = [
       related: [],
       motifs: ["bat", "evening"],
       themes: ["transience", "intimacy", "contemplation"],
-      img: "../img/collection_works/symbols_in_motion/hormones_95.png",
+      img: "../img/collection_works/symbols_in_motion/hormones_95.webp",
       desc:[
            "'Hormones ’95' captures a private interior moment framed against an exterior disturbance. A young woman stands within the warm geometry of a lit window, her posture composed and downward facing, while the night outside carries an approaching shape.",
            "The painting contrasts two forms of emergence: the quiet architecture of self-presentation and the sudden arrival of instinct. Pearls, evening fabric, and controlled posture form the interior language of social structure, while the winged presence in the night sky introduces a separate rhythm.",
@@ -194,7 +171,7 @@ window.allWorks = [
       related:["dream_agent_making_birds", "wizard_of_agent_dreams"],
       motifs: ["plate", "ceremony", "ritual"],
       themes: ["ceremony", "ritual", "transformation"],
-      img:"../img/collection_works/symbols_in_motion/turquoise_plate.png",
+      img:"../img/collection_works/symbols_in_motion/turquoise_plate.webp",
       desc:[
         "A symbolic relic from an imagined archive.",
         "'Turquoise Plate' presents a silent guardian beside an intricately carved ceremonial object whose imagery hints at forgotten systems of belief. Crystal spheres, flowing water, birds, and the human heart combine into a visual language that feels familiar yet remains untranslated.",
@@ -217,7 +194,7 @@ window.allWorks = [
       related:["them_gods_and_the_older_gods"],
       motifs: ["group", "age", "community"],
       themes: ["community", "age", "identity"],
-      img:"../img/collection_works/symbols_in_motion/them_guys_and_the_older_guys.png",
+      img:"../img/collection_works/symbols_in_motion/them_guys_and_the_older_guys.webp",
       desc:[
         "'Them Guys and the Older Guys' examines the unseen architecture behind cultural narratives.",
         "Set within a frontier saloon, the painting imagines storytellers, skeptics, and strategists gathered around a conversation that extends beyond the room itself. At the center stands a weathered monument marked 'Strategy Wood,'' a symbolic inversion of Hollywood. Rather than celebrating entertainment, it points toward the mechanisms through which stories are shaped, distributed, and remembered.",
@@ -693,7 +670,7 @@ window.allWorks = [
       related:["the_tech_era", "the_future_of_industry", "god_comma"],
       motifs: ["fortune teller", "cursor"],
       themes: ["agency", "automation", "illusion of choice"],
-      img:"../img/collection_works/industrial_myths/cursor_of_fate.png",
+      img:"../img/collection_works/industrial_myths/cursor_of_fate.webp",
       desc:[
         "A modern oracle for the algorithmic age. 'Cursor of Fate' transforms the iconic fortune teller into an artificial intelligence whose face has become a luminous screen marked by a single cursor. Surrounded by symbols of labor, ambition, craftsmanship, and contemplation, the figure presides over a table of possibilities rather than certainties.",
         "The work explores humanity's growing tendency to consult machines for answers once reserved for mystics. Every object becomes a prompt, every prediction another branch in an expanding decision tree.",
@@ -715,7 +692,7 @@ window.allWorks = [
       related:["lactation_of_the_ledger","temple_of_openings", "binary_tree"],
       motifs: ["bitcoin", "baby", "protest"],
       themes: ["generational conflict", "digital value", "rebirth"],
-      img:"../img/collection_works/industrial_myths/the_great_divide.png",
+      img:"../img/collection_works/industrial_myths/the_great_divide.webp",
       desc:[
         "The Great Divide is a meditation on the birth of digital value amidst generational and ideological conflict. A solemn green matriarch cradles a golden baby marked with the Bitcoin symbol — a digital messiah wrapped in swaddling wealth. Around her, the youth sit silently with laptops, bearing the weight of a new world, while protesters and skeptics stand on the opposing cliff, holding blank signs and accusations.",
         "Set against a cosmic desert canyon under constellations of coded systems, this painting questions what is inherited, what is mined, and what is rejected. The gold rock at the feet of the critic speaks to the relics of the past; the baby to a future still being written.",
@@ -724,6 +701,29 @@ window.allWorks = [
       ],
       links:{ xrp:"https://xrp.cafe/nft/00081388B57E780C6A5EF299540E01B0E8C6DB1B83CFC916AE2E92F105CBFA5F", 
       os:"#", 
+      sr:"#"}
+    },
+     // THE TECH ERA
+    { 
+      id: "the_tech_era",
+      collection: "industrial",
+      title:"The Tech Era", 
+      year:"2025", 
+      style:"Oil-style",
+      featured: true,
+      dateCreated: "2025-08-25",
+      related: ["cursor_of_fate", "internet_of_the_modern_world"],
+      motifs: ["technology", "urban life", "prosperity"],
+      themes: ["progress", "isolation", "synchronization"],
+      img:"../img/collection_works/industrial_myths/the_tech_era.webp",
+      desc:[
+          "In 'The Tech Era,' Dream Agent conjures a surreal crossroads of technological elegance and ancient mystery. A cadre of faceless urbanites—Yuppies, Buppies, and Cypherpunks—glide through a snow-laced city on electric scooters, disconnected yet synchronized.", 
+          "They pass a glowing crystal ball ceremony, a hypnotic marble garage spewing water from the mountains, and a mystical Zoltar figure beside a woman carefully sewing a half-finished turban.",
+          "Above, a giant floating tooth—a relic or prophecy?—hovers between two epochs: analog ruin and digital rebirth. Symbols abound: the neon globe of globalism, the ever-watching mountain temple, and a store sign encoded in planetary language.",
+          "This is not just a painting—it’s a portal.", 
+      ],
+      links:{ xrp:"https://xrp.cafe/nft/00080BB8B57E780C6A5EF299540E01B0E8C6DB1B83CFC9161205E0EB05CBFA4D", 
+      os:"https://opensea.io/item/ethereum/0x870520570ea3cd36ec19a8494c2a08b131727a83/1", 
       sr:"#"}
     },
       //  THE FUTURE OF INDUSTRY
@@ -737,7 +737,7 @@ window.allWorks = [
       dateCreated: "2025-11-15",
       related:["cursor_of_fate", "internet_of_the_new_world"],
       motifs:["oracle","machine","ritual"],
-      img:"../img/collection_works/industrial_myths/the_future_of_industry.png",
+      img:"../img/collection_works/industrial_myths/the_future_of_industry.webp",
       desc:[
         "'The Future of Industry' envisions a new epoch where human thought, machine learning, and ritual converge.",
         "In a dimly lit hall, a faceless oracle—its features replaced by cascading code—presides over a circle of silent thinkers. Before them rest luminous brains and crystal spheres: emblems of creativity, computation, and prophecy.", 
@@ -759,7 +759,7 @@ window.allWorks = [
       dateCreated: "2023-06-20",
       related:["bottling_the_republic", "daniels_vision_from_another_angle"],
       motifs:["priest","war"],
-      img:"../img/collection_works/industrial_myths/the_fear_room.png",
+      img:"../img/collection_works/industrial_myths/the_fear_room.webp",
       desc:[
         "'In The Fear Room', Dream Agent dissects the systemic machinery of submission and indoctrination. A lineup of children—bent, broken, and bowed—passes through gateways of authority and assimilation, watched over by figures of religion, capital, and control. Behind them, a portrait of soldiers against fire echoes the violence of inherited obedience.",
         "A suited man holds out cash while guiding heads into future-making devices, beneath the glow of a microchip idol labeled 'FUTURE'—a cynical altar to technological determinism. The atmosphere is thick with unease, yet calculated and quiet. This is not chaos—it’s organized despair.",
@@ -781,7 +781,7 @@ window.allWorks = [
       dateCreated: "2025-01-01",
       related:["the_fear_room", "daniels_vision_from_another_angle"],
       motifs:["map","bottles"],
-      img:"../img/collection_works/industrial_myths/bottling_the_republic.png",
+      img:"../img/collection_works/industrial_myths/bottling_the_republic.webp",
       desc:[
         "In 'Bottling the Republic', Dream Agent invites the viewer into a sterile, modern factory where the symbols of national identity are distilled, packaged, and prepared for consumption. On the left, dark and amber soda bottles emerge from a map of the United States—oxidized green against a burnt orange backdrop—suggesting a geographic origin stripped of borders yet full of weight. On the right, lighter bottles exit a white brick structure, their neutrality implying refinement, curation, or even erasure.",
         "A factory worker affixes a red-crayon label to the box: 'A Case of Sovereignties'. His motion—half-routine, half-ritual—becomes a metaphor for the bureaucratic manufacturing of governance and identity. At the center, twin drinking fountains spill water onto the production line, invoking historical inequities, industrial spillage, or uncontainable truth.",
@@ -803,7 +803,7 @@ window.allWorks = [
       dateCreated: "2023-06-13",
       related:["the_fear_room", "bottling_the_republic"],
       motifs:["cargo","doves"],
-      img:"../img/collection_works/industrial_myths/daniels_vision_from_another_angle.png",
+      img:"../img/collection_works/industrial_myths/daniels_vision_from_another_angle.webp",
       desc:[
         "A black-sea freighter noses through fog, its deck stacked not with cargo but with institutions: a courthouse façade, a broadcast tower, glass offices, and a proud marquee that mis-spells 'EXCELLENCE'—a glitch that betrays intent. Cable-chains spill from the ship like tentacles, dragging unseen systems through the tide. Above, a faint halo of radio rings ripples the sky.",
         "On the shore, four birds stand as witnesses—three obsidian, one pale—an echo of Daniel’s layered visions and their empires. The birds face the vessel, a dissenting conscience against industrial pageantry. What arrives is not a navy, but a narrative: empire as architecture, morality as advertising, dominion as logistics.",
@@ -832,7 +832,7 @@ window.allWorks = [
       related:["hip_hop_1987"],
       motifs: ["train", "glowing"],
       themes: ["music", "discovery", "ascension"],
-      img:"../img/collection_works/signals_and_ascensions/hip_hop_1978.png",
+      img:"../img/collection_works/signals_and_ascensions/hip_hop_1978.webp",
       desc:[
           "Step into the soul of the South Bronx as the birth cry of Hip Hop reverberates from subway tunnels to celestial realms. 'Hip Hop 1978' captures a young dreamer pointing to a psychedelic subway car emblazoned with the word “LOVE” and the year '1978' — a nod to the cultural ignition point of Hip Hop as a movement of rhythm, rebellion, and radiance.", 
           "Celestial figures and floating books swirl above, invoking knowledge, expression, and divinity, while the child's wide-eyed joy reminds us that Hip Hop was — and still is — a spiritual vessel for transformation. A visual tribute to the beat that birthed a global renaissance.",
@@ -854,7 +854,7 @@ window.allWorks = [
         motifs: ["stairs", "neon"],
         themes: ["family", "identity", "excitement"],
         tags:["stairs","neon"],
-        img:"../img/collection_works/signals_and_ascensions/loris_house.png",
+        img:"../img/collection_works/signals_and_ascensions/loris_house.webp",
         desc:[
             "A suburban dream refracted through surrealist lenses: a Queen of Poland descends 1980s stairs, passing a glowing fish tank where Bitcoin, Ethereum, and Dollar signs drift like exotic creatures. On the carpet, a fiery-haired pop star dances with three women—Black, Asian, and Hispanic—celebrating joy, diversity, and rebellion. In the background, a red-haired mother stirs something unseen, a quiet anchor to the domestic world.",
             "This work balances the absurd with the regal: the weight of crowns and currencies meets the exuberance of neon-lit youth. Both history and myth converge under one roof, questioning the hierarchies of power, gender, money, and memory.",
@@ -875,7 +875,7 @@ window.allWorks = [
           related:["some_things_sound_like_the_morning", "imperious_kingdom"],
           motifs: ["family", "heritage", "dance"],
           themes: ["faith", "tradition", "identity"],
-          img:"../img/collection_works/signals_and_ascensions/the_biblicals.png",
+          img:"../img/collection_works/signals_and_ascensions/the_biblicals.webp",
           desc:[
             "'The Biblicals' is a visual hymn—a layered scene where heritage, reverence, and resilience meet in a sunlit room. In the foreground, a man in an ermine fur coat and navy cap lowers his brim, guarding his gaze while embodying quiet strength. Behind him, a woman in a Choctaw dress moves in sacred rhythm, hands lifted in dance, as two children in red coats rejoice in mirrored movement. Between them all, Hebrew letters are inscribed on a clay wall, hinting at an ancient river—spiritual currents running beneath the moment. Ferns frame the scene, while bottles at the base serve as silent relics of rituals past. A piano in the corner, stacked with books, suggests memory, learning, and song.",
             "This work invites reflection on how ancestral traditions, faith, and modern identity weave into one shared continuum.",
@@ -896,7 +896,7 @@ window.allWorks = [
           related:[],
           motifs: ["balloon","ascension","knowledge"],
           themes: ["information flow","legacy","culture"],
-          img:"../img/collection_works/signals_and_ascensions/revolutionary_balloon.png",
+          img:"../img/collection_works/signals_and_ascensions/revolutionary_balloon.webp",
           desc:[
             "A Renaissance-era figure ascends in a striped hot air balloon, scattering ancient knowledge—cryptic sheets of coded text—into the air. Below, four hands of diverse origins hold smartphones. One displays hieroglyph-like text, while the others burst with cascading streams of water, as if their screens were ancient fountains.",
             "In the distance rise the Sphinx, Notre-Dame, and the Empire State Building—monuments of civilization, framed between electrical towers sparking with energy from the floating basket above.",
@@ -918,7 +918,7 @@ window.allWorks = [
           related:["loris_house", "shannons_house"],
           motifs: ["stairs", "star"],
           themes: ["family", "identity", "esteem"],
-          img:"../img/collection_works/signals_and_ascensions/conrads_house.png",
+          img:"../img/collection_works/signals_and_ascensions/conrads_house.webp",
           desc:[
               "'Conrad’s House' captures the collision of tradition and transformation within a suburban interior. A young man descends the stairs, books in hand, carrying knowledge into a future defined by shifting symbols.", 
               "At the center stands a figure in a copper-toned Dapper Dan tracksuit, adorned with a glowing star and gold rope—an emblem of street royalty and cosmic authority. A poised woman points toward him, anchoring pride and legacy, while a CRT television hums with a crystal ball, broadcasting visions of destiny. In the kitchen, domestic ritual continues, grounding the surreal in the everyday.", 
@@ -947,7 +947,7 @@ window.allWorks = [
               "Perhaps every generation worships something.",
               "Only history decides what becomes mythology."
           ],
-          img:"../img/collection_works/signals_and_ascensions/them_gods_and_the_older_gods.png",
+          img:"../img/collection_works/signals_and_ascensions/them_gods_and_the_older_gods.webp",
           links:{ xrp:"#",
           os:"#",
           sr:"#"}
@@ -964,7 +964,7 @@ window.allWorks = [
           related:["magic_of_86"],
           motifs: ["guitarist", "tartaria","lightening"],
           themes: ["myth","history","value"],
-          img:"../img/collection_works/signals_and_ascensions/tartarian_standard_deluxe.png",
+          img:"../img/collection_works/signals_and_ascensions/tartarian_standard_deluxe.webp",
           desc:[
             "A faceless guitarist sits beneath the domes of a lost empire — the 'Tartarian skyline' glowing under a crescent moon. His hat bears the ironic brand “Standard Deluxe,” a paradox of value in a world of imitation.",
             "Beside him, a crowned observer points in revelation toward the inscription, as if decoding a sacred frequency. Behind them, a billboard of the Black Madonna hums like an ancient server — faith meets circuitry, royalty meets circuitry, art meets commodity.",
@@ -986,7 +986,7 @@ window.allWorks = [
             related:["tartarian_standard_deluxe"],
             motifs: ["stadium","hip-hop","punk"],
             themes: ["rebellion","expression","culture"],
-            img:"../img/collection_works/signals_and_ascensions/the_magic_of_86.png",
+            img:"../img/collection_works/signals_and_ascensions/the_magic_of_86.webp",
             desc:[
               "In 'Magic of '86', three cultural avatars—hip-hop, punk, and suburban youth—collide in a stadium of roaring multitudes. A figure in a Bubble goose down holds an electrified film reel from one side of the stage, while an Indie Rock-like vocalist in mid-cry fuses it in the middle with cinematic force. On the opposite end, a figure in a Dapper Dan-style tracksuit and gold jewelry of that era grips the other reel, completing the circuit. Each wears surrealist visors in the styles of Picasso, Klee, and Matisse. The electricity between them is symbolic, a spark of cross-genre unity, a visual remix of race, culture, and rhythm from an era that echoed rebellion and expression.",
               "This piece merges theater, iconography, and myth into a kinetic dream sequence. A rare portal into the subconscious of the 1980s cultural evolution.",
@@ -1007,7 +1007,7 @@ window.allWorks = [
             related:[],
             motifs: ["dance","sephardic"],
             themes: ["history","memory","diaspora"],
-            img:"../img/collection_works/signals_and_ascensions/sephardic_tango.png",
+            img:"../img/collection_works/signals_and_ascensions/sephardic_tango.webp",
             desc:[
               "A flamenco dancer and a conquistador lock eyes and arms in a hypnotic embrace. The tension of history, love, and legacy pulses through their movement. Behind them, silent onlookers in armor sit in colonial stillness.",
               "One soldier bears a face replaced by the Bitcoin symbol, holding a scroll inscribed in Hebrew with the words: “Remember the Expulsion.” The rose on the floor, fallen but uncrushed, whispers the enduring story of Sephardic diaspora, cultural memory, and shifting empires.",
@@ -1035,7 +1035,7 @@ window.allWorks = [
               "Rather than depicting clothing, the work suggests that belief itself may be the oldest form of fashion.",
               "Every civilization dresses the unknown in different symbols."
             ],
-            img:"../img/collection_works/signals_and_ascensions/fashion_statement.png",
+            img:"../img/collection_works/signals_and_ascensions/fashion_statement.webp",
             links:{ xrp:"#",  
             os:"#", 
             sr:"#"}
@@ -1057,7 +1057,7 @@ window.allWorks = [
             related:["the_soap_wars", "coeur_of_the_grapes", "the_dirt_wars"],
             motifs:["cave","bacteria","wine"],
             themes:["conflict","culture","value"],
-            img:"../img/collection_works/war_and_feast/the_wine_wars.png",
+            img:"../img/collection_works/war_and_feast/the_wine_wars.webp",
             desc:[
               "'The Wine Wars' is a surreal meditation on conflict, culture, and value. A winding river carves through a cavernous landscape, separating two opposing forces: primal microscopic organisms locked in an endless struggle, and a garden where golden coins bloom like living flora. A solitary glass sits empty, a silent witness to the chaos and creation unfolding. Above, a speaker looms—echoing voices of past and future battles.",
               "This piece fuses mythology, economics, and microbiology into one scene, exploring how consumption, nature, and technology intertwine in humanity's pursuit of meaning and wealth.",
@@ -1079,7 +1079,7 @@ window.allWorks = [
             related:["the_generous_vagrant"],
             motifs:["hunger","gold"],
             themes:["greed","consumption","spectatorship"],
-            img:"../img/collection_works/war_and_feast/the_starving_millionare.png",
+            img:"../img/collection_works/war_and_feast/the_starving_millionare.webp",
             desc:[
               "'The Starving Millionaire' captures a paradox at the heart of modern ambition: abundance without nourishment.",
               "A faceless figure devours a sandwich inside a luxury vehicle, parked beneath the sign of a 'Tartarian Sandwich Shoppe'. Outside the windshield, students look on, laughing and learning, while inside the vehicle a GPS glows with a single directive: 'Monetize'.",
@@ -1103,7 +1103,7 @@ window.allWorks = [
             related:["the_wine_wars"],
             motifs:["heart","river"],
             themes:["romance","indulgence","desire"],
-            img:"../img/collection_works/war_and_feast/coeur_of_the_grapes.png",
+            img:"../img/collection_works/war_and_feast/coeur_of_the_grapes.webp",
             desc:[
               "'Coeur of the Grapes' is a surreal celebration of romance, indulgence, and the fragile infrastructure of desire. In this evocative composition, a monumental human heart towers over a vineyard town, pumping rich, cerulean rivers through a sun-scorched landscape. At the forefront, a woman dressed in red smiles with closed eyes, glass of sparkling wine in hand, as a disembodied hand rests on her shoulder — a gesture at once intimate and ambiguous.",
               "This piece plays on the French word 'coeur' (heart) and the ancient symbolism of wine as both communion and seduction. The arteries feeding the land suggest a circulatory system of love and control, while the woman’s radiant joy hints at either blissful ignorance or deep satisfaction.",
@@ -1126,7 +1126,7 @@ window.allWorks = [
             related: ["the_wine_wars", "the_dirt_wars"],
             motifs: ["bubbles", "zamboni"],
             themes: ["sanitation", "conflict"],
-            img: "../img/collection_works/war_and_feast/the_soap_wars.png",
+            img: "../img/collection_works/war_and_feast/the_soap_wars.webp",
             desc: [
               "'The Soap Wars' documents a conflict staged as sanitation.",
               "A sterile tunnel becomes a theater where purity, avoidance, absorption, and respect are enforced through signage, machinery, and posture. Soap floods the floor. Surveillance smiles. Direction replaces dialogue.",
@@ -1148,7 +1148,7 @@ window.allWorks = [
             related: [],
             motifs: ["desert", "spaghetti"],
             themes: ["consumption", "hierarchy"],
-            img: "../img/collection_works/war_and_feast/the_asymmetrical_jayse.png",
+            img: "../img/collection_works/war_and_feast/the_asymmetrical_jace.webp",
             desc: [
               "'The Asymmetrical Jace' bends the domestic into the mythic. Two figures consume spaghetti not as a meal, but as an allegory—one upright, disciplined, with galactic eyes veiled in the night sky, the other crouched, primal, with geometric lenses of surveillance. Between them rises the green pyramid of 'Strategy Wood', a mountain of calculation standing in stark contrast to the desert plain. This piece plays on hierarchy, asymmetry, and the rituals of consumption—both of food and of systems.",
               "It asks: who eats with a fork, and who eats from the ground? Who climbs Strategy Wood, and who becomes part of its base?",
@@ -1167,7 +1167,7 @@ window.allWorks = [
             related: [],
             motifs: ["bugs", "gold"],
             themes: ["greed", "consumption", "spectatorship"],
-            img: "../img/collection_works/war_and_feast/mammon_stadium.png",
+            img: "../img/collection_works/war_and_feast/mammon_stadium.webp",
             desc: [
               "In 'Mammon Stadium', Dream Agent transforms the ancient coliseum into a financial amphitheater. The golden statue of Mammon towers above the fray, bathed in divine light, as gladiatorial bugs scuttle across a hockey-lined battlefield littered with pills. The crowd is not flesh but wealth itself—coins, bills, and symbols of capital—stacked into seats of power.", 
               "The arena becomes a surreal merger of sport, empire, addiction, and currency, where spectatorship is measured in monetary presence rather than human eyes.", 
